@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 操作系统笔记05 线程管理 · Hi, Dai</title><meta name="description" content="操作系统笔记05 线程管理 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">操作系统笔记05 线程管理</h1><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h4><ul>
+<li>传统意义上，一个进程只有一个控制线程。<strong>在这种情况下</strong>进程是<strong>①资源分配单位和②调度单位</strong>。</li>
+<li>将上述两个概念分开并允许单个进程包括多个控制线程，得到线程。也就是说，进程用于将资源组合在一起，线程是派发（调度）在CPU上执行的实体。</li>
+<li><p>线程是现代操作系统中CPU使用的基本单位。也称为轻量级过程（LWP）。</p>
+<a id="more"></a>
+</li>
+<li><p>多线程</p>
+<ul>
+<li>在同一个进程中允许多个线程。</li>
+<li>进程是<strong>资源分配的单位</strong>，线程是<strong>调度的单位</strong>。</li>
+<li><strong>共享</strong>属于同一进程的资源，例如是<strong>代码段，数据段，打开的文件</strong>和信号等。</li>
+<li>一个进程中的每个线程都有一个<strong>私有线程上下文</strong>（包括<strong>CPU寄存器集</strong>和<strong>其他状态信息：?函数参数，变量，返回地址etc</strong>）和一个<strong>私有堆栈</strong>。<br><img src="https://i.loli.net/2018/06/18/5b2736316b722.png" width="75%" height="80%"></li>
+</ul>
+</li>
+<li>进程：①地址空间 ②全局变量 ③打开的文件 ④子进程 ⑤未决(pending)警报 ⑥信号和信号处理程序 ⑦计数信息</li>
+<li>线程：①程序计数器 ②寄存器 ③堆 ④状态</li>
+</ul>
+<h4 id="多线程编程优点"><a href="#多线程编程优点" class="headerlink" title="多线程编程优点"></a>多线程编程优点</h4><ul>
+<li><strong>响应度高</strong>：即使一个或多个线程被阻塞或正在执行冗长的操作，允许其他线程继续响应用户。</li>
+<li><strong>资源共享</strong>：由于同一进程内的线程共享内存和资源，它们可以在不调用内核的情况下相互通信。它能允许一个应用进程在同一地址空间有多个不同的活动进程。</li>
+<li><strong>经济</strong>：创建一个新线程比一个进程花费的时间和资源要少得多。在同一个进程中，线程比上下文切换花费的时间更少。</li>
+<li><strong>多处理器体系结构的利用</strong>：通过为每个CPU分配一个线程可以实现并行，在多CPU上使用多线程加强了并发功能。</li>
+</ul>
+<h4 id="线程实现"><a href="#线程实现" class="headerlink" title="线程实现"></a>线程实现</h4><ul>
+<li>多线程实现的地方：<strong>不一定在内核实现</strong><ul>
+<li>用户线程：在用户空间实现。</li>
+<li>内核线程：在内核实现。</li>
+<li>通过组合用户线程和内核线程的混合方案。</li>
+</ul>
+</li>
+</ul>
+<h5 id="用户线程"><a href="#用户线程" class="headerlink" title="用户线程"></a>用户线程</h5><ul>
+<li>它在内核之外用户空间的<strong>线程库</strong>实现。<ul>
+<li>线程库是为线程创建，调度和管理提供支持的库。</li>
+<li>就内核而言，它正在管理普通的单线程进程。</li>
+</ul>
+</li>
+<li>eg. ①Mach C-threads ②Solaris 2 UI-threads</li>
+<li>优点<ul>
+<li>线程管理和上下文切换不需要陷入内核。这将节省大量的CPU周期。</li>
+<li>允许每个进程拥有自己的自定义调度算法。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>执行阻塞系统调用的任何用户级线程都将导致整个进程阻塞。即使其他线程已准备好在进程中运行。</li>
+<li>在多处理器的系统上，不能调度用户级线程并行执行。</li>
+</ul>
+</li>
+</ul>
+<h5 id="内核线程"><a href="#内核线程" class="headerlink" title="内核线程"></a>内核线程</h5><ul>
+<li>由操作系统直接支持。内核在内核空间执行线程创建，调度和管理。</li>
+<li>eg. ①Windows NT / XP ②Solaris</li>
+<li>优点和缺点：和用户线程的相反。</li>
+</ul>
+<h4 id="多线程应用程序编程接口"><a href="#多线程应用程序编程接口" class="headerlink" title="多线程应用程序编程接口"></a>多线程应用程序编程接口</h4><ul>
+<li>Pthreads<ul>
+<li>Pthreads是指为线程创建和同步定义API的POSIX标准（IEEE 1003.1c）。</li>
+<li>这是线程行为的规范，而不是实现。 </li>
+</ul>
+</li>
+<li>Win32<ul>
+<li>CreateThread，ExitThread和TerminateThread等。</li>
+<li>POSIX Threads for Win32 （<a href="http://sources.redhat.com/pthreads-win32）" target="_blank" rel="noopener">http://sources.redhat.com/pthreads-win32）</a></li>
+</ul>
+</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/os6/" class="prev">PREV</a><a href="/os4/" class="next">NEXT</a></div><div data-thread-key="os5/" data-title="操作系统笔记05 线程管理" data-url="http://Winnie1997.github.io/os5/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

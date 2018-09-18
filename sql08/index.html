@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 数据库原理笔记C08 数据库系统的设计 · Hi, Dai</title><meta name="description" content="数据库原理笔记C08 数据库系统的设计 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">数据库原理笔记C08 数据库系统的设计</h1><div class="post-info">Jun 4, 2018</div><div class="post-content"><h2 id="8-1-数据库系统设计概述"><a href="#8-1-数据库系统设计概述" class="headerlink" title="8.1 数据库系统设计概述"></a>8.1 数据库系统设计概述</h2><ol>
+<li>需求分析阶段：需求收集和分析，得到<code>数据字典</code>和<code>数据流图</code>。</li>
+<li>概念结构设计阶段：对用户需求综合、归纳与抽象，形成概念模型，用<code>E-R图</code>表示。</li>
+<li>逻辑结构设计阶段：将概念结构转换为某个DBMS所支持的<code>关系模型</code>/<code>数据模型</code>，对关系模型进行优化。</li>
+<li>物理设计阶段：根据具体计算机系统(DBMS和硬件)的特点，为<strong>给定的数据库模型</strong>确定合理的<code>存储结构</code>和<code>存取方法</code>，并对物理结构进行评价。</li>
+<li>数据库实施阶段：建立数据库，编制与调试应用程序，组织数据入库，程序试运行。</li>
+<li>数据库运行和维护阶段：数据库应用系统投入运行后，需要进行备份和维护，对于出现的问题需要不断调整和修改，直到满足用户需求。<a id="more"></a>
+</li>
+</ol>
+<h2 id="8-2-系统需求分析"><a href="#8-2-系统需求分析" class="headerlink" title="8.2 系统需求分析"></a>8.2 系统需求分析</h2><h3 id="需求分析的必要性"><a href="#需求分析的必要性" class="headerlink" title="需求分析的必要性"></a>需求分析的必要性</h3><p>需求分析的重点是调查、收集与分析用户在数据管理中的信息要求、处理要求、安全性与完整性要求。</p>
+<h3 id="需求分析的方法"><a href="#需求分析的方法" class="headerlink" title="需求分析的方法"></a>需求分析的方法</h3><ol>
+<li>调查组织机构情况。了解组织部门的组成情况，各部门的职责等。</li>
+<li>调查各部门的业务活动情况。包括了解各个部门输入和使用什么数据、如何加工处理这些数据、输出什么信息、输出到什么部门、输出结果的格式是什么等。</li>
+<li>在熟悉业务活动的基础上，协助用户明确对新系统的各种要求。</li>
+</ol>
+<h3 id="数据流图和数据字典"><a href="#数据流图和数据字典" class="headerlink" title="数据流图和数据字典"></a>数据流图和数据字典</h3><p>需求分析阶段收集到的基础数据用数据字典和一组DFD表达，它们是下一步进行概念设计的基础。</p>
+<h2 id="8-3-概念结构的设计"><a href="#8-3-概念结构的设计" class="headerlink" title="8.3 概念结构的设计"></a>8.3 概念结构的设计</h2><p>概念结构设计的任务是在需求分析阶段产生的需求说明书的基础上，按照特定的方法，将其抽象为一个不依赖于任何具体机器的数据模型，即概念模型。概念模型又称概念结构，它可用 E-R图进行描述。</p>
+<blockquote>
+<p>目前还没确定数据库的类型(eg. 关系数据库..etc)</p>
+</blockquote>
+<h3 id="概念模型的特点、设计方法和步骤"><a href="#概念模型的特点、设计方法和步骤" class="headerlink" title="概念模型的特点、设计方法和步骤"></a>概念模型的特点、设计方法和步骤</h3><ul>
+<li><p>概念模型的特点：</p>
+<ul>
+<li>能真实和充分反映现实设计；</li>
+<li>能满足用户对数据处理的需求；</li>
+<li>易于被用户理解，用户才可参与到数据库设计中；</li>
+<li>易于更改，以满足用户需求的修改和扩充；易于向数据模型转换。</li>
+</ul>
+</li>
+<li><p>概念模型的设计方法：</p>
+<ul>
+<li>自顶向下方法</li>
+<li>自定向上方法</li>
+<li>逐步扩张方法</li>
+<li>混合策略方法 </li>
+</ul>
+</li>
+</ul>
+<h3 id="数据抽象与局部视图设计"><a href="#数据抽象与局部视图设计" class="headerlink" title="数据抽象与局部视图设计"></a>数据抽象与局部视图设计</h3><ul>
+<li>数据抽象的三种方法<ul>
+<li>分类</li>
+<li>聚集</li>
+<li>概括</li>
+</ul>
+</li>
+<li>局部视图的设计<ul>
+<li>明确局部应用的范围</li>
+<li>设计分E-R图</li>
+<li>确定实体之间的联系，产生局部模型</li>
+</ul>
+</li>
+</ul>
+<h3 id="视图的集成"><a href="#视图的集成" class="headerlink" title="视图的集成"></a>视图的集成</h3><ul>
+<li>合并分E-R图，生成初步E-R图：分E-R图间的冲突主要由属性冲突、命名冲突和结构重提三种。</li>
+<li>消除不必要的冗余，设计基本E-R图：用分析方法消除冗余；用规范化理论消除冗余。</li>
+</ul>
+<h2 id="8-4-数据库逻辑结构的设计"><a href="#8-4-数据库逻辑结构的设计" class="headerlink" title="8.4 数据库逻辑结构的设计"></a>8.4 数据库逻辑结构的设计</h2><p>数据库逻辑结构设计的主要任务：将概念模型转换为某一DBMS所支持的数据类型</p>
+<p>###逻辑结构设计过程</p>
+<ul>
+<li>选择最合适的数据模型，并按转换规则将概念模型转换为选定的数据模型</li>
+<li>从支持这种数据模型的DBMS中选出最佳的DBMS，并根据选定DBMS的特点和限制对数据模型进行优化</li>
+<li>通过优化方法将其转换为优化的数据模型</li>
+</ul>
+<p>###概念模型转换为关系模型<br><strong>实体集的转换规则</strong><br>一个实体集转换为关系模型中的一个关系，实体的属性就是关系的属性，实体的标识符就是关系的键，关系的结果就是关系模式。  </p>
+<p><strong>实体集间联系的转换规则</strong>   </p>
+<ul>
+<li>1 : 1 联系的转换方法 <ul>
+<li>将一个 1 : 1 联系转换为一个独立的关系：与该联系相连的各实体集的键以及联系本身的属性转换为关系，且<strong>每个实体的键</strong>均是该关系的候选键。</li>
+<li>将一个 1 : 1 联系与<strong>任意一端</strong>实体集所对应的关系合并：在被合并关系中增加属性，新增的属性为联系本身的属性和联系相关的另一个实体集的键。</li>
+</ul>
+</li>
+<li>1 : n 联系的转换方法 <ul>
+<li>将一个 1 : n 联系转换为一个独立的关系：与该联系相连的各实体集的键以及联系本身的属性转换为关系，且该关系的键为 <strong>n 端实体的键</strong>。</li>
+<li>将一个 1 : n联系与 <strong>n 端</strong>实体集所对应的关系合并：在n端实体集增加新属性，新属性由联系对应的 1 端实体集的键和联系自身的属性构成，新增属性后原关系的键不变。</li>
+</ul>
+</li>
+<li>m : n 联系的转换方法<ul>
+<li>将一个 m : n 联系转换为一个关系：与该联系相连的各实体集的键以及联系本身的属性转换为关系的属性，新关系的键为两个相连实体键的组合。(<strong>该键为多属性构成的组合键</strong>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-5-数据库物理结构的设计"><a href="#8-5-数据库物理结构的设计" class="headerlink" title="8.5 数据库物理结构的设计"></a>8.5 数据库物理结构的设计</h2><p>物理设计阶段：根据具体计算机系统(DBMS和硬件)的特点，为<strong>给定的数据库模型</strong>确定合理的<code>存储结构</code>和<code>存取方法</code>，并对物理结构进行评价。希望设计的物理数据库结构能够满足<strong>事务在数据库上</strong>：</p>
+<ul>
+<li>运行相应时间少</li>
+<li>存储空间利用率高</li>
+<li>事务吞吐量大</li>
+</ul>
+<p><strong>确定关系模式的存取方法</strong>：1.索引法 2.聚簇法<br><strong>确定关系模式的存储结构</strong>：确定数据的存放位置和结构。(启发性规则P257)</p>
+<p><strong>评价物理结构</strong>：物理设计过程中需要对时间效率、空间效率、维护代价和各种用户要求进行权衡。评价方法<strong>完全依赖于所用的DBMS</strong>，主要从定量估算各种方案的存储结构、存储时间和维护代价入手，对估算结果进行权衡比较，取一个较优合理的物理结构。根据用户需求修改设计。</p>
+<h2 id="8-6-数据库的实施和维护"><a href="#8-6-数据库的实施和维护" class="headerlink" title="8.6 数据库的实施和维护"></a>8.6 数据库的实施和维护</h2><h3 id="数据库的实施"><a href="#数据库的实施" class="headerlink" title="数据库的实施"></a>数据库的实施</h3><p>数据库的实施阶段任务：</p>
+<ul>
+<li>设计人员用DBMS提供的数据定义(DDL)语言和其他使用程序将数据库逻辑设计和物理设计结果严格描述出来，使数据模型成为DBMS可以接受的源代码</li>
+<li>经过调试产生目标模式，完成建立定义数据库结构的工作</li>
+<li><strong>组织数据入库</strong>，并运行应用程序进行调试</li>
+</ul>
+<blockquote>
+<p>相当于软件工程中代码编写和调试的阶段<br>组织数据入是数据库实施阶段最主要的工作：手工逐条录入、数据录入子系统</p>
+</blockquote>
+<h3 id="数据库的试运行"><a href="#数据库的试运行" class="headerlink" title="数据库的试运行"></a>数据库的试运行</h3><ul>
+<li>实际运行数据库应用程序，执行对数据库的各项操作，测试<strong>应用程序功能</strong>是否满足要求</li>
+<li>测试系统的<strong>性能指标</strong>，分析是否符合设计目标</li>
+</ul>
+<blockquote>
+<p>注意：(1)数据库的试运行操作应<strong>分步进行</strong> (2)数据库的实施和调试不可能一次完成</p>
+</blockquote>
+<h3 id="数据库的运行和维护"><a href="#数据库的运行和维护" class="headerlink" title="数据库的运行和维护"></a>数据库的运行和维护</h3><p>数据库的维护工作主要包括以下几方面：</p>
+<ul>
+<li>数据库的转储和恢复</li>
+<li>对数据库的安全性和完整性进行控制</li>
+<li>对数据库的性能进行监督、分析和改造</li>
+<li>对数据库进行<strong>(部分)重组织和重构造</strong>(数据库运行一段时间后，由于记录不断增删改会使数据库的物理存储情况变坏)</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/cn1/" class="prev">PREV</a><a href="/sql07/" class="next">NEXT</a></div><div data-thread-key="sql08/" data-title="数据库原理笔记C08 数据库系统的设计" data-url="http://Winnie1997.github.io/sql08/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

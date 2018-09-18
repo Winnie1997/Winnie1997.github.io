@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 数据库原理笔记C06 数据库保护 · Hi, Dai</title><meta name="description" content="数据库原理笔记C06 数据库保护 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">数据库原理笔记C06 数据库保护</h1><div class="post-info">Jun 4, 2018</div><div class="post-content"><h2 id="6-1-数据库完整性"><a href="#6-1-数据库完整性" class="headerlink" title="6.1 数据库完整性"></a>6.1 数据库完整性</h2><p>数据库的完整性是指保护数据库中数据的<strong>正确性</strong>、<strong>有效性</strong>和<strong>相容性</strong>，防止不合语义的数据进入数据库。</p>
+<ul>
+<li>正确性：数据的合法性。如年龄属于数值型数字，不能含字母或特殊字符。</li>
+<li><p>相容性：表示同一事实的两个数据应相同，不一致就是不相容。如一个学生不能有两个学号。</p>
+<a id="more"></a>
+<p>数据库的完整性是有DBMS的完整性子系统实现的。完整性子系统的主要功能主要有以下两点：</p>
+</li>
+<li><p>监督事务(特别是更新事务)的执行，并测试是否违反完整性约束。</p>
+</li>
+<li>若有违反现象，则采取恰当的动作。(拒绝/报告违反情况/改正错误)</li>
+</ul>
+<h3 id="完整性规则"><a href="#完整性规则" class="headerlink" title="完整性规则"></a>完整性规则</h3><p>完整性规则用来检察数据库中的数据是否满足约束。主要由以下三个部分构成：</p>
+<ul>
+<li>触发条件</li>
+<li>约束条件</li>
+<li>违约响应</li>
+</ul>
+<p>在执行时间上可以分为立即执行约束和延迟执行约束。</p>
+<ul>
+<li>立即执行约束：在执行用户事务过程中，某一条语句执行完成后，系统立即进行完整性约束条件检查。若违背立即执行约束，则拒接该操作。</li>
+<li>延迟执行约束：在整个事务执行结束后再对约束条件进行完整性检查，结果正确才能提交。若违背延迟执行约束，又不知道是哪个事务的操作破坏了完整性，则只能拒接整个事务，把数据库恢复到该事务执行前的状态。</li>
+</ul>
+<h3 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h3><ul>
+<li>主键约束：要求表中所有元组都应该有一个唯一的标识符。体现了实体完整性。</li>
+<li>外键约束：涉及的事一个表中的数据如何与另一个表中的数据相联系。体现了参照完整性。</li>
+</ul>
+<blockquote>
+<ul>
+<li>外键是否接受空值问题P157</li>
+<li>在被参照关系中删除元组问题：级联删除、受限删除、置空值删除。<ul>
+<li>级联删除：将参照关系中所有外键与被参照关系中被删除元组主键相同的元组一起删除。</li>
+<li>受限删除：仅当参照关系中没有任何元组的外键与被参照关系中要删除元组的主键相同时才执行删除操作，否则拒绝执行。</li>
+<li>置空值删除：若要删除被参照关系的元组，将参照关系中与被参照关系中被删除元组主键值相等的外键值置为空值。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>属性约束：属性约束体现用户定义的完整性。属性约束主要限制某一属性的取值范围，可以分为以下几类：</li>
+</ul>
+<blockquote>
+<ul>
+<li>非空值约束</li>
+<li>唯一值约束</li>
+<li>基于属性的check约束</li>
+</ul>
+</blockquote>
+<ul>
+<li>域约束：域是某一列值可能取值的集合。SQL支持域的概念，用户可以定义域给定他的名字</li>
+<li>断言约束：SQL支持断言的创建，断言是不与任何一个表相联系。</li>
+</ul>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><p>我们希望在某个操作后，系统能自动根据条件转去执行某种操作，甚至执行与原操作无关的操作，则可以采用触发器机制实现。<br><code>触发器</code>：由事件、条件和动作三部分组成。</p>
+<blockquote>
+<ul>
+<li>事件：对数据库的插入、删除、修改等操作。触发器在这些事件发生时，将开始工作。</li>
+<li>条件：触发器将测试条件是否成立。如果成立则执行相应动作，否则什么也不做。</li>
+<li>动作：如果触发器满足预定的条件，DBMS执行这些动作。</li>
+</ul>
+</blockquote>
+<p>SQL中使用触发器的优点：</p>
+<ol>
+<li>触发器是自动的</li>
+<li>触发器可以实现数据库中相关表的级联修改</li>
+<li>实现比check约束定义的限制更复杂的限制。(与check约束的不同点：触发器可以引用其他表中的列)</li>
+<li>比较数据库修改前后的数据状态。</li>
+<li>维护非规范化数据。非规范数据通常指在表中派生的、冗余的数据值。可以使用触发器保证非规范数据库中的低级数据的完整性。P162</li>
+</ol>
+<h2 id="6-2数据库的安全性"><a href="#6-2数据库的安全性" class="headerlink" title="6.2数据库的安全性"></a>6.2数据库的安全性</h2><h3 id="安全性概述"><a href="#安全性概述" class="headerlink" title="安全性概述"></a>安全性概述</h3><p>数据库安全性：保护数据库，以防止非法使用所造成的数据泄漏、更改或破坏。</p>
+<blockquote>
+<ul>
+<li>数据库的安全性和计算机的安全性是紧密联系和相互支持的。  </li>
+<li>需要从以下几个层次采取相应的安全性措施：物理层、操作系统层、网络层、人员层、数据库系统层。</li>
+<li>此处讨论的安全性是数据库系统层的安全性问题。</li>
+</ul>
+</blockquote>
+<p><code>安全控制模型</code> P172 图6.4</p>
+<h3 id="身份认证"><a href="#身份认证" class="headerlink" title="身份认证"></a>身份认证</h3><p>身份认证是系统提供的<strong>最外层</strong>安全保护措施，由系统提供一定的方法让用户标识自己的名字和身份。每次用户要求进入系统时，由系统进行核对，通过鉴定后才能获得机器的使用权。</p>
+<blockquote>
+<ul>
+<li>用户名加口令</li>
+<li>生物特征识别技术</li>
+<li>基于USB Key的身份认证方法</li>
+</ul>
+</blockquote>
+<h3 id="存取控制"><a href="#存取控制" class="headerlink" title="存取控制"></a>存取控制</h3><p>数据库安全最重要的一点就是确保只授权给有资格的用户访问数据库的权限，同时令所有未被授权的人员无法接近数据。数据库管理员必须能够为不同用户授予不同的数据库使用权。<br>主要包括以下两个方面：</p>
+<ul>
+<li>定义用户权限</li>
+<li>检查存取权限</li>
+</ul>
+<p>DBMS主要提供两种方法来控制用户对数据的访问：自主存取控制和强制存取控制。</p>
+<h3 id="自主存取控制"><a href="#自主存取控制" class="headerlink" title="自主存取控制"></a>自主存取控制</h3><ul>
+<li>基于存取权限。用户对于不同的对象有不同的存取权限，不同的用户对同一对象也有不同的权限。</li>
+<li>存在问题：A用户将自己所管理的部分数据的查看权限赋予B用户，其本意是只让B用户本人查看这些数据，但B用户一旦能够查看这些数据，就能对数据进行备份并<strong>获得自身权限内的副本</strong>，就能不征得A用户同意传播数据副本。</li>
+<li>该机制仅仅通过对数据的存取权限来进行安全控制，而数据本身并无安全性标记。</li>
+</ul>
+<h3 id="强制存取控制"><a href="#强制存取控制" class="headerlink" title="强制存取控制"></a>强制存取控制</h3><ul>
+<li>基于系统策略。它不能由单个用户改变。</li>
+<li>每一个数据库对象都被赋予一个安全级别，每个安全级别用户都被赋予一个许可证，并且一组规则会强加在用户要读写的数据库对象上。</li>
+<li>对数据本身进行密级标记，无论数据如何复制，标记与数据是一个不可分的整体。</li>
+<li>解决了自主存取控制存在的问题。</li>
+</ul>
+<h3 id="建立视图"><a href="#建立视图" class="headerlink" title="建立视图"></a>建立视图</h3><ul>
+<li>视图可以隐藏用户不需要看见的数据。</li>
+<li>视图隐藏数据的能力既可以简化系统的使用，又可以用于实现安全性。</li>
+<li>通过视图机制可以将访问限制在基本表的子集内、列的子集内、符合多个基本表连接的行内…</li>
+</ul>
+<h3 id="数据加密"><a href="#数据加密" class="headerlink" title="数据加密"></a>数据加密</h3><ul>
+<li>根据一定的算法将原始的数据变换为不可识别的格式，从而使得不知道解密算法的人无法获知数据的内容</li>
+<li>数据加密标准DES是一种著名的对成加密方法。必须把密钥通过某种安全机制提供给授权用户，<strong>增大了密钥被窃取的概率</strong>。</li>
+<li>RSA算法：一种著名的公共密钥加密方法。每个人都有一个公共密钥和私有密钥。所有人都知道公共密钥，但私有密钥只有自己知道。<strong>很安全，但计算代价很高</strong></li>
+</ul>
+<h3 id="审计跟踪"><a href="#审计跟踪" class="headerlink" title="审计跟踪"></a>审计跟踪</h3><ul>
+<li>审计功能是一种监视措施，跟踪记录有关数据的访问活动。</li>
+<li>对于某些高明感的保密数据，必须以审计作为预防手段。</li>
+<li>通过审计功能，凡是与数据库安全性相关的操作均可被记录在<strong>审计日志</strong>中<ul>
+<li>审计加强了数据的安全性</li>
+<li>使用审计功能会大大增加系统的开销。DBMS通常将其作为可选特征。</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-3-事务"><a href="#6-3-事务" class="headerlink" title="6.3 事务"></a>6.3 事务</h2><h3 id="事务的基本概念"><a href="#事务的基本概念" class="headerlink" title="事务的基本概念"></a>事务的基本概念</h3><p>事务是用户定义的数据库操作序列，这些操作是一个不可分割的<code>工作单元</code>。一个事务至少包含一条SQL语句，多条SQL语句可以组合在一起作为单个事务执行。事务是并发控制的基本单位。</p>
+<h3 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h3><ul>
+<li>原子性：事务是数据库的逻辑工作单位。事务的所有操作在数据库中要么做，要么都不做。</li>
+<li>一致性：事务单独执行时(没有和其他事务并发执行的情况下)，保持数据库的一致性。即，事务执行的结果必须是使数据库从一个一致性状态变成另一个一致性状态。</li>
+<li>隔离性：一个事务的执行不能被其他事务干扰。即一个事务内部的操作及使用的数据对其他并发事务是隔离的，并发执行的事务之间不能互相干扰。</li>
+<li>持久性：一个事务一旦提交成功，它对数据库中的数据的改变应该是永久的，即使是系统出现故障时也是如此。</li>
+</ul>
+<blockquote>
+<ul>
+<li>数据库的一致性：每个事务看到的都是一致的数据库实例。  </li>
+<li>原子性、一致性、隔离线和持续性这4个特性也简称ACID特性。 </li>
+<li>原子性是保证数据库一致性的前提，隔离性和原子性相互依存，持续性则是保证事务正确执行的必然要求。</li>
+</ul>
+</blockquote>
+<h2 id="6-4-并发控制-多用户"><a href="#6-4-并发控制-多用户" class="headerlink" title="6.4 并发控制(多用户)"></a>6.4 并发控制(多用户)</h2><p>多用户并行地存取数据库系统，就会发生多个用户<strong>并发地存取同一数据</strong>的情况。如果对这些并发操作不加以控制，就会发生多个用户并发地存取同一数据的情况，<strong>破坏数据的一致性</strong>。</p>
+<h3 id="事务的并发执行"><a href="#事务的并发执行" class="headerlink" title="事务的并发执行"></a>事务的并发执行</h3><p>事务可以一个一个串行执行，但是系统资源利用率很低。为了充分利用系统资源，发挥数据库共享资源的特点，事务处理系统应该允许多个事务并发执行，优点如下：</p>
+<ol>
+<li>提高吞吐量和资源利用率 </li>
+<li>减少等待时间</li>
+</ol>
+<h3 id="并发操作与数据的不一致性"><a href="#并发操作与数据的不一致性" class="headerlink" title="并发操作与数据的不一致性"></a>并发操作与数据的不一致性</h3><p><strong>1. 丢失更新</strong>：当两个事务T<sub>1</sub>和T<sub>2</sub>读入同一数据并修改，并发执行时，T<sub>2</sub>提交的结果破坏了T<sub>1</sub>提交的结果。即，两个事务T<sub>1</sub>和T<sub>2</sub>读入同一数据并修改，T<sub>2</sub>提交的结果破坏了T<sub>1</sub>提交的结果，导致T<sub>3</sub>的修改被丢失。  </p>
+<p><strong>2. 不可重复读</strong>：事务T<sub>1</sub>读取数据后，事务T<sub>2</sub>执行更新操作，使T<sub>1</sub>无法再现前一次读取结果。  </p>
+<blockquote>
+<ul>
+<li>事务T<sub>1</sub>读取数据对象A，并仍在运行，事务T<sub>2</sub>执行更新操作，使T<sub>1</sub>无法再重复前一次的结果。</li>
+<li>事务T<sub>1</sub>按一定条件从数据库中读取了某些记录后，事务T<sub>2</sub>删除了其中部分记录，使T<sub>1</sub>再次按照相同条件读取数据时，发现某记录不见了。(幻影现象)</li>
+<li>事务T<sub>1</sub>按一定条件从数据库中读取了某些记录后，事务T<sub>2</sub>插入了一些记录，使T<sub>1</sub>再次按照相同条件读取数据时，发现多了一些记录。(幻影现象)</li>
+</ul>
+</blockquote>
+<p><strong>3. 读“脏”数据</strong>：事务T<sub>1</sub>修改某一数据，并将其写回磁盘，事务T<sub>2</sub>读取同一数据后，T<sub>1</sub>由于某种原因被撤消，这时T<sub>1</sub>已修改过的数据恢复原值，T<sub>2</sub>读到的数据就与数据库中的数据不一致，则T<sub>2</sub>读到的数据就为”脏”数据，与数据库中的数据不一致。  </p>
+<h3 id="封锁"><a href="#封锁" class="headerlink" title="封锁"></a>封锁</h3><p>实现并发控制的主要方法有两种：封锁技术和时标技术。此处只介绍封锁技术。<br><code>封锁</code>：事务T在对某个数据对象(如数据库、表、记录等)操作之前，首先向系统发出<code>加锁请求</code>以便获得对数据对象相应的控制；<br>在事务T<code>释放它所获得的锁</code>之前，其他事务不能更新此数据对象。</p>
+<p><strong>1. 封锁类型</strong></p>
+<ul>
+<li>排它锁（写锁/独占锁）：若事务T对数据对象A加上X锁/排他锁，则只允许T读取和修改A，其它任何事务都不能再对A加任何类型的锁，直到T释放A上的锁。</li>
+<li>共享锁（读锁）：若事务T对数据对象A加上S锁/共享锁，则事务T可以读A但不能修改A，其它事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。</li>
+</ul>
+<p>(P118 表6.4)：排他锁不相容，共享锁是相容的。任何时候，一个数据项上的共享锁可以同时被多个不同的事务拥有。如果一个事务申请一个数据项的排他锁，它必须等待该数据项上的所有锁被释放。</p>
+<p><strong>2. 封锁协议</strong></p>
+<ul>
+<li>一级封锁协议：事务T在修改数据R之前必须先对其加X锁，<strong>直至事务结束</strong>。</li>
+<li>二级封锁协议：在一级封锁协议的基础上，再加上事务T在对数据A进行读操作之前必须先对A加S锁，<strong>读完后立即释放</strong>S锁。</li>
+<li>三级封锁协议：在一级封锁协议的基础上，再加上事务T在对数据A进行读操作之前必须先对A加S锁，<strong>直到事务结束才能释放</strong>加在A上的S锁。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>一级封锁协议</th>
+<th>二级封锁协议</th>
+<th>三级封锁协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>丢失更新</td>
+<td>&radic;</td>
+<td>&radic;</td>
+<td>&radic;</td>
+</tr>
+<tr>
+<td>不可重复读</td>
+<td>&times;</td>
+<td>&times;</td>
+<td>&radic;</td>
+</tr>
+<tr>
+<td>读“脏”数据</td>
+<td>&times;</td>
+<td>&radic;</td>
+<td>&radic;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. 封锁粒度</strong></p>
+<p>封锁对象的大小称为封锁粒度。封锁对象可以是这样一些逻辑单元：属性值、属性值的集合、元组、关系、索引项、整个索引项直至整个数据库等。<br>在实际应用中，选择封锁粒度时应同时考虑封锁机构和并发度两个因素，对系统开销进行权衡，以求得最优的效果。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>封锁力度越小</th>
+<th>封锁力度越大</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>被封锁的对象</td>
+<td>越多</td>
+<td>越小</td>
+</tr>
+<tr>
+<td>并发度</td>
+<td>越大</td>
+<td>越小</td>
+</tr>
+<tr>
+<td>系统开销</td>
+<td>越大</td>
+<td>越小</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4. 死锁和活锁</strong>P 191<br><code>活锁</code>：系统可能使某个事务永远处于等待状态，得不到封锁的机会。最简单的解决方法时先到先服务策略。<br><code>死锁</code>：系统中有两个或两个以上的事务都处于等待状态，并且每一个事务都在等待其中另一个事务解除封锁，它才能继续执行下去，结果造成任何一个事务都无法继续执行。  </p>
+<blockquote>
+<p>解决死锁的两种方法：死锁预防、死锁的诊断与解除</p>
+</blockquote>
+<p>死锁预防：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>一次封锁法</th>
+<th>顺序封锁法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定义</td>
+<td>要求每个事务必须一次将所有要使用的数据全部依次加锁，并要求加锁成功。否则就不能继续执行。</td>
+<td>预先对所有可能加锁的数据对象规定一个加锁顺序，所有事务都按这个顺序实行加锁，释放时逆序。</td>
+</tr>
+<tr>
+<td>问题</td>
+<td>一次就将以后要用到的全部数据加锁，扩大了封锁的范围，从而降低了系统的并发度。</td>
+<td>事务的封锁请求可以随着事务的执行而动态地决定，很难事先封锁对象，从而更难确定封锁顺序。</td>
+</tr>
+</tbody>
+</table>
+<p>死锁的诊断与解除：预防死锁常要付出很高的代价。一般情况下，在数据库系统中，可以允许发生死锁，在死锁发生后可以自动诊断并解除死锁。</p>
+<blockquote>
+<ul>
+<li>等待图法P193：事务等待图动态地反映了<strong>所有事务的等待情况</strong>。并发控制子系统<strong>周期性地</strong>（比如每隔1分钟）检测事务等待图，如果发现<strong>图中存在回路</strong>，则表示系统中出现了死锁。</li>
+<li>如果发生死锁，那么只能选取某个事务作为牺牲品，把它撤销，<strong>做回退操作</strong>解除它所有的封锁，恢复到该事务的初始状态。</li>
+<li>通常采用的方法之一是选择一个<strong>处理死锁代价最小</strong>的事务，将其撤销。不重要的用户，取消其操作，释放封锁的数据，恢复对数据库所做的改变。</li>
+</ul>
+</blockquote>
+<h3 id="事务调度与可串行化"><a href="#事务调度与可串行化" class="headerlink" title="事务调度与可串行化"></a>事务调度与可串行化</h3><p><strong>1. 事务的调度</strong>  </p>
+<ul>
+<li>事务的串行调度：多个事务依次执行</li>
+<li>事务的并发/并行调度：利用分时的方法同时处理多个事务</li>
+</ul>
+<p><strong>2. 可串行化的调度</strong>  </p>
+<ul>
+<li>事务的并发执行可能导致不正确的运行结果。假设事务的执行是正确的，则串行调度一定能产生正确的运行结果。    </li>
+<li>如果一个并发调度的执行结果与某一串行调度的执行结果等价，那么这个并发调度称为“<code>可串行化的调度</code>”。    </li>
+<li>我们把可串行化的调度当作唯一能够<code>保证并发操作正确性</code>的调度策略。  </li>
+<li>应当谨慎地使用锁(P195)：<ul>
+<li>如果为了获得最大的并行性而过早地释放数据项的锁，就有可能进入不一致的皇台。</li>
+<li>在申请其他锁之前不尽量地释放已有的锁，则可能导致死锁。</li>
+</ul>
+</li>
+</ul>
+<h3 id="两段锁协议"><a href="#两段锁协议" class="headerlink" title="两段锁协议"></a>两段锁协议</h3><p><code>两段锁协议</code>：所有事务必须分为两个阶段对数据项加锁和解锁。</p>
+<ul>
+<li>加锁阶段：在对任何数据进行读、写操作之前，事务首先要申请并获得对该数据的封锁。(事务开始运行后进入加锁阶段，申请获得<code>所需要的所有锁</code>)</li>
+<li>解锁阶段：在释放一个封锁之后，事务不再申请和获得任何其他封锁。事务结束时，其所有用的所有锁都将释放。(即进入解锁阶段的事务不能再申请任何锁)</li>
+</ul>
+<ol>
+<li>两段锁协议是可串行化调度的<strong>充分条件</strong>，但不是必要条件。</li>
+<li>一次封锁发遵守两段锁协议，但是两段锁协议并不要求事务必须一次将所有要使用的数据全部加锁。</li>
+<li>两段锁协议可以保证并发事务的正确性，但可能发生死锁。</li>
+</ol>
+<h2 id="6-5-数据库的恢复"><a href="#6-5-数据库的恢复" class="headerlink" title="6.5 数据库的恢复"></a>6.5 数据库的恢复</h2><h3 id="故障的种类"><a href="#故障的种类" class="headerlink" title="故障的种类"></a>故障的种类</h3><ul>
+<li>事务故障<br>（1）逻辑错误。事务由于某些<strong>内部条件</strong>而无法继续正常执行，如非法输入、找不到数据、运算溢出或超出资源限制。<br>（2）系统错误。系统进入一种不良状态(如死锁)，结果事务无法继续正常执行。</li>
+<li>系统故障/软故障：引起系统停止运转随之要求重新启动的事件称为“系统故障”。P199</li>
+<li>介质故障／硬故障：指外存故障，系统在运行过程中，由于某种硬件故障，如磁盘损坏、磁 头碰撞或由于操作系统的某种潜在的错误、瞬时磁场干扰，<strong>使存储在外存上的数据部分损失或全部损失</strong>。 </li>
+<li>计算机病毒</li>
+</ul>
+<h3 id="故障恢复技术"><a href="#故障恢复技术" class="headerlink" title="故障恢复技术"></a>故障恢复技术</h3><ul>
+<li>数据转储/数据备份：是指DBA定期将整个数据库复制到磁带或另一个磁盘上保存起来的过程。转储十分耗费时间和资源，不能频繁进行。从转储状态上，转储可分为静态转储和动态转储两种。P201</li>
+<li>日志文件：系统运行时，数据库与事务状态都在不断交化，为了在故障发生后能恢复系统的正常状态，必须在系统正常运行时随时记录下它们的变化情况，这种记录数据库的更新操作的文件称为日志文件。</li>
+</ul>
+<blockquote>
+<ul>
+<li>利用日志，系统可以解决任何不造城非易失性存储器上的信息丢失的故障。故障发生时对已经提交的事务进行重做(REDO)处理，对未完成的事务进行撤销(UNDO)处理。</li>
+<li>UNDO(T)将事务T所更新的所有数据项的值恢复成旧值。</li>
+<li>REDO(T)将事务T所更新的所有数据项的值置为新值。(新值和旧值均可在日志中找到)</li>
+</ul>
+</blockquote>
+<h3 id="检查点"><a href="#检查点" class="headerlink" title="检查点"></a>检查点</h3><p>系统出现故障时恢复子系统将根据事务的不同状态采取不同的恢复策略。一般DBMS产品自动实行检查点操作，无需人工干预。</p>
+<h3 id="事务故障恢复"><a href="#事务故障恢复" class="headerlink" title="事务故障恢复"></a>事务故障恢复</h3><h3 id="系统与介质故障恢复"><a href="#系统与介质故障恢复" class="headerlink" title="系统与介质故障恢复"></a>系统与介质故障恢复</h3></div></article></div></main><footer><div class="paginator"><a href="/sql07/" class="prev">PREV</a><a href="/sql03/" class="next">NEXT</a></div><div data-thread-key="sql06/" data-title="数据库原理笔记C06 数据库保护" data-url="http://Winnie1997.github.io/sql06/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

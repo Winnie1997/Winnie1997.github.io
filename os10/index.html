@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 操作系统笔记10 虚拟内存 · Hi, Dai</title><meta name="description" content="操作系统笔记10 虚拟内存 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">操作系统笔记10 虚拟内存</h1><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ul>
+<li>自从有了计算机以来，我们就希望能够方便、高效地使用(今天仍然)十分有限的内存：<ol>
+<li>用户总是可以认为自己计算机的<strong>内存大到足够运行任何程序</strong>。</li>
+<li>程序员可以认为自己的程序将运行<strong>在巨大、连续的内存</strong>中。不需要用overlay或swap等技术来自己管理内存。</li>
+<li>进程在运行过程中<strong>不能访问(包括读写)其他进程的数据</strong>，更<strong>不能访问属于操作系统的数据</strong>。而且某一个进程引起的问题不会波及到操作系统或其他进程。</li>
+<li>由于内存有限，应该尽可能地<strong>共享一些公用的代码和数据</strong>。</li>
+</ol>
+</li>
+<li><p>前面介绍的各种技术解决了上述问题的某一些方面，但没有提出一个整体的解决方案。</p>
+<ul>
+<li>虚拟内存技术基于已有的各种技术给出了一个完整的解决方案, 是20世纪计算机技术最重要的发明之一。</li>
+</ul>
+<a id="more"></a>
+</li>
+</ul>
+<h4 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h4><ul>
+<li><strong><code>虚拟内存</code></strong>：将用户逻辑内存与物理内存的分离。<ul>
+<li>为每个进程提供一个巨大的，连续的和私有的逻辑内存，可能比物理内存大得多。只有部分程序需要在内存中执行。</li>
+<li>允许地址空间被多个进程共享，更有效的进程创建。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28aed7c426e.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28aed7c426e.png&quot;</a> width=40%” height=”80%” /&gt;</li>
+</ul>
+</li>
+<li>虚拟内存可通过以下方式实现：<ul>
+<li><strong>按需调页</strong></li>
+<li>按需分段  </li>
+</ul>
+</li>
+</ul>
+<h4 id="按需调页"><a href="#按需调页" class="headerlink" title="按需调页"></a>按需调页</h4><ul>
+<li><strong><code>按需调页</code></strong>：仅在需要时才调入相应的页，即<strong><code>懒惰交换</code></strong>。<ul>
+<li>需要更少的 I/O 。</li>
+<li>需要更少的内存。</li>
+<li>响应更快。</li>
+<li>更多的进程。</li>
+</ul>
+</li>
+<li><strong>交换程序</strong>是对<strong>整个进程</strong>进行操作，而<strong>调页程序</strong>只对<strong>单个页</strong>进行操作。 因此按需调页需要使用调页程序。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28b017d35a8.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28b017d35a8.png&quot;</a> width=45%” height=”80%” /&gt;</li>
+<li><strong><code>有效-无效位</code></strong>：当操作系统调度某个进程运行时，判断该进程的页面是否已经调入内存中。<ul>
+<li>！每个页表项(PTE)都有一个有效无效位关联。</li>
+<li>设置为“有效”：关联页面合法且在内存中。</li>
+<li>设置为“有效”：该页面不合法(不在该进程的逻辑地址空间中)，或者是合法的，但是在磁盘上。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28b144e932a.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28b144e932a.png&quot;</a> width=45%” height=”80%” /&gt;</li>
+</ul>
+</li>
+<li>在MMU中的地址转换期间，如果PTE中的有效-无效位是“无效”<ol>
+<li>CPU触发一个<strong><code>页面错误陷阱</code></strong>(<strong>page-fault</strong> trap)陷入操作系统。这种陷阱是由于操作系统未能将所需的页调入内存中引起的。</li>
+<li>操作系统检查内部页表（通常与PCB一起保存）来确定该引用是合法还是非法的地址访问。<br>①引用非法，OS终止进程；②引用有效但尚未调入页面，OS将调入该页面。</li>
+<li>找到一个空闲帧。</li>
+<li>调度一个磁盘操作，以便将所需的页面调入刚分配的帧。</li>
+<li>当磁盘操作完成后，修改进程的内部表和页表，以表示该页已在内存中</li>
+<li>(CPU自动执行)重新开始因陷阱而中断的指令。进程现在能访问所需的页，就好像它似乎总在内存中。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28b58f5e1f1.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28b58f5e1f1.png&quot;</a> width=58%” height=”80%” /&gt;</li>
+</ol>
+</li>
+<li>架构要求(硬件)<ol>
+<li><strong>页表</strong>：该表能够通过<code>有效-无效位</code>或保护位，将条目设定为无效。</li>
+<li><strong>次级存储器</strong>：该次级存储器用来保护不在内存中的页。次级存储器通常为快速硬盘。它通常称为交换设备，用于交换的这部分磁盘称为<strong><code>交换空间</code></strong>。</li>
+<li>能在发生页面错误后<strong>准确重新执行指令</strong>。在出现页错误时，保持中断进程的状态(寄存器、条件代码、指令计数器)，必须能够按完全相同的位置和地址重新开始执行进程)。对于绝大多数情况，这种要求容易满足。</li>
+</ol>
+</li>
+</ul>
+<h4 id="页面置换"><a href="#页面置换" class="headerlink" title="页面置换"></a>页面置换</h4><ul>
+<li>如果增加了多道程序的程度。那么会<strong><code>过度分配</code></strong>内存。</li>
+<li>发生页面错误时，没有可用的空闲帧。如何进行？<ul>
+<li>在内存中找到一个没有被充分使用的帧，将其分页。</li>
+</ul>
+</li>
+<li><strong><code>页面替换</code></strong>：修改页<code>错误处理程序</code>以包括页置换。<strong>页面置换可以在较小的物理内存上提供大的虚拟内存</strong><br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28ba339487d.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28ba339487d.png&quot;</a> width=58%” height=”80%” /&gt;<ol>
+<li>查找所需页在磁盘上的位置。</li>
+<li>查找一个空闲帧：<br>①如果有空闲帧，那么就使用它。<br>②如果没有空闲帧，那么就使用<strong>页面置换算法</strong>以选择一个<strong>牺牲“帧”</strong>。<br>③将“牺牲”帧的内容写到磁盘上，改变页表和帧表。</li>
+<li>将所需页读入(新)空闲帧，改变页表和帧表。</li>
+<li>重启用户进程。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28bb1c5ee42.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28bb1c5ee42.png&quot;</a> width=58%” height=”80%” /&gt;</li>
+</ol>
+</li>
+<li>注意：<ul>
+<li>如果没有帧空闲，则需要两次页传输：一次换入和一次换出。页面处理时间加倍。</li>
+<li>可以通过将每页或帧与<strong>修改位</strong>（或<strong>脏位</strong>）通过硬件关联，来降低额外开销。<br>①每当页面被修改时，硬件就会设置该页的修改位以表示该页已修改。<br>②<strong>当修改位被设置时，才需要进行页换出操作。</strong></li>
+</ul>
+</li>
+<li>页面置换是按需调页的基础。</li>
+</ul>
+<h4 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h4><ul>
+<li>算法目标：得到最低的页面错误率。</li>
+<li>为了方便研究各种页面置换算法，计算各个算法所产生的页面错误，引入如下概念：<ul>
+<li>引用串：内存引用的字符串。 通常以页面为单位。</li>
+</ul>
+</li>
+<li>通过在引用串上运行页面置换算法，并计算该引用串上的<code>页面错误</code>数来评估算法。</li>
+<li>页错误和帧数量图：<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28bde285b5f.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28bde285b5f.png&quot;</a> width=40%” height=”80%” /&gt;</li>
+<li>类型<ul>
+<li>FIFO页置换</li>
+<li>最优置换</li>
+<li>LRU页置换</li>
+<li>近似LRU页置换（二次机会算法）</li>
+</ul>
+</li>
+</ul>
+<h5 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h5><ul>
+<li>页面错误率：0 ≤ p ≤ 1.0。<ul>
+<li>如果p = 0，则不存在页面错误;</li>
+<li>如果p = 1，则每个引用都会出现页面错误</li>
+</ul>
+</li>
+<li>有效访问时间(EAT)<br>EAT = (1 - p) × (内存访问时间)+p × (页面错误时间)</li>
+<li>一般来说，内存访问时间远小于处理页面错误的时间。因此，我们可以假设EAT与p成正比，即页面错误率。</li>
+</ul>
+<h5 id="FIFO页置换"><a href="#FIFO页置换" class="headerlink" title="FIFO页置换"></a>FIFO页置换</h5><ul>
+<li>FIFO页置换：置换最旧的页。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c00a3454e.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c00a3454e.png&quot;</a> width=60%” height=”80%” /&gt;</li>
+<li><strong><code>Belady</code>异常</strong>：一般情况下，page-fault会随着frame的数量增加而减少。但如果采用FIFO算法，<strong>情况有时并非如此</strong>。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c00a2b78c.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c00a2b78c.png&quot;</a> width=40%” height=”80%” /&gt;</li>
+</ul>
+<h5 id="最优置换-OPT-MIN"><a href="#最优置换-OPT-MIN" class="headerlink" title="最优置换(OPT / MIN)"></a>最优置换(OPT / MIN)</h5><ul>
+<li>最优置换：置换最长时间不会使用的页。</li>
+<li>最优页面置换算法是所有算法中产生页错误率最低的。</li>
+<li>最优置换难以实现，因为需要参考串的未来的知识。最优算法主要用于研究。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c1260fab8.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c1260fab8.png&quot;</a> width=60%” height=”80%” /&gt;</li>
+</ul>
+<h5 id="LRU页置换-最近最少使用算法"><a href="#LRU页置换-最近最少使用算法" class="headerlink" title="LRU页置换/最近最少使用算法"></a>LRU页置换/最近最少使用算法</h5><ul>
+<li>FIFO算法使用的是页面调入的时间。OPT算法使用的是页将来使用的时间。</li>
+<li>LRU页置换：置换最近最少使用的页面。近似的最佳页面替换。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c20f69818.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c20f69818.png&quot;</a> width=60%” height=”80%” /&gt;</li>
+<li>LRU置换可能需要一定的硬件支持来为页帧确定一个排序序列。有两种可行实现：①计数器 ②栈</li>
+</ul>
+<h5 id="近似LRU页置换"><a href="#近似LRU页置换" class="headerlink" title="近似LRU页置换"></a>近似LRU页置换</h5><ul>
+<li>二次机会页置换算法/时钟置换算法：基本算法是FIFO置换算法。<ul>
+<li>当要选择一个页时，检查其引用位。</li>
+<li>如果值为0，则直接置换。如果访问位是1，就给它第二次机会。并选择下一个FIFO页面。</li>
+<li>当一个页面得到第二次机会时，它的访问位就清为0，它的到达时间就置为当前时间。如果该页在此期间被访问过，则访问位置为1。  </li>
+</ul>
+</li>
+<li>可以采用循环队列实现。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c30cbe814.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c30cbe814.png&quot;</a> width=45%” height=”80%” /&gt;<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c30cbf0e9.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c30cbf0e9.png&quot;</a> width=50%” height=”80%” /&gt;</li>
+</ul>
+<h4 id="为什么虚拟内存运行良好？"><a href="#为什么虚拟内存运行良好？" class="headerlink" title="为什么虚拟内存运行良好？"></a>为什么虚拟内存运行良好？</h4><ul>
+<li><strong><code>局部模型</code></strong>：<ul>
+<li>局部：经常使用的页的集合。当进程执行时，它从一个局部移向另一个局部。</li>
+<li>一个程序通常由多个不同局部组成。它们可能<strong>重叠</strong>(共享页面)。</li>
+</ul>
+</li>
+<li>局部模型也是缓存工作正常的原因。</li>
+<li>内存引用模式中的局部性：<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c77b89a47.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c77b89a47.png&quot;</a> width=30%” height=”80%” /&gt;</li>
+</ul>
+<h4 id="颠簸"><a href="#颠簸" class="headerlink" title="颠簸"></a>颠簸</h4><ul>
+<li>如果系统没有“足够”的帧，页面错误率非常高。 这导致：<ul>
+<li>CPU利用率低。</li>
+<li>长期调度员认为需要提高多程序的程度。</li>
+<li>系统中增加了更多进程。</li>
+</ul>
+</li>
+<li>颠簸：是一个系统忙于将页面导入和导出并且没有任何用处的情况。<ul>
+<li>原因：所有局部大小的总和 &gt; 总内存大小<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c84c5483c.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c84c5483c.png&quot;</a> width=40%” height=”80%” /&gt;</li>
+</ul>
+</li>
+</ul>
+<h4 id="工作集合模型"><a href="#工作集合模型" class="headerlink" title="工作集合模型"></a>工作集合模型</h4><ul>
+<li><strong><code>工作集合模型</code></strong>是基于局部性假设的。<ul>
+<li>该模型使用参数 &Delta; 定义<strong>工作集合窗口</strong></li>
+<li>这最近 &Delta; 个引用的页面集合称为<strong>工作集合</strong>。因此，工作集是进程的局部性的近似值。</li>
+</ul>
+</li>
+<li><p>将WSS<sub>i</sub>表示为最近进程P<sub>i</sub>的工作集。D为总的帧需求量。</p>
+<ul>
+<li>D = &Sigma; WSS<sub>i</sub></li>
+<li>如果D &gt; 可用帧的数量，有的进程就会得不到足够的帧，从而会出现颠簸。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c9f434159.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c9f434159.png&quot;</a> width=70%” height=”80%” /&gt;</li>
+</ul>
+</li>
+<li><p>使用工作集合模型</p>
+<ul>
+<li>操作系统监视每个进程的工作集合，并为其分配大于其工作集合的帧数。</li>
+<li>如果还有空闲帧，那么可以启动另一进程。</li>
+<li>如果所有工作集合大小之后 &gt; 可用帧的总数，那么操作系统会选择暂停一个进程。</li>
+<li>工作集合策略可以防止颠簸，并尽可能保持多道程序的程度。</li>
+</ul>
+</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/os11/" class="prev">PREV</a><a href="/os9/" class="next">NEXT</a></div><div data-thread-key="os10/" data-title="操作系统笔记10 虚拟内存" data-url="http://Winnie1997.github.io/os10/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

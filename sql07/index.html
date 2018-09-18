@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 数据库原理笔记C07 关系数据库理论 · Hi, Dai</title><meta name="description" content="数据库原理笔记C07 关系数据库理论 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">数据库原理笔记C07 关系数据库理论</h1><div class="post-info">Jun 4, 2018</div><div class="post-content"><h2 id="7-1-关系模式规范化的必要性"><a href="#7-1-关系模式规范化的必要性" class="headerlink" title="7.1 关系模式规范化的必要性"></a>7.1 关系模式规范化的必要性</h2><p>数据冗余一直是影响系统性能的大问题。“分解”是解决冗余的主要办法。<br>(1) 冗余存储<br>(2) 更新异常：重复信息的一个副本修改时，所有副本必须进行同样修改，否则造成不一致。<br>(3) 插入异常：只有当一些信息事先已经存储在数据库中时，另一些信息才能存入到数据库中。<br>(4) 删除异常：在删除某些信息时可能丢失其他信息。<br> <a id="more"></a></p>
+<h2 id="7-2-函数依赖"><a href="#7-2-函数依赖" class="headerlink" title="7.2 函数依赖"></a>7.2 函数依赖</h2><p>关系模式中的各个属性之间相互联系、相互制约的联系称为数据依赖。数据依赖一般分为函数依赖、多值依赖和连接依赖。</p>
+<h3 id="1-函数依赖的定义"><a href="#1-函数依赖的定义" class="headerlink" title="1. 函数依赖的定义"></a>1. 函数依赖的定义</h3><p>设R(U)是属性集U上的关系模式。X，Y是U的子集。若对于R(U)的任意一个可能的关系r，r中不可能存在两个元组在X上的属性值相等，而在Y上的属性值不等，则称<strong>X函数确定Y</strong>或<strong>Y函数依赖于X</strong>，记作<strong>X → Y</strong>。 </p>
+<h3 id="2-函数依赖的分类P217"><a href="#2-函数依赖的分类P217" class="headerlink" title="2. 函数依赖的分类P217"></a>2. 函数依赖的分类P217</h3><p> ”如果 Y&sube;X&sube;U， 则 X→Y。“称为平凡依赖。否则称为非平凡依赖，若无特别声明，我们总是讨论非平凡依赖。</p>
+<ul>
+<li>完全函数依赖：在关系模式R(U)中，X，Y是U的子集，X’是X的真子集，存在X→Y，但对<strong>每一个</strong>X’都有X’!→Y，则称Y完全函数依赖于X。</li>
+<li>部分函数依赖：在关系模式R(U)中，X，Y是U的子集，存在X→Y，若X’是X的真子集，<strong>存在</strong>X’→Y，则称Y部分函数依赖于X。</li>
+<li>传递函数依赖：在关系模式R(U)中，X，Y，Z是U的子集，存在X→Y(Y∉X)，Y !→X，Y→Z，则有X→Z，称Z传递函数依赖于X。</li>
+</ul>
+<blockquote>
+<p>在此加上条件Y!→X，是因为如果X→Y，Y→X，则X↔Y，实际上就是X直接函数依赖于Z，而不是传递函数依赖。</p>
+</blockquote>
+<h3 id="3-函数依赖和键的联系"><a href="#3-函数依赖和键的联系" class="headerlink" title="3. 函数依赖和键的联系"></a>3. 函数依赖和键的联系</h3><p>函数依赖是键的推广</p>
+<ul>
+<li>设关系模式R的属性集是U，K为U的一个子集。如果K→U在R上成立，则称K为R的一个超键。</li>
+<li>如果K→U在R上成立，但对于K的任一真子集K’都有K’→U不成立，那么称K是R上的一个候选键。</li>
+<li>关系模式R中的属性或属性组X并非R的主键，但X是另外一个关系模式S的主键，则称X是R的外键。</li>
+</ul>
+<h3 id="4-函数依赖的逻辑蕴含"><a href="#4-函数依赖的逻辑蕴含" class="headerlink" title="4. 函数依赖的逻辑蕴含"></a>4. 函数依赖的逻辑蕴含</h3><p>仅仅考虑函数依赖集是不够的，需要考虑模式上成立的锁于函数依赖。对于给定的函数依赖集F，可以推导出其他一些未知的函数依赖，称这些函数依赖被F“逻辑蕴含”。  </p>
+<blockquote>
+<p>设F是在关系模式R上成立的函数依赖的集合，X→Y是一个函数依赖。如果对于R的每个满足F的关系r也满足X→Y(即r中的任意两个元组t，s，若t<sub>1</sub>[X]=t<sub>2</sub>[X]，则t<sub>1</sub>[Y]=t<sub>2</sub>[Y])，则称F逻辑蕴含X→Y。</p>
+</blockquote>
+<h3 id="5-函数依赖的推理规则"><a href="#5-函数依赖的推理规则" class="headerlink" title="5. 函数依赖的推理规则"></a>5. 函数依赖的推理规则</h3><ul>
+<li><p>阿姆斯特朗公理</p>
+<ul>
+<li>自反律/包含规则: 如果 Y&sube;X&sube;U， 则 X→Y。(X→Y 是平凡依赖)</li>
+<li>增广律: 如果 X → Y， 且Z&sube;X，则 XZ → YZ。</li>
+<li>传递率: 如果 X → Y 且 Y → Z, 则 X → Z</li>
+</ul>
+</li>
+<li><p>阿姆斯特朗公理的推理</p>
+<ul>
+<li>合并规则: 如果 X→Y 且 X→Z, 那么 X→YZ.</li>
+<li>分解规则: 如果 X → YZ,且 X → Y 且 X → Z.</li>
+<li>伪传递: 如果 X→Y 且 WY→Z, 那么 XW → Z.</li>
+<li>集合累积规则: 如果 X → YZ 且 Z→W, 那么 X → YZW. </li>
+</ul>
+</li>
+<li>阿姆斯特朗公理是有效的和完备的<ul>
+<li>有效性：在F中根据阿姆斯特朗公理推导出的每一个函数议定为F所逻辑蕴含。</li>
+<li>完备性：F所逻辑蕴含的每一个函数，必定可以可以由F出发根据阿姆斯特朗公理推导出来。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-函数依赖集的闭包和属性集的闭包-概念，不考怎么计算F的闭包"><a href="#6-函数依赖集的闭包和属性集的闭包-概念，不考怎么计算F的闭包" class="headerlink" title="6. 函数依赖集的闭包和属性集的闭包(概念，不考怎么计算F的闭包)"></a>6. 函数依赖集的闭包和属性集的闭包(概念，不考怎么计算F的闭包)</h3><ul>
+<li>函数依赖集的闭包：F是函数依赖集，F的闭包(closure)是指被F逻辑蕴涵的所有函数依赖的集合，记做F <sup>+</sup> 。</li>
+<li>属性集的闭包：设F为属性集U上的一组函数依赖，X是U的子集，那么属性集X的闭包用X <sup>+</sup> 表示，它是一个从函数依赖集使用FD(函数依赖)推理规则推出的所有满足X→A的属性A的集合：<br>X <sup>+</sup> = { A | X → A 在 F <sup>+</sup> 中} </li>
+</ul>
+<h3 id="7-函数依赖的最小依赖集"><a href="#7-函数依赖的最小依赖集" class="headerlink" title="7. 函数依赖的最小依赖集"></a>7. 函数依赖的最小依赖集</h3><ul>
+<li>如果G <sup>+</sup> = F <sup>+</sup>，就说函数依赖集F覆盖G(F是G的覆盖，G是F的覆盖)，F与G等价。</li>
+<li>如果函数依赖集F满足以下条件，则称F为最小函数依赖集或最小覆盖。<ul>
+<li>F中任一函数依赖的右部仅含一个属性。</li>
+<li>F中不存在这样的函数依赖X → A，使得 F与F -｛X → A｝等价。</li>
+<li>F中不存在这样的函数依赖 X → A，X有真子集 Z 使得 F-｛ X → A｝ ∪ ｛ Z → A｝与 F等价。(左边没有多余)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>每个依赖都尽可能的小，左边的属性没有多余，右边为单属性，且其中的每个依赖都是必要的。</p>
+</blockquote>
+<h2 id="7-3-关系模式的分解"><a href="#7-3-关系模式的分解" class="headerlink" title="7.3 关系模式的分解"></a>7.3 关系模式的分解</h2><h3 id="模式分解的规则"><a href="#模式分解的规则" class="headerlink" title="模式分解的规则"></a>模式分解的规则</h3><p>设关系模式R(U)，R<sub>1</sub>, R<sub>2</sub>…, R<sub>k</sub>都是R的子集(这里把关系模式看成是属性的集合)，R＝R<sub>1</sub> ∪ R<sub>2</sub> ∪ … ∪ R<sub>k</sub>，关系模式R<sub>1</sub>, R<sub>2</sub>…, R<sub>k</sub>的集合用ρ表示，ρ={R<sub>1</sub>, R<sub>2</sub>…, R<sub>k</sub>}。用ρ代替R的过程称为关系模式的分解。这里称为R的一个分解，也成为数据库模式。</p>
+<h3 id="无损连接分解"><a href="#无损连接分解" class="headerlink" title="无损连接分解"></a>无损连接分解</h3><p>设R是一个关系模式，F是R上的一个函数依赖集合。R的一个分解是一个关系集合ρ={R<sub>1</sub>, R<sub>2</sub>…, R<sub>k</sub>}，如果对R中满足F的每一个关系r，有：r = π<sub>R<sub>1</sub></sub>(r) ⋈ π<sub>R<sub>2</sub></sub>(r) ⋈ … ⋈  π<sub>R<sub>k</sub></sub>(r)，那么称分解ρ相当于F是<code>无损连接分解</code>；否则，称为<code>有损连接分解</code>。</p>
+<blockquote>
+<p>其中 π<sub>R<sub>i</sub></sub>(r) 表示关系 r 在模式 R<sub>i</sub> 属性上的投影。</p>
+</blockquote>
+<p>(考试：给出分解，用定理判断)<br>如果R为一个关系模式，F是R上的函数依赖集。令R<sub>1</sub> 和R<sub>2</sub>为R的分解。该分解为R的无损连接分解的条件是：F<sup>+</sup>中至少存在如下函数依赖中的一个</p>
+<ul>
+<li>R<sub>1</sub> ∩ R<sub>2</sub> → R<sub>1</sub></li>
+<li>R<sub>1</sub> ∩ R<sub>2</sub> → R<sub>2</sub></li>
+</ul>
+<p>即，R<sub>1</sub> 和 R<sub>2</sub> 的公有属性能确定R<sub>1</sub>或R<sub>2</sub>。<br>换句话说，R<sub>1</sub> ∩ R<sub>2</sub>是R<sub>1</sub>或R<sub>2</sub>的<strong>超键</strong>，R上的分解就是无损分解。我们可以用属性闭包的方法来有效的检验<strong>超键</strong>。P225 例7.16</p>
+<h3 id="保持函数依赖的分解"><a href="#保持函数依赖的分解" class="headerlink" title="保持函数依赖的分解"></a>保持函数依赖的分解</h3><p>设R是具有属性U和函数依赖集合F的关系模式，ρ={R<sub>1</sub>, R<sub>2</sub>…, R<sub>k</sub>}为R的一个分解，如果π<sub>R<sub>i</sub></sub>(F)(i = 1, 2, …, k)的并集逻辑蕴含F中的全部函数依赖，则称分解ρ具有函数依赖保持性。</p>
+<p>设关系模式R(A, B, C, D)，函数依赖集F = {A → B, B → C, B → D, C → A}，分解为ρ = { R<sub>1</sub>(AB), R<sub>2</sub>(ACD) }。检验分解的无损连接性和分解的函数依赖保持性。</p>
+<blockquote>
+<p>由于R<sub>1</sub> ∩ R<sub>2</sub> = AB ∩ ABC = A，根据A → B，得到A → AB，即R<sub>1</sub> ∩ R<sub>2</sub> → R<sub>1</sub>，所以分解ρ是无损分解。<br>F<sub>1</sub> = π<sub>R<sub>1</sub></sub>(F) = { A → B, B → A }<br>F<sub>2</sub> = π<sub>R<sub>2</sub></sub>(F) = { A → C, C → A, A → D }<br>F<sub>1</sub> ∪ F<sub>2</sub> = {A → B, B → A, A → C, C → A, A → D } = {A → B, B → C, B → D, C → A} = F，所以分解ρ是保持函数依赖分解。</p>
+</blockquote>
+<p>模式分解的无损分解与保持函数依赖的分解两个特性之间没有必然的联系。</p>
+<h2 id="7-4-关系模式的范式"><a href="#7-4-关系模式的范式" class="headerlink" title="7.4 关系模式的范式"></a>7.4 关系模式的范式</h2><p>范式以函数依赖为基础，有第一范式(1NF)，第二范式(2NF)，第三范式(3NF),BC范式(BCNF)。其他类型范式：4NF和5NF不详述。各范式之间存在下面的关系：<br>1NF &sup; 2NF &sup; 3NF &sup; BCNF &sup; 4NF &sup; 5NF</p>
+<h3 id="第一范式-1NF"><a href="#第一范式-1NF" class="headerlink" title="第一范式(1NF)"></a>第一范式(1NF)</h3><p>设R是一个关系模式，如果R的每个属性的值域是不可分的(原子的)数据项集合，则称这个关系模式R为第一范式，简称1NF，记作R &in; 1NF。</p>
+<h3 id="第二范式-2NF"><a href="#第二范式-2NF" class="headerlink" title="第二范式(2NF)"></a>第二范式(2NF)</h3><p>若关系模式R &in; 1NF，且每一个非主属性完全函数依赖于键，则R &in; 2NF。[在1NF基础上消除非主属性对键的部分函数依赖]</p>
+<blockquote>
+<p>第二范式（2NF）要求实体的属性完全依赖于(候选)键。所谓完全依赖是指不能存在仅依赖键一部分的属性，如果存在，那么这个属性和键的这一部分应该分离出来形成一个新的实体。</p>
+</blockquote>
+<h3 id="第三范式-3NF"><a href="#第三范式-3NF" class="headerlink" title="第三范式(3NF)"></a>第三范式(3NF)</h3><p>关系模式R &in; 2NF，且它的任何一个非主属性都不传递依赖于任何候选键，则R &in; 3NF。[在2NF基础上消除非主属性对键的传递函数依赖]</p>
+<blockquote>
+<p>即不能存在：非主属性 A 依赖于非主属性 B，非主属性 B 依赖于键的情况。</p>
+</blockquote>
+<p>2NF：非主属性是否<strong>完全依赖</strong>于键，还是依赖于键的一部分。<br>3NF：非主键列是<strong>直接依赖</strong>于键，还是直接依赖于非主属性列。</p>
+<h3 id="BC范式-BCNF"><a href="#BC范式-BCNF" class="headerlink" title="BC范式(BCNF)"></a>BC范式(BCNF)</h3><p>设关系模式R(U, F) &in; 1NF, 如果对于R的每个函数依赖X → Y (Y &notin; X)，X必包含键，则R &in; BCNF，又称修正/扩充的第三范式。[在3NF的基础上消除了主属性之间的函数依赖]</p>
+<ul>
+<li>所有非主属性都完全依赖于每个候选键</li>
+<li>所有主属性都完全函数依赖于每个不包含它的候选键</li>
+<li>没有任何属性完全函数依赖于非键的人和一组属性</li>
+</ul>
+<blockquote>
+<p>只要属性或属性组A能够决定任何一个属性B，则A的子集中必须有候选键。<br>BCNF范式排除了任何属性(不光是非主属性，2NF和3NF所限制的都是非主属性)对候选键的传递依赖与部分依赖。</p>
+</blockquote>
+<h3 id="规范化小结"><a href="#规范化小结" class="headerlink" title="规范化小结"></a>规范化小结</h3><p>关系模式在分解时应该保持“等价”。无损连接分解和保持函数依赖分解没有必然联系。</p>
+<ul>
+<li><code>数据等价</code>用无损连接分解来衡量：能保持关系经过自然连接以后仍能恢复回来</li>
+<li><code>语义等价</code>用保持函数依赖费解来衡量：能保证数据在投影或连接中其语义不会发生变化。</li>
+</ul>
+<p>范式是衡量关系模式优劣的标准，范式表达了模式中数据依赖之间应满足的联系。范式级别越高，其数据冗余和操作异常现象越少。</p>
+</div></article></div></main><footer><div class="paginator"><a href="/sql08/" class="prev">PREV</a><a href="/sql06/" class="next">NEXT</a></div><div data-thread-key="sql07/" data-title="数据库原理笔记C07 关系数据库理论" data-url="http://Winnie1997.github.io/sql07/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

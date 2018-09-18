@@ -1,0 +1,777 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 数据库原理笔记C05 关系数据库标准语言—SQL · Hi, Dai</title><meta name="description" content="数据库原理笔记C05 关系数据库标准语言—SQL - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">数据库原理笔记C05 关系数据库标准语言—SQL</h1><div class="post-info">May 6, 2018</div><div class="post-content"><h2 id="5-1SQL概述"><a href="#5-1SQL概述" class="headerlink" title="5.1SQL概述"></a>5.1SQL概述</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>1.综合统一</p>
+<blockquote>
+<p>DQL(Data Query Language )<br>DML(Data Manipulation Language)<br>DDL(Data Definition Language)<br>DCL(Data Control Language )  </p>
+</blockquote>
+<p>2.高度非过程化</p>
+<blockquote>
+<p>用户只需要提出”做什么”,而不用指明”怎么做”。减轻了用户负担，提高了数据独立性。<br> <a id="more"></a><br>3.面向集合的操作方式<br>支持关系型数据库，操作对象和结果都是元组的集合。</p>
+</blockquote>
+<p>4.提供交互式和嵌入式</p>
+<blockquote>
+<p>作为交互式语言独立使用，或作为子语言嵌入到高级语言程序中。</p>
+</blockquote>
+<p>5.语言简洁</p>
+<table>
+<thead>
+<tr>
+<th>SQL功能</th>
+<th>动词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据查询</td>
+<td>select</td>
+</tr>
+<tr>
+<td>数据定义</td>
+<td>create, drop, alter</td>
+</tr>
+<tr>
+<td>数据操纵</td>
+<td>insert, update, delete</td>
+</tr>
+<tr>
+<td>数据控制</td>
+<td>grant, revoke</td>
+</tr>
+</tbody>
+</table>
+<h3 id="T-SQL"><a href="#T-SQL" class="headerlink" title="T-SQL"></a>T-SQL</h3><ol>
+<li>Transact-SQL (T-SQL)语言是<code>微软公司</code>对标准SQL语言的<code>扩展</code></li>
+<li>T-SQL是<code>SQL Server</code>与应用程序之间的语言 ,是SQL Server对应用程序开发的应用程序开发接口。 </li>
+<li>T-SQL<code>增强</code>了SQL语言的功能,同时<code>兼容</code>SQL标准。</li>
+</ol>
+<h3 id="SQL语言的基本概念"><a href="#SQL语言的基本概念" class="headerlink" title="SQL语言的基本概念"></a>SQL语言的基本概念</h3><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p>1.系统数据类型  </p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>数据类型定义符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>精确数字</td>
+<td>bigint、int、smallint、tinyint、bit、decimal、numeric、money、 smallmoney</td>
+</tr>
+<tr>
+<td>近似数字</td>
+<td>float、real</td>
+</tr>
+<tr>
+<td>日期和时间</td>
+<td>dateime、smalldatetime、date、datetime2、datetimeoffset、time</td>
+</tr>
+<tr>
+<td>字符串</td>
+<td>char、varchar、text</td>
+</tr>
+<tr>
+<td>Unicode 字符串</td>
+<td>nchar、nvarchar、ntex</td>
+</tr>
+<tr>
+<td>二进制字符串</td>
+<td>binary、varbinary、image</td>
+</tr>
+<tr>
+<td>其他数据类型</td>
+<td>cursor、sql_variant、table、timestamp、uniqueidentifier、xml、 hierarchyid</td>
+</tr>
+</tbody>
+</table>
+<p><a href="">课本P86</a><br><a href="http://www.w3school.com.cn/sql/sql_datatypes.asp" target="_blank" rel="noopener">W3School参考资料</a></p>
+</blockquote>
+<p>2.用户自定义数据类型  </p>
+<blockquote>
+<ul>
+<li>其定义基于SQL Server中提供的数据类型。  </li>
+<li>当几个表中必须存储同一种数据类型并且为保证这些列具有相同的数据类型、长度和可空性时,可以使用用户自定义数据类型。  </li>
+<li>例如,用于限定邮政编码的数据类型,可定义 postal_code,基于char数据类型。  </li>
+</ul>
+</blockquote>
+<h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><ul>
+<li>表达式是标识符、值和运算符的组合,在应用时可以对其求值以获取结果。</li>
+<li>表达式可以是常量、函数、列名、变量、子查询,或用运算符对这些实体进行组合以生成表达式。</li>
+<li>eg. (price * 1.5) /  (price + sales_tax)</li>
+</ul>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><p>运算符是一种符号,用来指定要在一个或多 个表达式中执行的操作。</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>算术运算符</td>
+<td>+(加)、-(减)、*(乘)、/(除)、%(取模)</td>
+</tr>
+<tr>
+<td>比较运算符</td>
+<td>=、&gt;、&lt;、&gt;=、&lt;=、&lt;&gt;、!=、!&lt;、!&gt;</td>
+</tr>
+<tr>
+<td>赋值运算符</td>
+<td>=</td>
+</tr>
+<tr>
+<td>逻辑运算符</td>
+<td>AND、OR、NOT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="SQL语法规则与规定"><a href="#SQL语法规则与规定" class="headerlink" title="SQL语法规则与规定"></a>SQL语法规则与规定</h4><table>
+<thead>
+<tr>
+<th>约定</th>
+<th>用于</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下划线</td>
+<td>指示当语句中省略了包含带下划线的值的子句时应用的默认值。</td>
+</tr>
+<tr>
+<td>｜ 竖线</td>
+<td>分隔括号或大括号中的语法项。只能使用其中一项。</td>
+</tr>
+<tr>
+<td>[ ] 方括号</td>
+<td><code>可选</code>语法项。不要键入方括号。</td>
+</tr>
+<tr>
+<td>{ } 大括号</td>
+<td><code>必选</code>语法项。不要键入大括号。</td>
+</tr>
+<tr>
+<td>[,…n]</td>
+<td>指示前面的项可以重复 n 次。各项之间以逗号分隔。</td>
+</tr>
+<tr>
+<td>[…n]</td>
+<td>指示前面的项可以重复 n 次。每一项由空格分隔。</td>
+</tr>
+<tr>
+<td>;</td>
+<td>SQL语句终止符，可省略。</td>
+</tr>
+<tr>
+<td><code>&lt;label&gt;</code>::=</td>
+<td>语法块的名称。此约定用于对可在语句中的多个位置使用的过长语法段或语法单元进行分组和标记。可使用语法块的每个位置由括在尖括号内的标签指示: &lt;标签&gt;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-2-SQL数据定义"><a href="#5-2-SQL数据定义" class="headerlink" title="5.2 SQL数据定义"></a>5.2 SQL数据定义</h2><h3 id="SQL的数据定义语句"><a href="#SQL的数据定义语句" class="headerlink" title="SQL的数据定义语句"></a>SQL的数据定义语句</h3><table>
+<thead>
+<tr>
+<th>操作对象</th>
+<th>创建</th>
+<th>修改</th>
+<th>删除</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据库</td>
+<td>create database</td>
+<td>alter database</td>
+<td>drop database</td>
+</tr>
+<tr>
+<td>表</td>
+<td>create table</td>
+<td>alter table</td>
+<td>drop table</td>
+</tr>
+<tr>
+<td>视图</td>
+<td>create view</td>
+<td><code>转换为对基本表的更新</code></td>
+<td>drop view</td>
+</tr>
+<tr>
+<td>索引</td>
+<td>create index</td>
+<td>null</td>
+<td>drop index</td>
+</tr>
+</tbody>
+</table>
+<h3 id="数据库的创建和删除"><a href="#数据库的创建和删除" class="headerlink" title="数据库的创建和删除"></a>数据库的创建和删除</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> 数据库名</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> 数据库名</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>数据库名称必须遵循标识符命名规则。有两类标识符: 常规标识符和分隔标识符</p>
+<blockquote>
+<p>SELECT <em><br>FROM [TableX]         –分隔符是可选的.<br>SELECT </em><br>FROM [My Table]      –分隔符必须使用。Identifier contains a space and uses a reserved keyword.</p>
+</blockquote>
+</li>
+<li><p>创建数据库的用户将成为该数据库的所有者,拥有该数据库的所有权限。</p>
+</li>
+<li>有三种文件类型可用于存储数据库: 主数据文件，次要数据文件，事务日志。  </li>
+</ul>
+<h3 id="基本表的创建、复制、修改、删除"><a href="#基本表的创建、复制、修改、删除" class="headerlink" title="基本表的创建、复制、修改、删除"></a>基本表的创建、复制、修改、删除</h3><h4 id="基本表的创建"><a href="#基本表的创建" class="headerlink" title="基本表的创建"></a>基本表的创建</h4><p><code>基本表</code>(Base Table)是实际独立存放在数据库中的表，是实表。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名称(</span><br><span class="line">列名称<span class="number">1</span> 数据类型 列级完整性约束条件,</span><br><span class="line">列名称<span class="number">2</span> 数据类型,</span><br><span class="line">....</span><br><span class="line">表级完整性约束条件,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>完整性约束条件</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>primary key</td>
+<td>定义主键</td>
+</tr>
+<tr>
+<td>not null</td>
+<td>定义的属性不能取空值</td>
+</tr>
+<tr>
+<td>unique</td>
+<td>定义的属性值必须唯一</td>
+</tr>
+<tr>
+<td>foreign key(属性名 1)references 表名[(属性名 2)]</td>
+<td>定义外键</td>
+</tr>
+<tr>
+<td>check (条件表达式)</td>
+<td>定义的属性值必须满足check中的条件</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*主键的两种定义方式*/</span></span><br><span class="line">cid nvarchar(255) not null primary key,<span class="comment">--列级完整性约束</span></span><br><span class="line">primary key(cid), <span class="comment">--表级完整性约束</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*外键的定义方式orders表*/</span></span><br><span class="line">pid nvarchar(255) not null foreign key references products(pid),<span class="comment">--表级完整性约束</span></span><br><span class="line">foreign key(pid) references products(pid), <span class="comment">--表级完整性约束</span></span><br></pre></td></tr></table></figure>
+<h4 id="基本表的复制"><a href="#基本表的复制" class="headerlink" title="基本表的复制"></a>基本表的复制</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*复制表的结构为一个新表*/</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">into</span> 新表 <span class="keyword">from</span> 旧表 <span class="keyword">where</span> <span class="number">1</span>=<span class="number">2</span></span><br><span class="line"><span class="comment">/*复制表的结构和数据到新表*/</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">into</span> 新表 <span class="keyword">from</span> 旧表</span><br><span class="line"><span class="comment">/*复制表的某一部分内容为一个新表*/</span></span><br><span class="line"><span class="keyword">select</span> *<span class="keyword">into</span> test2 <span class="keyword">from</span> reader <span class="keyword">where</span> Rsex = <span class="string">'男'</span></span><br></pre></td></tr></table></figure>
+<h4 id="基本表的修改"><a href="#基本表的修改" class="headerlink" title="基本表的修改"></a>基本表的修改</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*如果添加的列不允许空值,则只有在指定了默认值或表为空的情况下,才能用alter table语句添加该列。*/</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名称</span><br><span class="line"><span class="keyword">add</span> 新列名 数据类型 完整性约束 <span class="comment">-- 添加列和新的完整性约束条件</span></span><br><span class="line"><span class="keyword">drop</span> 完整性约束名 <span class="comment">--删除完整性约束</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">column</span> 列名 	<span class="comment">--删除列</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">column</span> 列名 数据类型 <span class="comment">-- 修改原有的列定义，包括修改列名和数据类型</span></span><br></pre></td></tr></table></figure>
+<h4 id="基本表的删除"><a href="#基本表的删除" class="headerlink" title="基本表的删除"></a>基本表的删除</h4><p>restrict: 确保只有不存在相关视图和完整性约束的表才能删除。<br>cascade: 任何相关视图和完整性约束一并被删。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名 [restrict|<span class="keyword">cascade</span>]</span><br><span class="line"><span class="comment">/* []表示可选语法项，使用的时候不要键入方括号*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-3-SQL数据查询"><a href="#5-3-SQL数据查询" class="headerlink" title="5.3 SQL数据查询"></a>5.3 SQL数据查询</h2><h3 id="查询语句的基本结构"><a href="#查询语句的基本结构" class="headerlink" title="查询语句的基本结构"></a>查询语句的基本结构</h3><p>π<sub>A<sub>1</sub>,A<sub>2</sub>,…,A<sub>n</sub></sub>(σ<sub>F</sub>(R<sub>1</sub> X R<sub>2</sub> X … X R<sub>m</sub>))<br>对应的SQL语句为:<br>select A<sub>1</sub>,A<sub>2</sub>,…,A<sub>n</sub><br>from R<sub>1</sub>,R<sub>2</sub>,… ,R<sub>m</sub><br>where F</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [*|all|<span class="keyword">distinct</span>]</span><br><span class="line">	[&lt;目标表达式[[<span class="keyword">as</span>]列别名]&gt;[,&lt;目标列表达式[[<span class="keyword">as</span>]列别名]&gt;[,...n]］</span><br><span class="line"><span class="keyword">from</span> &lt;表名或视图名[[<span class="keyword">as</span>]表别名]&gt;[,&lt;表名或视图名[[<span class="keyword">as</span>]表别名]&gt;] [,...n]</span><br><span class="line">[<span class="keyword">where</span> &lt;条件表达式&gt;]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span>&lt;列名<span class="number">1</span>&gt;[<span class="keyword">having</span>&lt;条件表达式&gt;]]</span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span>&lt;列名<span class="number">2</span>&gt;[<span class="keyword">asc</span>|dese]];</span><br></pre></td></tr></table></figure>
+<p><strong>执行顺序</strong></p>
+<blockquote>
+<p>对from子句中所有表作关系乘法<br>删除where子句中条件不为真的元组<br>根据group by子句中指定的列对剩余元组分组<br>删除having子句中条件不为真的元组<br>计算select子句选择列表中目标列表大事的值–投影<br>如果存在distinct关键字，则删除重复的元组<br>如果有order by子句，则对所有选出的元组按照其后列值进行排序  </p>
+</blockquote>
+<ul>
+<li>select不是一个单独的语句，from是必选子句，where, group by, having, order by子句是可选字句。</li>
+<li><code>*</code>表示输出结果包含在表的所有字段<code>all</code>表示显示所有行，包括重复的行<code>distinct</code>禁止在输出结果中包含重复的行</li>
+<li>from 后面指定数据的来源。一张表为单表查询或简单查询；多张表之间用逗号分隔，为连接查询</li>
+</ul>
+<h3 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h3><h4 id="选择列表中的列-消除取值重复行"><a href="#选择列表中的列-消除取值重复行" class="headerlink" title="选择列表中的列/消除取值重复行"></a>选择列表中的列/消除取值重复行</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> customers <span class="comment">--选择列表中的列</span></span><br><span class="line"><span class="keyword">select</span> pid <span class="keyword">from</span> orders</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> pid <span class="keyword">from</span> orders <span class="comment">-- 消除取值重复的行</span></span><br></pre></td></tr></table></figure>
+<h4 id="查询经过计算的值"><a href="#查询经过计算的值" class="headerlink" title="查询经过计算的值"></a>查询经过计算的值</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> pname, quantity* price totalqty <span class="comment">--查询经过计算的值</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>quantity* price不是列名，而是一个计算表达式。totalqty是别名，作为查询结果中总金额的列标题</p>
+</blockquote>
+<h4 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h4><table>
+<thead>
+<tr>
+<th>查询条件</th>
+<th>谓词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>比较</td>
+<td>=(等于),&lt; (小于),&gt; (大于),&gt;= (大于等于),&lt;= (小于等于),!=或&lt;&gt; (不等于)</td>
+</tr>
+<tr>
+<td>确定范围</td>
+<td>between and(介于两者之间), not between and(不介于两者之间)</td>
+</tr>
+<tr>
+<td>确定集合</td>
+<td>in(在其中), not in(不在其中)</td>
+</tr>
+<tr>
+<td>存在</td>
+<td>exists, not exists</td>
+</tr>
+<tr>
+<td>量化比较</td>
+<td>any, all</td>
+</tr>
+<tr>
+<td>字符匹配</td>
+<td>like(匹配), not like(不匹配)</td>
+</tr>
+<tr>
+<td>空值</td>
+<td>is null(是空值), is not null(不是空值)</td>
+</tr>
+<tr>
+<td>多重条件</td>
+<td>and(与), or(或), not(非)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>如果处理字段为NULL值，则条件表达式返回为unknown</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>原值</th>
+<th>ture</th>
+<th>false</th>
+<th>unknown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>not非运算结果</td>
+<td>false</td>
+<td>true</td>
+<td>unknown</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>and</th>
+<th>true</th>
+<th>false</th>
+<th>unknown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unknown</td>
+<td>unknown</td>
+<td>false</td>
+<td>unknown</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>or</th>
+<th>ture</th>
+<th>false</th>
+<th>unknown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unknown</td>
+<td>true</td>
+<td>unknown</td>
+<td>unknown</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>单个/多重条件查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> aid,aname <span class="keyword">from</span> agents </span><br><span class="line"><span class="keyword">where</span> city=<span class="string">'new york'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> aid,aname <span class="keyword">from</span> agents </span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> (city=<span class="string">'new york'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*和第一个查询结果相同*/</span><span class="keyword">select</span> aid,aname <span class="keyword">from</span> agents</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span>(<span class="keyword">not</span> (city=<span class="string">'new york'</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">/*多重条件查询*/</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> products<span class="keyword">where</span> price&gt;<span class="number">5</span> <span class="keyword">and</span> price&lt;<span class="number">8</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>city列值为字符串常量，应包含在单引号内<br>如果单引号中的字符串包含有一个嵌入的引号，可以使用两个单引号表示嵌入的单引号</p>
+</blockquote>
+<ul>
+<li>确定范围查询</li>
+</ul>
+<p>表达式[not]between 最小值 and 最大值  </p>
+<blockquote>
+<p>最小值 ≤ 表达式 and 表达式 ≤ 最大值<br>not: 最小值 &gt; 表达式 or 表达式 &gt; 最大值</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> pname,price<span class="keyword">from</span> products<span class="keyword">where</span> price <span class="keyword">between</span> <span class="number">5</span> <span class="keyword">and</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>模糊查询<br>精确查询: 对查询字段有准确的描述。在实际应用中，只知道字符串的一部分，希望可以找到与之匹配的整个字符串，采用模糊查询。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*查询姓名(cname)以字母“A”开始的顾客 */</span><span class="keyword">select</span> * <span class="keyword">from</span> customers <span class="keyword">where</span> cname <span class="keyword">like</span> ‘A%<span class="string">';</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>空值的处理<br><code>is null</code> 或<code>is not null</code>不能用 = ／ != 来代替</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> customers </span><br><span class="line"><span class="keyword">where</span> city <span class="keyword">is</span> <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>聚合函数  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>格式</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>count({ [ [all &#124; distinct] expression ] &#124;  * } )</td>
+<td>统计行数，与列的数据类型无关</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>sum([all &#124; distinct] expression)</td>
+<td>返回值的和，只能用于数字列。</td>
+</tr>
+<tr>
+<td>avg</td>
+<td>avg([all &#124; distinct] expression)</td>
+<td>返回平均值，只能用于数字列</td>
+</tr>
+<tr>
+<td>max</td>
+<td>max([all &#124; distinct] expression)</td>
+<td>求列值的最大值</td>
+</tr>
+<tr>
+<td>min</td>
+<td>min([all &#124; distinct] expression)</td>
+<td>求列值的最大值</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>除了count以外，聚合函数都会忽略空值<br>聚合函数只能在以下位置作为表达式使用:<br>select语句的选择列表(子查询或外部查询)<br>having字句;compute/compute by子句</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> city) <span class="keyword">from</span> customers <span class="comment">--查询所有顾客居住城市数目</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sum</span>(dollars) <span class="keyword">as</span> totaldollars <span class="keyword">from</span> orders <span class="comment">--查询所有订货交易的总金额</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">avg</span>(price) <span class="keyword">as</span> avgprice <span class="keyword">from</span> products <span class="comment">--查询所有产品的平均价格</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">max</span>(dollars) <span class="keyword">from</span> orders <span class="comment">--查询订购表中最高的订购总价</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">min</span>([<span class="keyword">percent</span>]) <span class="keyword">from</span> agents <span class="comment">--查询代理商表中最低的代理佣金</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>查询结果排序<br>升序排列<code>asc</code>表示，降序排列<code>desc</code>表示。默认为升序排列。</p>
+</li>
+<li><p>查询结果分组<br><code>group by</code> 子句将表中的元组按某一列或多列值分组。值相等的为一组。  </p>
+<blockquote>
+<p>对分组的结果再进行筛选，可以在<code>group by</code>子句后面使用<code>having</code>语句。<code>where</code>子句用于在分组之前筛选数据，<code>having</code>子句用于在分组后筛选数据。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*查询所有的借阅记录，按照读者编号(Rno)升序排列，读者编号相同的，按照借阅时间(BorrowDate)降序排列*/</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> Borrow</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> Rno <span class="keyword">asc</span>, BorrowDate <span class="keyword">desc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询至少被两个顾客订购的所欲产品的pid值*/</span></span><br><span class="line"><span class="keyword">select</span> pid <span class="keyword">from</span> orders</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> pid</span><br><span class="line"><span class="keyword">having</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> cid)&gt;=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 列名<span class="number">1</span>, 列名<span class="number">2</span>, ...</span><br><span class="line"><span class="keyword">from</span> 表名<span class="number">1</span>, 表名<span class="number">2</span>, ...</span><br><span class="line"><span class="keyword">where</span> 连接条件<span class="number">1</span> <span class="keyword">and</span> 连接条件<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*连接条件的格式*/</span></span><br><span class="line">[&lt;表名<span class="number">1</span>&gt;] &lt;列名<span class="number">1</span>&gt; &lt;比较运算符&gt; [&lt;表名<span class="number">2</span>&gt;] &lt;列名<span class="number">2</span>&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>等值连接与非等值连接查询<br>当连接运算符为<code>=</code>时，成为等值连接，使用其他连接运算符则成为称为非等值连接。<blockquote>
+<p>比较运算符主要用=, &gt;, &lt;,  &gt;=, &lt;=, !=</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*查询既订购了产品p01又订购了产品p07的顾客的cid值*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> x.cid <span class="keyword">from</span> orders x ,orders y</span><br><span class="line"><span class="keyword">where</span> x.pid=<span class="string">'p01'</span> <span class="keyword">and</span> x.cid=y.cid <span class="keyword">and</span> y.pid=<span class="string">'p07'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询至少订购了一件价格低于$0.60商品的所有顾客名字*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> cname</span><br><span class="line"><span class="keyword">from</span>((orders o <span class="keyword">join</span>(<span class="keyword">select</span> pid <span class="keyword">from</span> products <span class="keyword">where</span> price&lt;<span class="number">0.60</span>)p <span class="keyword">on</span> pid = p.pid) <span class="keyword">join</span> customers c <span class="keyword">on</span> o.cid = c.cid)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>内连接<br>可以通过<code>(inner) join</code>来建立表之间的连接。只有满足连接条件的元组才能作为结果输出。</p>
+</li>
+<li><p>外连接  </p>
+<ul>
+<li>左外连接: <code>left (outer) join</code> 以<code>join</code>左边的表为主表进行连接</li>
+<li>右外连接: <code>right (outer) join</code>以<code>join</code>右边的表为主表进行连接</li>
+</ul>
+</li>
+</ul>
+<p>左/右外连接的结果集包括LEFT  OUTER子句中指定的左/右表的所有行，而不仅仅是连接列所匹配的行。</p>
+<blockquote>
+<p>如果左/右表的某行在右/左表中没有匹配行，则在相关联的结果集行中右表的所有选择列表列均为空值。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 列名<span class="number">1</span>, 列名<span class="number">2.</span>..</span><br><span class="line"><span class="keyword">from</span> 表名<span class="number">1</span> <span class="keyword">join</span> 表名<span class="number">2</span></span><br><span class="line"><span class="keyword">on</span> 连接条件<span class="number">1</span></span><br><span class="line"><span class="keyword">join</span> 表名<span class="number">3</span> </span><br><span class="line"><span class="keyword">on</span> 连接条件<span class="number">2</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询所有满足条件"顾客通过代理商订了货"的顾客-代理商姓名组合*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> customers.cname,agents.aname</span><br><span class="line"><span class="keyword">from</span> customers <span class="keyword">join</span> orders<span class="keyword">on</span> customers.cid=orders.cid<span class="keyword">join</span> agents <span class="keyword">on</span> orders.aid=agents.aid</span><br><span class="line"></span><br><span class="line"><span class="comment">/*为了书写方便，可以用别名代替表名*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> c.cname,a.aname<span class="keyword">from</span> customers c <span class="keyword">join</span> orders o<span class="keyword">on</span> c.cid=o.cid <span class="keyword">join</span> agents a <span class="keyword">on</span> o.aid=a.aid</span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询所欲顾客的顾客号，姓名，订购的产品号以及数量。没有订购信息的顾客显示为NULL*/</span></span><br><span class="line"><span class="keyword">select</span> c.cid,c.cname,o.pid,o.qty </span><br><span class="line"><span class="keyword">from</span> customers c <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> orders o </span><br><span class="line"><span class="keyword">on</span> c.cid=o.cid</span><br></pre></td></tr></table></figure>
+<h3 id="嵌套查询"><a href="#嵌套查询" class="headerlink" title="嵌套查询"></a>嵌套查询</h3><ul>
+<li>在SQL语言中，一个<code>select-from-where语句</code>称为一个<code>查询块</code>。</li>
+<li>将一个查询块嵌套在另一个查询块的<code>where子句</code>或<code>having短语</code>的条件中的查询称为嵌套查询。</li>
+<li>嵌套在<code>where子句</code>或<code>having短语条件</code>中的下层查询块又称为<code>内层查询块</code>或<code>子查询块</code>。</li>
+<li>它的上层<code>select-from-where查询块</code>又称为<code>外层查询</code>或<code>父查询</code>或<code>主查询</code>。</li>
+<li>SQL语言允许多层嵌套查询。</li>
+</ul>
+<h4 id="带有in谓词的子查询"><a href="#带有in谓词的子查询" class="headerlink" title="带有in谓词的子查询"></a>带有in谓词的子查询</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">表达式 [not] in  (子查询)| 表达式 [not] in  (常量1 &#123;,常量2……&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询通过居住在Duluth或Dallas的代理商订了货的所有顾客的cid值*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> cid <span class="keyword">from</span> orders <span class="keyword">where</span> aid <span class="keyword">in</span> 	(<span class="keyword">select</span> aid <span class="keyword">from</span> agents 	<span class="keyword">where</span> city = <span class="string">'duluth'</span><span class="keyword">or</span> city = <span class="string">'dallas'</span>)</span><br></pre></td></tr></table></figure>
+<p>用于判断某个属性列值是否在子查询结果中或者由多个常量组成的集合中。</p>
+<ul>
+<li>in谓词表示如果计算之后表达式的值<code>至少</code>与子查询结果中的<code>一个值相同</code>时，或者与常量构成的集合中的一个值相同时，返回true，否则返回false。  </li>
+<li>not in谓词表示如果计算之后表达式的值与子查询结果中的所有值都不相同时，或者与常量构成的集合中的所有值<code>都不相同</code>时，返回true，否则返回false。</li>
+<li>不相关子查询: 子查询的查询条件不依赖于外层父查询，独立于外部查询。</li>
+</ul>
+<h4 id="带有比较运算符的子查询"><a href="#带有比较运算符的子查询" class="headerlink" title="带有比较运算符的子查询"></a>带有比较运算符的子查询</h4><p>当确切知道内层查询返回的是单值时，可以用比较运算符。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*查询至少被两个顾客订购的产品*/</span></span><br><span class="line"><span class="comment">--相关子查询</span><span class="keyword">select</span> pid <span class="keyword">from</span> products p <span class="keyword">where</span> <span class="number">2</span> &lt;=	 (<span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> cid) <span class="keyword">from</span> orders 	<span class="keyword">where</span> pid = p.pid)</span><br></pre></td></tr></table></figure>
+<h4 id="带有量化比较谓词的子查询"><a href="#带有量化比较谓词的子查询" class="headerlink" title="带有量化比较谓词的子查询"></a>带有量化比较谓词的子查询</h4><table>
+<thead>
+<tr>
+<th>量化比较谓词</th>
+<th>含义</th>
+<th>量化比较谓词</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;(=)any/some</td>
+<td>大于(等于)子查询结果中的某一个值</td>
+<td>&gt;(=)all</td>
+<td>大于(等于)子查询结果中的所有值</td>
+</tr>
+<tr>
+<td>&lt;(=)any/some</td>
+<td>小于(等于)子查询结果中的某一个值</td>
+<td>&lt;(=)all</td>
+<td>小于(等于)子查询结果中的所有值</td>
+</tr>
+<tr>
+<td>=any/some</td>
+<td>等于子查询结果中的某一个值</td>
+<td>=all</td>
+<td>等于子查询结果中的所有值</td>
+</tr>
+<tr>
+<td>!=/&lt;&gt; any/some</td>
+<td>不等于子查询结果中的某一个值</td>
+<td>!=/&lt;&gt; all</td>
+<td>不等于子查询结果中的任何一个值</td>
+</tr>
+</tbody>
+</table>
+<p>某些情况下，子查询返回多个值，可以使用量化比较谓词将表达式的值和子查询的结果进行比较。 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">表达式θ&#123;some|any|all&#125;(子查询)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询佣金百分率最小的代理商的aid值*/</span><span class="keyword">select</span> aid <span class="keyword">from</span> agents <span class="keyword">where</span>  [<span class="keyword">percent</span>]&lt;=all	 (<span class="keyword">select</span> [<span class="keyword">percent</span>] <span class="keyword">from</span> agents)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询与居住在Dallas 或Boston 的顾客拥有相同折扣的所有顾客的cid，cname*/</span><span class="keyword">select</span> cid,cname <span class="keyword">from</span> customers <span class="keyword">where</span> discnt =<span class="keyword">some</span>	(<span class="keyword">select</span> discnt <span class="keyword">from</span> customers	<span class="keyword">where</span> city=<span class="string">'dallas'</span> <span class="keyword">or</span> city=<span class="string">'boston'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="带有exists谓词的子查询"><a href="#带有exists谓词的子查询" class="headerlink" title="带有exists谓词的子查询"></a>带有exists谓词的子查询</h4><p>带有<code>exists</code>谓词的子查询不返回任何实数据，它只产生逻辑值true/false。<br>exists后面的子查询，目标列表达式通常都用<code>*</code>，因为只返回逻辑值，给出列名无意义。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[not] exists(子查询)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询既订购了产品p01又订购了产品p07的顾客的cid*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> cid <span class="keyword">from</span> orders x <span class="keyword">where</span> pid=<span class="string">'p01'</span> <span class="keyword">and</span> <span class="keyword">exists</span> 	(<span class="keyword">select</span> * <span class="keyword">from</span> orders	<span class="keyword">where</span> cid=x.cid <span class="keyword">and</span> pid=<span class="string">'p07'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询没有通过代理商a05订货的所有顾客的名字*/</span><span class="keyword">select</span> <span class="keyword">distinct</span> c.cname <span class="keyword">from</span> customers c <span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> 	(<span class="keyword">select</span> * <span class="keyword">from</span> orders x	<span class="keyword">where</span>  c.cid=x.cid <span class="keyword">and</span> x.aid=<span class="string">'a05'</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>相关子查询:子查询的查询条件依赖于外层父查询的表属性。<br>所有带有in谓词、比较运算符、any/all谓词的子查询都能用带exists谓词的子查询等价替换。但是一些带有[not] exists谓词的子查询却不能被其他形式的子查询等价替换。</p>
+</blockquote>
+<h3 id="集合查询"><a href="#集合查询" class="headerlink" title="集合查询"></a>集合查询</h3><p><code>相容的表</code>: 列和列的顺序必须相同，对应项的数据类型也相同。<br>进行并(union)、交(intersect)、差(except)操作的子查询结果表必须是相容的表。</p>
+<ul>
+<li><code>union</code>: 并操作，将两个或多个查询结果合并为单过结果集。</li>
+<li><code>intersect</code>: 交操作，返回两个或多个查询结果中都具有的非重复行。</li>
+<li><code>except</code>: 差操作，从左查询中返回有右查询没有找到的所有非重复值。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">子查询1 union [all] 子查询2</span><br><span class="line"><span class="comment">/*未指定all，则删除重复行指定all,则将全部行并入结果，包括重复行*/</span></span><br><span class="line">子查询1 intersect 子查询2</span><br><span class="line">子查询1 except 子查询2</span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询顾客所居住的城市、代理商所在城市或者两者皆在的城市*/</span><span class="keyword">select</span> city  <span class="keyword">from</span> customers <span class="keyword">union</span> <span class="keyword">select</span> city <span class="keyword">from</span> agents</span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询既订购了产品p01又订购了产品p07的顾客的cid值*/</span><span class="keyword">select</span> cid <span class="keyword">from</span> orders <span class="keyword">where</span> pid=<span class="string">'p01'</span> <span class="keyword">intersect</span> <span class="keyword">select</span> cid <span class="keyword">from</span> orders <span class="keyword">where</span> pid=<span class="string">'p07'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*查询没有通过代理商a05定货的所有顾客的名字*/</span><span class="keyword">select</span> c.cname  <span class="keyword">from</span> customers c <span class="keyword">except</span> <span class="keyword">select</span> c.cname <span class="keyword">from</span> customers c,orders x <span class="keyword">where</span> (c.cid=x.cid <span class="keyword">and</span> x.aid=<span class="string">'a05'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="复杂查询"><a href="#复杂查询" class="headerlink" title="复杂查询"></a>复杂查询</h3><p>因为SQL中没有与除法运算等价的运算符，所以必须利用复杂查询将除法运算符转换为等价的形式。转换成SQL语句的一般形式为: </p>
+<p><code>`</code>sql<br>select ……<br>where not exists<br>    (select…… where not exists<br>        (select……<br>        where……))；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">对于“订购了所有产品的顾客”，可以等价于“没有一个产品该顾客没有订购”。  </span><br><span class="line">(&amp;forall;x)P &amp;equiv; &amp;not; (&amp;exist;x(&amp;not;P))</span><br><span class="line"></span><br><span class="line">```sql</span><br><span class="line">select c.cid from customers c where not exists	(select pid from orders x where not exists  		(select * from orders y 		where x.pid = y.pid and y.cid = c.cid))</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-4-SQL数据操纵"><a href="#5-4-SQL数据操纵" class="headerlink" title="5.4 SQL数据操纵"></a>5.4 SQL数据操纵</h2><h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><p>向一个表中插入数据，使用<code>insert into</code>，指定列名的顺序可以和表定义顺序不同，<code>values</code>子句值的列顺序必须和指定列名顺序相同。</p>
+<h4 id="插入单个记录"><a href="#插入单个记录" class="headerlink" title="插入单个记录"></a>插入单个记录</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> &lt;表名&gt;[ (&lt;属性列<span class="number">1</span>&gt;[，&lt;属性列<span class="number">2</span>&gt;] [ ,...n ]) ]</span><br><span class="line"><span class="keyword">values</span>(&lt;属性值<span class="number">1</span>&gt;[，&lt;属性值<span class="number">2</span>&gt;] [ ,...n ])</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> agents <span class="keyword">values</span> (<span class="string">'a13'</span>, <span class="string">'sam'</span>, <span class="literal">null</span>,<span class="number">5</span>)</span><br><span class="line"><span class="comment">/*null才是空值，''是空字符串*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="插入子查询的结果"><a href="#插入子查询的结果" class="headerlink" title="插入子查询的结果"></a>插入子查询的结果</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>&lt;表名&gt;[(&lt;属性列<span class="number">1</span>&gt;[，&lt;属性列<span class="number">2</span>&gt;] [ ,...n ]) ] 子查询语句</span><br><span class="line"></span><br><span class="line"><span class="comment">/*设数据库中已有一个关系cust1，其关系模式与customers完全一样，</span></span><br><span class="line"><span class="comment">将关系customers中的所有元组插入到关系cust1中去*/</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> cust1<span class="keyword">select</span> * <span class="keyword">from</span> customers</span><br></pre></td></tr></table></figure>
+<h3 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h3><p>修改记录中的一个或多个属性的值，使用<code>update</code>,如果省略where子句，则修改表中所有的记录。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span>&lt;表名&gt;</span><br><span class="line"><span class="keyword">set</span>&lt;列名<span class="number">1</span>&gt;=&lt;表达式<span class="number">1</span>&gt;[，&lt;列名<span class="number">2</span>&gt;=&lt;表达式<span class="number">2</span>&gt;][ ,...n ][<span class="keyword">where</span>&lt;条件&gt;]</span><br><span class="line"><span class="comment">/* 将所有订货总金额超过2000的顾客的折扣率增加10% */</span><span class="keyword">update</span> customers <span class="keyword">set</span> discnt=discnt*<span class="number">1.1</span> <span class="keyword">where</span> cid <span class="keyword">in</span> 	(<span class="keyword">select</span> cid <span class="keyword">from</span> orders 	<span class="keyword">group</span> <span class="keyword">by</span> cid <span class="keyword">having</span> <span class="keyword">sum</span>(dollars)&gt;<span class="number">2000</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>从一个表中删除一条记录，使用<code>delete</code>，如果省略where子句，则删除全部表中的数据，但是表的定义仍在。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span>&lt;表名&gt;</span><br><span class="line">[<span class="keyword">where</span>&lt;表名&gt;]</span><br><span class="line"></span><br><span class="line"><span class="comment">/*删除所有没有人订购的产品*/</span><span class="keyword">delete</span> <span class="keyword">from</span> products<span class="keyword">where</span> pid <span class="keyword">not</span> <span class="keyword">in</span>	(<span class="keyword">select</span> pid <span class="keyword">from</span> orders)</span><br></pre></td></tr></table></figure>
+<h2 id="5-5-视图"><a href="#5-5-视图" class="headerlink" title="5.5 视图"></a>5.5 视图</h2><h3 id="视图的概念及特点"><a href="#视图的概念及特点" class="headerlink" title="视图的概念及特点"></a>视图的概念及特点</h3><p><code>视图</code>(view):是从一个或几个基本表(或视图)导出的一个虚拟表，数据库中只存放视图的定义，视图对应的数据仍然存储在原来的基本表中，基本表中的数据发生了改变，视图中查询出的数据也会发生改变。视图对增删改操作有一定限制。<br>使用视图的优点:</p>
+<ul>
+<li>提高安全性</li>
+<li>简化操作</li>
+<li>增强数据逻辑独立性</li>
+</ul>
+<h3 id="视图的创建和使用"><a href="#视图的创建和使用" class="headerlink" title="视图的创建和使用"></a>视图的创建和使用</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> &lt;视图名&gt;[(&lt;列名&gt;[,&lt;列名&gt;][ ,...n ])</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line">&lt;子查询语句&gt;[<span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 创建一个视图custp01，列出订购了产品p01的顾客编号、姓名、产品编号、产品数量和总金额 */</span><span class="keyword">create</span> <span class="keyword">view</span> custp01 <span class="keyword">as</span><span class="keyword">select</span> c.cid,cname,pid,qty,dollars<span class="keyword">from</span> customers c, orders o<span class="keyword">where</span> c.cid = o.cid <span class="keyword">and</span> o.pid =<span class="string">'p01'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*视图定义后，用户可以像查询基本表一样使用视图*/</span></span><br><span class="line"><span class="keyword">select</span> *<span class="keyword">from</span> custp01</span><br><span class="line"><span class="comment">/*视图嵌套*/</span><span class="keyword">create</span> <span class="keyword">view</span> custp01_1 <span class="keyword">as</span><span class="keyword">select</span> cid,cname<span class="keyword">from</span> custp01<span class="keyword">where</span> dollars&gt;<span class="number">2000</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>子查询语句可以任意复杂，但是通常不允许含有<code>order by</code>子句和<code>distinct</code>子句。</li>
+<li><code>with check option</code>表示对视图进行更新操作时要保证更新的行满足视图查询语句中的条件表达式。</li>
+<li>如果指定了视图名，省略了组成视图的属性列名，则默认该视图由子查询中select子句目标列中的字段组成。</li>
+<li>视图可以嵌套，视图可以在基本表/视图的基础上创建。</li>
+</ul>
+<h3 id="视图的更新"><a href="#视图的更新" class="headerlink" title="视图的更新"></a>视图的更新</h3><p>更新视图包括更新<code>update</code>，插入<code>insert</code>，删除<code>delete</code><br>格式: </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span>&lt;视图名&gt;</span><br><span class="line"><span class="keyword">set</span> &lt;列名&gt;=*&lt;表达式&gt;*</span><br><span class="line">[<span class="keyword">where</span> 条件]；</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> &lt;视图名&gt;</span><br><span class="line"><span class="keyword">values</span>(&lt;列名&gt;[,&lt;列名&gt;][ ,...n ])</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> &lt;表名&gt;</span><br><span class="line">[<span class="keyword">where</span> &lt;条件&gt;]</span><br></pre></td></tr></table></figure>
+<p>举例: </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*建立一个视图，查询折扣率小于15的顾客信息*/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> cust<span class="keyword">as</span> <span class="keyword">select</span> * <span class="keyword">from</span> customers <span class="keyword">where</span> discnt&lt;=<span class="number">15</span> [<span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">/*修改增加折扣率，在原来的基础上+4*/</span></span><br><span class="line"><span class="comment">/*with check option只有在+4之后都满足discnt&lt;=15才能执行成功*/</span></span><br><span class="line"><span class="keyword">update</span> cust <span class="keyword">set</span> discnt=discnt+<span class="number">4</span><span class="comment">/*插入信息*/</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> cust<span class="keyword">values</span>(<span class="string">'c009'</span>,<span class="string">'mary'</span>,<span class="string">'dallas'</span>,<span class="number">12</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*创建agentsales视图，包含所有下过订单的代理商的aid值以及他们的销售总额*/</span><span class="keyword">create</span> <span class="keyword">view</span> agentsales(aid,totsales) <span class="keyword">as</span><span class="keyword">select</span> aid,<span class="keyword">sum</span>(dollars)<span class="keyword">from</span> orders <span class="keyword">group</span> <span class="keyword">by</span> aid;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用了聚合函数，无法进行更新*/</span></span><br><span class="line"><span class="keyword">update</span> agentsales <span class="keyword">set</span> totsales=totsales+<span class="number">1000</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>with check option</code>: 所有在该视图上执行的数据修改语句都必须符合定义视图的<code>select</code>语句。</li>
+<li>以下几种情况不允许更新视图:<ul>
+<li>若视图是由两个以上基本表导出的，则视图不允许更新。</li>
+<li>若视图的字段来自表达式或常数，则不允许对此视图执行插入和更新操作，但允许删除。</li>
+<li>若视图定义中含有group by子句，则此视图不允许更新。</li>
+<li>若视图的属性列来自聚集函数，则此视图不允许更新。</li>
+</ul>
+</li>
+</ul>
+<h3 id="视图的删除"><a href="#视图的删除" class="headerlink" title="视图的删除"></a>视图的删除</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> &lt;视图名&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="5-6-索引"><a href="#5-6-索引" class="headerlink" title="5.6 索引"></a>5.6 索引</h2><h3 id="索引的概念及作用"><a href="#索引的概念及作用" class="headerlink" title="索引的概念及作用"></a>索引的概念及作用</h3><p>索引是对数据库表中一列或者多列的值进行排序的一种结构。通常只有当经常查询索引列中的数据时，才在<code>基本表</code>的基础上创建索引。</p>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>加快数据的检索速度</td>
+<td>占据物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间</td>
+</tr>
+<tr>
+<td>创建唯一性索引，保证数据库表中每一行数据的唯一性</td>
+<td>创建索引和维护索引要耗费时间</td>
+</tr>
+<tr>
+<td>加速表和表之间的连接</td>
+<td>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，降低了数据的维护速度</td>
+</tr>
+<tr>
+<td>使用分组和排序子句进行数据检索时，可以显著减少查询中分组和排序的时间</td>
+</tr>
+</tbody>
+</table>
+<h3 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h3><ul>
+<li>聚集索引<ul>
+<li>基于聚集索引键对存储表或视图的数据行按照顺序排序</li>
+<li>每个表只能有一个聚集索引</li>
+<li>能提高多行检索的速度</li>
+</ul>
+</li>
+<li>非聚集索引<ul>
+<li>包含非聚集索引键值和行定位符。</li>
+<li>定位符指向聚集索引或堆中包含该键值的数据行</li>
+<li>对单行检索很快</li>
+</ul>
+</li>
+<li>唯一性索引<ul>
+<li>保证数据库表中每一行数据的唯一性 </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>聚集索引和非聚集索引都可是唯一性索引</p>
+</blockquote>
+<h3 id="索引的创建及删除"><a href="#索引的创建及删除" class="headerlink" title="索引的创建及删除"></a>索引的创建及删除</h3><h4 id="索引的创建"><a href="#索引的创建" class="headerlink" title="索引的创建"></a>索引的创建</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">unique</span>][clustered | nonclustered]<span class="keyword">index</span> &lt;索引名&gt;</span><br><span class="line"><span class="keyword">on</span> &lt;表名&gt; (&lt;列名&gt;[&lt;<span class="keyword">asc</span> | des&gt;][,n...]）</span><br><span class="line"></span><br><span class="line"><span class="comment">/*为表agents创建一个索引，保证每一行都有唯一的aid*/</span><span class="keyword">create</span> <span class="keyword">unique</span> clustered <span class="keyword">index</span> aidx <span class="keyword">on</span> agents(aid)</span><br></pre></td></tr></table></figure>
+<p><code>unique</code>表示唯一性索引，<code>clustered</code>表示聚集索引，<code>nonclustered</code>表示非聚集索引。默认非聚集索引。默认<code>asc</code>升序。</p>
+<h4 id="索引的删除"><a href="#索引的删除" class="headerlink" title="索引的删除"></a>索引的删除</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">index</span>&lt;索引名&gt;</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">index</span> &lt;表名&gt;.&lt;索引名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*删除索引aidx*/</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">index</span> agents.aidx</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>索引的使用情况</th>
+<th>不应该创建索引的情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>经常需要搜索的列</td>
+<td>在查询中很少使用或参考的列</td>
+</tr>
+<tr>
+<td>作为主键的列</td>
+<td>只有很少数据值的列</td>
+</tr>
+<tr>
+<td>经常用于连接的列</td>
+<td>定义为text,image和bit数据类型的列</td>
+</tr>
+<tr>
+<td>经常需要根据范围搜索的列</td>
+<td>修改性能远远大于检索性能</td>
+</tr>
+<tr>
+<td>经常需要排序的列</td>
+<td></td>
+</tr>
+<tr>
+<td>经常使用在where子句中的列</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-7-SQL数据控制语言-DCL"><a href="#5-7-SQL数据控制语言-DCL" class="headerlink" title="5.7 SQL数据控制语言(DCL)"></a>5.7 SQL数据控制语言(DCL)</h2><p>DBMS提供的数据库安全保护常用措施有: </p>
+<ul>
+<li>用户标识和鉴定</li>
+<li>存取权限控制</li>
+<li>视图</li>
+<li>跟踪审查</li>
+<li>数据加密存储</li>
+</ul>
+<h3 id="授予权限"><a href="#授予权限" class="headerlink" title="授予权限"></a>授予权限</h3><p><code>存取权限控制</code>: DBMS提供的内部安全性措施保护措施。</p>
+<ul>
+<li>确保只授权给有资格的用户访问DB的权限。</li>
+<li>存取控制机制的组成<ul>
+<li>定义存取权限</li>
+<li>检查存取权限(确保用户只能执行合法操作)</li>
+</ul>
+</li>
+<li>存取权限控制机制主要包括用户权限定义和合法权检查机制两部分。</li>
+</ul>
+<p>SQL语言用grant语句将对指定操作对象的指定操作权限授予指定的用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span>&lt;权限&gt;[,&lt;权限&gt;][,...n]</span><br><span class="line">[<span class="keyword">on</span>&lt;对象类型&gt;&lt;对象名&gt;]</span><br><span class="line"><span class="keyword">to</span>&lt;用户&gt;[,&lt;用户&gt;],[,...n]</span><br><span class="line">[<span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">/*授予用户wintest对数据库sales的agents表的插入、更新权限*/</span><span class="keyword">grant</span> <span class="keyword">insert</span>,<span class="keyword">update</span> <span class="keyword">on</span> agents <span class="keyword">to</span> wintest</span><br></pre></td></tr></table></figure>
+<h3 id="收回权限"><a href="#收回权限" class="headerlink" title="收回权限"></a>收回权限</h3><p>授予的权限可以由DBA或其他授权着用revoke语句收回</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">revoke</span>&lt;权限&gt;[,&lt;权限&gt;][,...n]</span><br><span class="line">[<span class="keyword">on</span>&lt;对象类型&gt;&lt;对象名&gt;]</span><br><span class="line"><span class="keyword">from</span>&lt;用户&gt;[,&lt;用户&gt;],[,...n]</span><br><span class="line"></span><br><span class="line"><span class="comment">/*把用户sqltest对agents表的插入、更新权限收回*/</span></span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">insert</span>, <span class="keyword">update</span></span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span> agents</span><br><span class="line"><span class="keyword">from</span> sqltest</span><br><span class="line"></span><br><span class="line"><span class="comment">/*收回所有用户对视图cust1的查询权限*/</span></span><br><span class="line"><span class="keyword">revoke</span> s elect</span><br><span class="line"><span class="keyword">on</span> <span class="keyword">view</span>  cust1</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">public</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>public 角色是一个特殊的数据库角色，每个数据库用户都属于它。</p>
+</blockquote>
+<h3 id="视图机制保证安全性"><a href="#视图机制保证安全性" class="headerlink" title="视图机制保证安全性"></a>视图机制保证安全性</h3><ul>
+<li>视图把需要保密的数据对无权存取这些数据的用户隐藏起来</li>
+<li>实际应用中，通常把视图机制与授权机制配合使用: 首先使用视图机制屏蔽掉一些保密数据，然后在视图上再进一步定义其存取权限</li>
+</ul>
+<h2 id="5-8-存储过程"><a href="#5-8-存储过程" class="headerlink" title="5.8 存储过程"></a>5.8 存储过程</h2><h3 id="存储过程简介"><a href="#存储过程简介" class="headerlink" title="存储过程简介"></a>存储过程简介</h3><ul>
+<li>存储过程是 SQL 语句和可选控制流语句的预编译集合，以一个名称存储并作为一个单元处理。</li>
+<li>存储过程可包含程序流、逻辑以及对数据库的查询。可以接受参数、输出参数、返回单个或多个结果集。</li>
+<li>存储过程可以嵌套，即一个存储过程可以调用另一个存储过程。</li>
+</ul>
+<p><strong>优点:</strong></p>
+<ul>
+<li>重复使用。存储过程可以重复使用。从而可以减少数据库开发人员的工作量。</li>
+<li>提高性能。存储过程在创建的时候就进行了变异，将来使用的时候不用再重新编译。</li>
+<li>减少网络流量。</li>
+<li>安全性。可以将grant、deny以及revoke权限应用于存储过程。</li>
+</ul>
+<p>###存储过程的创建与执行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span>[拥有者.]存储过程名[;程序编号]</span><br><span class="line">[(参数#1,...，参数#n)]</span><br><span class="line">[with</span><br><span class="line">&#123;recompile|encryption|recomplie,encryption&#125;</span><br><span class="line">]</span><br><span class="line">[for replication]</span><br><span class="line">as 程序行</span><br><span class="line"></span><br><span class="line"><span class="comment">/*执行存储过程*/</span></span><br><span class="line">exec&lt;存储过程名&gt;[(参数表)]</span><br></pre></td></tr></table></figure></p>
+<p>###存储过程的修改<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">procedure</span>&lt;存储过程名&gt;［(参数表)］</span><br><span class="line"><span class="keyword">as</span> 程序行</span><br></pre></td></tr></table></figure></p>
+<p>###重新编译存储过程</p>
+<p>###存储过程的删除<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">procedure</span>&lt;存储过程名&gt;</span><br></pre></td></tr></table></figure></p>
+<p>###使用存储功能的注意事项<br>使用存储过程的目的是为了提高应用系统的运行效率，增强系统的可维护性，保证数据的完整性和一致性。在使用存储过程时要注意以下几个方面: </p>
+<ul>
+<li>避免潜逃的、递归的存储过程的使用</li>
+<li><p>在删除存储过程之前，需确定存储过程是否分组</p>
+<h3 id="使用存储功能的注意事项"><a href="#使用存储功能的注意事项" class="headerlink" title="使用存储功能的注意事项"></a>使用存储功能的注意事项</h3><p>使用存储过程的目的是为了提高应用系统的运行效率，增强系统的可维护性，保证数据的完整性和一致性。在使用存储过程时要注意以下几个方面: </p>
+</li>
+<li><p>避免潜逃的、递归的存储过程的使用</p>
+</li>
+<li>在删除存储过程之前，需确定存储过程是否分组</li>
+</ul>
+<h2 id="5-9-函数"><a href="#5-9-函数" class="headerlink" title="5.9 函数"></a>5.9 函数</h2><h3 id="函数的概念及优点"><a href="#函数的概念及优点" class="headerlink" title="函数的概念及优点"></a>函数的概念及优点</h3><p><code>函数</code>是由一个或多个 Transact-SQL 语句组成的子程序，可用于封装代码以便重新使用。<br><strong>优点:</strong>  </p>
+<ul>
+<li>允许模块化程序设计</li>
+<li>执行速度更快。使用用户定义函数时无需重新解析和重新优化，从而缩短了执行时间</li>
+<li>减少网络流量</li>
+<li>使用灵活，能实现复杂约束</li>
+</ul>
+<p><strong>存储过程和函数的区别</strong></p>
+<ul>
+<li>存储过程可以返回<code>参数</code>，而函数只能返回<code>值</code>或者<code>表对象</code>。</li>
+<li>存储过程一般是作为一个<code>独立的部分</code>来执行，而函数可以作为<code>查询语句的一个部分</code>来调用，由于函数可以返回一个表对象，因此它可以在查询语句中位于FROM关键字的后面。</li>
+<li>函数在<code>系统启动时</code>就进行编译并加载，存储过程在<code>调用时</code>才加载。</li>
+<li>一般来说，存储过程实现的功能要复杂一点，而函数实现的功能针对性更强。</li>
+</ul>
+<h3 id="函数的创建与使用"><a href="#函数的创建与使用" class="headerlink" title="函数的创建与使用"></a>函数的创建与使用</h3><ul>
+<li>内置函数<ul>
+<li>聚合函数(<code>count</code>, <code>avg</code>, <code>sum</code>, <code>max</code>, <code>min</code>…)</li>
+<li>配置函数</li>
+<li>日期和时间函数 </li>
+<li>数学函数</li>
+<li>元数据函数</li>
+</ul>
+</li>
+<li>用户自定义函数<ul>
+<li>标量函数</li>
+<li>内嵌表函数</li>
+<li>多语句表值函数</li>
+</ul>
+</li>
+</ul>
+<h3 id="函数的修改"><a href="#函数的修改" class="headerlink" title="函数的修改"></a>函数的修改</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">function</span> &lt;函数名&gt;[(参数表)]</span><br><span class="line"><span class="keyword">as</span> 程序行</span><br></pre></td></tr></table></figure>
+<h3 id="函数的删除"><a href="#函数的删除" class="headerlink" title="函数的删除"></a>函数的删除</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">function</span> &lt;函数名&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="5-10-T-SQL的流程控制语句"><a href="#5-10-T-SQL的流程控制语句" class="headerlink" title="5.10 T-SQL的流程控制语句"></a>5.10 T-SQL的流程控制语句</h2><h3 id="begin…end语句"><a href="#begin…end语句" class="headerlink" title="begin…end语句"></a>begin…end语句</h3><p>begin…end语句作为一对表示符包括多条T-SQL语句，将其组合为一个具有逻辑性的语句块整体。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">&#123;</span><br><span class="line">sql_statement | statement_block</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h3 id="if…else语句"><a href="#if…else语句" class="headerlink" title="if…else语句"></a>if…else语句</h3><p>if…else语句是单条件判断语句</p>
+<h3 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h3><p>case语句是多条件判断语句</p>
+<h3 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a>while语句</h3><p>while语句是一个循环语句</p>
+<h3 id="goto语句"><a href="#goto语句" class="headerlink" title="goto语句"></a>goto语句</h3><p>goto语句将执行流更改到标签处</p>
+<h3 id="waitfor语句"><a href="#waitfor语句" class="headerlink" title="waitfor语句"></a>waitfor语句</h3><p>waitfor语句主要用于以下两个方面:</p>
+<ul>
+<li>暂停执行程序一段时间后再继续执行</li>
+<li>暂停执行程序到指定时间后再继续执行</li>
+</ul>
+<h3 id="return语句"><a href="#return语句" class="headerlink" title="return语句"></a>return语句</h3><p>return语句能够无条件地终止一个查询</p>
+<h3 id="try-catch语句"><a href="#try-catch语句" class="headerlink" title="try/catch语句"></a>try/catch语句</h3><h2 id="5-12-嵌入式SQL"><a href="#5-12-嵌入式SQL" class="headerlink" title="5.12 嵌入式SQL"></a>5.12 嵌入式SQL</h2><h3 id="嵌入式SQL的定义及实现"><a href="#嵌入式SQL的定义及实现" class="headerlink" title="嵌入式SQL的定义及实现"></a>嵌入式SQL的定义及实现</h3><p><code>嵌入式SQL</code>就是将SQL语言直接嵌入到高级程序设计语言的源代码中，利用高级语言的过程性结构来弥补SQL语言实现复杂应用方面的不足。</p>
+<p>嵌入式SQL的实现，有两种方法：</p>
+<ul>
+<li>修改和扩充宿主语言的编译程序，使之能处理SQL语句；</li>
+<li>预处理方式（常用）: <ul>
+<li>将具有前缀的语句，用SQL预处理器转换成宿主语言的函数调用语句</li>
+<li>由宿主语言的编译器生成目标程序</li>
+</ul>
+</li>
+</ul>
+<h3 id="SQL和宿主语言的接口"><a href="#SQL和宿主语言的接口" class="headerlink" title="SQL和宿主语言的接口"></a>SQL和宿主语言的接口</h3><p>SQL语言是<strong>面向集合</strong>的，一条SQL语句可以产生或处理一条或多条记录，主语言是面向记录的，一组主变量一次只能存法一条记录。<br>如果SQL语句产生的是<strong>单行结果</strong>，可以使用select into语句；如果SQL语句产生的是<strong>多行结果</strong>，则必须使用游标来解决SQL语句和主语言处理方式的矛盾。</p>
+<ul>
+<li>游标：是计算机系统为用户开设的一个数据缓存区，用于存放SQL语句的结果数据集，每个游标区都有一个名字。</li>
+<li>用户可以通过游标逐一读取数据记录，然后赋值给主变量，再交给主语言程序作进一步处理。</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/20180506/" class="prev">PREV</a><a href="/typechostart/" class="next">NEXT</a></div><div data-thread-key="sql05/" data-title="数据库原理笔记C05 关系数据库标准语言—SQL" data-url="http://Winnie1997.github.io/sql05/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

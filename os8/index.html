@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 操作系统笔记08 死锁 · Hi, Dai</title><meta name="description" content="操作系统笔记08 死锁 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">操作系统笔记08 死锁</h1><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h4><ul>
+<li><p>如果集合中的每个进程正在等待只有集合中的另一个进程可能导致的事件，则会导致一组进程死锁。    </p>
+<ul>
+<li>Kansas立法机构通过的一个法律：当两列列车在十字路口逼近时，它们要完全停下来，且在一列列车开走之前，另一列列车不能启动。</li>
+<li>只有一个方向的交通：桥的每个部分都可以被视为一个资源。如果发生死锁，则可以解决一辆车是否备份（抢占资源并回滚），可能需要“备份几辆汽车。 饥饿是可能的。</li>
+</ul>
+<a id="more"></a>
+</li>
+</ul>
+<p>#####系统模型</p>
+<ul>
+<li>一个系统由有限数量的资源组成，分配给多个竞争过程。</li>
+<li>资源被分成几种类型：资源类型R<sub>1</sub>，R<sub>2</sub>，…，R<sub>m</sub>，例如CPU周期，内存空间和 I/O 设备。</li>
+<li>每个资源类型R<sub>i</sub>都有W<sub>i</sub>实例操作来使用资源<ol>
+<li><strong>申请</strong>：如果不能立即授予请求，则请求进程必须等待直到它获得该资源为止。</li>
+<li><strong>使用</strong>：进程正在使用该资源。</li>
+<li><strong>释放</strong>：进程释放资源。</li>
+</ol>
+</li>
+</ul>
+<h4 id="死锁特征"><a href="#死锁特征" class="headerlink" title="死锁特征"></a>死锁特征</h4><ul>
+<li>如果以下4个条件同时满足，则会出现死锁：<ol>
+<li>互斥：至少有一个资源必须处于非共享模式，即一次只有一个进程可以使用该资源。 </li>
+<li>占有并等待：一个进程必须占有至少一个资源，并等待另一个资源，而该资源为其它资源所占有。</li>
+<li>非抢占：资源不能抢占，即资源只能在进程完成任务后自动释放。</li>
+<li>循环等待：有一组等待进程{P<sub>0</sub>，P<sub>1</sub>，… ，P<sub>n</sub>}，P<sub>0</sub>等待的资源由P<sub>1</sub>占有，P<sub>1</sub>等待的资源由P<sub>2</sub>占有，… ，P<sub>n-1</sub>等待的资源由P<sub>n</sub>占有，并且P<sub>n</sub>等待的资源由P<sub>0</sub>占有。</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>所有4个条件必须同时满足才会出现死锁。循环等待条件意味着占有并等待条件，这样的4个条件并不完全独立。</p>
+</blockquote>
+<h4 id="资源分配图"><a href="#资源分配图" class="headerlink" title="资源分配图"></a>资源分配图</h4><ul>
+<li>死锁问题可用称为<strong>系统资源分配图</strong>的有向图进行更精确地描述。</li>
+<li>该图由一组顶点集合V和一组边集合E组成。</li>
+<li>V被分成两种类型：<ul>
+<li>P = {P<sub>0</sub>，P<sub>1</sub>，…，P<sub>n</sub>}，系统中的所有进程的集合。</li>
+<li>R = {R<sub>0</sub>，R<sub>1</sub>，…，R<sub>m</sub>}，系统中所有资源类型的集合。</li>
+</ul>
+</li>
+<li>申请边：P<sub>i</sub> → R<sub>j</sub></li>
+<li>分配边：R<sub>j</sub> → P<sub>i</sub><br><img src="https://i.loli.net/2018/06/18/5b27ab5721290.png" width="25%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b27ab5ac25d8.png" width="33%" height="80%"></li>
+<li>如果资源分配图不包含环，则系统中的<strong>任何进程都不会</strong>死锁;</li>
+<li>如果资源分配图包含环，则<strong>可能存在</strong>死锁。</li>
+</ul>
+<h4 id="死锁处理方法"><a href="#死锁处理方法" class="headerlink" title="死锁处理方法"></a>死锁处理方法</h4><ul>
+<li>可以设计一个协议来预防或避免死锁，确保系统永远不会进入死锁状态。</li>
+<li>可以允许系统进入死锁状态，检测并从中恢复。</li>
+<li>可以完全忽略这个问题，并假设系统中永远不会发生死锁。(鸵鸟算法)<ul>
+<li>大多数操作系统都使用该解决方案，包括Windows和Unix。</li>
+<li>由于死锁<strong>很少发生</strong>，并且死锁预防、死锁避免或死锁检测和恢复<strong>算法成本很高</strong>。</li>
+<li>这是便利性和正确性之间的权衡。</li>
+</ul>
+</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/os9/" class="prev">PREV</a><a href="/os7/" class="next">NEXT</a></div><div data-thread-key="os8/" data-title="操作系统笔记08 死锁" data-url="http://Winnie1997.github.io/os8/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

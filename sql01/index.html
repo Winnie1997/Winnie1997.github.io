@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 数据库原理笔记C01 数据库基础知识 · Hi, Dai</title><meta name="description" content="数据库原理笔记C01 数据库基础知识 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">数据库原理笔记C01 数据库基础知识</h1><div class="post-info">Jun 4, 2018</div><div class="post-content"><h2 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2 基本概念"></a>1.2 基本概念</h2><h3 id="数据和信息"><a href="#数据和信息" class="headerlink" title="数据和信息"></a>数据和信息</h3><p><code>数据</code>是数据库中存储的基本对象  </p>
+<ul>
+<li>定义: 描述事物的符号记录    </li>
+<li>种类: 数字、文字、图形、图像、音频、视频、学生的档案记录等  </li>
+</ul>
+<blockquote>
+<p>数据本身(李明, 男, 199712, 江苏南京市, 计算机系, 2016)并不能完全表达内容<br>需要经过语义解释(李明是个大学生，1997年12月出生，江苏南京市人，2016年考入计算机系)。</p>
+</blockquote>
+<p><code>信息</code>通常定义为经过加工处理后的数据。</p>
+<blockquote>
+<p>信息以数据的形式表示，数据是信息的载体，信息则是数据加工的结果，是对数据的解释。<br> <a id="more"></a></p>
+</blockquote>
+<h3 id="数据处理和数据管理"><a href="#数据处理和数据管理" class="headerlink" title="数据处理和数据管理"></a>数据处理和数据管理</h3><p><code>数据处理</code>是指将数据转换成信息的过程。<br><code>数据管理</code>在数据处理的一系列活动中，对数据进行分类、组织、编码、存储、检索和维护等操作的统称。  </p>
+<p><code>数据库</code>(DB)是<strong>长期储存</strong>在计算机内、<strong>有组织</strong>的、<strong>可共享</strong>的<strong>大量</strong>数据的集合。<br>基本特征:</p>
+<ul>
+<li>数据按一定的数据模型组织、描述和储存</li>
+<li>可为各种用户共享</li>
+<li>冗余度较小</li>
+<li>数据独立性较高</li>
+<li>易扩展</li>
+</ul>
+<p><code>数据库管理系统</code>(DBMS)是位于用户与操作系统之间的一层数据管理软件， 是基础软件，是一个大型复杂的软件系统。  </p>
+<blockquote>
+<p>用途: 科学地组织和存储数据、高效地获取和维护数据<br>eg. SQL Server、Oracle、MySQL</p>
+</blockquote>
+<p><code>数据库管理员</code>(DBA)是指负责数据库的建立、使用和维护的专门人员。<br><code>数据库用户</code>是指与数据库系统打交道的人员，主要包括应用程序猿鹤最终用户。<br><code>数据库系统</code>(DBS)是指在计算机系统中引入数据库后的系统构成，一般由<strong>数据库</strong>、操作系统、<strong>数据库管理工具</strong>、应用开发工具、应用系统、<strong>数据库管理员</strong>和<strong>用户</strong>构成。(P3 图1.2)</p>
+<h2 id="1-3-数据管理的发展P10"><a href="#1-3-数据管理的发展P10" class="headerlink" title="1.3 数据管理的发展P10"></a>1.3 数据管理的发展P10</h2><h3 id="人工管理阶段"><a href="#人工管理阶段" class="headerlink" title="人工管理阶段"></a>人工管理阶段</h3><ol>
+<li>数据不能长期保存</li>
+<li>数据和程序不具有独立性</li>
+<li>没有文件的概念</li>
+<li>数据是面向应用程序的</li>
+</ol>
+<h3 id="文件管理系统"><a href="#文件管理系统" class="headerlink" title="文件管理系统"></a>文件管理系统</h3><ol>
+<li>数据可以长期保存在存储设备上供用户使用</li>
+<li>数据和程序之间具有<strong>一定的</strong>独立性</li>
+<li>实时处理</li>
+</ol>
+<blockquote>
+<ul>
+<li>数据独立性不足</li>
+<li>数据冗余度大且容易产生数据不一致</li>
+<li>数据整体没有结构</li>
+<li>数据不是集中管理，安全性、完整性得不到可靠保证</li>
+</ul>
+</blockquote>
+<h3 id="数据库技术管理"><a href="#数据库技术管理" class="headerlink" title="数据库技术管理"></a>数据库技术管理</h3><ol>
+<li>采用一定的<code>数据模型</code>实现数据结构化。数据的用数据模型描述，无需应用程序定义。</li>
+<li>应用程序与数据具有<strong>较高</strong>独立性(逻辑独立性、物理独立性)，由数据库管理系统的<code>二级映像</code>来保证。</li>
+<li><p>支持数据共享。数据面向整个系统，可以被多个用户、多个应用共享使用。</p>
+<blockquote>
+<ul>
+<li>减少数据冗余,节约存储空间</li>
+<li>避免数据之间的不相容性与不一致性</li>
+<li>使系统易于扩充</li>
+</ul>
+</blockquote>
+</li>
+<li><p>数据安全性较高</p>
+<blockquote>
+<ul>
+<li>DBMS设置了安全与授权子系统</li>
+<li>DBMS设置了数据完整性控制机制，保证数据的正确性、有效性和相容性。</li>
+<li>DBMS设置了数据库备份和恢复机制</li>
+<li>并发控制，对多用户的并发操作加以控制和协调，防止相互干扰而得到错误的结果。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h2 id="1-4-数据库的体系结构"><a href="#1-4-数据库的体系结构" class="headerlink" title="1.4 数据库的体系结构"></a>1.4 数据库的体系结构</h2><h3 id="数据库系统的三级模式结构"><a href="#数据库系统的三级模式结构" class="headerlink" title="数据库系统的三级模式结构"></a>数据库系统的三级模式结构</h3><p>数据库系统由外模式、模式和内模式三级构成。<br>数据库系统的主要目的之一，为用户提供一个数据的抽象视图，隐藏数据的存储结构和存储方法等细节。   </p>
+<p>数据 &rarr; 文件(内模式) &rarr; 表(模式) &rarr; 导出表/视图(概念模式)  </p>
+<p><code>内模式</code>(存储模式): 数据的<strong>物理结构</strong>和<strong>存储结构</strong>的描述，是数据在<code>数据库内部</code>的表示方式。</p>
+<blockquote>
+<p>顺序存储、B树结构存储、Hash存储、索引，数据压缩加密。</p>
+</blockquote>
+<p><code>概念模式</code>(逻辑模式/模式/结构模式): 数据库中全体数据的<strong>逻辑结构</strong>和特征的描述。</p>
+<blockquote>
+<p>记录数据项构成、数据项名字、类型、取值范围等。<br>安全性、完整性约束，定义联系。</p>
+</blockquote>
+<p><code>外模式</code>(用户模式): 用户看见和使用的<strong>局部</strong>数据的<strong>逻辑结构</strong>和特征的描述。</p>
+<h3 id="数据库系统的二层映像结构"><a href="#数据库系统的二层映像结构" class="headerlink" title="数据库系统的二层映像结构"></a>数据库系统的二层映像结构</h3><p><img src="1.png" width="70%" height="70%"></p>
+<p>外模式/模式映像: 保证了数据和程序之间的逻辑独立性。<br>模式/内模式映像: 保证了数据和程序之间的物理独立性。</p>
+<h3 id="数据库系统的应用框架"><a href="#数据库系统的应用框架" class="headerlink" title="数据库系统的应用框架"></a>数据库系统的应用框架</h3><ol>
+<li>单用户(的数据库系统)</li>
+<li>主从式/集中式   <ul>
+<li>由一个主机连接多个终端用户的结构</li>
+<li>多个用户可以同时并发地存储数据，能够共享数据。</li>
+</ul>
+</li>
+<li>分布式结构  <ul>
+<li>分布结构的数据库中数据在逻辑上是一个整体, 物理上在网络的不同节点上。</li>
+<li>当用户需要经常访问远程数据时，系统效率会明显地收到网络通信的制约。</li>
+</ul>
+</li>
+<li>客户机/服务器结构(C/S)  <ul>
+<li>基于局域网的网络，需要安装专门的客户端软件。  </li>
+<li>降低了系统的通信开销。</li>
+</ul>
+</li>
+<li>浏览器/服务器结构(B/S)  <ul>
+<li>基于网络和浏览器/Web服务器，需要考虑浏览器的兼容性。  </li>
+<li>客户端零维护，系统的扩展非常容易，但应用服务器端负荷较重。</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-5-数据库管理系统"><a href="#1-5-数据库管理系统" class="headerlink" title="1.5 数据库管理系统"></a>1.5 数据库管理系统</h2><h3 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h3><ul>
+<li>数据定义</li>
+<li>数据操纵</li>
+<li>数据库运行管理</li>
+<li>数据组织、存储和管理</li>
+<li>数据库的建立和维护</li>
+<li>数据通信接口</li>
+</ul>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ul>
+<li>数据定义语言及其翻译处理程序</li>
+<li>数据操纵语言及其翻译解释程序</li>
+<li>数据运行控制程序</li>
+<li>实用程序</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/sql02/" class="prev">PREV</a><a href="/20180506/" class="next">NEXT</a></div><div data-thread-key="sql01/" data-title="数据库原理笔记C01 数据库基础知识" data-url="http://Winnie1997.github.io/sql01/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

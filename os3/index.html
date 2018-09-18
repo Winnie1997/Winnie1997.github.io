@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 操作系统笔记03 操作系统结构 · Hi, Dai</title><meta name="description" content="操作系统笔记03 操作系统结构 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">操作系统笔记03 操作系统结构</h1><div class="post-info">Jul 3, 2018</div><div class="post-content"><ul>
+<li>一个像现代操作系统一样庞大而复杂的系统必须仔细设计，才能正常运行并易于修改。</li>
+<li>一种常用的方法是将任务分成小部件，而不是一个单一的系统。</li>
+<li>这些组件中的每一个都应该是系统的一个明确定义的部分，具有详细定义的<strong>输入，输出和功能</strong>。</li>
+<li><p>系统设计人员如何组织这些组件？</p>
+<ul>
+<li>简单结构（或没有结构）</li>
+<li>分层结构</li>
+<li>微内核</li>
+<li>虚拟机</li>
+</ul>
+<a id="more"></a>
+</li>
+</ul>
+<h4 id="简单结构"><a href="#简单结构" class="headerlink" title="简单结构"></a>简单结构</h4><ul>
+<li>许多系统没有明确的结构。</li>
+<li>他们从小、简单和有限的系统开始，然后演变成复杂的系统。</li>
+<li>eg. MS-DOS和Unix</li>
+</ul>
+<h4 id="分层结构"><a href="#分层结构" class="headerlink" title="分层结构"></a>分层结构</h4><ul>
+<li>操作系统分解成多个层，<strong>高层只能调用低一层的功能</strong>。</li>
+<li>分层结构的主要难点在于：<ul>
+<li>仔细定义每一层</li>
+<li>效率较低。</li>
+</ul>
+</li>
+<li>eg. The <strong>THE</strong> operating system by Dijkstra.</li>
+</ul>
+<h4 id="微内核"><a href="#微内核" class="headerlink" title="微内核"></a>微内核</h4><ul>
+<li>随着Unix操作系统的扩展，内核变得庞大而难以管理。</li>
+<li>微内核方法通过<strong>从内核中删除所有非必要组件</strong>并将它们实现为系统级和用户级程序来构造操作系统。</li>
+<li>提供精简的内核。哪些组件应该保留在微内核中？ <ul>
+<li>CPU管理</li>
+<li>内存管理</li>
+<li>通信设备</li>
+</ul>
+</li>
+<li>eg. ①卡内基梅隆大学的开源Mach(用作Apple Mac OS X和DEC Tru64 Unix的内核) ②QNX Inc.的QNX实时操作系统 ③Micorsoft Windows NT / XP</li>
+</ul>
+<h4 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h4><ul>
+<li>从微内核进一步迈进：<ul>
+<li>低级真实的硬件被“克隆”到几个相同的<strong>虚拟机</strong>中。</li>
+<li>虚拟机提供的接口与底层裸机相同。</li>
+</ul>
+</li>
+<li>然后，操作系统功能建立在虚拟机之上。<br><img src="https://i.loli.net/2018/06/17/5b2606003dd2f.png" width="70%" height="80%"></li>
+<li>eg. ①IBM VM/370 ②VMware ③Microsoft Virtual PC ④Sun microsystem’s Java Virtual Machine (JVM).Sun微系统的Java虚拟机</li>
+<li>虚拟机的优与劣<ul>
+<li>虚拟机概念提供了<strong>对系统的全面保护</strong>。因为每个虚拟机都与其他所有虚拟机隔离开来。</li>
+<li>然而，这种隔离<strong>不允许直接分享资源</strong></li>
+<li>虚拟机系统是<strong>操作系统研究和开发</strong>的理想<strong>工具</strong>。</li>
+<li>虚拟机的概念很难实现，因为需要<strong>准确地</strong>为底层机器提供一个完全相同的副本。</li>
+</ul>
+</li>
+</ul>
+<h4 id="政策和机制"><a href="#政策和机制" class="headerlink" title="政策和机制"></a>政策和机制</h4><ul>
+<li><strong>政策：做什么</strong><br>eg. 用户应该无法读取其他用户的文件。</li>
+<li><strong>机制：如何做</strong><br>eg. 在打开的系统调用中检查文件权限。</li>
+<li><strong>政策与机制的分离</strong>是一个非常重要的原则。<ul>
+<li>如果政策决定以后将改变，它可以提供最大的灵活性。</li>
+</ul>
+</li>
+<li>两个极端：<ul>
+<li>微内核：所有机制，几乎没有政策</li>
+<li>Apple Macintosh：策略和机制绑定在一起</li>
+</ul>
+</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/os4/" class="prev">PREV</a><a href="/os2/" class="next">NEXT</a></div><div data-thread-key="os3/" data-title="操作系统笔记03 操作系统结构" data-url="http://Winnie1997.github.io/os3/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

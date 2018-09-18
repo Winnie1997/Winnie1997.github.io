@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 操作系统笔记09 内存管理 · Hi, Dai</title><meta name="description" content="操作系统笔记09 内存管理 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">操作系统笔记09 内存管理</h1><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="内存管理介绍"><a href="#内存管理介绍" class="headerlink" title="内存管理介绍"></a>内存管理介绍</h4><ul>
+<li>进程管理回顾 <ul>
+<li>进程管理提供了一个虚拟的机器接口，让每一个进程都以为是自己在独占CPU，如下图所示:<br><img src="https://i.loli.net/2018/06/18/5b27ad8cd9ef4.png" width="50%" height="80%"></li>
+</ul>
+</li>
+<li><p>内存管理的任务：提供一个虚拟的机器接口，让每一个进程都以为是自己在独占RAM。</p>
+<a id="more"></a>
+</li>
+</ul>
+<h4 id="基本方法-以MS-DOS为例"><a href="#基本方法-以MS-DOS为例" class="headerlink" title="基本方法 - 以MS-DOS为例"></a>基本方法 - 以MS-DOS为例</h4><ul>
+<li>MS-DOS (Microsoft Disk Operating System)<ul>
+<li>单用户、单任务 只能访问1MB内存：INTEL 8086/80286只有20根地址线</li>
+<li>没有任何保护机制：INTEL 8086/80286没有提供硬件保护机制支持</li>
+</ul>
+</li>
+<li>在MS-DOS中, MS-DOS自己要占用1/3左右; 剩余部分留给系统唯一的进程使用。</li>
+<li>问题1：如果某个MS-DOS下的应用程序<strong>需要超过640K的内存才能运行</strong>,怎么办?</li>
+<li><strong><code>覆盖</code></strong>：一种允许内存能分配的小于一个进程中所需空间的技术。<ul>
+<li><strong>基本原理</strong>：只保留在任何给定时间需要的指令和数据。程序运行时<strong>并非任何时候都要访问程序及数据的各个部分</strong>，因此可以把用户空间分成一个固定区和若干个覆盖区。经常活跃的部分放在固定区，其余部分按调用关系分段。在覆盖区和外存(即磁盘)中屡次<strong>调入调出</strong>。除了程序本身外，程序员还要提供一个所谓的“overlay driver”来负责模块的调入调出。</li>
+<li>无论进程在运行时占有多大的内存,在某一段时间内，它<strong>只会访问其中的一部分</strong>。</li>
+<li><strong>打破</strong>了必须将一个进程的全部信息装入主存后才能运行的<strong>限制</strong>。</li>
+</ul>
+</li>
+<li>目前覆盖技术已经<strong>很少被使用</strong>，除了在一些内存资源相当紧张的<code>嵌入式系统</code>中。</li>
+<li><p>假设MS-DOS支持多任务,即系统中有多个进程。</p>
+<ul>
+<li>进程必须在内存中才能运行。</li>
+<li>运行中的进程可能会申请额外的内存。</li>
+</ul>
+</li>
+<li><p>问题2：假设系统目前有两个进程：P<sub>1</sub>和P<sub>2</sub>，而且系统已经没有内存可以使用。此时，正在运行的P<sub>1</sub>又要申请更多的内存才能继续运行，怎么办?</p>
+</li>
+<li><strong><code>交换</code></strong>：一个进程可以<strong>暂时</strong>从内存交换到backing-store，然后再加载到内存中<strong>继续执行</strong>。<ul>
+<li>OS可以将(不在运行的)P<sub>2</sub>交换到backing-store中，同时释放P<sub>2</sub>所占用的内存，并分配给P<sub>1</sub>让其继续运行。</li>
+<li>当调度器重新调度P<sub>2</sub>运行时，OS从backing-store中加载P2到内存继续运行。</li>
+<li>此时可能要把P<sub>1</sub>交换到backing-store中以释放足够的内存空间供P<sub>2</sub>运行。<br><img src="https://i.loli.net/2018/06/18/5b27b3384a591.png" width="50%" height="80%"></li>
+</ul>
+</li>
+<li><strong>Swap方法存在的限制</strong>：<ul>
+<li>要求计算机必须有<strong>足够大的备份存储</strong>。备份存储一般是快速、大容量的硬盘。</li>
+<li><strong>上下文切换要花费大量的时间</strong>：主要用于磁盘数据传输。调度算法的设计尤其重要，应尽量减少上下文切换。</li>
+<li>被swap-out的进程必须被重新swap-in到<strong>相同的内存地址</strong>才能继续运行。</li>
+</ul>
+</li>
+<li>这种原始的swap-in/out已经<strong>很少被使用</strong>。但是，swap的思想非常重要：当系统内存不足时，可以向备份存储“借”一部分来使用。</li>
+</ul>
+<h4 id="多任务系统的内存管理"><a href="#多任务系统的内存管理" class="headerlink" title="多任务系统的内存管理"></a>多任务系统的内存管理</h4><ul>
+<li>多任务环境下会带来许多内存管理问题：<ul>
+<li>重定位(relocation)问题</li>
+<li>内存保护(protection)问题</li>
+<li>内存分配(allocation)问题</li>
+</ul>
+</li>
+</ul>
+<h5 id="源程序变成进程的过程："><a href="#源程序变成进程的过程：" class="headerlink" title="源程序变成进程的过程："></a>源程序变成进程的过程：</h5><ul>
+<li>程序员编写的<strong>源代码</strong>必须先被编译成<strong>目标文件</strong>。</li>
+<li>然后通过<strong>链接器</strong>链接成<strong>可执行文件</strong>。</li>
+<li>最后由操作系统<strong>加载</strong>可执行文件到内存从而<strong>形成进程</strong>。</li>
+</ul>
+<h5 id="重定位-amp-地址绑定概念"><a href="#重定位-amp-地址绑定概念" class="headerlink" title="重定位 &amp; 地址绑定概念"></a>重定位 &amp; 地址绑定概念</h5><ul>
+<li>在多任务的环境中，可执行文件可能会被加载到内存中的任何位置运行。</li>
+<li>链接器在生成可执行文件时必须确定程序中各个符号(如函数、全局变量)的地址。<ul>
+<li>把程序中的符号映射为地址的过程叫做<strong><code>地址绑定</code></strong>。</li>
+</ul>
+</li>
+<li>事实上，由于链接器无法预知程序将被加载到哪个内存位置，因此无法完成绝对的地址绑定。</li>
+<li>因此，链接器只能假定程序中第一条指令的地址是0，从而用相对于它的<strong>偏移量</strong>来进行相对的<strong>地址绑定</strong>。</li>
+<li>这样的程序只能被加载到0地址的内存运行。如果该程序被加载到其他非0的地址，必须对程序中所引用的地址进行修改才能运行，这个修改过程就称为<strong><code>重定位</code></strong>。</li>
+<li>几个概念：<ul>
+<li>逻辑地址：指<strong>程序中引用的地址</strong>，亦即CPU产生的地址。</li>
+<li>物理地址：指系统中内存单元所看到的地址。</li>
+<li>内存管理单元：指专门完成逻辑地址到物理地址<strong>转换</strong>的硬件单元，一般是CPU的一部分。<br><img src="https://i.loli.net/2018/06/18/5b27b73f52d0f.png" width="50%" height="80%"></li>
+</ul>
+</li>
+<li>这里介绍的是最简单的重定位技术，只是冰山一角。</li>
+<li>今天使用的操作系统(如Windows, Linux)所采用的重定位技术相当复杂，涉及到编译器、链接器、可执行文件、函数库、操作 系统内核和硬件等多个组件之间的协作才能完成。</li>
+</ul>
+<h5 id="内存保护"><a href="#内存保护" class="headerlink" title="内存保护"></a>内存保护</h5><ul>
+<li>在多任务的环境中，必须要保护各个进程的内存不被其他进程访问或破坏。<ul>
+<li>其实，即使在单任务的环境中也存在着操作系统如何保护自己不被应用程序访问或破坏的问题。 在MS-DOS中，应用程序可以合法地把MS-DOS的内核所占的内存全部破坏。</li>
+</ul>
+</li>
+<li>对应用程序访问的每一个内存地址进行检查，看是否超出了内存范围。为了获得最好的性能，一般用<strong><code>内存管理单元</code></strong>(MMU)通过硬件来实现这种检查的功能。</li>
+<li>内存保护是现代操作系统必备的功能之一，它需要硬件的支持才能实施保护。</li>
+<li>后面讲解的各种内存管理方法都包含有内存保护的方法。<br><img src="https://i.loli.net/2018/06/18/5b27b98f2c33e.png" width="60%" height="80%"></li>
+</ul>
+<h5 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h5><ul>
+<li>在多任务的环境中，操作系统需要为每个新创建的进程分配一定数量的内存才能运行。当进程退出时，操作系统要回收它所占用的内存。</li>
+<li>操作系统如何有效地管理内存的分配和回收，以尽量满足进程的需求？这个问题也称为<strong><code>动态内存分配问题</code></strong>。</li>
+<li>操作系统有一张表格，用于指出哪些内存可用和哪些内存已被占用。可用内存块称为<strong>孔</strong>。<ul>
+<li>最初，所有内存都可用于用户进程。</li>
+<li>当有新进程需要内存时，为该内存查找足够大的孔。</li>
+<li>当一个进程终止时，它将释放内存，如果新的孔与其他孔相邻，这些相邻的孔合并形成一个更大的孔。<br><img src="https://i.loli.net/2018/06/18/5b27beab9738f.png" width="50%" height="80%"></li>
+</ul>
+</li>
+<li>分配算法<ul>
+<li><strong>首次适应</strong>：分配第一个足够大的孔。</li>
+<li><strong>最佳适应</strong>：分配最小的足够大的孔。</li>
+<li><strong>最差适应</strong>：分配最大的孔。 </li>
+</ul>
+</li>
+<li>另一种方法：把系统内存分成固定大小的内存块，操作系统以块为单位进行内存的分配和释放。最终分配给进程的内存可能会比所请求要多一点，称多出来的这部分为<strong><code>内部碎片</code></strong>。</li>
+<li>分配主要解决在多任务的环境中，操作系统采用什么算法进行内存的分配和回收，减少<strong><code>外部碎片</code></strong>或<strong>内部碎片</strong>，提高内存利用率。相对于外部碎片，内部碎片的情况不是很严重。</li>
+<li>事实上，内存的分配和回收问题不仅出现在OS中，应用程序面临着同样的问题。<ul>
+<li>当进程被创建时,操作系统会采用某种算法分配一块足够大的内存给进程,由进程自己管理(其中的一部分)。</li>
+<li>eg. heap由进程自己管理。库函数new/delete(或malloc/free)就是操纵heap中的内存。它们所采用的分配与回收算法非常通用，相应的空间和时间利用率也很一般。在一个大型的项目中，已有的库函数可能不会满足应用的要求，需要自己开发更好的来替换它们以负责heap中内存的分配与回收。</li>
+</ul>
+</li>
+</ul>
+<h4 id="分页内存管理"><a href="#分页内存管理" class="headerlink" title="分页内存管理"></a>分页内存管理</h4><ul>
+<li>基本内存管理方法存在着很大的限制：<ul>
+<li>每个进程所占用的物理内存<strong>必须连续</strong>。</li>
+<li>系统可能会<strong>产生大量外部碎片</strong>，最后不可避免地要进行compaction。</li>
+<li>对<strong>整个进程</strong>进行(<strong>交换</strong>)swap-in/swap-out非常地<strong>耗时</strong>。</li>
+</ul>
+</li>
+<li>分页很好地解决了上面的问题：<ul>
+<li>进程所占用的物理内存<strong>不必连续</strong>。</li>
+<li>没有外部碎片，但是会<strong>产生</strong>一定的<strong>内部碎片</strong>。</li>
+<li>对进程所占用的<strong>部分内存</strong>进行swap-in/swapout。</li>
+</ul>
+</li>
+<li>在早期，分页系统主要由<strong>硬件</strong>来实现。如今分页由<strong>硬件和操作系统</strong>共同完成。</li>
+<li>基本概念：<ul>
+<li>将物理内存分为固定大小的块，称为<strong><code>帧</code></strong>。</li>
+<li>将逻辑内存也分为同样大小的块，称为<strong><code>页</code></strong>。</li>
+<li><strong><code>页表</code></strong>包含每页所在物理内存的基地址，用于页到帧的映射。</li>
+<li>页表的一个条目称为<strong><code>页表项（PTE）</code></strong>。</li>
+</ul>
+</li>
+<li>把逻辑地址分成两部分: <ul>
+<li>第一部分称为<strong><code>页号(p)</code></strong>，页号作为页表的索引。 </li>
+<li>第二部分称为<strong><code>页偏移(d)</code></strong>。</li>
+</ul>
+</li>
+<li>地址转换：在页表的帮助下，MMU把CPU产生的逻辑地址转换成物理地址。</li>
+<li>过程如图：<br><img src="https://i.loli.net/2018/06/18/5b27c49f4dbb7.png" width="50%" height="80%"></li>
+<li>两个例子：<br><img src="https://i.loli.net/2018/06/18/5b27c48c6758f.png" width="37%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b27c486e7c06.png" width="37%" height="80%"></li>
+<li>页 &amp; 帧:<ul>
+<li>它们的大小必须相同，都是2的幂次方。</li>
+<li>具体由CPU体系结构决定，常见的有1K、4K、8K、4M等。</li>
+</ul>
+</li>
+<li>地址划分<ul>
+<li>如果逻辑地址空间的大小为2<sup>m</sup>，而page或frame的大小为2<sup>n</sup>(n &lt; m)，那么逻辑地址的划分如图所示：<br><img src="https://i.loli.net/2018/06/18/5b27c4e64d7b4.png" width="37%" height="80%"></li>
+</ul>
+</li>
+</ul>
+<h5 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h5><ul>
+<li>分页的一个重要方面是用户的内存视图和实际物理内存之间的明确分离。地址翻译硬件使这些差异得到调和。该<strong>映射对用户是隐藏的</strong>，由操作系统控制。</li>
+<li>由于是操作系统在控制地址映射，它必须记录系统物理内存的使用状况。<ul>
+<li>通常使用一个称为<strong><code>帧表</code></strong>的数据结构来保存系统中每一个帧的状态，如果占用，被哪个(些)进程的哪个页所占用。</li>
+<li>为每一个进程保存一个页表，只包括进程所拥有的那些页。</li>
+</ul>
+</li>
+</ul>
+<h5 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h5><ul>
+<li>页表必须被保存在内存中。CPU中的两个寄存器记录了它的信息:<ul>
+<li>页表基寄存器(PTBR)：保存了页表的地址。</li>
+<li>页表长度寄存器(PTLR)：保存了页表的大小。</li>
+</ul>
+</li>
+<li>因此在分页中,每一个内存访问都需要两次内存操作：一次访问页表，一次访问内存数据。考虑到CPU访问内存的频率，这种<strong>地址转换成了系统性能的颈瓶</strong>。</li>
+<li>为了提高地址转换效率，MMU中包含了一个高速缓存称为<strong><code>转换表缓冲区(TLBs)</code></strong>。</li>
+<li>TLB条目由<strong>键和值</strong>组成，当关联内存根据定值查找时，会同时与所有键进行比较，如果找到条目，那么就得到相应的值域。<ul>
+<li>TLB这种查找方式比较快。但由于硬件昂贵，通常TLB的条目数并不多，在64-1024之间。</li>
+<li>A的地址转换：如果A在TLB（<strong>TLB命中</strong>）中，则将帧取出。否则，从<strong>内存中的页表获取帧。</strong><br><img src="https://i.loli.net/2018/06/18/5b27c9366d11f.png" width="47%" height="80%"></li>
+</ul>
+</li>
+<li><strong>性能</strong>：假设<ul>
+<li>TLB查找时间 = x</li>
+<li>存储器周期时间为1微秒（10<sup>-6</sup>秒)</li>
+<li>TLB命中率 = y，在TLB中找到页码的次数的概率百分比。</li>
+</ul>
+</li>
+<li>有效访问时间 EAT = (1 + x) y + (2 + x) (1 - y) = 2 + x - y</li>
+</ul>
+<h5 id="内存保护-1"><a href="#内存保护-1" class="headerlink" title="内存保护"></a>内存保护</h5><ul>
+<li>在<strong>分页系统</strong>中，<strong>内存保护是以页为单位</strong>。 <ul>
+<li>保护信息通常都保存在PTE中， 可以提供只读、读写和执行(RWX - Read, Write, eXecute)保护。</li>
+</ul>
+</li>
+<li>此外，不是所有的PTE都可以使用。因此，PTE中的一位表示该PTE是否可以使用(valid/invalid)。<ul>
+<li>仅当该位有效时，MMU才能用它进行地址转换。 否则，MMU将通过异常向OS报告错误。<br><img src="https://i.loli.net/2018/06/20/5b29bf28312c1.png" width="50%" height="80%"></li>
+</ul>
+</li>
+</ul>
+<h5 id="页表问题"><a href="#页表问题" class="headerlink" title="页表问题"></a>页表问题</h5><ul>
+<li>假设：<ul>
+<li>逻辑地址空间大小：2<sup>32</sup>，即4GB。</li>
+<li>page和frame的大小：2<sup>12</sup>，即4KB。</li>
+<li>sizeof(PTE) = 4B。</li>
+</ul>
+</li>
+<li>一个页表要消耗多少内存?<ul>
+<li>(2<sup>32</sup> / 2 <sup>12</sup>) × 4 = 4MB</li>
+</ul>
+</li>
+<li>记住：每一个进程都需要一个页表。</li>
+<li>一个只有256MB内存的系统如何能同时运行几十个进程呢?</li>
+</ul>
+<h5 id="页表结构"><a href="#页表结构" class="headerlink" title="页表结构"></a>页表结构</h5><ul>
+<li>事实上，很少的进程会使用整个地址空间(如32位机器上的4GB和64位机器上的2<sup>64</sup>B );<ul>
+<li>页表中大部分的PTE都是处于invalid状态。 </li>
+<li>OS无法预测一个进程的页表大小，因此只能根据进程使用内存的情况动态地伸缩。 </li>
+<li>显然线性的页表结构太简单，不能满足这个要求，需要新的页表结构。</li>
+</ul>
+</li>
+<li>现有的页表结构:<ul>
+<li>层次型页表 Hierarchical Page Tables</li>
+<li>哈希页表 Hashed Page Tables</li>
+<li>反向页表 Inverted Page Tables</li>
+</ul>
+</li>
+</ul>
+<h5 id="层次型页表"><a href="#层次型页表" class="headerlink" title="层次型页表"></a>层次型页表</h5><ul>
+<li>这种方法采用“树”结构来组织页表,形成一个层次结构的页表。<ul>
+<li>根据这颗树的深度可以分为:一、二、三级页表等。其中，一级页表(也称为单级页表)就退化成了线性页表。</li>
+<li>这里以32位逻辑地址、页面大小为4KB为例来讲解二级页表。</li>
+</ul>
+</li>
+<li>二级页表设计：<ul>
+<li>把一个巨大的线性页表分割成很多小的页表。</li>
+<li>然后通过一个称为<strong><code>外页表</code></strong>(outer page table)的表把这些小页表组织起来。<br><img src="https://i.loli.net/2018/06/19/5b2895ea7742b.png" width="40%" height="80%"></li>
+<li>采用二级页表的逻辑地址与地址转换<br><img src="https://i.loli.net/2018/06/19/5b2896f44e766.png" width="46%" height="80%"><br><img src="https://i.loli.net/2018/06/19/5b28982d23bff.png" width="35%" height="80%"></li>
+</ul>
+</li>
+</ul>
+<h4 id="帧管理"><a href="#帧管理" class="headerlink" title="帧管理"></a>帧管理</h4><ul>
+<li>前面介绍了页面的管理，以及页面到帧的映射。但是，<strong>最终保存数据的地方是帧</strong>，而不是页面。 </li>
+<li>操作系统需要管理系统中所有帧的分配和回收,<ul>
+<li>当进程被创建时，操作系统要分配足够多的帧给它，并在该进程的页表中做相应的映射。</li>
+<li>当进程退出时，操作系统回收它所占用的帧。</li>
+</ul>
+</li>
+<li>最简单的方法是维护一个空闲帧链表。如图所示:<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b2897f562b1d.png" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b2897f562b1d.png</a> “ width=47%” height=”80%” /&gt;</li>
+</ul>
+<h4 id="页面共享"><a href="#页面共享" class="headerlink" title="页面共享"></a>页面共享</h4><ul>
+<li>在<strong>分页系统</strong>中,显然应该<strong>以页面为单位进行内存共享</strong>。<ul>
+<li>eg. 假设系统中有三个用户同时运行某个编辑器在编辑各自的文件，显然编辑器的代码可以被共享，而各自的文件数据则是私有的。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28990756fee.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28990756fee.png&quot;</a> width=47%” height=”80%” /&gt;</li>
+</ul>
+</li>
+</ul>
+<h4 id="分段内存管理"><a href="#分段内存管理" class="headerlink" title="分段内存管理"></a>分段内存管理</h4><ul>
+<li>为什么分段？<ul>
+<li>通常用户<strong>不会</strong>将内存视为一个<strong>线性字节数组</strong>，有的包含指令而其它的包含数据。</li>
+<li>用户通常愿意将内存视为一组<strong>长度不同的段的集合</strong>。分段就是支持这种</li>
+</ul>
+</li>
+<li><strong><code>分段</code></strong>把进程的<strong>逻辑地址空间</strong>分成一个个<strong>大小不等</strong>的段，每一段集中了一种类型的数据，如代码，数据，栈等等。<ul>
+<li>与分页系统一样，这些段在物理内存中也不一定是连续的</li>
+</ul>
+</li>
+</ul>
+<h5 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h5><ul>
+<li><p>逻辑地址由有序对组成：&lt;segment-number, offset&gt; (&lt;段号，段内偏移&gt;)。(为了简单，段是编号的段号而不是通过段名来引用)<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28ab03eefee.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28ab03eefee.png&quot;</a> width=20%” height=”80%” /&gt;&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28ab0404f03.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28ab0404f03.png&quot;</a> width=40%” height=”80%” /&gt;</p>
+</li>
+<li><p><strong><code>段表</code></strong>用于将逻辑地址映射到物理地址。 每个表项都有</p>
+<ul>
+<li>段基地址：含该段在内存中开始的物理地址。</li>
+<li>界限：指定该段的长度。<strong>段表长度不固定，页表固定。</strong></li>
+<li>保护位(RWX)。</li>
+</ul>
+</li>
+<li>段基地址寄存器(STBR)：指向段表在存储器中的位置。</li>
+<li>段界限寄存器(STLR)：表示进程使用的段的个数。  </li>
+<li>地址转换：<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28ab040db5c.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28ab040db5c.png&quot;</a> width=45%” height=”80%” /&gt;</li>
+<li>在<strong>分段系统</strong>中，<strong>内存的保护与共享以段为单位</strong></li>
+<li>由于段的长度是根据需要变化的,因此分段会产生<strong>外部碎片</strong>。<ul>
+<li>这个问题的严重程度与<strong>操作系统的内存分配算法</strong>和<strong>进程各个段的平均大小</strong>有关。</li>
+</ul>
+</li>
+<li>由于系统无法预测各个进程使用内存的状况，<strong>外部碎片很难控制</strong>。因此，单纯的分段系统目前很少使用。</li>
+<li>各个硬件产商也不再支持单纯的分段系统。<ul>
+<li>INTEL 80386以前的CPU只支持分段,而80386以后(包括80386) 的CPU则增加了分页支持。</li>
+</ul>
+</li>
+</ul>
+<h4 id="段页式内存管理"><a href="#段页式内存管理" class="headerlink" title="段页式内存管理"></a>段页式内存管理</h4><ul>
+<li>分页和分段系统有各自的优缺点，因此人们就考虑结合分页和分段，这就形成了段页式内存管理。</li>
+<li>段页式内存管理的地址转换包括两个步骤：<strong>先分段，再分页。</strong></li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/os10/" class="prev">PREV</a><a href="/os8/" class="next">NEXT</a></div><div data-thread-key="os9/" data-title="操作系统笔记09 内存管理" data-url="http://Winnie1997.github.io/os9/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

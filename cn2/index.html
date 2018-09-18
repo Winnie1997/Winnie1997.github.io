@@ -1,0 +1,809 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 计算机网络笔记02 应用层 · Hi, Dai</title><meta name="description" content="计算机网络笔记02 应用层 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">计算机网络笔记02 应用层</h1><div class="post-info">Jun 8, 2018</div><div class="post-content"><h2 id="2-1-应用层协议原理"><a href="#2-1-应用层协议原理" class="headerlink" title="2.1 应用层协议原理"></a>2.1 应用层协议原理</h2><h4 id="网络应用程序体系结构"><a href="#网络应用程序体系结构" class="headerlink" title="网络应用程序体系结构"></a>网络应用程序体系结构</h4><p>应用程序研发很可能利用两种主流的体系结构之一:<br><strong><code>客户-服务端体系结构</code>:</strong></p>
+<ul>
+<li>服务器: <ul>
+<li>持续地工作(365*24)  </li>
+<li>固定的、周知的地址(<code>IP地址</code>)  </li>
+<li>备有数据中心  <a id="more"></a> </li>
+</ul>
+</li>
+<li>客户端:<ul>
+<li>与服务器端通信  </li>
+<li>间歇地工作  </li>
+<li>可能更换地址  </li>
+<li>客户端不直接通信(客户总能通过该服务器的IP地址<code>发送分组</code>来与其进行联系)  </li>
+</ul>
+</li>
+</ul>
+<p><strong><code>对等/P2P体系结构</code>:</strong></p>
+<ul>
+<li>没有常开的服务器</li>
+<li>任意端系统之间直接通信  </li>
+<li>端系统是对等的  </li>
+<li>具有自扩展性  </li>
+<li>间歇地工作  </li>
+<li>管理起来比较复杂  </li>
+<li>适用于流量密集型的应用，如文件共享、下载加速、IP电话、IPTV  </li>
+</ul>
+<h4 id="进程通信P59"><a href="#进程通信P59" class="headerlink" title="进程通信P59"></a>进程通信P59</h4><p><code>进程</code>：主机上运行的程序。<br><code>进程之间如何通信</code>：</p>
+<ul>
+<li>同一主机内部(操作系统)：<ul>
+<li>管道、共享内存</li>
+<li>由操作系统控制</li>
+</ul>
+</li>
+<li>不同主机之间<ul>
+<li>主机可能安装了不同的操作系统</li>
+<li>使用<code>套接字(Socket)</code>机制，<code>API</code></li>
+<li>通过网络建立通信</li>
+</ul>
+</li>
+</ul>
+<p><strong>客户和服务器进程</strong>：发起通信的进程被标识为客户，在会话开始时等待联系的进程是服务器。</p>
+<p><strong>进程与计算机网络之间的接口<code>套接字</code></strong><br>是应用程序进程和运输层协议之间的接口, 类似于“门”的概念。通过套接字，不同端系统的进程可以进行网络通信。</p>
+<blockquote>
+<p>由于套接字也成为应用程序和网络之间的<strong>应用程序接口/API</strong>套接字是一种软件接口(API)</p>
+</blockquote>
+<p><strong>进程寻址</strong>：主机由<code>IP地址</code>标识。<code>目的地端口号</code>用于标识运行在接收主机上的接收进程/接收套接字。</p>
+<h4 id="可供应用层使用的运输服务P61"><a href="#可供应用层使用的运输服务P61" class="headerlink" title="可供应用层使用的运输服务P61"></a>可供应用层使用的运输服务P61</h4><ul>
+<li>可靠数据传输<ul>
+<li>正确：数据差错检验</li>
+<li>完整：分组丢失后重传</li>
+<li>eg.需要可靠传输的应用：文件传输、邮件、远程访问..</li>
+</ul>
+</li>
+<li><code>吞吐量</code>：可用吞吐量就是发送进程向接收进程交付比特的速率。<ul>
+<li>越大当然越好</li>
+<li>应用程序对吞吐量的需求不同</li>
+<li><code>带宽敏感的应用</code>：带宽敏感，具有吞吐量要求的应用程序多媒体传输</li>
+<li><code>弹性应用</code>：根据情况或多或少利用可供使用的吞吐量，如电子邮件、文件传输、Web传送…</li>
+</ul>
+</li>
+<li>定时/实时性：<ul>
+<li>保证较小的时间延迟，</li>
+<li>eg.因特网电话、会议 </li>
+</ul>
+</li>
+<li>安全<ul>
+<li>数据不被非法读取、篡改、伪造等</li>
+<li>提供加解密、认证、签名等机制(SSL／TLS)</li>
+<li>eg.电子交易、保密通信</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">应用</th>
+<th style="text-align:center">数据丢失</th>
+<th style="text-align:center">吞吐量(书上是带宽)</th>
+<th style="text-align:center">时间敏感</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">文件传输</td>
+<td style="text-align:center">不能丢失</td>
+<td style="text-align:center">弹性</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center">电子邮件</td>
+<td style="text-align:center">不能丢失</td>
+<td style="text-align:center">弹性</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center">Web文档</td>
+<td style="text-align:center">不能丢失</td>
+<td style="text-align:center">弹性</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center">实时媒体</td>
+<td style="text-align:center">容忍丢失</td>
+<td style="text-align:center">audio: 5kbps-1Mbps; video:10kbps-5Mbps</td>
+</tr>
+<tr>
+<td style="text-align:center">yes, 100’s msec</td>
+</tr>
+<tr>
+<td style="text-align:center">存储媒体</td>
+<td style="text-align:center">容忍丢失</td>
+<td style="text-align:center">同上</td>
+<td style="text-align:center">yes, few secs</td>
+</tr>
+<tr>
+<td style="text-align:center">交互式游戏</td>
+<td style="text-align:center">容忍丢失</td>
+<td style="text-align:center">few kbps up</td>
+<td style="text-align:center">yes, 100’s msec</td>
+</tr>
+<tr>
+<td style="text-align:center">即时通讯</td>
+<td style="text-align:center">不能丢失</td>
+<td style="text-align:center">弹性</td>
+<td style="text-align:center">yes and no</td>
+</tr>
+</tbody>
+</table>
+<h4 id="因特网提供的运输服务"><a href="#因特网提供的运输服务" class="headerlink" title="因特网提供的运输服务"></a>因特网提供的运输服务</h4><p><strong>TCP：可靠传输服务</strong></p>
+<ul>
+<li>保障收发进程之间的可靠传输<ul>
+<li>流控制: 发送速度不大于接收速度 </li>
+<li>拥塞控制: 对发送速度进行调节</li>
+<li>分组排序、丢失重传等</li>
+</ul>
+</li>
+<li>是一种面向连接服务</li>
+<li>但不能保障: <ul>
+<li>带宽(吞吐量)</li>
+<li>最低时延</li>
+<li>安全性</li>
+</ul>
+</li>
+</ul>
+<p><strong>UDP：尽力交付服务</strong></p>
+<ul>
+<li>不保证收发进程的可靠传输<ul>
+<li>没有流控制</li>
+<li>没有拥塞控制</li>
+<li>没有分组排序和重传机制</li>
+</ul>
+</li>
+<li>是一种无连接服务 </li>
+<li>也不能保障<ul>
+<li>带宽(吞吐量)</li>
+<li>最低时延</li>
+<li>安全性</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>应用类别</th>
+<th>应用层协议</th>
+<th>依靠的传输协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电子邮件</td>
+<td>SMTP [RFC 2821]</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>远程访问控制</td>
+<td>Telnet [RFC 854]</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>Web</td>
+<td>HTTP [RFC 2616]</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>文件传输</td>
+<td>FTP [RFC 959]</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>流式多媒体</td>
+<td>HTTP(如yotube)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>因特网电话</td>
+<td>SIP[RFC 3261]、RTP{RFC 3550]、或专用的(如Skype)</td>
+<td>UDP/TCP</td>
+</tr>
+</tbody>
+</table>
+<h4 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h4><p><code>应用层协议</code>定义了运行在不同端系统上的应用程序进程如何相互传递报文。</p>
+<ul>
+<li>报文类别，如：request, response </li>
+<li>报文格式(语法)：报文的字段有哪些；字段描述</li>
+<li>报文语义: 报文的处理方法；报文的各个字段的含义</li>
+<li>报文处理规则：请求和相应时如何发送报文；处理流程</li>
+<li>通用协议如何规约<ul>
+<li>通过RFC来定义标准化</li>
+<li>允许互操作</li>
+</ul>
+</li>
+<li>非标准化的专用协议：可由开发者自己定制，如：Skype</li>
+</ul>
+<p>应用层协议只是网络应用的一部分。如，Web的应用层协议为HTTP，但是Web应用的组成部分包括文档格式标准(HTML)，Web浏览器，Web服务器以及一个应用层协议HTTP。</p>
+<h2 id="2-2-Web和HTTP"><a href="#2-2-Web和HTTP" class="headerlink" title="2.2 Web和HTTP"></a>2.2 Web和HTTP</h2><h4 id="WWW、HTTP"><a href="#WWW、HTTP" class="headerlink" title="WWW、HTTP"></a>WWW、HTTP</h4><p><code>World Wide Web</code>：万维网，因特网中最重要的应用<br><code>HTTP</code>：超文本传输协议，Web的应用层协议</p>
+<h4 id="HTTP概况"><a href="#HTTP概况" class="headerlink" title="HTTP概况"></a>HTTP概况</h4><ul>
+<li>client/server 模式<ul>
+<li>client: 浏览器，请求，接收和， “现实” Web对象</li>
+<li>server: Web服务器程序，响应客户端的请求，如返回Web对象</li>
+</ul>
+</li>
+<li>依赖于TCP的传输服务:<ul>
+<li>客户端初始化一个TCP连接 (创建TCP套接字)到服务器端, <strong>默认目标端口80</strong></li>
+<li>服务器端接收TCP的连接请求</li>
+<li>HTTP协议开始工作：客户端请求Web对象，服务器端响应</li>
+<li>TCP连接终止</li>
+</ul>
+</li>
+<li>HTTP是“无状态”协议:<ul>
+<li>服务器不维持客户端的状态(历史)：不需要维护哪个客户端在什么时候做了什么</li>
+<li>只要客户端请求即予以响应，来者不拒</li>
+</ul>
+</li>
+<li>维持“状态”是一件复杂的事情：要记录历史数据，并保证一致性</li>
+<li>可以让应用程序来处理，如开发Web应用程序、进行会话管理、记录流程、日志etc</li>
+</ul>
+<h4 id="HTTP的两种连接方式"><a href="#HTTP的两种连接方式" class="headerlink" title="HTTP的两种连接方式"></a>HTTP的两种连接方式</h4><ul>
+<li>非持久性连接  HTTP/1.0：建立TCP连接后最多只能请求一个Web对象<ul>
+<li>浏览器并发TCP/HTTP连接</li>
+<li>为每一个请求的对象建立和维护全新的连接，需要分配TCP缓冲区和保持TCP变量(负担)</li>
+<li>每一个对象经受两倍往返时间rrt的交付时延</li>
+</ul>
+</li>
+<li>持久性连接  HTTP/1.1：在一个TCP连接期间可以请求多个Web对象<ul>
+<li>HTTP/1.1默认使用的是带流水线方式的持久性连接，效率更高</li>
+</ul>
+</li>
+</ul>
+<h4 id="HTTP的报文格式"><a href="#HTTP的报文格式" class="headerlink" title="HTTP的报文格式"></a>HTTP的报文格式</h4><ul>
+<li>报文编码：ASCII(人类可读)</li>
+<li>报文类别：<ul>
+<li>请求报文 (客户端发送，服务器端处理)</li>
+<li>响应报文 (服务器端发送，客户端处理)</li>
+</ul>
+</li>
+</ul>
+<p><strong>请求报文</strong><br><img src="https://i.loli.net/2018/06/05/5b16313172444.png" width="60%" height="60%"></p>
+<ul>
+<li>请求方法<ul>
+<li>GET: 获取Web对象，扩展URL(可提交数据)，实体体为空</li>
+<li>POST: 提交Web表单，封装在实体数据</li>
+<li>HEAD: 调试</li>
+<li>PUT: 上传Web对象(HTTP/1.1)</li>
+<li>DELETE: 删除Web对象(HTTP/1.1)</li>
+</ul>
+</li>
+<li>URL<ul>
+<li>Web路径：/folder </li>
+<li>Web对象标识：/object.obj </li>
+<li>Web对象?参数：/object.obj?p1&amp;p2 </li>
+</ul>
+</li>
+</ul>
+<p><strong>响应报文</strong><br><img src="https://i.loli.net/2018/06/05/5b163340844fb.png" width="60%" height="60%"></p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>短语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK 请求成功</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved Permanently 请求的对象已经被永久转移了</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request 一个通用差错代码，指示该请求不能被服务器理解</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found 被请求的文档不再服务器上</td>
+</tr>
+<tr>
+<td>505</td>
+<td>HTTP Version Not Supported 服务器不支持请求报文使用的HTTP协议版本</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified ，原来缓冲的文档还可以继续使用P77</td>
+</tr>
+</tbody>
+</table>
+<h4 id="用户与服务器的交互-cookie"><a href="#用户与服务器的交互-cookie" class="headerlink" title="用户与服务器的交互: cookie"></a>用户与服务器的交互: cookie</h4><ul>
+<li>HTTP是无状态协议：如何让服务器知道用户先前做过什么？ Cookie<ul>
+<li>在HTTP请求和响应的首部行设定cookie</li>
+<li>客户端保存cookies</li>
+<li>服务器端通过cookie与后台数据库关联</li>
+</ul>
+</li>
+</ul>
+<p><strong>P73 图2-10 跟踪用户状态</strong><br>cookie可以在无状态的HTTP之上建立一个用户会话层，主要用于：<strong>授权，购物车，推荐，用户会话状态管理，个性化推荐</strong></p>
+<ul>
+<li>怎样保持状态? <ul>
+<li>协议：通过复杂的交互过程</li>
+<li>cookies：让报文内容承载状态信息</li>
+<li>应用程序：如会话管理</li>
+</ul>
+</li>
+</ul>
+<h4 id="Web缓存P74"><a href="#Web缓存P74" class="headerlink" title="Web缓存P74"></a>Web缓存P74</h4><ul>
+<li>Web代理服务器<ul>
+<li>用户可以通过代理服务器访问外部网站</li>
+<li>既是客户端，又是服务器</li>
+</ul>
+</li>
+<li>Web缓存的作用<ul>
+<li>减少请求/响应时间</li>
+<li>流量本地化</li>
+<li>减少接入网络流量</li>
+<li>更好地实现内容分发(eg.CDN)</li>
+</ul>
+</li>
+</ul>
+<p>#####实例分析：<br>假设：</p>
+<ul>
+<li>Web对象的平均长度: 1M bits</li>
+<li>客户端的平均请求率:15个/sec</li>
+<li>客户端的数据传输速率: 1.50 Mbps</li>
+<li>从浏览器到服务器的往返时间: 2 sec</li>
+<li>接入网络的带宽: 15 Mbps</li>
+</ul>
+<p>结果：</p>
+<ul>
+<li>局域网流量强度: 15%</li>
+<li><strong>接入网流量强度 = 100%(!problem)</strong></li>
+<li>total delay = Internet delay 2秒+ <strong>access delay 若干分钟(排队时延)</strong>+ LAN delay 若干微秒</li>
+</ul>
+<p>昂贵的改进方法——增加接入链路的速率<br>接入网络的带宽: 15 Mbps - &gt; 100 Mbps</p>
+<ul>
+<li>局域网流量强度: 15%</li>
+<li><strong>接入网流量强度 = 15%</strong></li>
+<li>total delay = Internet delay 2秒+ <strong>access delay 若干毫秒</strong>+ LAN delay 若干微秒</li>
+</ul>
+<p><img src="https://i.loli.net/2018/06/05/5b164472d62ae.png" width="40%" height="40%"><img src="https://i.loli.net/2018/06/05/5b1645e4f3442.png" width="35%" height="435%"></p>
+<p>另一种改进方法：在机构网络中安装一个Web缓存器<br>如何计算设置缓存后的时延:</p>
+<ul>
+<li>设缓存中对象的命中率为 0.4<ul>
+<li>40% 的请求可以在缓存中获取</li>
+<li>60% 的请求在远程服务器获取 </li>
+</ul>
+</li>
+<li>接入链路利用率: <ul>
+<li>60% 的请求在远程服务器获取 </li>
+<li>接入网络传输速度 = 0.6*15 Mbps = 9 Mbps </li>
+<li>利用率= 9Mbps/15Mbps =60%</li>
+</ul>
+</li>
+<li>平均时延(概率)<ul>
+<li>= 0.6 <em> 服务器端时延 +0.4 </em> 缓存时延</li>
+<li>= 0.6 (2.01) + 0.4 (~msecs) </li>
+<li>= ~ 1.2 secs</li>
+</ul>
+</li>
+</ul>
+<h4 id="条件GET方法"><a href="#条件GET方法" class="headerlink" title="条件GET方法"></a>条件GET方法</h4><p>Web缓存的问题：如何保证缓存中的对象是最新的？<br><code>条件GET方法</code>：HTTP协议中的一种机制，允许缓存器证实它的对象是最新的</p>
+<ul>
+<li>目标: 如果缓存中的对象是新的，就没必要再去远程服务器获取<ul>
+<li>减少时延</li>
+<li>降低外部带宽利用率</li>
+</ul>
+</li>
+<li>缓存: 为每个对象设置版本信息<ul>
+<li>If-modified-since: <date></date></li>
+</ul>
+</li>
+<li>服务器: 如果缓存的对象是最新的，服务器端不需再响应: <ul>
+<li>HTTP/1.0 304 Not Modified</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-FTP-文件传输协议"><a href="#2-3-FTP-文件传输协议" class="headerlink" title="2.3 FTP: 文件传输协议"></a>2.3 FTP: 文件传输协议</h3><ul>
+<li>向远程服务器端收发文件</li>
+<li>client/server 模式<ul>
+<li>client: 初始化连接(任何时候都是从客户端发起)</li>
+<li>server: 远程主机</li>
+</ul>
+</li>
+<li>ftp server: port 21，20<ul>
+<li>服务器端默认<code>端口号21</code> 用于对客户端认证</li>
+<li>服务器会在接收到文件传输请求时，打开<code>端口号20</code>的端口来进行传输数据文件。</li>
+</ul>
+</li>
+</ul>
+<p>FTP客户端连接服务器端使用TCP提供可靠传输服务有两类连接：控制、传输 </p>
+<ul>
+<li>控制连接：<ul>
+<li>服务器端默认端口号：21</li>
+<li>建立控制连接时需要对客户端验证</li>
+<li>客户端向服务器端发送交互式命令</li>
+<li>是有状态的协议，可控制客户端的最近登录验证、历史信息等</li>
+<li>控制连接是<strong>持久性</strong>的</li>
+</ul>
+</li>
+<li>传输连接：<ul>
+<li>服务器端接收到文件传输的请求时，会打开传输连接(20端口)用于文件传输</li>
+<li>当这个文件传输结束后，第二个连接会被服务器端关闭</li>
+<li>传输连接是<strong>非持久性</strong>的</li>
+<li>“带外传输”</li>
+</ul>
+</li>
+</ul>
+<p>一些常用命令P79:</p>
+<ul>
+<li>sent as ASCII text over control channel</li>
+<li>USER username：用于向服务器传送用户标识</li>
+<li>PASS password：用于向服务器发送用户口令</li>
+<li>LIST return list of file in current directory</li>
+<li>RETR filename retrieves (gets) file</li>
+<li>STOR filename stores (puts) file onto remote host</li>
+</ul>
+<p>常见的服务器响应代码：</p>
+<ul>
+<li>status code and phrase (as in HTTP)</li>
+<li>331 Username OK, password required(用户名OK，需要口令)</li>
+<li>125 data connection already open; transfer starting(数据连接已经打开，开始传送)</li>
+<li>425 Can’t open data connection(无法打开数据连接)</li>
+<li>452 Error writing file(写文件差错)</li>
+</ul>
+<h3 id="2-4-因特网中的电子邮件"><a href="#2-4-因特网中的电子邮件" class="headerlink" title="2.4 因特网中的电子邮件"></a>2.4 因特网中的电子邮件</h3><p><strong>三个主要组件</strong></p>
+<ul>
+<li>用户代理：即：邮件收发读写软件<ul>
+<li>eg.Outlook, Foxmail, Thundbird</li>
+</ul>
+</li>
+<li>邮件服务器：发送、接收邮件</li>
+<li>邮件协议<ul>
+<li>发送协议：SMTP </li>
+<li>接收协议：PoP3、IMAP</li>
+<li>报文协议：MIME</li>
+</ul>
+</li>
+</ul>
+<h4 id="简单邮件传输协议-SMTP"><a href="#简单邮件传输协议-SMTP" class="headerlink" title="简单邮件传输协议:SMTP"></a>简单邮件传输协议:SMTP</h4><ul>
+<li>使用TCP的可靠传输服务,</li>
+<li>端口号：25</li>
+<li>直接传输: 从发送端的服务器到接收端的服务器</li>
+<li>传输的三个阶段:握手(greeting)、报文传输、结束</li>
+<li>使用交互式命令<ul>
+<li>commands: ASCII text</li>
+<li>response: status code and phrase</li>
+</ul>
+</li>
+<li>报文编码格式：7-bit ASCII</li>
+</ul>
+<p><img src="https://i.loli.net/2018/06/05/5b164b692f1ea.png" width="80%" height="80%"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> S: 220 hamburger.edu  C: HELO crepes.fr  S: 250  Hello crepes.fr, pleased to meet you  C: MAIL FROM: &lt;alice@crepes.fr&gt;  S: 250 alice@crepes.fr... Sender ok  C: RCPT TO: &lt;bob@hamburger.edu&gt;  S: 250 bob@hamburger.edu ... Recipient ok  C: DATA  S: 354 Enter mail, end with &quot;.&quot; on a line by itself  C: Do you like ketchup?  C: How about pickles?  C: .  S: 250 Message accepted for delivery  C: QUIT  S: 221 hamburger.edu closing connection</span><br><span class="line">```- SMTP：持久性连接 - 在一个连接中可以进行多次操作 - 可以发送多个邮件、群发邮件 - 通过退出(Quit)来关闭连接- SMTP：报文都是7bit ASCII编码- SMTP：使用 crlf.crlf 作为报文结束符|SMTP|HTTP|</span><br><span class="line">|---|----|</span><br><span class="line">|推协议(push):向服务器端发送|拉协议(pull)：向服务器端请求||使用ASCII对报文进行编码|使用ASCII对报文进行编码|</span><br><span class="line">|报文可以封装**多个对象**(email附件)|每个响应报文只能封装1个web对象|- RFC 822: 用于定义邮件的格式: - 首部行</span><br></pre></td></tr></table></figure>
+<p> From: alice&amp;crepes.fr<br> To: <a href="mailto:bob@hamburger.edh" target="_blank" rel="noopener">bob@hamburger.edh</a><br> Subject: Searching for the meaning of life</p>
+<pre><code> - Body: 邮件正文(ASCII characters only，BASE 64编码)
+
+#### 邮件访问协议(接收方) 
+- POP: Post Office Protocol [RFC 1939]
+ - 认证(agent &lt;--&gt;server)和下载 
+- IMAP: Internet Mail Access Protocol [RFC 1730]
+ - 更多的功能(更复杂)
+ - 可在服务器端操作邮件
+- HTTP: Hotmail , Yahoo! Mail, etc.
+
+**POP3**
+
+- 认证阶段
+ - 客户端命令:
+
+</code></pre><p> user: declare username<br> pass: password</p>
+<pre><code>- 服务器端响应:
+
+</code></pre><p>+OK<br>-ERR<br><code>`</code></p>
+<ul>
+<li>传输阶段, 客户端的命令:<ul>
+<li>list: 列出邮件的索引</li>
+<li>retr: 根据编号接收邮件</li>
+<li>dele: 删除某个编号的邮件</li>
+<li>quit</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>POP3</th>
+<th>IMAP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>download and delete 在其他客户端无法读取</td>
+<td>报文都在服务器端存储</td>
+</tr>
+<tr>
+<td>download-and-keep 客户端和服务器端双份</td>
+<td>允许用户创建文件夹</td>
+</tr>
+<tr>
+<td>POP3是无状态的协议</td>
+<td>在会话周期内维护用户的状态</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-5-因特网的目录服务"><a href="#2-5-因特网的目录服务" class="headerlink" title="2.5 因特网的目录服务"></a>2.5 因特网的目录服务</h3><p>因特网中标识一个主机：</p>
+<ul>
+<li>主机名：<a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a>, mail.cqu.edu.cn ……  </li>
+</ul>
+<blockquote>
+<p>人容易记住某个主机的名字，而不是IP地址<br>主机别名：一个主机也会有很多别名<br><strong><code>域名</code></strong>：.edu .cn .uk</p>
+</blockquote>
+<ul>
+<li>IP地址：32bit 编码 (点分十进制表示：202.202.0.35)<ul>
+<li>机器之间相互识别</li>
+<li>路由器通过IP地址对分组进行路由、转发</li>
+</ul>
+</li>
+</ul>
+<h4 id="DNS-因特网的目录服务"><a href="#DNS-因特网的目录服务" class="headerlink" title="DNS 因特网的目录服务"></a>DNS 因特网的目录服务</h4><p><strong>DNS提供的服务</strong>(因特网中的一个核心服务)：</p>
+<ul>
+<li>将主机名映射为IP地址</li>
+<li>可对服务器的负载进行均衡</li>
+<li>获得主机别名对应的规范化主机名及主机的IP地址</li>
+<li>邮件服务器别名</li>
+</ul>
+<h4 id="DNS工作机理概述"><a href="#DNS工作机理概述" class="headerlink" title="DNS工作机理概述"></a>DNS工作机理概述</h4><ul>
+<li>DNS工作在应用层：<ul>
+<li>DNS服务不直接与用户打交道</li>
+<li>不封装用户的应用数据报文</li>
+<li>只协助源主机查询出目标主机的IP地址</li>
+<li>DNS是一个分布式的数据库系统：</li>
+</ul>
+</li>
+<li>DNS是一个分布式的数据库系统：<ul>
+<li>通过<strong>层级化</strong>的域名服务器进行工作</li>
+</ul>
+</li>
+<li>DNS的分布式查询方式: <ul>
+<li><code>迭代查询</code></li>
+<li><code>递归查询</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2018/06/05/5b1684e9b46fa.png" width="40%" height="40%"><img src="https://i.loli.net/2018/06/05/5b1684ea021d6.png" width="40%" height="40%"></p>
+<ul>
+<li>DNS的缓存机制<ul>
+<li>作用：改善时延、减少DNS报文数量</li>
+<li>服务器查询到映射关系后，将会缓存此映射关系</li>
+<li>每个缓存的映射关系具有一定的生命周期（如2天）</li>
+<li>顶级DNS服务器一般缓存本地DNS服务器的映射关系（减少根服务器的负担）</li>
+<li>由IETF制定并维护标准 RFC 2136</li>
+<li>本地主机上面也有缓存</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>层级化的域名服务器</strong></p>
+</blockquote>
+<ul>
+<li>根DNS服务器：用于查询顶级DNS服务器的地址</li>
+<li>顶级DNS服务器：用于查询下一级或权威DNS服务器的地址<ul>
+<li>提供了权威的主机名和IP地址映射，由组织机构或服务提供商来维护</li>
+<li>eg. .net/.edu/.org/.com/.uk/.cn</li>
+</ul>
+</li>
+<li>权威DNS服务器：组织机构自身的DNS服务器<ul>
+<li>提供了权威的主机名和IP地址映射，由组织机构或服务提供商来维护</li>
+</ul>
+</li>
+<li>本地DNS服务器：<ul>
+<li>不属于严格意义上层级DNS体系</li>
+<li>每个本地ISP、公司、大学都会部署</li>
+<li>主机的DNS查询都会先提交给本地DNS服务器</li>
+<li>具有缓存和代理的功能</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>为什么要分布式、层级化？而不是集中化？</strong></p>
+</blockquote>
+<p>集中化的问题：</p>
+<ul>
+<li>单点故障：会导致全局失效</li>
+<li>通信容量：会导致拥塞</li>
+<li>远距离的集中式数据库：增大时延</li>
+<li>维护困难</li>
+<li>难于扩展</li>
+</ul>
+<h4 id="DNS记录"><a href="#DNS记录" class="headerlink" title="DNS记录"></a>DNS记录</h4><ul>
+<li>使用分布式的数据库来存储资源记录</li>
+<li>资源记录格式：四元组<ul>
+<li>RR format: (name, value, type, ttl)</li>
+</ul>
+</li>
+<li>name：主机名或域名</li>
+<li>value：主机名映射的IP地址或DNS服务器名</li>
+<li>type：记录类型<ul>
+<li>Type=A，value是该主机名对应的IP地址；(<a href="http://www.cqu.edu.cn" target="_blank" rel="noopener">www.cqu.edu.cn</a>, 202.202.0.35, A)</li>
+<li>Type=NS， value是该域名中的DNS服务器；(cqu.edu.cn, dns.cqu.edu.cn, NS)</li>
+<li>Type=CNAME，value是该主机名对应的规范主机名</li>
+<li>Type=MX， value是该邮件服务器名对应的规范主机名</li>
+</ul>
+</li>
+<li>ttl：记录的生存周期(time to live)</li>
+</ul>
+<h4 id="DNS报文"><a href="#DNS报文" class="headerlink" title="DNS报文"></a>DNS报文</h4><p><img src="https://i.loli.net/2018/06/06/5b17294ee77f3.png" width="65%" height="65%"><br>查询报文、回答报文：两者格式相同</p>
+<ul>
+<li>报文首部(12 bytes)</li>
+<li>标识符(16bit)：匹配查询和回答</li>
+<li>标志位(16bit)：是查询 还是 回答；是否权威的回答；希望递归；递归可用</li>
+<li>问题：name, type</li>
+<li>回答：name, value, type, ttl，可能有多个记录</li>
+<li>权威</li>
+<li>附加</li>
+</ul>
+<h4 id="向DNS数据库中插入记录"><a href="#向DNS数据库中插入记录" class="headerlink" title="向DNS数据库中插入记录"></a>向DNS数据库中插入记录</h4><ul>
+<li>机构注册：向权威机构注册本机构的DNS信息<ul>
+<li>向相关机构注册本机构的域名</li>
+<li>向上级DNS服务器注册本机构的权威DNS服务器<br>Type=NS：该域中的权威DNS服务器是哪个主机(networkutopia.com,dns1.networkutopia.com, NS)<br>Type=A：权威DNS服务器的IP地址是多少(dns1.networkutopia.com,212.212.212.1, A)</li>
+</ul>
+</li>
+<li>权威DNS服务器中的记录更新<ul>
+<li>对组织机构内部的主机、地址映射信息进行维护：<code>静态配置</code>、<code>动态更新</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-6-P2P应用"><a href="#2-6-P2P应用" class="headerlink" title="2.6 P2P应用"></a>2.6 P2P应用</h3><h4 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h4><ul>
+<li>纯P2P架构<ul>
+<li>没有Sever</li>
+<li>任意端系统可以直连</li>
+<li>端点间歇连接</li>
+<li>可能会更换IP地址</li>
+</ul>
+</li>
+<li>典型应用<ul>
+<li>文件分发：BitTorrent</li>
+<li>流媒体传输：Kankan</li>
+<li>因特网电话：Skype</li>
+</ul>
+</li>
+<li>混合架构<ul>
+<li>Server：追踪器、帐户管理等</li>
+</ul>
+</li>
+</ul>
+<h4 id="P2P文件分发"><a href="#P2P文件分发" class="headerlink" title="P2P文件分发"></a>P2P文件分发</h4><ul>
+<li>一台服务器S向N个主机(peers)分发一个大文件(大小为F bits)<ul>
+<li>服务器的<strong>上载</strong>能力u<sub>s</sub>；</li>
+<li>端点i的<strong>上载</strong>和<strong>下载</strong>能力分别为u<sub>i</sub>和d<sub>i</sub>；</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-使用C-S模式进行分发"><a href="#1-使用C-S模式进行分发" class="headerlink" title="1.使用C/S模式进行分发"></a>1.使用C/S模式进行分发</h5><ul>
+<li>服务器端：<ul>
+<li>S必须向每个客户端上载1个拷贝</li>
+<li>发送1个拷贝的时间：t=F/u<sub>s</sub></li>
+<li>发送N个拷贝的时间：t<sub>total</sub>=NF/u<sub>s</sub></li>
+</ul>
+</li>
+<li>客户端<ul>
+<li>每个端点必须获得一个拷贝</li>
+<li>设dmin=客户端的最低下载速率</li>
+<li>客户端的最长下载时间：F/d<sub>min</sub></li>
+<li>文件分发时间：D<sub>c/s</sub>≥max{NF/u<sub>s</sub>, F/d<sub>min</sub>}，随着N的增加，时间线性增长</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-使用P2P进行分发"><a href="#2-使用P2P进行分发" class="headerlink" title="2.使用P2P进行分发"></a>2.使用P2P进行分发</h5><ul>
+<li>服务器端<ul>
+<li>S必须上载至少1个拷贝</li>
+<li>所需上载时间：t<sub>u=</sub>F/u<sub>s</sub></li>
+</ul>
+</li>
+<li>客户端<ul>
+<li>每个端点必须获得一个拷贝：td=F/d<sub>min</sub></li>
+</ul>
+</li>
+<li>客户群<ul>
+<li>必须下载N个拷贝，总体上载速率为u<sub>s</sub>+∑u<sub>i</sub></li>
+</ul>
+</li>
+<li>文件分发时间：Dp2p≥max{F/u<sub>s</sub>, F/d<sub>min</sub>, NF/(u<sub>s</sub>+ ∑u<sub>i</sub>)}</li>
+</ul>
+<p><img src="https://i.loli.net/2018/06/05/5b168eccad419.png" width="50%" height="50%"><img src="https://i.loli.net/2018/06/05/5b168ec27b402.png" width="40%" height="40%"></p>
+<h4 id="BitTorrent文件分发协议"><a href="#BitTorrent文件分发协议" class="headerlink" title="BitTorrent文件分发协议"></a>BitTorrent文件分发协议</h4><ul>
+<li>文件被分为大小为256Kb的块</li>
+<li>洪流中的端点发送和接收这些文件块</li>
+</ul>
+<p><img src="https://i.loli.net/2018/06/05/5b1690647bcfa.png" width="40%" height="40%"></p>
+<ul>
+<li>请求文件块：最稀缺优先<ul>
+<li>在某一时刻：不同的端点，文件块集也不同</li>
+<li>在某段时间：Alice周期性地向邻居索问他们的文件块索引，随后请求这些所需的文件块</li>
+<li>最稀缺优先原则</li>
+<li>所有邻居中某个块的数量最少，则先请求这个块。Why?</li>
+</ul>
+</li>
+<li>响应文件块：礼尚往来<ul>
+<li>疏通：确定给自己发送块最快的几个对等方</li>
+<li>tit-for-tat：看谁对我好(给我传的快)，我也对他好(给她/他传得也快)</li>
+</ul>
+</li>
+</ul>
+<h4 id="分布式哈希表DHT"><a href="#分布式哈希表DHT" class="headerlink" title="分布式哈希表DHT"></a>分布式哈希表DHT</h4><ul>
+<li>基于P2P模式的分布式数据库</li>
+<li>数据库的基本思想：键值对<ul>
+<li>键：账号，值：口令(eg. 键：学号，值：成绩)</li>
+</ul>
+</li>
+<li>集中式数据库<ul>
+<li>C/S架构</li>
+</ul>
+</li>
+<li>分布式数据库<ul>
+<li>P2P架构</li>
+<li>在大量的peer上面存储键值对</li>
+<li>分布式哈希表DHT </li>
+</ul>
+</li>
+</ul>
+<p>DHT的应用：一个peer通过键来查询，获得这个键对应的值</p>
+<blockquote>
+<p>应用场景：<br>键：”Logen” ；Alice通过这个键来查询谁有这个影片<br>值：拥有这个影片副本的peer(IP地址)</p>
+</blockquote>
+<h5 id="如何创建分布式哈希表？"><a href="#如何创建分布式哈希表？" class="headerlink" title="如何创建分布式哈希表？"></a>如何创建分布式哈希表？</h5><ul>
+<li>核心问题：怎么把键值对分配到peer中?</li>
+<li>基本思想：<ul>
+<li>把每个键都通过Hash变成整数，并为每个peer进行<strong>整数标识</strong></li>
+<li>把键值对插入到<strong>与这个整数最接近的端点</strong>中</li>
+</ul>
+</li>
+<li>具体操作：<ul>
+<li>用n bit的整数(如n=64),可表示的整数区间为[0, 2n-1]</li>
+<li>把每个键都用整数表示：Key=hash(“Logen”)=20161858，所以称之为分布式hash表 </li>
+</ul>
+</li>
+<li>插入键值：<ul>
+<li>规则：把键值插入到与peer ID最接近的peer上</li>
+<li>与这个整数相等的节点，或与这个整数最临近的后继节点</li>
+</ul>
+</li>
+</ul>
+<h5 id="怎样查找出键值对"><a href="#怎样查找出键值对" class="headerlink" title="怎样查找出键值对"></a>怎样查找出键值对</h5><table>
+<thead>
+<tr>
+<th>环状DHT，覆盖网络</th>
+<th>具有捷径的环状DHT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每个节点只知道它的邻居(前驱、后继)</td>
+<td>每个节点知道它的邻居以及它的两个捷径</td>
+</tr>
+<tr>
+<td>算法复杂度(最差情况): O(N)</td>
+<td>算法复杂度: O(log N)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>对等方扰动: 等同于链表中删除一个节点<ul>
+<li>Peer记住它的两个后继定时检查两个后继是否存在(Ping一下)</li>
+<li>若直接后继退离，将第二后继设为直接后继</li>
+</ul>
+</li>
+<li>Peer可能随时加入：<ul>
+<li>查询：先问一下DHT自己的前驱和后继是谁</li>
+<li>通知：向前驱和后继发送报文</li>
+<li>更新：本节点、前驱和后继均要更新</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-7-TCP套接字编程"><a href="#2-7-TCP套接字编程" class="headerlink" title="2.7 TCP套接字编程"></a>2.7 TCP套接字编程</h3><p><code>套接字</code>：在主机端、由应用进程创建、由操作系统控制的接口，一个应用进程可以向另一个进程发送或接收报文。<br><code>套接字编程</code>：对应于传输层的服务，有两种类型的套接字</p>
+<ul>
+<li><code>四元组</code>TCP：可靠的，面向字节流的传输，封装为报文段(segment)</li>
+<li><code>二元组</code>UDP：不可靠的传输，封装为用户数据报(user datagram)</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/cn3/" class="prev">PREV</a><a href="/cn1/" class="next">NEXT</a></div><div data-thread-key="cn2/" data-title="计算机网络笔记02 应用层" data-url="http://Winnie1997.github.io/cn2/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

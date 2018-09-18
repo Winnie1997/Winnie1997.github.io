@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 操作系统笔记04 进程管理 · Hi, Dai</title><meta name="description" content="操作系统笔记04 进程管理 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">操作系统笔记04 进程管理</h1><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="进程概念"><a href="#进程概念" class="headerlink" title="进程概念"></a>进程概念</h4><ul>
+<li>流程批处理系统出现之前：工作</li>
+<li>多程序或分时：程序或任务</li>
+<li><p>进程：正在运行的作业/程序/任务的抽象</p>
+</li>
+<li><p><strong><code>进程</code></strong>是执行中的程序，形成所有计算机的基础。</p>
+<a id="more"></a>
+</li>
+<li><p>一个过程不仅仅是一个程序。它包括</p>
+<ul>
+<li><strong>文本段</strong>：可执行的机器代码    /程序代码</li>
+<li><strong>数据段</strong>：包括全局变量</li>
+<li>当前活动：通过程序计数器的值和处理器寄存器的内容表示</li>
+<li><strong>堆栈段</strong>：包含临时数据，如函数参数，返回地址和局部变量 </li>
+<li>(如果需要的话)<strong>堆</strong>：进程运行期间动态地分配内存</li>
+<li>许多其他资源，如打开的文件等<br><img src="https://i.loli.net/2018/06/17/5b260aa24cf1d.png" width="50%" height="80%"></li>
+</ul>
+</li>
+<li>程序只是被动实体，如存储在磁盘上包含一系列指令的文件内容(可执行文件)</li>
+<li>进程时活动实体，它有一个程序计数器用来表示一个要执行的命令和相关资源的合集。</li>
+<li>多个进程可能运行同一程序。尽管它们共享相同的文本段，但它们被当作两个独立的执行程序，数据段、堆、堆栈段不同。</li>
+</ul>
+<h4 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h4><ul>
+<li>当一个进程执行时，它会改变状态。过程的状态由其当前活动定义。</li>
+<li>每个进程可能处于以下状态之一：<ul>
+<li>新建：进程正在被创建。</li>
+<li>运行：指令正在被执行。</li>
+<li>等待：进程正在等待某个事件发生(如 I/O 完成或收到信号)。</li>
+<li>就绪：进程等待分配处理器。</li>
+<li>终止：进程完成执行。</li>
+</ul>
+</li>
+<li>随着进程的运行，它将从当前状态转换到另一个状态。这五个状态中有六个过渡。<br><img src="https://i.loli.net/2018/06/17/5b26104f11cf7.png" width="80%" height="80%"></li>
+</ul>
+<h4 id="进程块"><a href="#进程块" class="headerlink" title="进程块"></a>进程块</h4><ul>
+<li>每个进程在操作系统中由过程控制块（PCB）表示，也称为任务控制块。<ol>
+<li>进程号是进程的唯一标识符，也称为PID。</li>
+<li>程序计数器（PC）：是寄存器之一。</li>
+<li>CPU调度信息：包括<strong>进程的优先级</strong>、调度队列的指针和其它调度参数。<br><img src="https://i.loli.net/2018/06/17/5b2610656be5b.png" width="30%" height="80%"></li>
+</ol>
+</li>
+</ul>
+<h4 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h4><p>当运行进程因某种原因无法继续时，操作系统必须决定下一个要运行的进程。<strong>进程调度</strong>选择一个可用的进程到CPU上执行。</p>
+<h5 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h5><ul>
+<li>上下文切换：将 CPU 转向另一个进程需要保存当前进程的状态，并载入为新进程存储的状态。</li>
+<li>是额外的开销。操作系统越复杂，上下文切换需要做的工作越多。</li>
+<li>上下文切换时间与硬件支持有密切相关。根据处理器的不同。</li>
+<li>上下文切换是一个性能瓶颈，程序员正在使用新的结构来尽可能地避免它。</li>
+</ul>
+<h5 id="调度队列"><a href="#调度队列" class="headerlink" title="调度队列"></a>调度队列</h5><ul>
+<li>作业队列：由系统中的所有进程组成;</li>
+<li>就绪队列：由等待CPU执行的进程组成;<br>-操作系统也有其他队列。<ul>
+<li>I/O 设备队列：由等待特定 I/O设备的进程组成。<br><img src="https://i.loli.net/2018/06/17/5b2613f4c3e27.png" width="75%" height="80%"><br><img src="https://i.loli.net/2018/06/17/5b2614aca2536.png" width="75%" height="80%"></li>
+</ul>
+</li>
+</ul>
+<h5 id="调度程序"><a href="#调度程序" class="headerlink" title="调度程序"></a>调度程序</h5><p>调度程序从就绪队列中选择一个进程并为其分配CPU。我们称这个调度程序为CPU调度程序。</p>
+<h4 id="合作进程"><a href="#合作进程" class="headerlink" title="合作进程"></a>合作进程</h4><ul>
+<li>如果一个进程不会影响系统中其它的进程，而且也不被其它进程影响，那么它是一个独立进程。不与其它进程共享数据(临时的或长久的)的进程是独立进程。</li>
+<li>如果一个进程会影响系统中其它的进程而且也被影响，那么它是一个协作进程。与其它进程共享数据的进程是协作进程。</li>
+<li>进程协作的优点<ul>
+<li><strong>信息共享</strong>：多个进程可能需要同一条信息。</li>
+<li><strong>计算加速</strong>：将问题分解成几个可以并行运行的子任务;</li>
+<li><strong>模块化</strong>：通过设计将不同功能分散到进程中。</li>
+</ul>
+</li>
+<li>但是，协作进程的并发执行需要<strong>允许进程彼此通信</strong>并使其<strong>动作同步</strong>的机制。</li>
+</ul>
+<h5 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h5><ul>
+<li>这是协作进程的通用范例。</li>
+<li>生产者进程产生信息以供消费者进程消费。必须要又一个缓冲来被生产者填充并被消费者所使用。<ul>
+<li><strong>无限缓冲</strong>：对缓冲大小没有限制。消费者可能不得不等待新项，但生产者总可以产生新项。</li>
+<li><strong>有限缓冲</strong>：缓冲大小固定。如果缓冲为空，消费者必须等待；如果缓冲为满，生寒症必须等待。</li>
+</ul>
+</li>
+<li>操作系统可以通过使用进程间通信（IPC）工具来提供缓冲区。<strong>程序员</strong>只是使用系统调用来填充或清空缓冲区。</li>
+<li>缓冲区也可以位于生产者和消费者可以访问的<strong>共享存储器</strong>中。在这种情况下，<strong>程序员</strong>必须自己管理共享缓冲区。</li>
+</ul>
+<h4 id="进程间通信-IPC"><a href="#进程间通信-IPC" class="headerlink" title="进程间通信(IPC)"></a>进程间通信(IPC)</h4><ul>
+<li>在消费者-生产者问题中，缓冲区可以由操作系统提供。操作系统必须同步消费者和生产者对缓冲区的访问。</li>
+<li>进程间通信(<strong>IPC</strong>)提供了一种机制，允许进程进行通信，并在非共享相同地址空间的情况下同步他们的动作。</li>
+<li>eg.<strong>①Message-passing, ②pipe, ③socket, etc.</strong></li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/os5/" class="prev">PREV</a><a href="/os3/" class="next">NEXT</a></div><div data-thread-key="os4/" data-title="操作系统笔记04 进程管理" data-url="http://Winnie1997.github.io/os4/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

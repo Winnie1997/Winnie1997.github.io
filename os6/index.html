@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 操作系统笔记06 CPU调度 · Hi, Dai</title><meta name="description" content="操作系统笔记06 CPU调度 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">操作系统笔记06 CPU调度</h1><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>CPU调度是多道程序操作系统的基础。通过在进程之间切换CPU，操作系统可以提高计算机的<strong>吞吐率</strong>。</li>
+<li>在内核级支持线程的操作系统中，是线程被操作系统调度，而不是进程。</li>
+<li><p>调度是操作系统的基本功能。 几乎所有的计算机资源在使用前都要调度。 CPU调度对操作系统设计来说很重要。</p>
+<a id="more"></a>
+</li>
+</ul>
+<h5 id="CPU-I-O-区间周期"><a href="#CPU-I-O-区间周期" class="headerlink" title="CPU- I/O 区间周期"></a>CPU- I/O 区间周期</h5><ul>
+<li>CPU的成功调度依赖于进程的如下属性：<ul>
+<li>进程执行由<strong>CPU执行</strong>和 <strong>I/O 等待周期</strong>组成</li>
+<li>进程在这两个状态之间切换。</li>
+<li>由CPU区间开始- I/O 区间 -..-最后的CPU区间通过系统请求终止执行。</li>
+</ul>
+</li>
+<li>CPU区间时间曲线图：通常为指数/超指数形式，具有大量短CPU区间和少量长CPU区间。<br><img src="https://i.loli.net/2018/06/18/5b274fd5857b6.png" width="35%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b2750265b65e.png" width="55%" height="80%"> </li>
+</ul>
+<h5 id="CPU调度程序"><a href="#CPU调度程序" class="headerlink" title="CPU调度程序"></a>CPU调度程序</h5><ul>
+<li>每当CPU空闲时，操作系统就必须从就绪队列中选择一个进程来执行。晋城选择由<strong>短期调度程序</strong>或CPU调度程序来执行。</li>
+<li>CPU调度决策可在如下4种情况下发生：<ol>
+<li>当一个进程从运行切换到等待状态。</li>
+<li>当一个进程从运行状态切换到就绪状态。</li>
+<li>当一个进程从等待切换到就绪状态。</li>
+<li>当一个进程终止。</li>
+</ol>
+</li>
+<li>当调度只能发生1和4两种情况下，称调度方案是<strong>非抢占的/协作</strong>的，否则，称调度方案是<strong>抢占的</strong>。</li>
+<li>抢占调度：对访问共享数据是有代价的，对操作系统内核的设计也有影响。</li>
+</ul>
+<h4 id="调度标准"><a href="#调度标准" class="headerlink" title="调度标准"></a>调度标准</h4><ul>
+<li>CPU使用率：使CPU尽可能忙。</li>
+<li>吞吐量：一个时间单元内所完成的进程的数量。</li>
+<li>周转时间：从进程提交到进程完成的时间段。</li>
+<li>等待时间：进程在就绪队列中等待的时间量。</li>
+<li>响应时间：从提交请求到产生第一个响应所花费的时间量。</li>
+</ul>
+<h4 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h4><h5 id="先到先服调度-FCFS"><a href="#先到先服调度-FCFS" class="headerlink" title="先到先服调度(FCFS)"></a>先到先服调度(FCFS)</h5><ul>
+<li>先请求CPU的进程先分配CPU</li>
+<li>非抢占：一旦CPU被分配给了一个进程，该进程就会保持CPU直到释放CPU位置。  </li>
+<li>1 - 2 - 3进程等待时间: P1 = 0; P2 = 24; P3 = 27; 平均等待时间: (0 + 24 + 27) / 3 = 17 </li>
+<li>2 - 3 - 1进程等待时间: P1 = 6; P2 = 0; P3 = 3; 平均等待时间: (6 + 0 + 3) / 3 = 3<br><img src="https://i.loli.net/2018/06/18/5b27443f91882.png" width="35%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b274417bceb8.png" width="49%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b274425dba0b.png" width="49%" height="80%"></li>
+</ul>
+<h5 id="最短作业优先调度-SJF"><a href="#最短作业优先调度-SJF" class="headerlink" title="最短作业优先调度(SJF)"></a>最短作业优先调度(SJF)</h5><ul>
+<li>将每个进程与其下一个CPU区间段相关联。当CPU为空闲时，它会赋给具有最短CPU区间的进程。</li>
+<li>SJF调度算法可证明为最佳，对给定的一组进程，平均等待时间最短。</li>
+<li>具有理论价值，无法实现，因为没有办法知道下一个CPU区间的长度。</li>
+<li>两种方案：<ul>
+<li>非抢占：一旦CPU给予该进程，它就不可能被抢占。eg. 平均等待时间: (0 + 6 + 3 + 7)/4 = 4.</li>
+<li>抢占：如果一个到达的新的进程CPU区间长度小于当前执行进程的剩余时间，则抢占。也被称为最短剩余时间优先（SRTF）调度。eg. 平均等待时间: (9 + 1 + 0 + 2)/4 = 3.   </li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2018/06/18/5b2750dbb6036.png" width="25%" height="80%">   <img src="https://i.loli.net/2018/06/18/5b2750cd7f5a5.png" width="35%" height="80%"><img src="https://i.loli.net/2018/06/18/5b2750d34e6ca.png" width="35%" height="80%"></p>
+<h5 id="优先级调度"><a href="#优先级调度" class="headerlink" title="优先级调度"></a>优先级调度</h5><ul>
+<li>每一个进程都有一个优先级与其关联。具有最高优先级的进程会分配到CPU。</li>
+<li>优先级通常为固定区间的数字。此处用小数字表示高优先级。</li>
+<li>SJF算法是优先级调度的一个特例，其优先级为下一个CPU区间的倒数。CPU区间越大，优先级越小。</li>
+<li>优先级调度可以是抢占或非抢占的<br><img src="https://i.loli.net/2018/06/18/5b2754621eca0.png" width="35%" height="80%"><img src="https://i.loli.net/2018/06/18/5b27545d3e4a1.png" width="50%" height="80%"></li>
+<li>存在的问题<ol>
+<li>饥饿/无穷阻塞：低优先级进程可能永远不会执行。</li>
+<li>优先级反转：高优先级进程需要访问资源，被另一个优先级较低的进程持有，该低优先级进程不运行则不释放资源。</li>
+</ol>
+</li>
+<li>解决办法<ul>
+<li>老化：逐渐增加在系统中等待很长时间的进程的优先级。</li>
+</ul>
+</li>
+</ul>
+<h5 id="轮转法调度-RR"><a href="#轮转法调度-RR" class="headerlink" title="轮转法调度(RR)"></a>轮转法调度(RR)</h5><ul>
+<li>轮转法调度算法专门为分时系统设计。类似FCFS调度，但增加了抢占以切换进程。</li>
+<li>定义一个较小时间单元，称为<strong>时间片</strong>，通常为10-100ms。</li>
+<li>将就绪队列作为循环队列。CPU调度程序循环就绪队列，为每个进程分配不超过一个时间片的CPU。<ol>
+<li>进程只需要小于时间片的CPU区间，释放CPU，继续就绪队列的下一个进程。</li>
+<li>进程的CPU区间比时间片长，经过这段时间片的CPU区间，进程被抢占并加入到就绪队列的末尾。</li>
+</ol>
+</li>
+<li>如果在就绪队列中有n个进程并且时间量为q，那么每个进程会得到 1 / n 的CPU时间，其长度不超过q时间单元。每个进程必须等到的CPU时间不超过 ( n - 1 ) q 个时间单元，直到它的下一个时间片为止。</li>
+<li>性能很大程度上依赖于时间片的大小<ul>
+<li>时间片非常大 ➡ FCFS</li>
+<li>时间片很小 ➡ 时间片要比上下文切换时间长，否则开销太高。</li>
+</ul>
+</li>
+</ul>
+<h5 id="多级队列调度"><a href="#多级队列调度" class="headerlink" title="多级队列调度"></a>多级队列调度</h5><ul>
+<li>就绪队列被分成多个独立队列。</li>
+<li>根据进程的属性，如内存大小、进程优先级、进程类型etc，一个进程被永久地分配到一个队列。</li>
+<li>每个队列有自己的调度算法<ul>
+<li>eg. 前台队列（用于交互式进程）使用RR算法调度，后台队列（用于批处理）使用FCFS算法调度。<br><img src="https://i.loli.net/2018/06/18/5b275848a05ce.png" width="40%" height="80%"></li>
+</ul>
+</li>
+</ul>
+<h5 id="多级反馈队列调度"><a href="#多级反馈队列调度" class="headerlink" title="多级反馈队列调度"></a>多级反馈队列调度</h5><ul>
+<li>一个进程可以在各个队列之间移动。<ul>
+<li>eg. 如果进程使用过多CPU时间，那么它就被转移到更低优先级队列。<br><img src="https://i.loli.net/2018/06/18/5b2758db6dfa5.png" width="40%" height="80%"></li>
+</ul>
+</li>
+</ul>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
+<li>在实践中正确实施比在原则上正确实施要困难得多。因此，调度程序很少做出最佳选择。</li>
+<li>解决方案：<strong>调度策略和调度机制的分离</strong>。也就是说，调度算法以某种方式被参数化，但参数可以由用户填写。</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/os7/" class="prev">PREV</a><a href="/os5/" class="next">NEXT</a></div><div data-thread-key="os6/" data-title="操作系统笔记06 CPU调度" data-url="http://Winnie1997.github.io/os6/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 软件工程导论笔记 · Hi, Dai</title><meta name="description" content="软件工程导论笔记 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">软件工程导论笔记</h1><div class="post-info">Jun 20, 2018</div><div class="post-content"><h3 id="1-软件工程概述"><a href="#1-软件工程概述" class="headerlink" title="1. 软件工程概述"></a>1. 软件工程概述</h3><h4 id="软件的概念和特点"><a href="#软件的概念和特点" class="headerlink" title="软件的概念和特点"></a>软件的概念和特点</h4><p><code>软件</code>(广义)：计算机系统中与硬件相互依存的一部分  </p>
+<blockquote>
+<p><strong>程序</strong>：计算机可以接受的一系列指令，运行时可以提供所要求的功能和性能。<br><strong>数据</strong>：使得程序能够适当地操作信息的数据结构。<br><strong>文档</strong>：描述程序的研制过程、方法和使用的图文资料。 </p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>软件所具有的<strong>复杂性</strong>、<strong>一致性</strong>、<strong>可变性</strong>、<strong>不可见性</strong>等特性，使得软件开发过程变得难以控制。</li>
+<li>软件的特点：<ul>
+<li>软件是一种<strong>逻辑实体</strong>，不是具体的物理实体。</li>
+<li>软件产品的生产主要是研制。</li>
+<li>软件具有<strong>“复杂性”</strong>，其开发和运行常受到计算机系统的限制。</li>
+<li>软件<strong>成本昂贵</strong>，其开发方式目前尚未完全摆脱手工生产方式。</li>
+<li>软件不存在磨损和老化问题，但存在<strong>退化问题</strong>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="软件危机"><a href="#软件危机" class="headerlink" title="软件危机"></a>软件危机</h4><ul>
+<li><code>软件危机</code>：落后的软件生产方式无法满足迅速增长的计算机软件需求，从而导致软件开发与维护过程中出现一系列严重问题的现象。  </li>
+<li>体现在：   <ol>
+<li>软件产品无质量保证，可靠性差，甚至开发过程就夭折。  </li>
+<li>软件生产率太低  </li>
+<li>无法开发复杂程度高的软件</li>
+<li>成本和进度估计不准</li>
+<li>无统一科学的规范，软件不可维护</li>
+<li>软件常不能满足用户的需求</li>
+</ol>
+</li>
+<li>解决途径： <ol>
+<li>管理措施:项目管理、配置管理、过程管理、质量控制</li>
+<li>技术措施:开发过程、开发技术与方法和开发工具 </li>
+</ol>
+</li>
+</ul>
+<h4 id="软件工程的发展"><a href="#软件工程的发展" class="headerlink" title="软件工程的发展"></a>软件工程的发展</h4><ul>
+<li>史前时代(1965-1967)<ol>
+<li>软件开发没有方法可循</li>
+<li>软件设计是在开发人员头脑中完成的隐藏过程</li>
+<li>60世纪中期的软件危机</li>
+</ol>
+</li>
+<li>瀑布过程模型(1968-1982) <ol>
+<li>1968年提出“软件工程”</li>
+<li>结构化开发方法</li>
+<li>瀑布式软件生命周期模型 成为典型</li>
+</ol>
+</li>
+<li>质量标准体系<ol>
+<li>面向对象开发方法</li>
+<li>软件过程改进运动</li>
+<li>CMM/ISO9000/SPICE等 质量标准体系</li>
+</ol>
+</li>
+<li>20世纪90年代至今<ol>
+<li>敏捷开发方法流行</li>
+<li>更紧密的团队协作</li>
+<li>有效应对需求变化</li>
+<li>快速交付高质量软件</li>
+<li>迭代和增量开发过程 </li>
+</ol>
+</li>
+</ul>
+<h4 id="软件工程的定义"><a href="#软件工程的定义" class="headerlink" title="软件工程的定义"></a>软件工程的定义</h4><p><code>软件工程</code>是①将系统性的、规范化的、可定量的方法应用于软件的开发、运行和维护，即工程化应用到软件上；②对①中所述方法的研究。</p>
+<blockquote>
+<p>是一门指导计算机和维护的工程学科。</p>
+</blockquote>
+<h4 id="软件工程三要素"><a href="#软件工程三要素" class="headerlink" title="软件工程三要素"></a>软件工程三要素</h4><ol>
+<li><strong>方法</strong>: 研究软件开发<strong>“如何做”</strong>的技术。涵盖了项目计划、需求分析、系统设计、程 序实现、测试与维护等一系列的开发活动如何来做。开发方法经历了从面向结构、面向对象、 面向组件到面向服务的发展工程。 </li>
+<li><strong>过程</strong>: 为<strong>及时</strong>、<strong>合理</strong>地开发出满足用户需求的计算机软件而进行<strong>一系列有组织的活动</strong>。</li>
+<li><strong>工具</strong>: 为过程和方法提供自动的或半自动的支持。这些软件工具被<strong>集成</strong>起来，建立起一个支持软件开发的系统，称之为<strong>计算机辅助软件工程 </strong>(CASE ，Computer Aided Software Engineering)。</li>
+</ol>
+<h3 id="2-软件过程模型"><a href="#2-软件过程模型" class="headerlink" title="2.软件过程模型"></a>2.软件过程模型</h3><p><code>软件过程模型</code>定义任务之间关系和规程和方法，软件过程模型是对软件过程的抽象描述。</p>
+<h4 id="瀑布模型："><a href="#瀑布模型：" class="headerlink" title="瀑布模型："></a>瀑布模型：</h4><ul>
+<li>瀑布模型：将软件生存周期各活动规定为依线性顺序联接的若干阶段的模型。一个系统的、顺序的软件开发方法。</li>
+<li>该模型说明整个软件开发过程是按图中的各个阶段进行的，每个阶段的任务完成之后，产生右边相应的文档</li>
+<li>优点：<ul>
+<li>为项目提供了按阶段划分的检查点</li>
+<li>当前一阶段完成后，只需要去关注后续阶段</li>
+<li>可在迭代模型中应用瀑布模型</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>各个阶段的划分完全固定，阶段之间产生了大量的文档，增加了工作量</li>
+<li>由于开发过程是线性的，开发过程中很难响应用户的变更要求</li>
+<li>早期错误要等到后期测试阶段才能发现</li>
+<li>实际项目开发中很少遵守瀑布模型提出的顺序</li>
+<li>客户要等到开发周期的晚期才能得到可执行的程序</li>
+</ul>
+</li>
+</ul>
+<h4 id="原型模型"><a href="#原型模型" class="headerlink" title="原型模型"></a>原型模型</h4><ul>
+<li>为了描述、述软件开发过程中可能的回溯，尤其是维护阶段往往要经历上描述各个阶段，采用循环模型描述。</li>
+<li>原型是一个部分开发的产品，用于加强对系统的理解，有助于明确需求和选择可行的设计策略。 </li>
+</ul>
+<h4 id="迭代式开发"><a href="#迭代式开发" class="headerlink" title="迭代式开发"></a>迭代式开发</h4><ul>
+<li>迭代式开发：将描述、开发和验证等不同活动交织在一起，在开发过程中建立一系列版本，将系统一部分一部分地逐步交付。 </li>
+</ul>
+<h4 id="增量模型："><a href="#增量模型：" class="headerlink" title="增量模型："></a>增量模型：</h4><ul>
+<li>增量模型：先开发主要功能模块，再开发次要功能模块，逐步完善直到构造全部功能。</li>
+<li>优点：<ul>
+<li>分步开发，降低复杂性和难度。</li>
+<li>当配备的人员不能在设定的期限内完成产品时，它提供了一种先推出核心产品的途径。</li>
+<li>可先发布部分功能给客户，对客户起到镇静剂的作用。</li>
+<li>边开发边投入，可及早发现问题，减少投资风险。</li>
+<li>适用于需求不完整的软件开发，可以灵活应对用户的需求变化。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>加入构件不能破坏已构造好的系统部分，这需要软件具备开放式的体系结构。 </li>
+<li>需求改变过大会导致软件过程的控制失去整体性。</li>
+<li>如果增量包之间存在相交的情况且未很好处理，则必须做全盘系统分析。</li>
+</ul>
+</li>
+</ul>
+<h4 id="螺旋模型"><a href="#螺旋模型" class="headerlink" title="螺旋模型"></a>螺旋模型</h4><ul>
+<li>一种风险驱动型的过程模型，一种演进式软件过程模型。它结合了原型的<strong>迭代性质</strong>和瀑布模型的<strong>系统性和可控性</strong>特点。具有快速开发越来越完善软件版本的潜力。</li>
+<li>螺旋模型将开发过程分为几个螺旋周期，每个螺旋周期可分为4个工作步骤:<ol>
+<li>确定目标、方案和限制条件；</li>
+<li>评估方案、标识风险和解决风险；</li>
+<li>开发确认产品；</li>
+<li>计划下一周期工作。</li>
+</ol>
+</li>
+<li>优点：<ul>
+<li>开发大型系统和软件的理想方法。</li>
+<li>客户始终参与每个阶段的开发，每个阶段的成果需客户确认，避免错误的积累。</li>
+<li>增加风险分析，一旦风险成立，原方案应终止、修订，力求风险可控。</li>
+</ul>
+</li>
+<li>缺点：很难说服客服演进的方法是可控的，依赖于低昂的风险评估专家来保证成功。</li>
+</ul>
+<h4 id="敏捷开发"><a href="#敏捷开发" class="headerlink" title="敏捷开发"></a>敏捷开发</h4><ul>
+<li>敏捷宣言<ul>
+<li>个体和交互&gt;过程和工具</li>
+<li>可以工作的软件&gt;面面俱到的文档</li>
+<li>客户合作&gt;合同谈判</li>
+<li>响应变化&gt;遵循计划</li>
+</ul>
+</li>
+<li>极限编程(XP)：偏重编程实践 </li>
+<li>Scrum开发方法：偏重项目管理<ul>
+<li>特点：计划性、灵活性</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-软件需求分析"><a href="#3-软件需求分析" class="headerlink" title="3. 软件需求分析"></a>3. 软件需求分析</h3><ul>
+<li>目的：弄清用户对系统的细节要求，完整、准确、清晰、具体地回答目标系统 “做什么”。准确地理解用户 出的软件功能、性能及其环境的要求。</li>
+<li>必要性：用户与开发者的知识领域不同，产生歧义;软件开发失败 50%是需求 不合理，早期错误易放大。</li>
+</ul>
+<h4 id="需求工程活动"><a href="#需求工程活动" class="headerlink" title="需求工程活动"></a>需求工程活动</h4><ul>
+<li><strong>需求获取</strong><ul>
+<li>需求获取技术：面谈、问卷调查、群体诱导技术、参与调查法、文档分析、原型化方法、需求讨论会..<br>。</li>
+</ul>
+</li>
+<li><strong>需求分析与建模</strong></li>
+<li>需求规约：软件需求规约(文档)</li>
+<li><strong>需求管理</strong></li>
+<li><p><strong>需求验证</strong></p>
+</li>
+<li><p>业务需求：反映企业/组织对软件系统的高层次目标要求，即软件系统的建设目标。</p>
+</li>
+<li>用户需求：用来描述用户使用产品必须要完成的任务，使用业务领域的术语描述，采用开发者与用户都能理解的语言和图形表达。</li>
+<li>功能需求：开发人员必须实现的软件功能，结果在需求规格说明书中。</li>
+<li>（也包括非功能需求）：如界面的交互性、数据的安全性、 数据的事务性、用户的并发性、响应的快速性、操作的实时性、错误与异常的恢复性、软件 的容错性等等<h4 id="需求分析方法"><a href="#需求分析方法" class="headerlink" title="需求分析方法"></a>需求分析方法</h4></li>
+<li>功能分析方法：将系统看作若干功能模块的集合，每个功能又可以分解为若干子功能，子功能还可继续分解，分解的结果已经是系统的雏形。</li>
+<li>结构化分析方法(SA法)：是一种以数据、数据的封闭性为基础，从问题空间到某种表示的映射方法，由数据流图（DFD图）表示。</li>
+<li>信息建模法：是从数据的角度对现实世界建立模型的，基本工具是ER图。</li>
+<li>面向对象的分析方法（OOA）的关键是识别问题域内的对象，分析它们之间的关系，并建立起三类模型。<ul>
+<li>面向对象的特性有<strong>抽象性、封装性、继承性、多态性和消息机制</strong>等五大特性。</li>
+</ul>
+</li>
+</ul>
+<h4 id="结构化分析方法-SA法"><a href="#结构化分析方法-SA法" class="headerlink" title="结构化分析方法(SA法)"></a>结构化分析方法(SA法)</h4><ul>
+<li>基本思想<ul>
+<li>分解：对于一个复杂的系统，为了将复杂性降低到可以掌握的程度，可以把大问题分解成若干小问题，然后分别解决。</li>
+<li>抽象：分解可以分层进行，即先考虑问题最本质的属性，暂把细节略去，以后再逐层添加细节，直至涉及到最详细的内容，</li>
+</ul>
+</li>
+<li><strong>DFD图</strong><ul>
+<li>箭头表示<strong>数据流</strong>(表示数据流的名称和数据的流向)</li>
+<li>圆或椭圆表示<strong>加工</strong></li>
+<li>双杠或者单杠表示<strong>数据存储</strong></li>
+<li>矩形框表示数据的源点或终点，即<strong>外部实体</strong>(系统外与系统交互的人或实体)。</li>
+</ul>
+</li>
+<li>分层DFD图<ul>
+<li>先确定系统范围，画出顶层的DFD图。顶层图说明了系统的边界，<br>即系统的输入和输出数据流，顶层图只有一张。</li>
+<li>逐层分解顶层DFD图，获得若干中间层DFD图。中间层的数据流图描述了某个加工的分解，而它的组成部分又要进一步分解。 </li>
+<li>画出底层的DFD图。底层图由一些不能再分解的加工组成。</li>
+</ul>
+</li>
+<li><strong>数据字典(DD)</strong>：描述数据流图中出现的所有数据和加工。<ul>
+<li>分层数据流图只是表达了系统的“分解”，为了完整地描述这个系统，还需借助“数据词典”和“小说明”对图中的每个数据和加工给出解释。</li>
+<li><strong>数据流条目</strong>：给出了DFD中数据流的定义，通常对数据流的简单描述为列出该数据流的各组成数据项。</li>
+<li><strong>文件条目</strong>：给出某个文件的定义，文件的定义通常是列出文件记录的组成数据流，还可指出文件的组织方式。</li>
+<li><strong>数据项条目</strong>：给出某个数据单项的定义，通常是该数据项的值类型、允许值等。</li>
+<li><strong>加工条目</strong>：说明DFD中基本加工的处理逻辑。由于上层的加工是由下层的基本加工分解而来，只要有了基本加工的说明，就可理解其他加工。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-软件体系结构设计"><a href="#4-软件体系结构设计" class="headerlink" title="4.软件体系结构设计"></a>4.软件体系结构设计</h3><h4 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h4><ul>
+<li>软件设计阶段要解决“如何做”的问题</li>
+<li>软件所有的开发工作都将根据设计的方案进行</li>
+<li>软件的总体结构设计决定了系统的质量</li>
+<li><strong>软件设计包括软件结构设计、数据设计、接口设计和过程设计。</strong><ul>
+<li>结构设计：定义软件系统<strong>各主要部件之间的关系</strong></li>
+<li>数据设计：将分析时创建的模型转化为数据结构的定义</li>
+<li>接口设计：描述软件内部、软件和操作系统之间及软件与人之间如何通信</li>
+<li><strong>过程设计</strong>：把<strong>系统结构部件</strong>换成<strong>软件</strong>的过程描述。</li>
+</ul>
+</li>
+</ul>
+<h4 id="软件设计的任务"><a href="#软件设计的任务" class="headerlink" title="软件设计的任务"></a>软件设计的任务</h4><ul>
+<li>将分析阶段获得的需求说明转换为计算机中可实现的系统。</li>
+<li>完成系统的结构设计，包括：数据结构和程序结构，最后得到软件设计说明书。</li>
+<li>对模块内部的过程进行设计。</li>
+</ul>
+<h4 id="软件设计阶段任务"><a href="#软件设计阶段任务" class="headerlink" title="软件设计阶段任务"></a>软件设计阶段任务</h4><ol>
+<li><strong>划分模块，确定软件结构</strong>：开发方法不同，确定软件结构的方法也不同。例如SD法，是从分层的DFD图导出初始的结构图，再对初始的结构图进行改进，获得最终的结构图。一般包括确定系统的软件结构，分解模块，确定系统的模块层次关系。</li>
+<li>确定<strong>系统的数据结构</strong>：数据结构的建立对于<strong>信息系统</strong>而言尤为重要。要确定数据的类型，组织、存取方式，相关程度及处理方式等。</li>
+<li>设计<strong>用户界面</strong>：作为人机接口的用户界面起着越来越重要的作用，它直接影响到软件的寿命。</li>
+</ol>
+<h4 id="软件的层次结构"><a href="#软件的层次结构" class="headerlink" title="软件的层次结构"></a>软件的层次结构</h4><ul>
+<li>模块：是程序对象有名字的集合(过程、函数、子程序、宏..)。</li>
+<li>深度：表示软件结构从顶层模块到最底层模块的层数。</li>
+<li>宽度：表示控制的总分布。</li>
+<li>扇出度：一个模块直接控制下属的模块个数。</li>
+<li>扇入度：一个模块的直接上属模块个数。</li>
+<li>好的软件结构的形态准则：顶部宽度小，中部宽度大，底部宽度次之；在结构顶部有较高的扇出数，在底部有较高的扇入数。</li>
+</ul>
+<h4 id="软件结构图-SC图"><a href="#软件结构图-SC图" class="headerlink" title="软件结构图(SC图)"></a>软件结构图(SC图)</h4><ul>
+<li>　结构图（Structure Chart，简称SC图）是精确表达软件结构的图形表示方法，它以特定的符号表示模块、模块间的调用关系和模块间信息的传递。<ul>
+<li>模块（Module）：用矩形框表示，框中写有模块的名字，说明模块的功能。</li>
+<li>调用：从一个模块指向另一个模块的箭头表示前一模块对后一模块的调用，一般是上层调用下层。</li>
+<li>数据：调用箭头边上的小箭头表示调用时从一个模块传送给另一模块的数据。通常在短箭头附近应注有信息的名字。</li>
+</ul>
+</li>
+</ul>
+<h4 id="模块独立性"><a href="#模块独立性" class="headerlink" title="模块独立性"></a>模块独立性</h4><ul>
+<li>模块独立性的度量标准：<ul>
+<li>耦合性——用于描述<strong>模块之间</strong>联系的紧密程度。</li>
+<li>内聚性——用于描述<strong>模块内部</strong>联系的紧密程度。</li>
+</ul>
+</li>
+<li>模块独立性比较强的模块，具有：<strong>高内聚性、低耦合度</strong>。</li>
+<li>内聚性低 &rarr; <strong>高</strong>：偶然型  &rarr; 逻辑型 &rarr; 瞬时型  &rarr; 通信型  &rarr; 顺序型  &rarr; <strong>功能性</strong></li>
+<li>耦合性高 &rarr; <strong>低</strong>：内容耦合 &rarr; 公共耦合 &rarr; 控制耦合 &rarr; 复合耦合 &rarr; <strong>数据耦合</strong></li>
+</ul>
+<h4 id="软件设计-SD"><a href="#软件设计-SD" class="headerlink" title="软件设计(SD)"></a>软件设计(SD)</h4><ul>
+<li>软件设计定义：软件设计是把软件需求（定义阶段）转换为软件的具体设计方案，即划分模块结构的过程，是软件开发阶段最重要的步骤。</li>
+<li>软件设计划分：按工程管理角度划分为：概要（总体）设计和详细设计。<br>概要（总体）设计完成高层次结构设计；详细设计进行低层次过程设计，并穿插数据设计和接口设计。</li>
+</ul>
+<ol>
+<li>概要/总体设计：分解模块，确定系统模块的层次结构。<ul>
+<li>任务：① 划分模块 ② 确定模块功能 ③ 确定模块间调用关系 ④ 确定模块间界面</li>
+<li>步骤：从DFD图导出初始的模块结构图，按照SD法设计总则，改进模块结构图。</li>
+<li>得出：<strong>软件/模块结构图</strong>及其模块功能说明。</li>
+</ul>
+</li>
+<li>详细设计：对模块图中每个模块的过程进行描述，把功能描述转变为精确的、结构化的过程描述。<ul>
+<li>常用<strong>描述方式</strong>：伪代码，流程图，N-S图，PAD图…</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>软件设计过程，概要设计是关键，根据需求确定<strong>软件和数据的总体框架</strong>，详细设计是进一步精化成软件的算法和数据结构。</p>
+</blockquote>
+<h4 id="软件结构化方法的优化准则"><a href="#软件结构化方法的优化准则" class="headerlink" title="软件结构化方法的优化准则"></a>软件结构化方法的优化准则</h4><ul>
+<li>抽象：抽取事物最基本的特性和行为，忽略非基本的细节。采用分层次抽象的办法可以控制软件开发过程的复杂性，有利于软件的可理解性和开发过程的管理。</li>
+<li>信息隐藏：采用封装技术，将程序模块的实现细节（过程或数据）隐藏起来，不被不需要这些信息的其它模块访问。</li>
+<li>模块化：模块是程序中逻辑上相对独立的单元；模块的大小要适中；高内聚、低耦合。<ul>
+<li>使开发工作更易于规划</li>
+<li>可以定义和交付软件增量</li>
+<li>容易实施变更</li>
+<li>更有效地开展测试和调试</li>
+</ul>
+</li>
+<li>一致性：整个软件系统（包括文档和程序）的各个模块均应使用一致的概念、符号和术语；程序内部接口应保持一致； </li>
+</ul>
+<h3 id="5-软件测试"><a href="#5-软件测试" class="headerlink" title="5. 软件测试"></a>5. 软件测试</h3><ul>
+<li>软件测试是为了发现错误而运行程序的过程</li>
+<li>软件测试的目的是发现程序中的错误，是为了证明程序有错， 而不是证明程序无错</li>
+<li>测试对象不仅是程序，还应该包括开发过程中产生的所有产品，包括文档，其目的是为了尽早地、尽可能多的发现并排除软件中潜在的错误。<h4 id="软件测试分类"><a href="#软件测试分类" class="headerlink" title="软件测试分类"></a>软件测试分类</h4></li>
+<li>程序执行角度<ul>
+<li><strong>静态测试</strong>：通过人工分析或<strong>程序正确性证明</strong>的方式来确认程序正确性。</li>
+<li><strong>动态测试</strong>：通过<strong>动态分析</strong>和<strong>程序测试</strong>等方式检查程序执行状态，以确认是否有问题。</li>
+</ul>
+</li>
+<li>测试技术角度：<ul>
+<li><strong>黑盒测试</strong>：将测试对象看做一个黑盒子，完全<strong>不考虑程序内部</strong>的逻辑结构和内部特性，只依据程序的<strong>需求规格说明书</strong>，检查<strong>程序的功能</strong>是否符合它的功能说明。</li>
+<li><strong>白盒测试</strong>：把测试对象看做一个透明的盒子，允许测试人员<strong>利用程序内部</strong>的逻辑结构及有关信息，设计或选择测试用例，对程序所有<strong>逻辑路径</strong>进行测试。</li>
+</ul>
+</li>
+<li>测试对象角度：</li>
+<li><strong>单元测试</strong>：对软件基本组成单元进行的测试，其测试对象是软件设计的<strong>最小单位</strong>(<strong>模块</strong>或者类)。</li>
+<li><strong>集成测试</strong>：在单元测试的基础上，将所有模块按照总体设计的要求组装成为<strong>子系统</strong>或<strong>系统</strong>进行的测试。测试对象是模块间的接口，其主要目的是找出在模块接口(包括系统体系结构)设计上的问题。</li>
+<li><strong>功能测试</strong>：在已知产品所应具有的功能基础上，从<strong>用户角度</strong>来进行功能验证，以确认每个功能是否都能正常使用。</li>
+<li><strong>性能测试</strong>：在实际或模拟实际的运行环境下，针对<strong>非功能特性</strong>所进行的测试。</li>
+<li><strong>验收测试</strong>：软件产品完成了系统测试之后、产品发布之前进行的软件测试活动，其<strong>目的</strong>是验证软件的功能和性能是否能够满足用户所期望的要求。</li>
+<li>人工干预角度：<ul>
+<li><strong>手动测试</strong>：手工地输入测试数据并记录测试结果</li>
+<li><strong>自动化测试</strong>：利用开发的软件测试工具或者脚本</li>
+</ul>
+</li>
+</ul>
+<h4 id="静态测试"><a href="#静态测试" class="headerlink" title="静态测试"></a>静态测试</h4><ul>
+<li><strong>互审</strong>：程序员相互检查对方的代码</li>
+<li><strong>走查</strong>：一个小组集体来走查程序或文档(分析方法：调用图、数据流分析图)</li>
+<li><strong>会议</strong>：召开一个正式的会议，并有相应的记录、纪要、相应结果的文档。</li>
+</ul>
+<h4 id="动态测试"><a href="#动态测试" class="headerlink" title="动态测试"></a>动态测试</h4><h5 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h5><ul>
+<li>逻辑覆盖法：<ul>
+<li>语句覆盖：只覆盖可执行语句至少执行一次。</li>
+<li>判定覆盖：又叫分支覆盖，对每个判定式取真、假各一次，使每个判定的每个分支都至少执行一次，同时满足语句覆盖。</li>
+<li>条件覆盖：把程序中每个判断的每个条件为真和假各取值一次。 条件覆盖深入到判定中的每个条件，但不一定满足判定覆盖的要求。</li>
+<li>判定/条件覆盖：同时满足判定、条件两种覆盖标准的取值。就是使得判定中每个条件的所有可能取值至少执行一次，同时每个判定本身所有取值至少执行一次。</li>
+<li>条件组合覆盖：按每个判断的所有条件取值进行组合。这是 5 种覆盖中最强的覆盖。它不但可<strong>覆盖所有条件</strong>，还可<strong>覆盖所有判断的可取分支</strong>。</li>
+</ul>
+</li>
+<li>基本路径覆盖法<ul>
+<li>导出程序流程图的拓扑结构-流图(控制流程图)</li>
+<li>计算流图 G 的环路复杂性 V(G)</li>
+<li>确定只包含独立路径的基本路径集，设计测试用例</li>
+</ul>
+</li>
+</ul>
+<h5 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试"></a>黑盒测试</h5><ul>
+<li>等价类划分法：<ul>
+<li>对测试数据进行区间划分，从这些区间中选取典型值作为用例代表，认为测试等价类中的一个代表值的结果就等于对该类其它值的测试。</li>
+<li>如果某个等价类的一个输入数据（代表值）测试中查出了错误，表示该等价类的其它值也有错误。</li>
+<li>选择测试用例：① 为每个等价类编号 ② 使一个测试用例尽可能覆盖多个有效等价类<br>（<strong>注意：一个测试用例只能覆盖一个无效等价类。</strong>）</li>
+<li><code>有效等价类</code>：对于程序的规格说明，是合理的、有意义的输入数据构成的集合。</li>
+<li><code>无效等价类</code>：对于程序的规格说明，是不合理的、没有意义的输入数据构成的集合。</li>
+</ul>
+</li>
+<li>边界值分析法：对输入或输出的边界值进行测试的一种方法。因为在等价类的边界处，是最可能出现错误的。<ul>
+<li>步骤：划分等价类，选择测试用例，测试等价类边界。</li>
+<li>边界选择原则：① 输入值范围的边界 ② 输入/输出值个数的边界 ③ 输出值域的边界 ④ 输入/输出有序集（如顺序文件、线性表）的边界</li>
+</ul>
+</li>
+<li>错误推测法</li>
+<li>因果图法</li>
+</ul>
+<h4 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h4><ul>
+<li>驱动模：模拟主程序或者调用模块的功能，用于向被测模块传递数据，接收、打印从被测模块返回的数据。<strong>一般只设计一个驱动模块</strong>。</li>
+<li>桩模块：又称为假模块，用于模拟那些由被测模块所调用的下属模块的功能。可以设计<strong>一个或者多个桩模块</strong>，才能更好地对下属模块进行模拟。</li>
+<li>测试方法以<strong>白盒法</strong>为主，驱动模块和桩模块都是额外开销。</li>
+</ul>
+<h4 id="集成-组装测试"><a href="#集成-组装测试" class="headerlink" title="集成/组装测试"></a>集成/组装测试</h4><ul>
+<li>一次性集成方式：分别测试每个单元，再一次性将所有单元组装在一起进行测试。</li>
+<li>渐增式集成方式：先对某几个单元进行测试，然后将这些单元逐步组装成较大的系统，在组装过程中边连接边测试。（自顶而下增值，自底而上增值，混合增值）<br>自顶而下增值，自底而上增值可以选择<strong>深度优先</strong>或者<strong>宽度优先</strong>增值</li>
+<li>两种方式都需要设计驱动模块或桩模块，对每一个新组装的子系统进行测试主要采用黑盒法，对发现问题较多的子系统或模块应该用白盒法作回归测试。</li>
+<li>集成过程原则：尽早测试关键模块  &rarr; 提高测试效率，尽早测试包含I/O的模块   &rarr; 为以后测试提供方便</li>
+</ul>
+<h4 id="系统-性能测试"><a href="#系统-性能测试" class="headerlink" title="系统/性能测试"></a>系统/性能测试</h4><ul>
+<li>恢复测试：让软件强制地发生故障，然后来验证是否能恢复到正常工作。</li>
+<li>安全测试：验证保护机制是否能够正常工作。</li>
+<li>压力(强度)测试：在一种需要反常数量、频率或资源的方式下执行系统。</li>
+<li>性能测试：测试软件在集成系统中的运行性能。</li>
+</ul>
+<h4 id="调试方法"><a href="#调试方法" class="headerlink" title="调试方法"></a>调试方法</h4><ul>
+<li>测试的目的：显示存在错误</li>
+<li>调试的目标：发现错误或导致程序失效的错误原因，并修改程序以修正错误。调试是测试之后的活动。</li>
+<li><strong>三种调试方法</strong><ul>
+<li>蛮力法(强行排错法)</li>
+<li>返回法、回溯法</li>
+<li>原因排除法 <h3 id="软件维护"><a href="#软件维护" class="headerlink" title="软件维护"></a>软件维护</h3></li>
+</ul>
+</li>
+<li><code>软件维护</code>：在软件运行／维护阶段对软件产品进行<br>  的修改是所谓的维护。</li>
+<li>软件维护类型<ul>
+<li><strong>改正性维护</strong>：修改软件缺陷或者不足</li>
+<li><strong>适应性维护</strong>：修改软件使其适应不同操作环境，主要包括硬件变化、操作系统变化或者其他支持软件变化。</li>
+<li><strong>完善性维护</strong>：增加或修改系统功能，使其适应业务变化。</li>
+<li><strong>预防性维护</strong>：采用先进的软件工程方法对需要维护的软件或软件中的某一部分（重新）进行设计、编制和测试。是为了提高软件的<strong>可维护性、可靠性</strong>等，为<strong>以后进一步改进软件</strong>打下良好基础。</li>
+</ul>
+</li>
+<li>维护的副作用<ul>
+<li>代码副作用</li>
+<li>数据副作用</li>
+<li>文档副作用。</li>
+</ul>
+</li>
+<li>维护工作面临的困难：周期长、难度大、费用高。维护费用高</li>
+</ul>
+<h4 id="Point"><a href="#Point" class="headerlink" title="Point"></a>Point</h4><ul>
+<li><strong>三层C/S结构</strong>包含表示层、功能层和数据层。</li>
+<li><strong>软件</strong>由程序、数据和文档构成的。</li>
+<li>从工程管理方面来分类，<strong>软件设计</strong>一般分为概要设计和详细设计，它们之间的关系是全局和局部。</li>
+<li><strong>面向对象程序设计原则</strong>包括开闭原则、里氏替换原则、单一职责原则和依赖倒转原则。<ul>
+<li><strong>开闭原则</strong>：一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。抽象化是开闭原则的关键           </li>
+<li><strong>单一职责原则</strong>：一个类只负责一个功能领域中的相应职责。或者说，一个类，应该只有一个引起它变化的原因。</li>
+<li><strong>里氏替换原则</strong>：所有引用基类（父类）的地方必须能透明的使用其子类的对象。（实现开闭原则的重要方式之一）</li>
+<li><strong>依赖倒转原则</strong>：抽象不应该依赖于细节，细节应当依赖于抽象。</li>
+<li><strong>合成复用原则</strong>：尽量使用对象组合，而不是继承来达到复用的目的。</li>
+</ul>
+</li>
+<li>在软件结构化设计方法中，指导模块划分的最重要原则是高内聚、低耦合。</li>
+<li>需求分析最终结果是产生需求规格说明书。</li>
+<li>模块独立性中，使得每个模块只完成一个相对独立的特定子功能，并且与其它模块的关系很简单。</li>
+<li><strong>产品需求</strong>又可以细分为功能性需求和非功能性需求。</li>
+<li><strong>需求内容来源</strong>于干系人、组织规章制度、业务过程和现有系统。</li>
+<li>在<strong>需求工程过程</strong>中，最重要的工程活动包括需求获取、需求分析与建模、需求验证和需求管理。</li>
+<li><strong>软件设计原则</strong>是系统分解和模块设计的基本标准，应用这些原则可以使代码更加灵活、易于维护和扩展。一些通用的原则包括抽象、封装、模块化、层次化和复用。</li>
+<li>在测试过程中，需要考察<strong>模块间的接口</strong>和<strong>各模块之间联系**</strong>的测试属于集成测试。</li>
+<li><strong>软件测试用例</strong>主要由输入用例和预期输出结果两部分组成</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/os1/" class="prev">PREV</a><a href="/cn5/" class="next">NEXT</a></div><div data-thread-key="sei/" data-title="软件工程导论笔记" data-url="http://Winnie1997.github.io/sei/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

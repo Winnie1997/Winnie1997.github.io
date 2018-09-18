@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 操作系统笔记07 进程同步 · Hi, Dai</title><meta name="description" content="操作系统笔记07 进程同步 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://Winnie1997.github.io/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">操作系统笔记07 进程同步</h1><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ul>
+<li>协作进程可以通过内核提供的IPC工具共享一块内存。一个进程中的多个线程可以通过使用全局变量来共享一段内存。</li>
+<li>共享数据的并发访问可能会导致数据不一致。 保持数据一致性需要机制来确保协作进程的有序执行。</li>
+<li><p>对生产者和消费者问题的解决方案：允许同时在缓冲区内最多只有（BSIZE - 1）项。</p>
+<a id="more"></a>
+</li>
+<li><p>假设我们通过添加一个变量计数器来修改代码。<br><img src="https://i.loli.net/2018/06/18/5b275da7bfa0f.png" width="40%" height="80%"><img src="https://i.loli.net/2018/06/18/5b275daa58ac3.png" width="45%" height="80%"></p>
+</li>
+<li>需要注意的是，可能由于这两个进程并发操作变量counter，而得到不正确的运行结果。</li>
+<li><strong><code>竞争条件</code></strong>：多个进程并发地访问和操作同一数据且执行结果与访问发生的特定顺序有关。<ul>
+<li>为避免竞争条件，需要保证一段时间内只有一个进程能够操作变量。</li>
+<li>为了实现这种保证，要求进行一定形式的<strong><code>进程同步</code></strong>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="临界区问题"><a href="#临界区问题" class="headerlink" title="临界区问题"></a>临界区问题</h4><ul>
+<li><strong><code>临界区</code></strong>：一段访问共享资源的代码。</li>
+<li>竞态条件的解决方案必须满足以下4个要求：<ol>
+<li>相互排斥：任何两个进程不能同时处于临界区。</li>
+<li>前进：临界区外运行的进程不能阻塞其他进程尝试进入其临界区，以确定谁能下一个进入临界区。且这种选择不能无限推迟。</li>
+<li>有限等待：没有任何一个进程需要无限期等待进入其临界区。</li>
+<li>速度：不应该对CPU的速度和数量做任何假设。 </li>
+</ol>
+</li>
+<li>临界区问题：设计一个以便进程协作的协议。<ul>
+<li>每个进程必须请求允许进入其临界区。实现这一请求的代码段称为<strong>进入区</strong>。</li>
+<li>临界区之后可有<strong>退出区</strong>。其余代码为<strong>剩余区</strong>。 </li>
+</ul>
+</li>
+</ul>
+<h4 id="Peterson算法"><a href="#Peterson算法" class="headerlink" title="Peterson算法"></a>Peterson算法</h4><p><img src="https://i.loli.net/2018/06/18/5b2765a247934.png" width="45%" height="80%"></p>
+<blockquote>
+<p>First &amp; Second try都不满足“前进”这个要求。Third try即为Peterson算法，满足四个要求。</p>
+</blockquote>
+<h4 id="硬件同步"><a href="#硬件同步" class="headerlink" title="硬件同步"></a>硬件同步</h4><ul>
+<li>可以使用简单的硬件指令来解决竞争条件。</li>
+</ul>
+<ol>
+<li>单处理器环境(通常为非抢占内核所用)：<strong>禁用中断</strong></li>
+<li>多处理器环境：<strong>特殊指令</strong> ①TSL（Test and Set Lock）②SWAP</li>
+</ol>
+<h5 id="禁用中断"><a href="#禁用中断" class="headerlink" title="禁用中断"></a>禁用中断</h5><ul>
+<li>禁止中断，就能确保当前指令序列的执行不会被中断。由于其它指令不可能执行，共享变量不会被意外修改。</li>
+<li>进程就可以访问共享内存而不用担心受到任何其他进程干预。</li>
+<li>缺点<ol>
+<li>用户进程不应该禁用中断。</li>
+<li>在多处理器系统中不可行。</li>
+</ol>
+</li>
+</ul>
+<h5 id="TSL-and-SWAP"><a href="#TSL-and-SWAP" class="headerlink" title="TSL and SWAP"></a>TSL and SWAP</h5><ul>
+<li>TSL和SWAP指令分别具有以下功能：<br><img src="https://i.loli.net/2018/06/18/5b276be04718e.png" width="75%" height="80%"></li>
+<li>TSL和SWAP是以<strong>原子方式</strong>执行的，即作为一个<strong>不间断单元</strong>执行。</li>
+</ul>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
+<li>上述解决方案有一个共同缺点：<strong>繁忙等待</strong>。 <ul>
+<li>当进程处于临界区时，其他进程尝试进入临界区必须在进入区代码中循环。 </li>
+<li>繁忙等待浪费了一些其他进程可能可以有效使用的CPU周期。</li>
+</ul>
+</li>
+<li>这种类型的解决方案也被称为<strong>自旋锁</strong>。<ul>
+<li>因为该过程在等待锁的过程时定时“旋转”，一直在循环抢锁。 </li>
+<li>自旋锁<strong>仅在多处理器系统中</strong>有用。可以避免一次上下文切换。</li>
+</ul>
+</li>
+</ul>
+<h4 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h4><ul>
+<li>上一节描述的基于硬件的临界区问题的解决方案并不容易推广到更复杂的问题。为了克服这个困难，我们可以使用一个名为semaphore的同步工具。它由Edsger Dijkstra发明并首次在THE操作系统中使用。</li>
+<li><strong><code>信号量S</code></strong>是个整数变量，<strong>除初始化之外</strong>，只能通过两个标准的<strong>原子操作</strong>来访问：P(down) 和V(up）。<br><img src="https://i.loli.net/2018/06/18/5b276ff356715.png" width="65%" height="80%"></li>
+<li>“value”的大小是<strong>可用资源(&gt;0)的数量</strong>或<strong>等待信号量(&lt;0)的进程的数量</strong>。</li>
+<li>P 和 V 必须以原子方式执行。<ul>
+<li>有两种方法：①禁用单处理器系统或中断 ②多处理器系统中的自旋锁。</li>
+</ul>
+</li>
+</ul>
+<h5 id="二进制信号量"><a href="#二进制信号量" class="headerlink" title="二进制信号量"></a>二进制信号量</h5><ul>
+<li>上述的信号量构造通常被称为计数信号量。因为它的值可以覆盖不受限制的域。</li>
+<li>二进制信号量是一个整数值范围只在0和1之间的信号量。<ul>
+<li>在某些硬件体系结构上实现比计数信号量更简单。计数信号可以使用二进制信号量来实现。<br><img src="https://i.loli.net/2018/06/18/5b277a3576f4b.png" width="80%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b277a3524a9e.png" width="80%" height="80%"></li>
+</ul>
+</li>
+</ul>
+<h5 id="死锁与饥饿"><a href="#死锁与饥饿" class="headerlink" title="死锁与饥饿"></a>死锁与饥饿</h5><ul>
+<li>虽然信号量为进程同步提供了一种方便有效的机制，但它们的不正确使用仍然会导致难以检测到的错误。<ul>
+<li>eg. 假设生产者循环中的两个P操作按顺序颠倒过来。</li>
+</ul>
+</li>
+<li>集合中的每个进程正在等待只有集合中的另一个进程可能导致的事件，则会导致一组进程<strong>死锁</strong>。</li>
+<li>与死锁有关的另一个问题：饥饿/不确定阻塞，即进程在信号量内无限期地等待。<ul>
+<li>例如，解决<code>读者-作者问题</code>的方法可能会导致饥饿。</li>
+<li>通过使用FCFS调度策略可以避免饥饿。</li>
+</ul>
+</li>
+</ul>
+<h4 id="经典同步问题"><a href="#经典同步问题" class="headerlink" title="经典同步问题"></a>经典同步问题</h4><ul>
+<li>生产者-消费者问题</li>
+<li>读者-作者的问题<ul>
+<li>一个数据库可以为多个并发进程所共享。</li>
+<li>读者可能只需要读取数据库，写者可能需要更新数据库(即读和写)。</li>
+<li>多个读者可以同时访问共享数据，写者对共享数据有<strong>排他的访问</strong>。</li>
+</ul>
+</li>
+<li>哲学家进餐问题</li>
+</ul>
+<h5 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h5><ul>
+<li>访问缓冲区时使用信号量互斥锁来保护临界区，初始化为值1。</li>
+<li>empty被初始化为值BSIZE(缓冲项个数)，full被初始化为0。生产者为消费者生产满缓冲项，消费者为生产者生产空缓冲项。<br><img src="https://i.loli.net/2018/06/18/5b2774f9a0ad0.png" width="65%" height="80%"></li>
+</ul>
+<h5 id="读者-作者的问题"><a href="#读者-作者的问题" class="headerlink" title="读者-作者的问题"></a>读者-作者的问题</h5><ul>
+<li>信号量<code>wrt</code>用于保护共享数据对象，初始化为值1。</li>
+<li>变量readcount用来跟踪多少进程正在读对象，初始化为0。</li>
+<li>另一个信号量mutex用于确保在更新变量readcount时的互斥，初始化为1。<br><img src="https://i.loli.net/2018/06/18/5b2774a70cbcf.png" width="65%" height="80%"></li>
+</ul>
+<h5 id="哲学家进餐问题"><a href="#哲学家进餐问题" class="headerlink" title="哲学家进餐问题"></a>哲学家进餐问题</h5><h4 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h4><ul>
+<li>管程：是一组方法、变量、函数..的集合。</li>
+<li>管程结构确保了<strong>只有一个进程可以在管程中处于活动状态</strong>。在实现互斥方面很有用。<br><img src="https://i.loli.net/2018/06/18/5b278148f0f3e.png" width="40%" height="80%"><img src="https://i.loli.net/2018/06/18/5b278156992a9.png" width="48%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b2784cd6bc52.png" width="35%" height="80%"></li>
+</ul>
+<h5 id="带条件变量的管程"><a href="#带条件变量的管程" class="headerlink" title="带条件变量的管程"></a>带条件变量的管程</h5><ul>
+<li>管程内部可定义condition类型的变量以提供同步机制，称其为<strong><code>条件变量</code></strong>。条件型变量c实际上是一个指针，它指向一个等待该条件的PCB队列。</li>
+<li>它只与两个操作相关联：<ul>
+<li>c.wait()：意味着调用它的进程会被挂起，直到另一个进程调用</li>
+<li>c.signal()：重新启动一个悬挂的进程。</li>
+<li>请注意，如果没有进程挂起，那么signal()没有任何影响。</li>
+</ul>
+</li>
+<li>管程模式下的 x.signal() 和信号量的 signal() 区别在于： <ul>
+<li>信号量操作 signal() 会影响信号量的状态</li>
+<li>管程下的 c.signal() 在 c 不存在挂起进程的情况下没有任何影响。</li>
+</ul>
+</li>
+</ul>
+<h5 id="c-signal（）之后会发生什么？"><a href="#c-signal（）之后会发生什么？" class="headerlink" title="c.signal（）之后会发生什么？"></a>c.signal（）之后会发生什么？</h5><ul>
+<li>假设一个进程P调用c.signal（），另一个进程Q被条件变量c阻塞。</li>
+<li>P完成c.signal（）后，可能P和Q在监视器内同时处于活动状态。</li>
+<li>这将打破显示器的属性！ 存在三种可能性：<ul>
+<li>Hoare风格：暂停P并让Q运行。 </li>
+<li>Brinch-Hansen风格：P必须立即离开显示器。 </li>
+<li>Mesa风格（Mesa是一种编程语言）：让P运行并暂停Q.</li>
+</ul>
+</li>
+</ul>
+<h5 id="语言支持"><a href="#语言支持" class="headerlink" title="语言支持"></a>语言支持</h5><ul>
+<li>管程结构需要编程语言支持才有用。也就是说，编译器必须识别管程结构并生成代码以支持其功能。</li>
+<li>示例：Java（仅包含一个条件变量的Mesa样式监视器）<ul>
+<li>通过将关键字synchronized添加到方法声明中，Java保证一旦任何线程开始执行该方法，就不允许其他线程开始执行该类中的任何其他同步方法。</li>
+<li>Java提供了两种操作：等待并通知阻塞线程，唤醒线程。</li>
+</ul>
+</li>
+</ul>
+<h4 id="信号量与管程的关系"><a href="#信号量与管程的关系" class="headerlink" title="信号量与管程的关系"></a>信号量与管程的关系</h4><ul>
+<li>信号量和管程在功能上是等效的。</li>
+<li>但是它们的使用和实现是非常不同的。<br><img src="https://i.loli.net/2018/06/18/5b2785f39478e.png" width="35%" height="80%"></li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/os8/" class="prev">PREV</a><a href="/os6/" class="next">NEXT</a></div><div data-thread-key="os7/" data-title="操作系统笔记07 进程同步" data-url="http://Winnie1997.github.io/os7/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"[object Object]"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2017 - 2018 <a href="http://Winnie1997.github.io">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
