@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daisine.me/"/>
-  <updated>2018-09-20T01:14:05.000Z</updated>
+  <updated>2018-09-20T03:09:07.000Z</updated>
   <id>http://daisine.me/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://daisine.me/macvpn/"/>
     <id>http://daisine.me/macvpn/</id>
     <published>2018-09-20T00:32:10.000Z</published>
-    <updated>2018-09-20T01:14:05.000Z</updated>
+    <updated>2018-09-20T03:09:07.000Z</updated>
     
-    <content type="html"><![CDATA[<p>以重庆大学校园网VPN为例，操作系统OS X 10.11.6。</p><ul><li>首先查看<a href="http://net.cqu.edu.cn/info/1025/1255.htm" target="_blank" rel="noopener">重庆大学校园网VPN说明</a>：</li></ul><blockquote><p>重庆大学VPN支持<strong>标准的PPTP和L2TP两种方式</strong>。用户在网络连接的设置中，新增虚拟专网VPN连接。VPN的地址请填写域名vpn.cqu.edu.cn，系统会自动解析相应地址。</p></blockquote> <a id="more"></a> <ul><li>打开<code>系统偏好设置</code> - &gt; <code>网络</code> - &gt; <code>右下角＋号</code>新建VPN服务<ul><li>接口：VPN</li><li>VPN类型：IPSec上的L2TP</li><li>服务名称：CQU VPN</li></ul></li><li>新建VPN完成货，<code>服务器地址</code>填写为<code>vpn.cqu.edu.cn</code>，账户名称为学号。</li><li><p>现在点击<code>链接</code>，输入密码(默认为身份证后六位)会提示，IPSec 共享密钥丢失。需要在终端进行进一步设置：</p><ul><li>在/etc/ppp/下创建options文件：<br><code>sudo vim /etc/ppp/options</code></li><li>在options文件中输入(键入A - &gt; INSERT)并保存(ESC - &gt; wq)</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plugin L2TP.ppp</span><br><span class="line">l2tpnoipsec</span><br></pre></td></tr></table></figure></li><li><p>回到VPN设置，选择<code>高级</code>- &gt; <code>选项</code> - &gt; <code>通过VPN连接发送所有流量</code></p></li><li>再次点击连接VPN，连接成功。</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>以重庆大学校园网VPN为例，操作系统OS X 10.11.6。</p><ul><li>首先查看<a href="http://net.cqu.edu.cn/info/1025/1255.htm" target="_blank" rel="noopener">重庆大学校园网VPN说明</a>：</li></ul><blockquote><p>重庆大学VPN支持<strong>标准的PPTP和L2TP两种方式</strong>。用户在网络连接的设置中，新增虚拟专网VPN连接。VPN的地址请填写域名vpn.cqu.edu.cn，系统会自动解析相应地址。</p></blockquote> <a id="more"></a> <ul><li>打开<code>系统偏好设置</code> - &gt; <code>网络</code> - &gt; <code>右下角＋号</code>新建VPN服务<ul><li>接口：VPN</li><li>VPN类型：IPSec上的L2TP</li><li>服务名称：CQU VPN</li></ul></li><li>新建VPN完成后，<code>服务器地址</code>填写为<code>vpn.cqu.edu.cn</code>，账户名称为学号。</li><li><p>现在点击<code>链接</code>，输入密码(默认为身份证后六位)会提示，IPSec 共享密钥丢失。需要在终端进行进一步设置：</p><ul><li>在/etc/ppp/下创建options文件：<br><code>sudo vim /etc/ppp/options</code></li><li>在options文件中输入(键入A - &gt; INSERT)并保存(ESC - &gt; wq)</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plugin L2TP.ppp</span><br><span class="line">l2tpnoipsec</span><br></pre></td></tr></table></figure></li><li><p>回到VPN设置，选择<code>高级</code>- &gt; <code>选项</code> - &gt; <code>通过VPN连接发送所有流量</code></p></li><li>再次点击连接VPN，连接成功。</li></ul>]]></content>
     
     <summary type="html">
     
