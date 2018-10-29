@@ -16,7 +16,7 @@
 <h4 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h4><ul>
 <li><strong><code>虚拟内存</code></strong>：将用户逻辑内存与物理内存的分离。<ul>
 <li>为每个进程提供一个巨大的，连续的和私有的逻辑内存，可能比物理内存大得多。只有部分程序需要在内存中执行。</li>
-<li>允许地址空间被多个进程共享，更有效的进程创建。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28aed7c426e.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28aed7c426e.png&quot;</a> width=40%” height=”80%” /&gt;</li>
+<li>允许地址空间被多个进程共享，更有效的进程创建。<br><img src="https://i.loli.net/2018/06/19/5b28aed7c426e.png" width="40%" height="80%"></li>
 </ul>
 </li>
 <li>虚拟内存可通过以下方式实现：<ul>
@@ -33,11 +33,11 @@
 <li>更多的进程。</li>
 </ul>
 </li>
-<li><strong>交换程序</strong>是对<strong>整个进程</strong>进行操作，而<strong>调页程序</strong>只对<strong>单个页</strong>进行操作。 因此按需调页需要使用调页程序。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28b017d35a8.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28b017d35a8.png&quot;</a> width=45%” height=”80%” /&gt;</li>
+<li><strong>交换程序</strong>是对<strong>整个进程</strong>进行操作，而<strong>调页程序</strong>只对<strong>单个页</strong>进行操作。 因此按需调页需要使用调页程序。<br><img src="https://i.loli.net/2018/06/19/5b28b017d35a8.png" width="45%" height="80%"></li>
 <li><strong><code>有效-无效位</code></strong>：当操作系统调度某个进程运行时，判断该进程的页面是否已经调入内存中。<ul>
 <li>！每个页表项(PTE)都有一个有效无效位关联。</li>
 <li>设置为“有效”：关联页面合法且在内存中。</li>
-<li>设置为“有效”：该页面不合法(不在该进程的逻辑地址空间中)，或者是合法的，但是在磁盘上。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28b144e932a.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28b144e932a.png&quot;</a> width=45%” height=”80%” /&gt;</li>
+<li>设置为“有效”：该页面不合法(不在该进程的逻辑地址空间中)，或者是合法的，但是在磁盘上。<br><img src="https://i.loli.net/2018/06/19/5b28b144e932a.png" width="45%" height="80%"></li>
 </ul>
 </li>
 <li>在MMU中的地址转换期间，如果PTE中的有效-无效位是“无效”<ol>
@@ -46,7 +46,7 @@
 <li>找到一个空闲帧。</li>
 <li>调度一个磁盘操作，以便将所需的页面调入刚分配的帧。</li>
 <li>当磁盘操作完成后，修改进程的内部表和页表，以表示该页已在内存中</li>
-<li>(CPU自动执行)重新开始因陷阱而中断的指令。进程现在能访问所需的页，就好像它似乎总在内存中。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28b58f5e1f1.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28b58f5e1f1.png&quot;</a> width=58%” height=”80%” /&gt;</li>
+<li>(CPU自动执行)重新开始因陷阱而中断的指令。进程现在能访问所需的页，就好像它似乎总在内存中。<br><img src="https://i.loli.net/2018/06/19/5b28b58f5e1f1.png" width="58%" height="80%"></li>
 </ol>
 </li>
 <li>架构要求(硬件)<ol>
@@ -62,11 +62,11 @@
 <li>在内存中找到一个没有被充分使用的帧，将其分页。</li>
 </ul>
 </li>
-<li><strong><code>页面替换</code></strong>：修改页<code>错误处理程序</code>以包括页置换。<strong>页面置换可以在较小的物理内存上提供大的虚拟内存</strong><br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28ba339487d.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28ba339487d.png&quot;</a> width=58%” height=”80%” /&gt;<ol>
+<li><strong><code>页面替换</code></strong>：修改页<code>错误处理程序</code>以包括页置换。<strong>页面置换可以在较小的物理内存上提供大的虚拟内存</strong><br><img src="https://i.loli.net/2018/06/19/5b28ba339487d.png" width="58%" height="80%"><ol>
 <li>查找所需页在磁盘上的位置。</li>
 <li>查找一个空闲帧：<br>①如果有空闲帧，那么就使用它。<br>②如果没有空闲帧，那么就使用<strong>页面置换算法</strong>以选择一个<strong>牺牲“帧”</strong>。<br>③将“牺牲”帧的内容写到磁盘上，改变页表和帧表。</li>
 <li>将所需页读入(新)空闲帧，改变页表和帧表。</li>
-<li>重启用户进程。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28bb1c5ee42.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28bb1c5ee42.png&quot;</a> width=58%” height=”80%” /&gt;</li>
+<li>重启用户进程。<br><img src="https://i.loli.net/2018/06/19/5b28bb1c5ee42.png" width="58%" height="80%"></li>
 </ol>
 </li>
 <li>注意：<ul>
@@ -83,7 +83,7 @@
 </ul>
 </li>
 <li>通过在引用串上运行页面置换算法，并计算该引用串上的<code>页面错误</code>数来评估算法。</li>
-<li>页错误和帧数量图：<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28bde285b5f.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28bde285b5f.png&quot;</a> width=40%” height=”80%” /&gt;</li>
+<li>页错误和帧数量图：<br><img src="https://i.loli.net/2018/06/19/5b28bde285b5f.png" width="40%" height="80%"></li>
 <li>类型<ul>
 <li>FIFO页置换</li>
 <li>最优置换</li>
@@ -102,17 +102,17 @@
 <li>一般来说，内存访问时间远小于处理页面错误的时间。因此，我们可以假设EAT与p成正比，即页面错误率。</li>
 </ul>
 <h5 id="FIFO页置换"><a href="#FIFO页置换" class="headerlink" title="FIFO页置换"></a>FIFO页置换</h5><ul>
-<li>FIFO页置换：置换最旧的页。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c00a3454e.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c00a3454e.png&quot;</a> width=60%” height=”80%” /&gt;</li>
-<li><strong><code>Belady</code>异常</strong>：一般情况下，page-fault会随着frame的数量增加而减少。但如果采用FIFO算法，<strong>情况有时并非如此</strong>。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c00a2b78c.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c00a2b78c.png&quot;</a> width=40%” height=”80%” /&gt;</li>
+<li>FIFO页置换：置换最旧的页。<br><img src="https://i.loli.net/2018/06/19/5b28c00a3454e.png" width="60%" height="80%"></li>
+<li><strong><code>Belady</code>异常</strong>：一般情况下，page-fault会随着frame的数量增加而减少。但如果采用FIFO算法，<strong>情况有时并非如此</strong>。<br><img src="https://i.loli.net/2018/06/19/5b28c00a2b78c.png" width="40%" height="80%"></li>
 </ul>
 <h5 id="最优置换-OPT-MIN"><a href="#最优置换-OPT-MIN" class="headerlink" title="最优置换(OPT / MIN)"></a>最优置换(OPT / MIN)</h5><ul>
 <li>最优置换：置换最长时间不会使用的页。</li>
 <li>最优页面置换算法是所有算法中产生页错误率最低的。</li>
-<li>最优置换难以实现，因为需要参考串的未来的知识。最优算法主要用于研究。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c1260fab8.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c1260fab8.png&quot;</a> width=60%” height=”80%” /&gt;</li>
+<li>最优置换难以实现，因为需要参考串的未来的知识。最优算法主要用于研究。<br><img src="https://i.loli.net/2018/06/19/5b28c1260fab8.png" width="60%" height="80%"></li>
 </ul>
 <h5 id="LRU页置换-最近最少使用算法"><a href="#LRU页置换-最近最少使用算法" class="headerlink" title="LRU页置换/最近最少使用算法"></a>LRU页置换/最近最少使用算法</h5><ul>
 <li>FIFO算法使用的是页面调入的时间。OPT算法使用的是页将来使用的时间。</li>
-<li>LRU页置换：置换最近最少使用的页面。近似的最佳页面替换。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c20f69818.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c20f69818.png&quot;</a> width=60%” height=”80%” /&gt;</li>
+<li>LRU页置换：置换最近最少使用的页面。近似的最佳页面替换。<br><img src="https://i.loli.net/2018/06/19/5b28c20f69818.png" width="60%" height="80%"></li>
 <li>LRU置换可能需要一定的硬件支持来为页帧确定一个排序序列。有两种可行实现：①计数器 ②栈</li>
 </ul>
 <h5 id="近似LRU页置换"><a href="#近似LRU页置换" class="headerlink" title="近似LRU页置换"></a>近似LRU页置换</h5><ul>
@@ -122,7 +122,7 @@
 <li>当一个页面得到第二次机会时，它的访问位就清为0，它的到达时间就置为当前时间。如果该页在此期间被访问过，则访问位置为1。  </li>
 </ul>
 </li>
-<li>可以采用循环队列实现。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c30cbe814.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c30cbe814.png&quot;</a> width=45%” height=”80%” /&gt;<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c30cbf0e9.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c30cbf0e9.png&quot;</a> width=50%” height=”80%” /&gt;</li>
+<li>可以采用循环队列实现。<br><img src="https://i.loli.net/2018/06/19/5b28c30cbe814.png" width="45%" height="80%"><br><img src="https://i.loli.net/2018/06/19/5b28c30cbf0e9.png" width="50%" height="80%"></li>
 </ul>
 <h4 id="为什么虚拟内存运行良好？"><a href="#为什么虚拟内存运行良好？" class="headerlink" title="为什么虚拟内存运行良好？"></a>为什么虚拟内存运行良好？</h4><ul>
 <li><strong><code>局部模型</code></strong>：<ul>
@@ -131,7 +131,7 @@
 </ul>
 </li>
 <li>局部模型也是缓存工作正常的原因。</li>
-<li>内存引用模式中的局部性：<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c77b89a47.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c77b89a47.png&quot;</a> width=30%” height=”80%” /&gt;</li>
+<li>内存引用模式中的局部性：<br><img src="https://i.loli.net/2018/06/19/5b28c77b89a47.png" width="30%" height="80%"></li>
 </ul>
 <h4 id="颠簸"><a href="#颠簸" class="headerlink" title="颠簸"></a>颠簸</h4><ul>
 <li>如果系统没有“足够”的帧，页面错误率非常高。 这导致：<ul>
@@ -141,7 +141,7 @@
 </ul>
 </li>
 <li>颠簸：是一个系统忙于将页面导入和导出并且没有任何用处的情况。<ul>
-<li>原因：所有局部大小的总和 &gt; 总内存大小<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c84c5483c.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c84c5483c.png&quot;</a> width=40%” height=”80%” /&gt;</li>
+<li>原因：所有局部大小的总和 &gt; 总内存大小<br><img src="https://i.loli.net/2018/06/19/5b28c84c5483c.png" width="40%" height="80%"></li>
 </ul>
 </li>
 </ul>
@@ -154,7 +154,7 @@
 <li><p>将WSS<sub>i</sub>表示为最近进程P<sub>i</sub>的工作集。D为总的帧需求量。</p>
 <ul>
 <li>D = &Sigma; WSS<sub>i</sub></li>
-<li>如果D &gt; 可用帧的数量，有的进程就会得不到足够的帧，从而会出现颠簸。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28c9f434159.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28c9f434159.png&quot;</a> width=70%” height=”80%” /&gt;</li>
+<li>如果D &gt; 可用帧的数量，有的进程就会得不到足够的帧，从而会出现颠簸。<br><img src="https://i.loli.net/2018/06/19/5b28c9f434159.png" width="70%" height="80%"></li>
 </ul>
 </li>
 <li><p>使用工作集合模型</p>
@@ -166,4 +166,4 @@
 </ul>
 </li>
 </ul>
-</div></article></div></main><footer><div class="paginator"><a href="/os11/" class="prev">上一篇</a><a href="/os9/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 - 2018 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
+</div></article></div></main><footer><div class="paginator"><a href="/os11/" class="prev">PREV</a><a href="/os9/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2018 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

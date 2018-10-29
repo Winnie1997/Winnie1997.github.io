@@ -233,11 +233,11 @@
 <li>当进程退出时，操作系统回收它所占用的帧。</li>
 </ul>
 </li>
-<li>最简单的方法是维护一个空闲帧链表。如图所示:<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b2897f562b1d.png" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b2897f562b1d.png</a> “ width=47%” height=”80%” /&gt;</li>
+<li>最简单的方法是维护一个空闲帧链表。如图所示:<br><img src="https://i.loli.net/2018/06/19/5b2897f562b1d.png " width="47%" height="80%"></li>
 </ul>
 <h4 id="页面共享"><a href="#页面共享" class="headerlink" title="页面共享"></a>页面共享</h4><ul>
 <li>在<strong>分页系统</strong>中,显然应该<strong>以页面为单位进行内存共享</strong>。<ul>
-<li>eg. 假设系统中有三个用户同时运行某个编辑器在编辑各自的文件，显然编辑器的代码可以被共享，而各自的文件数据则是私有的。<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28990756fee.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28990756fee.png&quot;</a> width=47%” height=”80%” /&gt;</li>
+<li>eg. 假设系统中有三个用户同时运行某个编辑器在编辑各自的文件，显然编辑器的代码可以被共享，而各自的文件数据则是私有的。<br><img src="https://i.loli.net/2018/06/19/5b28990756fee.png" width="47%" height="80%"></li>
 </ul>
 </li>
 </ul>
@@ -253,7 +253,7 @@
 </li>
 </ul>
 <h5 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h5><ul>
-<li><p>逻辑地址由有序对组成：&lt;segment-number, offset&gt; (&lt;段号，段内偏移&gt;)。(为了简单，段是编号的段号而不是通过段名来引用)<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28ab03eefee.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28ab03eefee.png&quot;</a> width=20%” height=”80%” /&gt;&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28ab0404f03.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28ab0404f03.png&quot;</a> width=40%” height=”80%” /&gt;</p>
+<li><p>逻辑地址由有序对组成：&lt;segment-number, offset&gt; (&lt;段号，段内偏移&gt;)。(为了简单，段是编号的段号而不是通过段名来引用)<br><img src="https://i.loli.net/2018/06/19/5b28ab03eefee.png" width="20%" height="80%">&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28ab0404f03.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28ab0404f03.png&quot;</a> width=40%” height=”80%” /&gt;</p>
 </li>
 <li><p><strong><code>段表</code></strong>用于将逻辑地址映射到物理地址。 每个表项都有</p>
 <ul>
@@ -264,7 +264,7 @@
 </li>
 <li>段基地址寄存器(STBR)：指向段表在存储器中的位置。</li>
 <li>段界限寄存器(STLR)：表示进程使用的段的个数。  </li>
-<li>地址转换：<br>&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28ab040db5c.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28ab040db5c.png&quot;</a> width=45%” height=”80%” /&gt;</li>
+<li>地址转换：<br><img src="https://i.loli.net/2018/06/19/5b28ab040db5c.png" width="45%" height="80%"></li>
 <li>在<strong>分段系统</strong>中，<strong>内存的保护与共享以段为单位</strong></li>
 <li>由于段的长度是根据需要变化的,因此分段会产生<strong>外部碎片</strong>。<ul>
 <li>这个问题的严重程度与<strong>操作系统的内存分配算法</strong>和<strong>进程各个段的平均大小</strong>有关。</li>
@@ -280,4 +280,4 @@
 <li>分页和分段系统有各自的优缺点，因此人们就考虑结合分页和分段，这就形成了段页式内存管理。</li>
 <li>段页式内存管理的地址转换包括两个步骤：<strong>先分段，再分页。</strong></li>
 </ul>
-</div></article></div></main><footer><div class="paginator"><a href="/os10/" class="prev">上一篇</a><a href="/os8/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 - 2018 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
+</div></article></div></main><footer><div class="paginator"><a href="/os10/" class="prev">PREV</a><a href="/os8/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2018 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
