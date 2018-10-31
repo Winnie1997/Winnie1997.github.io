@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://daisine.me/list/index.html</loc>
+    
+    <lastmod>2018-10-31T10:01:29.732Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://daisine.me/os9/</loc>
     
     <lastmod>2018-10-29T03:17:43.457Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://daisine.me/macvpn/</loc>
     
     <lastmod>2018-09-23T07:39:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/list/index.html</loc>
-    
-    <lastmod>2018-09-18T03:14:50.000Z</lastmod>
     
   </url>
   
