@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://daisine.me/sftest/</loc>
+    
+    <lastmod>2019-05-10T03:59:12.977Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/Cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-05-10T03:56:55.307Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/Cryptography/</loc>
+    
+    <lastmod>2019-05-10T03:51:13.250Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/require/</loc>
+    
+    <lastmod>2019-05-10T03:48:19.778Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://daisine.me/media/</loc>
     
     <lastmod>2019-05-10T03:46:38.880Z</lastmod>
@@ -19,6 +47,20 @@
     <loc>http://daisine.me/CG/</loc>
     
     <lastmod>2019-05-10T03:41:25.110Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sftest/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/</loc>
+    
+    <lastmod>2019-04-29T03:13:36.658Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/require/1.%20%E5%9F%BA%E6%9C%AC%E7%9A%84%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82/</loc>
+    
+    <lastmod>2019-01-08T01:47:41.459Z</lastmod>
     
   </url>
   

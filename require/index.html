@@ -1,0 +1,523 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 软件需求笔记 · Hi, Dai</title><meta name="description" content="软件需求笔记 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://daisine.me/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">软件需求笔记</h1><div class="post-info">May 10, 2019</div><div class="post-content"><h2 id="1-基本的软件需求"><a href="#1-基本的软件需求" class="headerlink" title="1. 基本的软件需求"></a>1. 基本的软件需求</h2><h3 id="1-1-软件需求"><a href="#1-1-软件需求" class="headerlink" title="1.1 软件需求"></a>1.1 软件需求</h3><ul>
+<li>要解决的问题是：<ul>
+<li>什么是软件需求？</li>
+<li>为什么要实现软件需求？</li>
+<li>哪些人应参与软件需求<a id="more"></a></li>
+</ul>
+</li>
+<li><strong>需求分析模型：</strong><br><img src="/require/需求分析模型.png" width="40%"><img src="/require/需求分析模型2.png" width="40%"></li>
+<li>软件需求活动 <ul>
+<li>需求诱导 → 需求分析 → 需求传递 → 需求确认 → 需求演化  </li>
+</ul>
+</li>
+<li>IEEE软件工程标准词汇表中定义<strong>软件需求</strong>为：<br>（1）<strong>用户</strong>为解决某个问题或达到目标而需具备的条件或能力。<br>（2）<strong>系统</strong>或系统部件为满足合同、标准、规范或其它正式文档而必须满足的条件或能力。<br>（3）上述（1）或（2）中定义的条件或能力的<strong>文档表达</strong>。 </li>
+<li>需求分析：<ul>
+<li>分析软件用户的需求，细致的进行、调查，把用户“做什么”的要求，最终转换为一个完全的、精细的软件逻辑模型。</li>
+<li>并写出软件的需求规格说明。</li>
+<li>准确地表达用户的要求。</li>
+</ul>
+</li>
+<li><strong>需求的层次</strong><ul>
+<li><strong>业务需求</strong>：表示组织或客户高层次的目标。描述了组织为什么要开发一个系统，即目标。可以用前景和范围文档表述。</li>
+<li><strong>用户需求</strong>：描述的是用户的目标，或用户要求系统必须能完成的任务，即用户能使用系统来做些什么。可以用用例、场景描述和时间-响应表表述。</li>
+<li><strong>功能需求</strong>：规定开发人员必须在产品中实现的软件功能，用户利用这些功能来完成任务，满足业务需求，即开发人员需要实现什么。<br><img src="/require/产物.png" width="50%"></li>
+</ul>
+</li>
+<li>需求不应该包括：<ul>
+<li>设计和实现的细节</li>
+<li>项目计划信息</li>
+<li>测试信息</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-需求工程"><a href="#1-2-需求工程" class="headerlink" title="1.2 需求工程"></a>1.2 需求工程</h3><h5 id="1-需求开发"><a href="#1-需求开发" class="headerlink" title="1. 需求开发"></a>1. 需求开发</h5><ul>
+<li>需求开发的过程：<ul>
+<li><strong>诱导 → 分析 → 规范化 → 确认</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="2-需求管理"><a href="#2-需求管理" class="headerlink" title="2. 需求管理"></a>2. 需求管理</h5><ul>
+<li><strong>需求管理的4个主要内容</strong>：<ol>
+<li><strong>变更控制</strong>：建议变更；分析影响；作出决策；交流；合并；测量需求的稳定性。</li>
+<li><strong>版本控制</strong>：确定需求文档版本；确定单个需求文档版本。</li>
+<li><strong>需求跟踪</strong>：定义对其它需求的连接链；定义对其它系统元素的连接。</li>
+<li><strong>需求跟踪状态</strong>：定义需求状态；跟踪需求每一个状态。</li>
+</ol>
+</li>
+<li>需求开发与需求管理的分界<br><img src="/require/界限.png" width="30%"></li>
+</ul>
+<h5 id="需求的好坏"><a href="#需求的好坏" class="headerlink" title="需求的好坏"></a>需求的好坏</h5><ul>
+<li><strong>糟糕的需求</strong><ul>
+<li>用户参与不足</li>
+<li>用户需求扩展</li>
+<li>有歧义的需求</li>
+<li>镀金问题</li>
+<li>过于抽象的需求</li>
+<li>忽略了某类用户</li>
+<li>不准确的计划</li>
+</ul>
+</li>
+<li><strong>理想情况下需求的性质</strong><ul>
+<li>完整的</li>
+<li>正确的</li>
+<li>可行的</li>
+<li>必须的</li>
+<li>优先化的 / 有优先次序的</li>
+<li>清楚的 / 无歧义的</li>
+<li>可检验的 / 可验证性</li>
+</ul>
+</li>
+<li><strong>需求规格说明的特点</strong><ul>
+<li>完整性</li>
+<li>一致性</li>
+<li>可修改性</li>
+<li>可跟踪性</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-客户眼中的需求"><a href="#2-客户眼中的需求" class="headerlink" title="2. 客户眼中的需求"></a>2. 客户眼中的需求</h2><h5 id="用户：是一种泛称"><a href="#用户：是一种泛称" class="headerlink" title="用户：是一种泛称"></a>用户：是一种泛称</h5><ul>
+<li>掏钱买软件的用户称为<strong>客户</strong></li>
+<li>真正操作软件的用户叫<strong>最终用户</strong></li>
+<li><strong>间接用户</strong>既不掏钱买该软件产品，也不使用该软件，但是它可能对软件产品有很大的影响。<ul>
+<li>eg. 财务软件 -&gt; <strong>国家财政局</strong>审核</li>
+<li>客户与最终用户可能是同一个人也可能不是同一个人</li>
+</ul>
+</li>
+</ul>
+<h5 id="涉众"><a href="#涉众" class="headerlink" title="涉众"></a>涉众</h5><ul>
+<li><strong>涉众</strong>：在软件开发项目中主要是<strong>指和这个项目有密切相关利益的人</strong>，他们共同感兴趣的就是需求分析阶段。</li>
+<li>这些涉众包括客户、用户、业务或需求分析员、开发人员、测试人员、用户文档编写者、项目管理者和客户管理者。 <ul>
+<li>需求分析员：负责收集客户需求并编写文档，以及负责客户与开发机构之间联系沟通的人</li>
+</ul>
+</li>
+</ul>
+<h5 id="软件客户的权利"><a href="#软件客户的权利" class="headerlink" title="软件客户的权利(!!!)"></a>软件客户的权利(!!!)</h5><ol>
+<li>要求需求分析员<strong>使用客户的语言</strong></li>
+<li>要求需求分析员<strong>熟悉客户的业务，了解客户对系统的目标</strong></li>
+<li>要求需求分析员<strong>把需求收集过程中客户提供的信息组织成书面的<code>软件需求规格说明</code></strong></li>
+<li>要求需求分析员<strong>解释需求过程生成的所有工作结果</strong></li>
+<li>要求需求分析员和开发人员尊重客户，始终以合作和专业的态度与客户进行互动</li>
+<li>要求需求分析员和开发人员为需求和产品实现提供思路和备用方案</li>
+<li>要求开发人员实现能让产品使用起来更容易、更有趣的特性</li>
+<li><strong>调整需求</strong>，便于重用已有的软件组件</li>
+<li>在提<strong>出需求变更时，获得对变更的成本</strong>、影响及二者权衡关系的真实评估</li>
+<li>获得满足功能和质量要求的系统，这些要求必须事先告知开发人员征得其同意</li>
+</ol>
+<h5 id="软件客户的义务"><a href="#软件客户的义务" class="headerlink" title="软件客户的义务"></a>软件客户的义务</h5><ol>
+<li>为需求分析员和开发人员<strong>讲解业务</strong>并<strong>定义业务术语</strong></li>
+<li>提供需求，阐明需求，通过与开发人员的交互将<strong>需求充实完善</strong></li>
+<li>对系统需求的<strong>描述</strong>必须<strong>详细、准确</strong></li>
+<li>需要时，及时对需求做出决断</li>
+<li><strong>尊重</strong>开发人员对需求<strong>成本和可行性的评估</strong></li>
+<li>与开发人员<strong>协作</strong>，为功能需求、系统特性和用例<strong>设置优先级</strong></li>
+<li><strong>审阅</strong>需求文档，评估原型</li>
+<li>发现需要变更需求时，<strong>及时</strong>与开发人员<strong>沟通</strong></li>
+<li>按照开发组织的变更控制过程<strong>提出需求变更</strong></li>
+<li>尊重需求分析员在需求工程中使用的过程</li>
+</ol>
+<h2 id="3-需求工程的推荐方法"><a href="#3-需求工程的推荐方法" class="headerlink" title="3. 需求工程的推荐方法"></a>3. 需求工程的推荐方法</h2><ul>
+<li><strong>需求工程的推荐方法：</strong><ul>
+<li>知识技能</li>
+<li>需求管理 </li>
+<li>项目管理 </li>
+</ul>
+</li>
+<li><strong>需求开发：</strong><ul>
+<li>获取 </li>
+<li>分析 </li>
+<li>编写规格说明书 </li>
+<li>验证  </li>
+</ul>
+</li>
+</ul>
+<h2 id="4-需求分析员"><a href="#4-需求分析员" class="headerlink" title="4. 需求分析员"></a>4. 需求分析员</h2><ul>
+<li><strong>需求分析员</strong>：<ul>
+<li>是<strong>对软件项目设计的需求进行收集、分析、记录和验证等工作的主要承担者。</strong></li>
+<li>是用户群体和软件开发团队之间进行需求沟通的桥梁。</li>
+<li>是收集和传播的中心角色。</li>
+<li>需求分析员是一种项目角色，而不是职务头衔。</li>
+<li>需求分析员称职与否关系到项目的成败。</li>
+</ul>
+</li>
+<li><strong>需求分析员的任务</strong> <strong>深刻了解</strong><ul>
+<li>定义业务需求</li>
+<li>确定项目涉众和用户类别</li>
+<li>获取需求</li>
+<li>分析需求</li>
+<li>编写需求规格说明</li>
+<li>为需求建模</li>
+<li>主持对需求的验证</li>
+<li>引导对需求的优先级划分</li>
+<li>管理需求</li>
+</ul>
+</li>
+<li><strong>需求分析员的来源</strong>：<ul>
+<li>从<strong>用户</strong>转为分析员</li>
+<li>从<strong>开发人员</strong>转为分析员</li>
+<li>应用领域专家 / 主题专家</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-确定产品前景与项目范围"><a href="#5-确定产品前景与项目范围" class="headerlink" title="5. 确定产品前景与项目范围"></a>5. 确定产品前景与项目范围</h2><ul>
+<li>项目视图：描述了产品所涉及的各个方面和最终所具有的功能。 </li>
+<li>项目范围：<ul>
+<li>描述了产品应包括的部分和不应包括的部分。</li>
+<li>说明了在包括的部分与不包括的部分之间的界线。</li>
+</ul>
+</li>
+</ul>
+<h5 id="前景与范围文档"><a href="#前景与范围文档" class="headerlink" title="前景与范围文档"></a>前景与范围文档</h5><ul>
+<li><strong>业务需求</strong><ul>
+<li>包括<strong>背景、业务机遇、业务目标与成功标准、客户与市场需求、业务风险</strong></li>
+</ul>
+</li>
+<li>解决方案的前景<ul>
+<li>包括前景声明、主要特征、假设与依赖</li>
+</ul>
+</li>
+<li>范围与限制<ul>
+<li>包括第一个版本的范围、各后续版本的范围、限制与排除</li>
+</ul>
+</li>
+<li>业务背景<ul>
+<li>包括涉及简介、项目优先级、操作环境</li>
+</ul>
+</li>
+</ul>
+<h5 id="DFD图"><a href="#DFD图" class="headerlink" title="DFD图"></a>DFD图</h5><ul>
+<li>关联图（0层DFD） ：<ul>
+<li>确定了通过某一接口与系统相连的<strong>外部实体</strong>。有时，称为“端点”。</li>
+<li>以及，外部实体和系统之间的数据流和物流</li>
+<li>我们把<strong>关联图</strong>，作为结构化分析方法，形成<strong>数据流图</strong>的<strong>最高抽象层</strong>。 </li>
+</ul>
+</li>
+</ul>
+<h2 id="6-获取客户的需求"><a href="#6-获取客户的需求" class="headerlink" title="6. 获取客户的需求"></a>6. 获取客户的需求</h2><ul>
+<li><strong>需求的来源</strong><ol>
+<li>与潜在的用户进行交谈和讨论</li>
+</ol>
+<ul>
+<li>描述现有产品或竞争产品的文档</li>
+<li>系统需求规格说明</li>
+<li>现有系统的问题报告和改进要求</li>
+<li>市场调查和用户问卷调查</li>
+<li>观察用户如何工作</li>
+<li>用户工作的情景分析</li>
+<li>时间和响应</li>
+</ul>
+</li>
+<li><strong>用户代言人</strong><ul>
+<li>用户代言人本身就是实际用户</li>
+<li><strong>外部的用户代言人</strong></li>
+<li>对用户代言人的要求：计划、需求、确认和验证、用户辅助、变更控制</li>
+<li>设置多位用户代言人</li>
+<li>设置用户代言人会出现和应避免的问题 P72</li>
+</ul>
+</li>
+<li><strong>步骤</strong><ul>
+<li><strong>准备调查</strong>：首先，需求分析员应当起草需求调查问题表，将调查重点锁定在该问题表内，否则调查工作将变得漫无边际。其次，需求分析员应当确定需求调查的方式。最后需求分析员与被调查者建立联系，确定调查的时间、地点、人员等。</li>
+<li><strong>执行调查</strong>：按照计划执行调查。在调查过程中随时记录（或存储）需求信息。需求分析员与用户面谈时应守时，先去了解用户的身份、背景。</li>
+</ul>
+</li>
+<li>为了征求客户的意见，必须采取以下几步：<ul>
+<li>明确项目用户需求的来源。</li>
+<li>明确使用该产品的不同类型的用户。</li>
+<li>与产品不同用户类的代表进行沟通。</li>
+<li>遵从项目的最终决策者的意见。</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-聆听客户的需求"><a href="#7-聆听客户的需求" class="headerlink" title="7. 聆听客户的需求"></a>7. 聆听客户的需求</h2><h5 id="需求获取"><a href="#需求获取" class="headerlink" title="需求获取"></a>需求获取</h5><ul>
+<li>需求获取是最困难、最关键、最容易出错和最需要沟通的环节</li>
+<li>需求获取的方式：面谈、小组讨论、解决冲突等</li>
+<li>多问“为什么”</li>
+<li>获得业务问题或总体特性</li>
+<li>设身处地</li>
+<li>对现有系统最感到烦恼的事情是什么？</li>
+<li>工作流程—流程图和判定树</li>
+<li>编写文档及评审</li>
+</ul>
+<h5 id="需求获取讨论会"><a href="#需求获取讨论会" class="headerlink" title="需求获取讨论会"></a>需求获取讨论会</h5><ul>
+<li>建立基本规则</li>
+<li>不超出范围（项目范围）</li>
+<li>使用活动挂图来捕获以后再考虑的一些条目</li>
+<li>时间盒讨论</li>
+<li>保持较小的团队规模并找到合适的参与者（人多误事）</li>
+<li>确保每个人都积极地参与讨论</li>
+</ul>
+<h5 id="将客户的意见归类"><a href="#将客户的意见归类" class="headerlink" title="将客户的意见归类"></a>将客户的意见归类</h5><ul>
+<li>业务需求</li>
+<li>用例或场景</li>
+<li>业务规则</li>
+<li>功能性需求</li>
+<li>质量属性</li>
+<li>外部接口需求</li>
+<li>约束</li>
+<li>数据定义</li>
+<li>解决思路</li>
+</ul>
+<h2 id="8-理解用户需求"><a href="#8-理解用户需求" class="headerlink" title="8. 理解用户需求"></a>8. 理解用户需求</h2><ul>
+<li>需要了解 使用用例获取方法  </li>
+<li><strong>使用用例产生的成果：数据字典</strong><br><img src="/require/使用用例.png" width="50%"></li>
+</ul>
+<h5 id="使用用例的好处"><a href="#使用用例的好处" class="headerlink" title="使用用例的好处"></a>使用用例的好处</h5><ul>
+<li>使用户更清楚地认识到新系统允许他们做什么</li>
+<li>防止“孤立”的功能</li>
+<li>揭示对象以及它们之间的责任</li>
+</ul>
+<h5 id="使用用例时应避免的问题"><a href="#使用用例时应避免的问题" class="headerlink" title="使用用例时应避免的问题"></a>使用用例时应避免的问题</h5><ol>
+<li><strong>太多</strong>的使用用例 </li>
+<li>使用用例的<strong>冗余</strong> </li>
+<li>使用用例中的<strong>用户界面的设计</strong> </li>
+<li>使用用例中<strong>包括数据定义</strong> </li>
+<li>试图把每一个需求与一个使用实例相联系</li>
+</ol>
+<h5 id="需求整理和分析的过程"><a href="#需求整理和分析的过程" class="headerlink" title="需求整理和分析的过程"></a>需求整理和分析的过程</h5><ul>
+<li>需求收集 -&gt; 解释原始数据 -&gt; 整理需求 -&gt; 设置权重 -&gt; 概念选择</li>
+<li>整理单项需求：黄纸贴</li>
+<li>头脑风暴</li>
+</ul>
+<h5 id="单项需求重要性定义（BSA）"><a href="#单项需求重要性定义（BSA）" class="headerlink" title="单项需求重要性定义（BSA）"></a>单项需求重要性定义（BSA）</h5><ul>
+<li>B（Basic）：基本需求</li>
+<li>S（Satisfied）：让客户更满意的需求 </li>
+<li>A（Attractive）：更有吸引力的需求</li>
+</ul>
+<h2 id="9-遵守规则"><a href="#9-遵守规则" class="headerlink" title="9. 遵守规则"></a>9. 遵守规则</h2><ul>
+<li>遵守业务规则（从讨论会来）</li>
+<li>业务规则：是对业务的某个方面进行定义或约束的语句<ul>
+<li>eg. 政策性法规</li>
+</ul>
+</li>
+<li>业务规则的<strong>分类</strong>：<ul>
+<li>事件</li>
+<li>约束</li>
+<li>动作触发规则</li>
+<li>计算</li>
+<li>推论</li>
+</ul>
+</li>
+</ul>
+<h2 id="10-编写需求文档"><a href="#10-编写需求文档" class="headerlink" title="10. 编写需求文档"></a>10. 编写需求文档</h2><ul>
+<li><strong>软件需求规格说明</strong><ul>
+<li>精确地阐述了一个软件系统必须提供的功能和性能，以及所要考虑的限制条件。</li>
+<li>是一个软件系统成功的基础</li>
+</ul>
+</li>
+<li>编写软件需求规格说明的<strong>三种方法</strong>：<ul>
+<li><strong>用好的结构化和自然语言编写文本型文档</strong></li>
+<li><strong>建立图形化模型方法：</strong>模型可以描绘转换过程、系统状态和它们之间的变化、数据关系、逻辑流或对象类和它们的关系。</li>
+<li><strong>编写形式化规格说明：</strong>这可以通过使用数学上精确的形式化逻辑语言来定义需求。</li>
+</ul>
+</li>
+<li>高质量需求文档，所具有的特征：<ul>
+<li>完整性</li>
+<li>一致性</li>
+<li>必要性</li>
+<li>明确性</li>
+<li>可验证性</li>
+<li>可更改性</li>
+<li>可跟踪性</li>
+</ul>
+</li>
+<li>注意事项：(最后的分析题可以用到)<ul>
+<li>对节、小节和单个需求的号码编排，必须一致。</li>
+<li>正确使用各种可视化强调标志 —— 例如，黑体、下划线、斜体等</li>
+<li>创建目录表和索引表，有助于读者寻找所需的信息。</li>
+<li>对所有图和表，指定号码和标识号，并且可按号码进行查阅。</li>
+<li>使用字处理程序中，交叉引用的功能，来查阅文档中其它项或位置。</li>
+</ul>
+</li>
+<li>优秀的需求文档应该考虑： <ul>
+<li>保持语句和段落的简短。</li>
+<li>采用主动语态的表达方式。</li>
+<li>编写具有正确的语法、拼写和标点的完整句子。</li>
+<li>使用的术语与词汇表中所定义的应该一致。</li>
+<li>需求陈述应该具有一致的样式。</li>
+<li>为了减少不确定性，避免模糊的、主观的术语。</li>
+<li>避免使用比较性的词汇</li>
+</ul>
+</li>
+<li>编号：<ol>
+<li>序列号   如：UR-9、SRS-43</li>
+<li>层次化编码 如：3.2.1</li>
+<li>层次化文本标签  </li>
+</ol>
+</li>
+<li>数据字典<ul>
+<li>数据字典是一个共享存储库，用于定义应用程序中使用的所有数据元素或属性的含义、数据类型、长度、格式、需要的精度以及数据允许的取值范围或数据值的列表。</li>
+<li>数据字典与数据流图配合，能清楚地表达数据处理的要求</li>
+</ul>
+</li>
+</ul>
+<h2 id="11-需求的图形化分析"><a href="#11-需求的图形化分析" class="headerlink" title="11. 需求的图形化分析"></a>11. 需求的图形化分析</h2><ul>
+<li><strong>软件系统从三个方面来表达</strong><ul>
+<li><strong>过程</strong>：数据流图 </li>
+<li><strong>数据</strong>：实体-关系图 </li>
+<li><strong>状态</strong>：状态转换图，对话图，判定表和树。</li>
+</ul>
+</li>
+<li><strong>数据流图</strong>：一个数据流图可以标识系统的转换过程、系统所操纵的数据或物质集合（存储），以及过程、存储和外部世界之间的数据流或物质流。<ul>
+<li><strong>过程</strong>：用<strong>圆圈</strong>表示</li>
+<li><strong>端点</strong>：用<strong>矩形框</strong>表示</li>
+<li><strong>数据流</strong>：用<strong>箭头</strong>表示</li>
+<li><strong>数据存储区</strong>：用<strong>一对平行线</strong>表示</li>
+</ul>
+</li>
+<li><strong>实体-关系图</strong>：描绘了系统的数据关系<ul>
+<li><strong>实体</strong>用单名词来命名。用<strong>矩形</strong>框表示。</li>
+<li>每个实体要用几个<strong>属性</strong>来描述，每个实体的单个实例具有不同的属性值。</li>
+<li><strong>关系</strong>用能描述关系的本质来命名，它确定了一对实体之间在逻辑上和数量上的连接。用<strong>菱形框</strong>表示。</li>
+</ul>
+</li>
+<li><strong>状态转换图</strong>：表示处理结果可能的状态转换。<ul>
+<li><strong>系统状态</strong>，用<strong>矩形框</strong>表示。</li>
+<li><strong>状态改变</strong>，用<strong>箭头连接一对矩形框</strong>表示。</li>
+<li><strong>事件或条件</strong>，在每个迁移箭头上用<strong>文本标签</strong>来表示。</li>
+</ul>
+</li>
+<li>对话图：在<strong>较高的抽象层次上</strong>表示用户界面的设计，它展示了系统的对话元素及这些元素之间的导航连接，但<strong>没有展示</strong>详细的屏幕设计。一种状态转换图<ul>
+<li>每个<strong>对话元素</strong>表示为一个状态，用<strong>矩形框</strong>表示</li>
+<li>将每个允许的<strong>导航选项</strong>表示为一个<strong>转换</strong>，用<strong>箭头</strong>表示。</li>
+<li>触发用户界面导航的<strong>条件</strong>表示为<strong>转换箭头上的文本标签</strong>。</li>
+</ul>
+</li>
+<li>决策表：应用表格的形式进行需求表达。<ul>
+<li>可列出影响系统行为的所有因素的各种取值，并表明对这些因素的每一种组合所期望的系统响应动作。</li>
+</ul>
+</li>
+<li>决策树：采用一种树形结构表达需求。用树形结构表示动作的各种分支。</li>
+</ul>
+<h2 id="12-软件质量属性"><a href="#12-软件质量属性" class="headerlink" title="12. 软件质量属性"></a>12. 软件质量属性</h2><ul>
+<li>质量属性难以挖掘</li>
+<li><strong>软件质量属性</strong>是系统非功能性需求的一部分。<ul>
+<li>非功能需求：描述系统<strong>展现给用户的行为和执行的操作</strong>等。</li>
+</ul>
+</li>
+<li><strong>主要对用户重要的属性</strong> <strong>一定了解</strong> <ul>
+<li><strong>可用性</strong>：系统能够正常运行的时间比例。</li>
+<li><strong>有效性</strong>：系统如何优化处理器、磁盘空间或通信带宽的。</li>
+<li><strong>灵活性</strong>：在产品中，增加新功能时，所需工作量的大小。</li>
+<li><strong>完整性</strong></li>
+<li><strong>互操作性</strong>：表明了产品与其它系统交换数据和服务的难易程度。</li>
+<li><strong>可靠性</strong>：软件无故障执行一段时间的概率。</li>
+<li><strong>健壮性</strong>：是指当系统或其组成部分遇到非法输入数据、相关软件或硬件组成部分的缺陷或异常的操作情况时，能继续正确运行功能的程度。</li>
+<li><strong>易用性</strong>：对于新用户或不常使用产品的用户在学习使用产品时的难易程度。</li>
+</ul>
+</li>
+<li><strong>主要对开发人员重要的属性：</strong> <strong><code>一定了解</code></strong> <ul>
+<li><strong>可维护性</strong>：在软件中纠正一个缺陷或做一次更改的难易程度。</li>
+<li><strong>可移植性</strong>：把一个软件从一种运行环境转移到另一种运行环境中所花费的工作量。对于工程的成功是不重要的。</li>
+<li><strong>可重用性</strong>：除了在最初开发的系统中使用之外，还可以在其它应用程序中使用的程度。</li>
+<li><strong>可测试性</strong>：测试软件组件或集成产品时查找缺陷的难易程度。</li>
+</ul>
+</li>
+</ul>
+<h2 id="13-通过原型法减少项目风险"><a href="#13-通过原型法减少项目风险" class="headerlink" title="13. 通过原型法减少项目风险"></a>13. 通过原型法减少项目风险</h2><ul>
+<li>一个软件原型：<strong>是所提出的新产品的部分实现</strong></li>
+<li><strong>使用软件原型的3个目的：</strong><ul>
+<li>明确并完善需求</li>
+<li>研究设计选择方案</li>
+<li>发展为最终产品</li>
+</ul>
+</li>
+</ul>
+<h5 id="原型的分类"><a href="#原型的分类" class="headerlink" title="原型的分类"></a>原型的分类</h5><ul>
+<li><strong>水平原型</strong>（行为原型或演示性模型）主要描绘用户界面的一部分，<strong>不深入</strong>到体系结构的所有层次。</li>
+<li><strong>垂直原型</strong>（结构化原型或概念模型）主要在技术服务层次上实现应用程序用户界面的一部分功能，它触及到了系统实现的<strong>所有层次。</strong></li>
+<li><strong>进化型原型</strong>是螺旋式软件开发生命周期模型和某些面向对象软件开发过程的一个组成部分。</li>
+<li><strong>废弃型原型</strong>是指达到预期目的后，原型本身被抛弃。<ul>
+<li>用途：解决需求不确定性、二义性、不完整性、含糊性等。</li>
+</ul>
+</li>
+<li><strong>书面原型</strong>和电子原型：用<strong>平面工具</strong>把系统是如何实现的呈现在用户面前。<ul>
+<li>是一种廉价、快速，并且不涉及高技术的方法</li>
+<li>它可以把一个系统某部分，是如何实现的呈现在用户面前。  </li>
+</ul>
+</li>
+<li><strong>使用原型法的若干可能的方法</strong><br><img src="/require/原型.png" width="40%"></li>
+<li><strong>原型法的好处</strong><ol>
+<li>提供了一套强有力的技术</li>
+</ol>
+<ul>
+<li>可以缩短开发进度</li>
+<li>增加用户的满意程度</li>
+<li>生产出高质量的产品</li>
+<li>可以减少需求错误和用户界面的缺陷。 </li>
+</ul>
+</li>
+</ul>
+<h2 id="14-设定需求优先级"><a href="#14-设定需求优先级" class="headerlink" title="14. 设定需求优先级"></a>14. 设定需求优先级</h2><h5 id="为什么要划分优先级"><a href="#为什么要划分优先级" class="headerlink" title="为什么要划分优先级"></a>为什么要划分优先级</h5><ul>
+<li><strong>设定优先级的好处</strong>:<ul>
+<li>有助于项目经理解决冲突、安排阶段性交付，并且，做出必要的取舍。</li>
+<li>尽早确定出所交付的产品应具备的最重要的功能</li>
+<li>权衡合理的项目范围和进度安排、预算以及质量目标的约束</li>
+</ul>
+</li>
+<li>设定优先级的一般方法是<ul>
+<li>把需求分成三类：高、中、低</li>
+</ul>
+</li>
+<li>每一个需求的优先级，必须写入软件需求规格说明或使用实例的说明中。</li>
+</ul>
+<h5 id="基于价值、费用和风险的优先级设定"><a href="#基于价值、费用和风险的优先级设定" class="headerlink" title="基于价值、费用和风险的优先级设定"></a>基于价值、费用和风险的优先级设定</h5><ol>
+<li>列出要设定优先级的所有需求、特性或使用实例；</li>
+</ol>
+<ul>
+<li>估计每一个特性提供给客户或业务的相关利益。</li>
+<li>估计出如果没有把应该实现的特性包括到产品中，将会给客户或业务上带来的损失。</li>
+<li>总价值栏是相对利润和相对损失的总和。<ul>
+<li>总价值 = 相对利益 <em> 利益权值 + 相对损失 </em> 损失权值</li>
+</ul>
+</li>
+<li>估计实现每个特性的相对费用。</li>
+<li>估计出与每个特性相关的技术或风险相对程度。</li>
+<li>一旦把所有的估算写入平面表，就可以利用如下公式计算出每一特性的优先级：<ul>
+<li>优先级 =  价值% / (费用% <em> 费用权值+ 风险% </em> 风险权值)</li>
+</ul>
+</li>
+<li>按计算出的优先级的降序排列表中的特性。   </li>
+</ul>
+<h2 id="15-需求确认"><a href="#15-需求确认" class="headerlink" title="15. 需求确认"></a>15. 需求确认</h2><ul>
+<li>需求确认：是指开发方和客户方共同对《产品需求规格说明书》进行<strong>评审</strong>，双方对需求达成共识后作出<strong>承诺</strong>。</li>
+<li>需求确认包含两个重要工作：<ol>
+<li><strong>需求评审</strong></li>
+<li><strong>需求承诺</strong></li>
+</ol>
+</li>
+<li>评审过程要干些什么 看每一个步骤大概要点<br><img src="/require/审查.png" width="40%"></li>
+<li>需求评审的参与者(5-9人)<ol>
+<li>产品的开发者及其可能的同组成员</li>
+</ol>
+<ul>
+<li>先前产品的开发者或正在评审的项目的SRS编写者</li>
+<li>要根据正在审查的文档来开展工作的人</li>
+</ul>
+</li>
+</ul>
+<h2 id="18-需求管理的原则与实现"><a href="#18-需求管理的原则与实现" class="headerlink" title="18. 需求管理的原则与实现"></a>18. 需求管理的原则与实现</h2><ul>
+<li><strong>需求管理</strong>的4个部分，每部分大概需要做什么。<br><img src="/require/管理.png" width="40%"></li>
+<li><strong>需求基线</strong>-是团队成员已经承诺将在某一特定产品版本中实现的功能性和配功能性需求的一组集合。</li>
+</ul>
+<h2 id="19-变更管理"><a href="#19-变更管理" class="headerlink" title="19. 变更管理"></a>19. 变更管理</h2><ul>
+<li>注意事项：<ol>
+<li>应仔细评估已建议的变更</li>
+<li>挑选合适的人选对变更做出决定</li>
+<li>变更应及时通知所有涉及的人员</li>
+<li>项目要按一定的程序来采纳需求变更</li>
+</ol>
+</li>
+<li>变更控制策略<ol>
+<li>所有需求变更必须遵循一个过程，按照此过程，如果一个变更需求未被采纳，则其后过程不再予以考虑。</li>
+<li>对于未获批准的的变更，除可行性论证之外，不应再做其他设计和实现工作。</li>
+<li>简单请求一个变更不能保证能实现变更，要由项目CCB决定实现哪些变更。</li>
+<li>项目风险承担者应该能够了解变更数据库的内容。</li>
+<li>绝不能从数据库中删除或修改变更请求的原始文档。</li>
+<li>每一个集成的需求变更必须能跟踪到一个经核准的变更请求。</li>
+</ol>
+</li>
+</ul>
+<h4 id="考点：对整个需求过程比较关键的环节的概念比较重要。"><a href="#考点：对整个需求过程比较关键的环节的概念比较重要。" class="headerlink" title="考点：对整个需求过程比较关键的环节的概念比较重要。"></a>考点：对整个需求过程比较关键的环节的概念比较重要。</h4><ul>
+<li>做需求需要哪几个典型阶段</li>
+<li>每个阶段需要哪些参与者</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/Cryptography/" class="prev">PREV</a><a href="/media/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>

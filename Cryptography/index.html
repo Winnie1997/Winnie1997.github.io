@@ -64,7 +64,7 @@
 <li>防止抵赖：防止发送方或者接收方否认传输或者接受过某条消息。</li>
 <li>可控性：限制和控制那些通过通信连接对主机和应用进行访问。(eg. 读写权限)</li>
 </ul>
-<h3 id="1-5-安全机制-P14-表1-3"><a href="#1-5-安全机制-P14-表1-3" class="headerlink" title="1.5 安全机制 P14 表1.3"></a>1.5 安全机制 P14 表1.3</h3><h3 id="1-6-网络安全模型"><a href="#1-6-网络安全模型" class="headerlink" title="1.6 网络安全模型"></a>1.6 网络安全模型</h3><p><img src="网络安全模型.png" width="70%"></p>
+<h3 id="1-5-安全机制-P14-表1-3"><a href="#1-5-安全机制-P14-表1-3" class="headerlink" title="1.5 安全机制 P14 表1.3"></a>1.5 安全机制 P14 表1.3</h3><h3 id="1-6-网络安全模型"><a href="#1-6-网络安全模型" class="headerlink" title="1.6 网络安全模型"></a>1.6 网络安全模型</h3><p><img src="/Cryptography/网络安全模型.png" width="70%"></p>
 <h2 id="2-传统加密技术"><a href="#2-传统加密技术" class="headerlink" title="2. 传统加密技术"></a>2. 传统加密技术</h2><h3 id="2-1-密码学概念"><a href="#2-1-密码学概念" class="headerlink" title="2.1 密码学概念"></a>2.1 密码学概念</h3><h5 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h5><ul>
 <li>密码编码学</li>
 <li>密码分析学</li>
@@ -90,9 +90,9 @@
 </ul>
 </li>
 <li>多表代替密码<ul>
-<li>Auto-key Cipher<br><img src="Auto-key.png" width="40%"></li>
-<li>Playfair密码：密文仍然完好地保留了明文语言的大部分结构特征。<br><img src="Playfair.png" width="40%"></li>
-<li>Vigenère密码：破译能否取得进展取决于能否判定密钥词的长度。<br><img src="Vig.png" width="40%"></li>
+<li>Auto-key Cipher<br><img src="/Cryptography/Auto-key.png" width="40%"></li>
+<li>Playfair密码：密文仍然完好地保留了明文语言的大部分结构特征。<br><img src="/Cryptography/Playfair.png" width="40%"></li>
+<li>Vigenère密码：破译能否取得进展取决于能否判定密钥词的长度。<br><img src="/Cryptography/Vig.png" width="40%"></li>
 <li>Hill密码：基于线性代数 P30。优点是完全隐藏了单字母频率特性。</li>
 </ul>
 </li>
@@ -141,11 +141,11 @@
 </ul>
 <h2 id="3-分组密码原理"><a href="#3-分组密码原理" class="headerlink" title="3. 分组密码原理"></a>3. 分组密码原理</h2><h3 id="3-1-分组密码和数据加密标准-DES"><a href="#3-1-分组密码和数据加密标准-DES" class="headerlink" title="3.1 分组密码和数据加密标准(DES)"></a>3.1 分组密码和数据加密标准(DES)</h3><h5 id="乘积密码"><a href="#乘积密码" class="headerlink" title="乘积密码"></a>乘积密码</h5><ul>
 <li>P-box(置换)<ul>
-<li>直接的P-box是可逆的，压缩和扩张的P-box不可逆。<br><img src="pbox.png" width="40%"></li>
+<li>直接的P-box是可逆的，压缩和扩张的P-box不可逆。<br><img src="/Cryptography/pbox.png" width="40%"></li>
 </ul>
 </li>
 <li>S-bos(替换)<ul>
-<li>m x n的替换单元，m与n不一定相同。<br><img src="sbox.png" width="40%"></li>
+<li>m x n的替换单元，m与n不一定相同。<br><img src="/Cryptography/sbox.png" width="40%"></li>
 </ul>
 </li>
 <li>XOR<ul>
@@ -154,7 +154,7 @@
 </ul>
 </li>
 <li>循环移位<ul>
-<li><img src="循环移位.png" width="40%"></li>
+<li><img src="/Cryptography/循环移位.png" width="40%"></li>
 </ul>
 </li>
 <li>交换<ul>
@@ -162,7 +162,7 @@
 </ul>
 </li>
 <li><p>分离/合并 </p>
-<p><img src="乘积密码.png" width="40%"></p>
+<p><img src="/Cryptography/乘积密码.png" width="40%"></p>
 </li>
 </ul>
 <h5 id="Feistel密码"><a href="#Feistel密码" class="headerlink" title="Feistel密码"></a>Feistel密码</h5><ul>
@@ -179,15 +179,15 @@
 <li>快速软件加 / 解密</li>
 <li>简化分析难度</li>
 </ul>
-<p><img src="Feistel密码.png" width="50%"></p>
+<p><img src="/Cryptography/Feistel密码.png" width="50%"></p>
 </li>
 </ul>
 <h5 id="数据加密标准-DES"><a href="#数据加密标准-DES" class="headerlink" title="数据加密标准 DES"></a>数据加密标准 DES</h5><ul>
-<li>DES加密过程：是由2个P-box 初始置换和最终置换、16轮Feistel加密组成。即，除了初始和末尾的置换，DES的结构与Feistel密码结构完全相同。<br><img src="DES.png" width="40%"><ul>
+<li>DES加密过程：是由2个P-box 初始置换和最终置换、16轮Feistel加密组成。即，除了初始和末尾的置换，DES的结构与Feistel密码结构完全相同。<br><img src="/Cryptography/DES.png" width="40%"><ul>
 <li>初始置换和末尾置换是互逆的</li>
-<li>DES的核心是DES函数，他将一个48位的轮密钥加到32位的左半/右半部分并得到32位的输出。扩展后的右部分和轮密钥都是48位长度，且轮密钥仅在该轮使用。<br><img src="DESF.png" width="30%"></li>
+<li>DES的核心是DES函数，他将一个48位的轮密钥加到32位的左半/右半部分并得到32位的输出。扩展后的右部分和轮密钥都是48位长度，且轮密钥仅在该轮使用。<br><img src="/Cryptography/DESF.png" width="30%"></li>
 <li>DES使用了8个P-box来扩展，每个P-box有4位的输入和6位的输出</li>
-<li>S-box做了真正的混淆。DES使用了8个S-box，且每个都有6位的输入和4位的输出<br><img src="DESSbox.png" width="50%">  <img src="DESSbox3.png" width="30%"><br><img src="DESSbox2.png" width="50%"></li>
+<li>S-box做了真正的混淆。DES使用了8个S-box，且每个都有6位的输入和4位的输出<br><img src="/Cryptography/DESSbox.png" width="50%">  <img src="/Cryptography/DESSbox3.png" width="30%"><br><img src="/Cryptography/DESSbox2.png" width="50%"></li>
 </ul>
 </li>
 <li>DES解密过程<ul>
@@ -198,7 +198,7 @@
 </li>
 <li>DES密钥的生成和扩展<ul>
 <li>64位随机数，丢弃8位重新排列成56位</li>
-<li>轮密钥生成器在56位密钥中生成一个48位的轮密钥<br><img src="DES密钥.png" width="40%"></li>
+<li>轮密钥生成器在56位密钥中生成一个48位的轮密钥<br><img src="/Cryptography/DES密钥.png" width="40%"></li>
 <li>16个子密钥由56位密钥分裂成两半，左右两部分各占一半，然后压缩置换他们，为48位的轮密钥。</li>
 </ul>
 </li>
@@ -284,14 +284,14 @@
 <li>轮数：10 / 12 / 14</li>
 <li>轮密钥长度：128位<ul>
 <li>在<strong>第一轮开始前添加轮密钥</strong></li>
-<li>在<strong>最后一回合没有列混淆</strong><br><img src="AES.png" width="48%"><img src="AES2.png" width="52%"><img src="AES4.png" width="30%"></li>
+<li>在<strong>最后一回合没有列混淆</strong><br><img src="/Cryptography/AES.png" width="48%"><img src="/Cryptography/AES2.png" width="52%"><img src="/Cryptography/AES4.png" width="30%"></li>
 </ul>
 </li>
 <li>加密和解密算法的输入是一个128位分组，这个分组被描述为4 * 4 的字节方阵。这个分组被复制到<strong>状态数组</strong>，并在加密或解密的各个阶段被修改。</li>
 <li>四个不同的阶段<ul>
-<li>字节替换：加密S盒，解密S盒<sup>-1</sup>，S盒必须是可逆的。S盒不是自逆的。   <strong>P103 S盒的构造</strong><br><img src="AESS.png" width="30%"></li>
+<li>字节替换：加密S盒，解密S盒<sup>-1</sup>，S盒必须是可逆的。S盒不是自逆的。   <strong>P103 S盒的构造</strong><br><img src="/Cryptography/AESS.png" width="30%"></li>
 <li>行移位(<strong>以字节为单位</strong>)：第1行：不移，第2行：左移1字节，第3行，左移2字节，第4行：左移3字节。</li>
-<li>列混淆：<br><img src="AESC.png" width="40%"><img src="AESC2.png" width="50%"></li>
+<li>列混淆：<br><img src="/Cryptography/AESC.png" width="40%"><img src="/Cryptography/AESC2.png" width="50%"></li>
 <li>轮密钥加：加密过程中，每轮的输入与轮密钥异或一次（当前分组和扩展密钥的一部分进行按位异或）；因为二进制数连续异或一个数结果是不变的，所以在解密时再异或上该轮的密钥即可恢复输入。 轮密钥加是自逆的</li>
 </ul>
 </li>
@@ -304,7 +304,7 @@
 </ul>
 <h5 id="AES密钥扩展"><a href="#AES密钥扩展" class="headerlink" title="AES密钥扩展"></a>AES密钥扩展</h5><ul>
 <li>AES使用密码扩展算法创建每一轮的轮密钥。如果轮数为Nr，密钥扩展算法会为一个128位(= 16个字节 = 4个字)的加密密钥输出 Nr+1 个轮密钥。</li>
-<li>AES密钥扩展算法的输入值是4个字(16字节)，输出是44个字组成的一维线性数组。<br><img src="AESkey.png" width="50%"></li>
+<li>AES密钥扩展算法的输入值是4个字(16字节)，输出是44个字组成的一维线性数组。<br><img src="/Cryptography/AESkey.png" width="50%"></li>
 </ul>
 <h5 id="AES的实现"><a href="#AES的实现" class="headerlink" title="AES的实现"></a>AES的实现</h5><ul>
 <li>AES可以在软件，硬件和固件中实现。 实现可以使用表查找过程或使用明确定义的代数结构的例程。</li>
@@ -319,7 +319,7 @@
 <h3 id="3-3-分组密码的工作模式"><a href="#3-3-分组密码的工作模式" class="headerlink" title="3.3 分组密码的工作模式"></a>3.3 分组密码的工作模式</h3><h5 id="更先进的对称密码"><a href="#更先进的对称密码" class="headerlink" title="更先进的对称密码"></a>更先进的对称密码</h5><ul>
 <li>IDEA: International Data Encryption Algorithm<ul>
 <li>1992, Lai Xuejia (来学嘉)</li>
-<li>64位分组大小，128位密钥, 8轮<br><img src="IDEA.png" width="50%"></li>
+<li>64位分组大小，128位密钥, 8轮<br><img src="/Cryptography/IDEA.png" width="50%"></li>
 </ul>
 </li>
 <li>Blowfish<ul>
@@ -328,13 +328,13 @@
 <li>64位分组大小，32–448位密钥, 16轮</li>
 <li>继承者: Twofish</li>
 <li>Key Generator</li>
-<li>complex<br><img src="Blowfish.png" width="50%"></li>
+<li>complex<br><img src="/Cryptography/Blowfish.png" width="50%"></li>
 </ul>
 </li>
 <li>RC5<ul>
 <li>可变分组大小（32,64或128位），可变密钥大小（0到2040位）和可变轮次数（0到255）。 </li>
 <li>最初建议的参数选择是块大小为64位，128位密钥和12轮。</li>
-<li>继承者：RC6<br><img src="RC5.png" width="15%"></li>
+<li>继承者：RC6<br><img src="/Cryptography/RC5.png" width="15%"></li>
 </ul>
 </li>
 <li>高级分组密码的特点<ul>
@@ -350,7 +350,7 @@
 <li>实质上，工作模式是一项增强密码算法或者使算法适应具体应用的技术。</li>
 </ul>
 <h5 id="电子密码本-ECB"><a href="#电子密码本-ECB" class="headerlink" title="电子密码本 ECB"></a>电子密码本 ECB</h5><ul>
-<li>一次处理一组明文分块，每次使用相同的密钥加密。<br><img src="ECB.png" width="55%"></li>
+<li>一次处理一组明文分块，每次使用相同的密钥加密。<br><img src="/Cryptography/ECB.png" width="55%"></li>
 <li>ECB评价<ul>
 <li>消息中若有几个相同的明文组，那么密文也将出现几个相同的密文分组。</li>
 <li>􏲒􏰍􏳿􏴀􏱺􏱮􏳾􏰅􏴁􏱅􏴂􏴃􏲒􏰍􏳿􏴀􏱺􏱮􏳾􏰅􏴁􏱅􏴂􏴃无法阻止长消息的修改攻击，</li>
@@ -367,7 +367,7 @@
 <li>为了克服ECB的弱点，我们需要将重复的明文文组加密成不同的密文分组。</li>
 <li>CBC的输入是当前明文组的上一个密文组的异或，使用的密钥是相同的。  </li>
 <li>IV 初始向量：为了产生密文的第一个密文块，初始向量IV与第一个明文块进行异或。</li>
-<li>IV必须为收发双方共享，但第三方不能预测。为了最大限度的安全。IV不能不经授权而修改。<br><img src="CBC.png" width="55%"></li>
+<li>IV必须为收发双方共享，但第三方不能预测。为了最大限度的安全。IV不能不经授权而修改。<br><img src="/Cryptography/CBC.png" width="55%"></li>
 <li>CBC的加密和解密是互逆的。</li>
 <li>CBC方式要求如果最后的分组不是完整的分组，则需要填充至b位的满分组。<ul>
 <li>P<sub>i</sub> = D<sub>K</sub>(C<sub>i</sub>)⊕C<sub>i-1</sub>= D<sub>K</sub>(E<sub>K</sub>(P<sub>i</sub>⊕C<sub>i-1</sub>))⊕C<sub>i-1</sub> = P<sub>i</sub>⊕C<sub>i-1</sub>⊕C<sub>i-1</sub></li>
@@ -382,7 +382,7 @@
 <h5 id="密码反馈模式-CFB"><a href="#密码反馈模式-CFB" class="headerlink" title="密码反馈模式 CFB"></a>密码反馈模式 CFB</h5><ul>
 <li>实时地传输长消息。</li>
 <li>解密与加密使用相同的办法，只有一点不同：将收到的密文单元与加密函数的输出异或得到明文单元。这里使用的是加密函数而非解密函数。 </li>
-<li>与明文异或的位流是<strong>与明文相关的</strong>。<br><img src="CFB.png" width="50%">  <img src="CFB2.png" width="50%"></li>
+<li>与明文异或的位流是<strong>与明文相关的</strong>。<br><img src="/Cryptography/CFB.png" width="50%">  <img src="/Cryptography/CFB2.png" width="50%"></li>
 <li>CFB：错误传播<ul>
 <li>消息认证</li>
 <li>在<strong>可靠的信道</strong></li>
@@ -397,7 +397,7 @@
 <h5 id="输出反馈模式-OFB"><a href="#输出反馈模式-OFB" class="headerlink" title="输出反馈模式 OFB"></a>输出反馈模式 OFB</h5><ul>
 <li>没有错误传播：传输过程中某位上发生的错误不会影响其他位。OFB作为流密码，可以在<strong>不可靠信道</strong>使用。</li>
 <li>不需要将明文填充到长度是分组长度的整数倍。</li>
-<li>缺点：抗消息流篡改攻击能力不如CFB<br><img src="OFB.png" width="50%">  <img src="OFB2.png" width="50%"></li>
+<li>缺点：抗消息流篡改攻击能力不如CFB<br><img src="/Cryptography/OFB.png" width="50%">  <img src="/Cryptography/OFB2.png" width="50%"></li>
 <li>OFB适用于<ul>
 <li>噪声信道上<strong>的数据流传输</strong>，瑞卫星通信</li>
 </ul>
@@ -405,7 +405,7 @@
 </ul>
 <h5 id="计数器模式-CTR"><a href="#计数器模式-CTR" class="headerlink" title="计数器模式 CTR"></a>计数器模式 CTR</h5><ul>
 <li>没有反馈。</li>
-<li>密钥流的伪随机用计数器来实现。<br><img src="CTR.png" width="50%">  <img src="CTR2.png" width="50%"></li>
+<li>密钥流的伪随机用计数器来实现。<br><img src="/Cryptography/CTR.png" width="50%">  <img src="/Cryptography/CTR2.png" width="50%"></li>
 <li>CTR适用于<ul>
 <li>面向分组的通用传输，属于数据流的传输</li>
 <li>用于高速需求</li>
@@ -416,7 +416,7 @@
 <li>一个典型的流密码每次加密一个字节的明文，产生伪随机密钥流，与明文流的每个字节进行按位异或运算，得到一个密文字节。</li>
 <li>“一次一密”使用的是真正的随机数流，而流密码使用的是伪随机数流。</li>
 <li>流密码的随机性完全破坏了消息中的统计的性质。</li>
-<li>不能重复使用流密码，否则能够恢复消息。而分组密码可以重复使用密钥。<br><img src="stream.png" width="60%"></li>
+<li>不能重复使用流密码，否则能够恢复消息。而分组密码可以重复使用密钥。<br><img src="/Cryptography/stream.png" width="60%"></li>
 <li>一些需要考虑的方面：<ul>
 <li>长时间没有重复</li>
 <li>统计学上随机</li>
@@ -442,7 +442,7 @@
 <li>可变长度密钥K：1-256个字节(8-2048位)。密钥K的长度keylen与明文长度、密钥流长度无关，通常取16字节(128bits)</li>
 <li>状态向量S：256个字节，S的元素记为S[0], S[1], … , S[256]。<strong>从始至终置换后的S包含从0-255的8位数，只不过位置发生了变化</strong></li>
 <li>临时向量T：256个字节，每个单元也是一个字节。如果密钥K的长度是256字节，则直接把密钥的值赋给T，否则轮转地将密钥的每个字节赋给T。</li>
-<li>密钥流：密钥流的长度和明文的长度是对应的(相等)<br><img src="RC4.png" width="60%"></li>
+<li>密钥流：密钥流的长度和明文的长度是对应的(相等)<br><img src="/Cryptography/RC4.png" width="60%"></li>
 </ul>
 </li>
 <li>RC4算法具体描述：<ul>
@@ -468,9 +468,9 @@
 <li>eg.<ul>
 <li>明文：(7 2 5 1 5)<sub>oct</sub>     = {111 010 101 001 101}<sub>bin</sub></li>
 <li>密钥：(7 4 3 2)<sub>oct</sub> = {111 100 011 010}<sub>bin</sub>   (密钥长度 = 4*3bit=12) </li>
-<li>初始化：<br><img src="初始化.png" width="60%"></li>
-<li>初始置换：<br><img src="初始置换.png" width="60%"><br><img src="初始置换2.png" width="60%"></li>
-<li>密钥流的生成：<br><img src="流密钥1.png" width="60%"><br><img src="流密钥2.png" width="60%"></li>
+<li>初始化：<br><img src="/Cryptography/初始化.png" width="60%"></li>
+<li>初始置换：<br><img src="/Cryptography/初始置换.png" width="60%"><br><img src="/Cryptography/初始置换2.png" width="60%"></li>
+<li>密钥流的生成：<br><img src="/Cryptography/流密钥1.png" width="60%"><br><img src="/Cryptography/流密钥2.png" width="60%"></li>
 </ul>
 </li>
 </ul>
@@ -499,9 +499,9 @@
 </li>
 </ul>
 <h5 id="密钥分配方案"><a href="#密钥分配方案" class="headerlink" title="密钥分配方案"></a>密钥分配方案</h5><ul>
-<li>Needham/Schreoder 认证协议：KDC <strong>P321</strong><br><img src="KDC.png" width="55%"></li>
-<li>Denning认证协议 : timestamps<br><img src="timestamps.png" width="55%"></li>
-<li>Neuman协议：<br><img src="Neuman.png" width="55%"></li>
+<li>Needham/Schreoder 认证协议：KDC <strong>P321</strong><br><img src="/Cryptography/KDC.png" width="55%"></li>
+<li>Denning认证协议 : timestamps<br><img src="/Cryptography/timestamps.png" width="55%"></li>
+<li>Neuman协议：<br><img src="/Cryptography/Neuman.png" width="55%"></li>
 </ul>
 <h5 id="层次密钥控制"><a href="#层次密钥控制" class="headerlink" title="层次密钥控制"></a>层次密钥控制</h5><ul>
 <li>对于大型网络，需要建立KDC的层次体系。<ul>
@@ -526,8 +526,8 @@
 <li>相比对称加密的密钥分发，不用等待获取会话密钥，然后才能加密和发送消息。</li>
 <li>基于一个单向函数：K = ( Y<sub>B</sub> )<sup>X<sub>A</sub></sup> mod q = ( Y<sub>A</sub> )<sup>X<sub>B</sub></sup> mod q</li>
 <li>Diffie-Hellman算法的有效性建立在<strong>计算离散对数是很困难的</strong>这一基础上。</li>
-<li>算法流程：  <strong>P218 具体计算</strong><br><img src="Diffie-Hellman.png" width="62%"></li>
-<li>缺点：不能抵抗所谓的中间人攻击。<br><img src="中间人攻击.png" width="48%"></li>
+<li>算法流程：  <strong>P218 具体计算</strong><br><img src="/Cryptography/Diffie-Hellman.png" width="62%"></li>
+<li>缺点：不能抵抗所谓的中间人攻击。<br><img src="/Cryptography/中间人攻击.png" width="48%"></li>
 </ul>
 <h3 id="6-2-RSA算法"><a href="#6-2-RSA算法" class="headerlink" title="6.2 RSA算法"></a>6.2 RSA算法</h3><h5 id="数论"><a href="#数论" class="headerlink" title="数论"></a>数论</h5><ul>
 <li>数论的核心问题：<strong>质数</strong></li>
@@ -564,7 +564,7 @@
 <li><strong>欧拉函数</strong><ul>
 <li>定义 φ(n) 为小于n且与n互质的正整数。</li>
 <li>如果p为一个素数，那么φ(p) = p - 1</li>
-<li>如果n = p<sub>1</sub><sup>a<sub>1</sub></sup> p<sub>2</sub><sup>a<sub>2</sub></sup> … p<sub>k</sub><sup>a<sub>k</sub></sup> 是素数分解的n，那么<img src="oula.png" width="30%"></li>
+<li>如果n = p<sub>1</sub><sup>a<sub>1</sub></sup> p<sub>2</sub><sup>a<sub>2</sub></sup> … p<sub>k</sub><sup>a<sub>k</sub></sup> 是素数分解的n，那么<img src="/Cryptography/oula.png" width="30%"></li>
 </ul>
 </li>
 <li><strong>欧拉定理</strong><ul>
@@ -725,7 +725,7 @@
 </ul>
 <h5 id="安全Hash算法-SHA"><a href="#安全Hash算法-SHA" class="headerlink" title="安全Hash算法 SHA"></a>安全Hash算法 SHA</h5><ul>
 <li>SHA-1 来自 MD4</li>
-<li>SHA-2 family：SHA-224, SHA-256, SHA-384和SHA-512<br><img src="SHA512.png" width="60%"></li>
+<li>SHA-2 family：SHA-224, SHA-256, SHA-384和SHA-512<br><img src="/Cryptography/SHA512.png" width="60%"></li>
 </ul>
 <h5 id="消息摘要"><a href="#消息摘要" class="headerlink" title="消息摘要"></a>消息摘要</h5><ul>
 <li>MD5消息摘要算法<ul>
@@ -751,10 +751,10 @@
 <li>伪造数字签名在计算上是不可行的</li>
 <li>保存数字签名副本是可行的</li>
 </ul>
-<p><img src="数字签名.png" width="55%"></p>
+<p><img src="/Cryptography/数字签名.png" width="55%"></p>
 <h5 id="数字签名过程-P300"><a href="#数字签名过程-P300" class="headerlink" title="数字签名过程 P300"></a>数字签名过程 P300</h5><ul>
 <li>数字签名需要<strong>公钥系统</strong>。</li>
-<li>签名者用他的私钥签名，验证者使用签名者的公钥进行验证。<br><img src="数字签名1.png" width="55%"><br><img src="数字签名2.png" width="55%"></li>
+<li>签名者用他的私钥签名，验证者使用签名者的公钥进行验证。<br><img src="/Cryptography/数字签名1.png" width="55%"><br><img src="/Cryptography/数字签名2.png" width="55%"></li>
 </ul>
 <h5 id="数字签名提供的安全服务"><a href="#数字签名提供的安全服务" class="headerlink" title="数字签名提供的安全服务"></a>数字签名提供的安全服务</h5><ul>
 <li>消息验证</li>
@@ -762,7 +762,7 @@
 <li>防止抵赖</li>
 <li>消息完整性</li>
 </ul>
-<h3 id="8-2-数字签名方案"><a href="#8-2-数字签名方案" class="headerlink" title="8.2 数字签名方案"></a>8.2 数字签名方案</h3><h5 id="RSA数字签名方案-P305"><a href="#RSA数字签名方案-P305" class="headerlink" title="RSA数字签名方案 P305"></a>RSA数字签名方案 P305</h5><p><img src="RSA.png" width="50%"><br><img src="DSA.png" width="50%"></p>
+<h3 id="8-2-数字签名方案"><a href="#8-2-数字签名方案" class="headerlink" title="8.2 数字签名方案"></a>8.2 数字签名方案</h3><h5 id="RSA数字签名方案-P305"><a href="#RSA数字签名方案-P305" class="headerlink" title="RSA数字签名方案 P305"></a>RSA数字签名方案 P305</h5><p><img src="/Cryptography/RSA.png" width="50%"><br><img src="/Cryptography/DSA.png" width="50%"></p>
 <h3 id="8-3-用户认证协议-P348"><a href="#8-3-用户认证协议-P348" class="headerlink" title="8.3 用户认证协议 P348"></a>8.3 用户认证协议 P348</h3><h5 id="Kerberos"><a href="#Kerberos" class="headerlink" title="Kerberos"></a>Kerberos</h5><ul>
 <li>Kerberos概述：<ul>
 <li>Kerberos是一种计算机网络认证协议，它允许通过非安全网络进行通信的节点以安全的方式相互证明其身份。</li>
@@ -770,7 +770,7 @@
 <li>麻省理工学院开发了Kerberos来保护Project Athena提供的网络服务</li>
 <li>存在多种版本的协议; 版本1-3仅在麻省理工学院内部发生。</li>
 <li>版本4发表于20世纪80年代后期</li>
-<li>版本5在1993年作为RFC 1510出现<br><img src="Ker.png" width="70%"></li>
+<li>版本5在1993年作为RFC 1510出现<br><img src="/Cryptography/Ker.png" width="70%"></li>
 </ul>
 </li>
 <li>一个全方位服务的Kerberos环境包括：<ul>
@@ -795,9 +795,9 @@
 <h3 id="8-4-PGP-P445"><a href="#8-4-PGP-P445" class="headerlink" title="8.4 PGP P445"></a>8.4 PGP P445</h3><h5 id="PGP概述"><a href="#PGP概述" class="headerlink" title="PGP概述"></a>PGP概述</h5><ul>
 <li>Pretty Good Privacy（PGP）是一种提供加密隐私和身份验证的计算机程序。</li>
 <li>PGP通常用于签名，加密和解密电子邮件，以提高电子邮件通信的安全性。<br>它由Philip Zimmermann于1991年创建。<br>PGP和其他类似产品遵循OpenPGP标准（RFC 4880）来加密和解密数据。  </li>
-<li>PGP-用户认证：<strong>P448</strong><br><img src="PGP.png" width="50%"></li>
-<li>PGP-保密：<br><img src="PGP2.png" width="50%"></li>
-<li>PGP-保密且认证<br><img src="PGP3.png" width="60%"> </li>
+<li>PGP-用户认证：<strong>P448</strong><br><img src="/Cryptography/PGP.png" width="50%"></li>
+<li>PGP-保密：<br><img src="/Cryptography/PGP2.png" width="50%"></li>
+<li>PGP-保密且认证<br><img src="/Cryptography/PGP3.png" width="60%"> </li>
 </ul>
 <h2 id="9-网络安全"><a href="#9-网络安全" class="headerlink" title="9. 网络安全"></a>9. 网络安全</h2><h3 id="9-1-网络安全概述-P396"><a href="#9-1-网络安全概述-P396" class="headerlink" title="9.1 网络安全概述 P396"></a>9.1 网络安全概述 P396</h3><ul>
 <li>Web现在被广泛使用：政府、企业、个人，但互联网和Web容易受到攻击</li>
@@ -809,7 +809,7 @@
 <li>认证 </li>
 </ul>
 </li>
-<li>在哪里添加安全机制？<br><img src="网络安全.png" width="40%"> </li>
+<li>在哪里添加安全机制？<br><img src="/Cryptography/网络安全.png" width="40%"> </li>
 </ul>
 <h3 id="9-2-SSL-TLS"><a href="#9-2-SSL-TLS" class="headerlink" title="9.2 SSL / TLS"></a>9.2 SSL / TLS</h3><h5 id="SSL-TLS-P-397"><a href="#SSL-TLS-P-397" class="headerlink" title="SSL / TLS P 397"></a>SSL / TLS P 397</h5><ul>
 <li>SSL：安全套接字层<ul>
@@ -835,35 +835,35 @@
 <li>Framing(取景? 框架？)</li>
 </ul>
 <h5 id="SSL-TLS-安全机制"><a href="#SSL-TLS-安全机制" class="headerlink" title="SSL/TLS 安全机制"></a>SSL/TLS 安全机制</h5><ul>
-<li><p>密钥交换算法  - 保密性<br><img src="Keyex.png" width="55%"> </p>
+<li><p>密钥交换算法  - 保密性<br><img src="/Cryptography/Keyex.png" width="55%"> </p>
 <ul>
-<li>RSA<br><img src="key1.png" width="55%"> </li>
-<li>Anonymous(匿名的) Diffie-Hellman<br><img src="key2.png" width="55%"> </li>
-<li>Ephemeral(短暂的) Diffie-Hellman<br><img src="key3.png" width="55%"></li>
+<li>RSA<br><img src="/Cryptography/key1.png" width="55%"> </li>
+<li>Anonymous(匿名的) Diffie-Hellman<br><img src="/Cryptography/key2.png" width="55%"> </li>
+<li>Ephemeral(短暂的) Diffie-Hellman<br><img src="/Cryptography/key3.png" width="55%"></li>
 </ul>
 </li>
-<li><p>对称加密/解密算法 - 保密性<br><img src="ssl1.png" width="60%"></p>
+<li><p>对称加密/解密算法 - 保密性<br><img src="/Cryptography/ssl1.png" width="60%"></p>
 </li>
-<li>Hash函数 - 消息完整性<br><img src="ssl2.png" width="55%"></li>
+<li>Hash函数 - 消息完整性<br><img src="/Cryptography/ssl2.png" width="55%"></li>
 </ul>
 <h5 id="SSL-TLS-结构"><a href="#SSL-TLS-结构" class="headerlink" title="SSL/TLS 结构"></a>SSL/TLS 结构</h5><ul>
 <li>2层</li>
-<li>4 个协议<br><img src="sll3.png" width="40%"></li>
+<li>4 个协议<br><img src="/Cryptography/sll3.png" width="40%"></li>
 <li><strong>SSL / TLS 记录协议</strong>(Record Protocol)<ul>
 <li>提供的安全服务：保密性，完整性</li>
 <li>如何利用HMAC算法和会话密钥同意：握手 </li>
-<li><img src="sslrecord.png" width="55%"></li>
+<li><img src="/Cryptography/sslrecord.png" width="55%"></li>
 </ul>
 </li>
 <li><strong>SSL / TLS 握手协议</strong><ul>
 <li>允许服务器和客户端：1. 相互认证 2. 协商加密和MAC算法 3. 协商要使用的加密密钥 </li>
-<li>包括一系列分阶段的消息： 建立安全功能  -&gt; 服务器验证和密钥交换 -&gt; 客户端验证和密钥交换 -&gt; 结束<br><img src="hs.png" width="50%"> <img src="hs12.png" width="35%"><br><img src="hs1.png" width="50%">  <img src="hs13.png" width="40%">  <img src="hs2.png" width="50%"><img src="hs22.png" width="50%"><br><img src="hs3.png" width="50%">  <img src="hs32.png" width="50%"></li>
+<li>包括一系列分阶段的消息： 建立安全功能  -&gt; 服务器验证和密钥交换 -&gt; 客户端验证和密钥交换 -&gt; 结束<br><img src="/Cryptography/hs.png" width="50%"> <img src="/Cryptography/hs12.png" width="35%"><br><img src="/Cryptography/hs1.png" width="50%">  <img src="/Cryptography/hs13.png" width="40%">  <img src="/Cryptography/hs2.png" width="50%"><img src="/Cryptography/hs22.png" width="50%"><br><img src="/Cryptography/hs3.png" width="50%">  <img src="/Cryptography/hs32.png" width="50%"></li>
 </ul>
 </li>
 </ul>
 <h3 id="9-3-Wireshark-实验-TLS1-2"><a href="#9-3-Wireshark-实验-TLS1-2" class="headerlink" title="9.3 Wireshark 实验 - TLS1.2"></a>9.3 Wireshark 实验 - TLS1.2</h3><ul>
-<li>POP3 and SMTP <strong>over TCP</strong><br><img src="tcp1.png" width="30%"><img src="tcp2.png" width="30%"></li>
-<li>POP3 and SMTP <strong>over TLS</strong><br><img src="pop31.png" width="30%"><img src="pop32.png" width="30%"></li>
+<li>POP3 and SMTP <strong>over TCP</strong><br><img src="/Cryptography/tcp1.png" width="30%"><img src="/Cryptography/tcp2.png" width="30%"></li>
+<li>POP3 and SMTP <strong>over TLS</strong><br><img src="/Cryptography/pop31.png" width="30%"><img src="/Cryptography/pop32.png" width="30%"></li>
 <li>Mail Agent(邮件代理): Foxmail 7.x</li>
 </ul>
-</div></article></div></main><footer><div class="paginator"><a href="/ml/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>
+</div></article></div></main><footer><div class="paginator"><a href="/sftest/" class="prev">PREV</a><a href="/require/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>
