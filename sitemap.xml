@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://daisine.me/categories/index.html</loc>
+    
+    <lastmod>2019-05-10T06:48:02.083Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://daisine.me/tags/index.html</loc>
     
     <lastmod>2019-05-10T06:33:42.717Z</lastmod>
