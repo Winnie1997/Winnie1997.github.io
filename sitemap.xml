@@ -2,9 +2,282 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://daisine.me/Hello-Programmiao/</loc>
+    
+    <lastmod>2019-05-10T11:11:56.170Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/to-be-continued%20/</loc>
+    
+    <lastmod>2019-05-10T11:11:37.714Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/theprogrammer/</loc>
+    
+    <lastmod>2019-05-10T11:11:32.875Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/attention/</loc>
+    
+    <lastmod>2019-05-10T11:11:13.955Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/tags/index.html</loc>
+    
+    <lastmod>2019-05-10T11:10:57.650Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/mac-assembly/</loc>
+    
+    <lastmod>2019-05-10T11:10:44.421Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/workhard/</loc>
+    
+    <lastmod>2019-05-10T11:10:09.745Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/the-list/</loc>
+    
+    <lastmod>2019-05-10T11:10:01.179Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/thefirstday/</loc>
+    
+    <lastmod>2019-05-10T11:09:50.147Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/happynew2018/</loc>
+    
+    <lastmod>2019-05-10T11:09:35.786Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/newblog/</loc>
+    
+    <lastmod>2019-05-10T11:08:32.333Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/typechostart/</loc>
+    
+    <lastmod>2019-05-10T11:07:14.288Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sql05/</loc>
+    
+    <lastmod>2019-05-10T11:05:30.069Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/categories/index.html</loc>
+    
+    <lastmod>2019-05-10T11:05:03.798Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sqllib/</loc>
+    
+    <lastmod>2019-05-10T11:04:32.700Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/20180506/</loc>
+    
+    <lastmod>2019-05-10T11:04:01.306Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/cn5/</loc>
+    
+    <lastmod>2019-05-10T11:03:01.789Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sql01/</loc>
+    
+    <lastmod>2019-05-10T11:02:50.615Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sql02/</loc>
+    
+    <lastmod>2019-05-10T11:02:38.942Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sql06/</loc>
+    
+    <lastmod>2019-05-10T11:02:23.316Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sql08/</loc>
+    
+    <lastmod>2019-05-10T11:02:09.593Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/manage/</loc>
+    
+    <lastmod>2019-05-10T11:01:57.293Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sql07/</loc>
+    
+    <lastmod>2019-05-10T11:01:55.158Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sql03/</loc>
+    
+    <lastmod>2019-05-10T11:01:33.411Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/cn1/</loc>
+    
+    <lastmod>2019-05-10T11:00:56.258Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/cn2/</loc>
+    
+    <lastmod>2019-05-10T11:00:50.725Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/cn3/</loc>
+    
+    <lastmod>2019-05-10T11:00:45.991Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/cn4/</loc>
+    
+    <lastmod>2019-05-10T11:00:40.796Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/os1/</loc>
+    
+    <lastmod>2019-05-10T11:00:20.874Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/os2/</loc>
+    
+    <lastmod>2019-05-10T11:00:16.450Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/os3/</loc>
+    
+    <lastmod>2019-05-10T11:00:10.942Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/os4/</loc>
+    
+    <lastmod>2019-05-10T11:00:06.622Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/os5/</loc>
+    
+    <lastmod>2019-05-10T11:00:01.836Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/os6/</loc>
+    
+    <lastmod>2019-05-10T10:59:57.545Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/os7/</loc>
+    
+    <lastmod>2019-05-10T10:59:52.690Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/os8/</loc>
+    
+    <lastmod>2019-05-10T10:59:48.237Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/os9/</loc>
+    
+    <lastmod>2019-05-10T10:59:44.304Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/os10/</loc>
+    
+    <lastmod>2019-05-10T10:59:39.818Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://daisine.me/os11/</loc>
     
-    <lastmod>2019-05-10T10:56:59.142Z</lastmod>
+    <lastmod>2019-05-10T10:59:35.294Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sei/</loc>
+    
+    <lastmod>2019-05-10T10:59:29.390Z</lastmod>
     
   </url>
   
@@ -19,20 +292,6 @@
     <loc>http://daisine.me/CG/</loc>
     
     <lastmod>2019-05-10T10:55:48.414Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/tags/index.html</loc>
-    
-    <lastmod>2019-05-10T10:55:37.297Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/categories/index.html</loc>
-    
-    <lastmod>2019-05-10T10:55:02.569Z</lastmod>
     
   </url>
   
@@ -86,13 +345,6 @@
   </url>
   
   <url>
-    <loc>http://daisine.me/manage/</loc>
-    
-    <lastmod>2019-05-10T10:50:25.793Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://daisine.me/list/index.html</loc>
     
     <lastmod>2018-10-31T10:01:29.732Z</lastmod>
@@ -100,261 +352,9 @@
   </url>
   
   <url>
-    <loc>http://daisine.me/os9/</loc>
-    
-    <lastmod>2018-10-29T03:17:43.457Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/os10/</loc>
-    
-    <lastmod>2018-10-29T03:16:41.459Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/os1/</loc>
-    
-    <lastmod>2018-07-03T06:22:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/os2/</loc>
-    
-    <lastmod>2018-07-03T06:22:07.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/os3/</loc>
-    
-    <lastmod>2018-07-03T06:22:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/os4/</loc>
-    
-    <lastmod>2018-07-03T06:21:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/os5/</loc>
-    
-    <lastmod>2018-07-03T06:21:43.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/os6/</loc>
-    
-    <lastmod>2018-07-03T06:21:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/os7/</loc>
-    
-    <lastmod>2018-07-03T06:21:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/os8/</loc>
-    
-    <lastmod>2018-07-03T06:21:14.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/sei/</loc>
-    
-    <lastmod>2018-06-20T01:53:57.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/cn5/</loc>
-    
-    <lastmod>2018-06-08T05:03:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/sql08/</loc>
-    
-    <lastmod>2018-06-08T04:58:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/sql07/</loc>
-    
-    <lastmod>2018-06-08T04:58:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/sql06/</loc>
-    
-    <lastmod>2018-06-08T04:58:08.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/sql05/</loc>
-    
-    <lastmod>2018-06-08T04:58:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/sql03/</loc>
-    
-    <lastmod>2018-06-08T04:57:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/sql02/</loc>
-    
-    <lastmod>2018-06-08T04:57:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/sql01/</loc>
-    
-    <lastmod>2018-06-08T04:57:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/cn4/</loc>
-    
-    <lastmod>2018-06-08T04:57:43.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/cn1/</loc>
-    
-    <lastmod>2018-06-08T04:47:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/cn3/</loc>
-    
-    <lastmod>2018-06-08T04:44:57.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/cn2/</loc>
-    
-    <lastmod>2018-06-08T04:38:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://daisine.me/about/index.html</loc>
     
     <lastmod>2018-06-04T03:36:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/20180506/</loc>
-    
-    <lastmod>2018-05-06T10:21:54.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/sqllib/</loc>
-    
-    <lastmod>2018-04-19T13:20:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/to-be-continued%20/</loc>
-    
-    <lastmod>2018-04-19T12:05:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/workhard/</loc>
-    
-    <lastmod>2018-04-19T11:21:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/typechostart/</loc>
-    
-    <lastmod>2018-04-19T09:46:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/theprogrammer/</loc>
-    
-    <lastmod>2018-04-19T08:31:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/thefirstday/</loc>
-    
-    <lastmod>2018-04-19T08:31:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/the-list/</loc>
-    
-    <lastmod>2018-04-19T08:31:05.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/newblog/</loc>
-    
-    <lastmod>2018-04-19T08:31:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/mac-assembly/</loc>
-    
-    <lastmod>2018-04-19T08:30:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/Hello-Programmiao/</loc>
-    
-    <lastmod>2018-04-19T08:30:45.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/attention/</loc>
-    
-    <lastmod>2018-04-19T08:30:34.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/happynew2018/</loc>
-    
-    <lastmod>2018-04-19T08:30:29.000Z</lastmod>
     
   </url>
   
