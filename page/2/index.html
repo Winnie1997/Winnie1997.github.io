@@ -1,32 +1,4 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Hi, Dai</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://daisine.me/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><ul class="home post-list"><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os11/" class="post-title-link">操作系统笔记11 文件系统</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="文件系统接口-用户角度"><a href="#文件系统接口-用户角度" class="headerlink" title="文件系统接口(用户角度)"></a>文件系统接口(用户角度)</h4><h5 id="文件概念"><a href="#文件概念" class="headerlink" title="文件概念"></a>文件概念</h5><ul>
-<li><strong><code>文件</code></strong>是逻辑外存单元的最小分配单元。</li>
-<li><strong>类型</strong><ul>
-<li>数据：数字字符，二进制…</li>
-<li>程序</li>
-</ul>
-</li>
-<li><p><strong>文件结构</strong></p>
-<ul>
-<li>无： 一个字节序列</li>
-<li>简单的记录结构：①行 ②固定长度 ③可变长度</li>
-<li>复杂结构：①格式化文档 ②对象文件 ③可执行文件</li>
-</ul></li></ul></div><a href="/os11/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os10/" class="post-title-link">操作系统笔记10 虚拟内存</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ul>
-<li>自从有了计算机以来，我们就希望能够方便、高效地使用(今天仍然)十分有限的内存：<ol>
-<li>用户总是可以认为自己计算机的<strong>内存大到足够运行任何程序</strong>。</li>
-<li>程序员可以认为自己的程序将运行<strong>在巨大、连续的内存</strong>中。不需要用overlay或swap等技术来自己管理内存。</li>
-<li>进程在运行过程中<strong>不能访问(包括读写)其他进程的数据</strong>，更<strong>不能访问属于操作系统的数据</strong>。而且某一个进程引起的问题不会波及到操作系统或其他进程。</li>
-<li>由于内存有限，应该尽可能地<strong>共享一些公用的代码和数据</strong>。</li>
-</ol>
-</li>
-<li><p>前面介绍的各种技术解决了上述问题的某一些方面，但没有提出一个整体的解决方案。</p>
-<ul>
-<li>虚拟内存技术基于已有的各种技术给出了一个完整的解决方案, 是20世纪计算机技术最重要的发明之一。</li>
-</ul></li></ul></div><a href="/os10/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os9/" class="post-title-link">操作系统笔记09 内存管理</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="内存管理介绍"><a href="#内存管理介绍" class="headerlink" title="内存管理介绍"></a>内存管理介绍</h4><ul>
-<li>进程管理回顾 <ul>
-<li>进程管理提供了一个虚拟的机器接口，让每一个进程都以为是自己在独占CPU，如下图所示:<br><img src="https://i.loli.net/2018/06/18/5b27ad8cd9ef4.png" width="50%" height="80%"></li>
-</ul>
-</li>
-<li><p>内存管理的任务：提供一个虚拟的机器接口，让每一个进程都以为是自己在独占RAM。</p></li></ul></div><a href="/os9/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os8/" class="post-title-link">操作系统笔记08 死锁</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h4><ul>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Hi, Dai</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://daisine.me/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><ul class="home post-list"><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os8/" class="post-title-link">操作系统笔记08 死锁</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h4><ul>
 <li><p>如果集合中的每个进程正在等待只有集合中的另一个进程可能导致的事件，则会导致一组进程死锁。    </p>
 <ul>
 <li>Kansas立法机构通过的一个法律：当两列列车在十字路口逼近时，它们要完全停下来，且在一列列车开走之前，另一列列车不能启动。</li>
@@ -63,4 +35,30 @@
 <ul>
 <li>NTLDR: 用于Windows NT / XP的boot-loader（驻留在C:\）。</li>
 <li>GRUB: Unix / Linux的启动加载器之一。</li>
-</ul></li></ul></div><a href="/os2/" class="read-more">...more</a></article></li></ul></main><footer><div class="paginator"><a href="/" class="prev">PREV</a><a href="/page/3/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>
+</ul></li></ul></div><a href="/os2/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os1/" class="post-title-link">操作系统笔记01 导论</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h4><ul>
+<li>多个作业同时保存在主存储器中，CPU通过在作业之间切换来执行多个作业。<br><img src="https://i.loli.net/2018/06/17/5b25c15f99ea2.png" width="40%" height="40%"> </li>
+</ul>
+<h4 id="台式机的操作系统"><a href="#台式机的操作系统" class="headerlink" title="台式机的操作系统"></a>台式机的操作系统</h4><ul>
+<li><p>这些计算机的操作系统从主机操作系统的开发中受益良多。</p>
+<ul>
+<li>Microsoft MS-DOS, Windows 9x/NT</li>
+<li>Apple Macintosh, Mac OS X</li>
+<li>IBM OS/2</li>
+<li>Unix: Solaris by Sun microsystem, HP-UX by Hewlett-Packard, AIX by IBM, Free (as in freedom) software such as BSD (Berkeley Software Distribution) Unix, GNU/Linux</li>
+</ul></li></ul></div><a href="/os1/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/sei/" class="post-title-link">软件工程导论笔记</a></h2><div class="post-info">Jun 20, 2018</div><div class="post-content"><h3 id="1-软件工程概述"><a href="#1-软件工程概述" class="headerlink" title="1. 软件工程概述"></a>1. 软件工程概述</h3><h4 id="软件的概念和特点"><a href="#软件的概念和特点" class="headerlink" title="软件的概念和特点"></a>软件的概念和特点</h4><p><code>软件</code>(广义)：计算机系统中与硬件相互依存的一部分  </p>
+<blockquote>
+<p><strong>程序</strong>：计算机可以接受的一系列指令，运行时可以提供所要求的功能和性能。<br><strong>数据</strong>：使得程序能够适当地操作信息的数据结构。<br><strong>文档</strong>：描述程序的研制过程、方法和使用的图文资料。 </p>
+</blockquote></div><a href="/sei/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn5/" class="post-title-link">计算机网络笔记05 链路层</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h3 id="5-1-链路层概述"><a href="#5-1-链路层概述" class="headerlink" title="5.1 链路层概述"></a>5.1 链路层概述</h3><ul>
+<li>基本概念:<ul>
+<li>主机和路由器：结点</li>
+<li>相邻结点的通信信道：链路 eg.wired links, wireless links, LANs</li>
+<li>链路层的数据分组</li>
+<li>帧 <code>frame</code>: 封装网络层的数据报 </li>
+</ul>
+</li>
+<li>链路层的背景<ul>
+<li>在不同的链路当中使用不同的协议来传输数据报:e.g.,<br>第一个链路以太网Ethernet，第二个链路是帧中继网络，第三个网络是802.11</li>
+<li>不同的链路提供的服务也不同</li>
+</ul>
+</li>
+</ul></div><a href="/cn5/" class="read-more">...more</a></article></li></ul></main><footer><div class="paginator"><a href="/" class="prev">PREV</a><a href="/page/3/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>
