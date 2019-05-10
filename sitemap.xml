@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://daisine.me/uml/</loc>
+    
+    <lastmod>2019-05-10T04:56:12.269Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://daisine.me/CG/</loc>
     
     <lastmod>2019-05-10T04:54:43.305Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://daisine.me/Cryptography/</loc>
     
     <lastmod>2019-05-10T04:53:17.219Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/uml/</loc>
-    
-    <lastmod>2019-05-10T04:52:57.986Z</lastmod>
     
   </url>
   
