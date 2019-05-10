@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://daisine.me/uml/</loc>
+    
+    <lastmod>2019-05-10T04:31:33.468Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://daisine.me/sftest/</loc>
     
     <lastmod>2019-05-10T03:59:12.977Z</lastmod>
