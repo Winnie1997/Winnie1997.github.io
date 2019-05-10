@@ -1,0 +1,670 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 多媒体技术笔记 · Hi, Dai</title><meta name="description" content="多媒体技术笔记 - Dai Sine"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://daisine.me/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">多媒体技术笔记</h1><div class="post-info">May 10, 2019</div><div class="post-content"><h2 id="1-引论"><a href="#1-引论" class="headerlink" title="1. 引论"></a>1. 引论</h2><h5 id="媒体的分类"><a href="#媒体的分类" class="headerlink" title="媒体的分类"></a>媒体的分类</h5><ul>
+<li><code>感觉媒体</code>: 能直接作用于人的感官，使人直接产生感觉的一类媒体<strong>（作用于人）</strong>。如人类的语言、音乐、自然界的各种声音、图形、图像。</li>
+<li><code>表示媒体</code>: 计算机对信息的表示方法的描述。是<strong>为了加工、处理和传输感觉媒体</strong>而人为研究、构造出来的一种媒体<strong>（作用于计算机)</strong>。具体体现为：编码<a id="more"></a></li>
+<li><code>表现媒体</code>: <strong>感觉媒体和用于通信的电信号之间转换</strong>用的一类媒体，分为输入表现媒体和输出表现媒体。如打印机、音箱、MIDI键盘，扫描仪、键盘、鼠标。除此之外，还有耳麦、轨迹球、绘图仪等<strong>（用于人与计算机交互）</strong></li>
+<li><code>存储媒体</code>: 用于计算机存放<strong>表示媒体</strong>，以便计算机随时处理、加工和调用信息编码。常用的有光盘、硬盘、磁带、活动硬盘、优盘等</li>
+<li><code>传输媒体</code>: 用于传输<strong>表示媒体</strong>，将表示媒体从一处传送到另一处的物理载体。如双绞线、同轴电缆、光纤等</li>
+</ul>
+<h5 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h5><ul>
+<li><strong><code>多媒体</code></strong>是指信息<strong>表示媒体</strong>的多样化，包括文本、图形、图像、声音、音乐、动画、视频等，即多媒体<strong>主要研究表示媒体</strong>。</li>
+<li>性质：<ul>
+<li>多媒体是多种信息载体的<strong>表现</strong>形式、<strong>存储</strong>和<strong>传输</strong>方式的有机集合</li>
+<li>多媒体系统具有<strong>多样性</strong>、<strong>集成性</strong>、<strong>实时性</strong>和<strong>交互性</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="多媒体系统的体系结构"><a href="#多媒体系统的体系结构" class="headerlink" title="多媒体系统的体系结构"></a>多媒体系统的体系结构</h5><p><img src="/media/体系结构.png" width="30%"></p>
+<ul>
+<li><strong>多媒体应用系统</strong> / 多媒体应用软件：利用多媒体工具软件，针对某一主题<strong>设计开发的具体多媒体应用系统</strong>。</li>
+<li><strong>多媒体创作系统</strong> / 多媒体应用系统开发软件：集成文本、图形、声音、图像、视频和动画等多种媒体信息的编辑和著作工具，是开发多媒体应用系统的平台或环境，可以用于<strong>生成各种多媒体应用系统</strong>。</li>
+<li><strong>媒体制作平台与工具</strong> / 多媒体素材创作软件：利用本层提供的工具及接口可以完成多媒体数据的采集、制作及编辑。</li>
+<li><strong>多媒体核心系统</strong> / 多媒体系统软件：提供硬件层上的基础服务，拥有一系列的服务软件，包括对多种硬件设备的连接、控制，对用户使用的语言环境的支持和解释。其核心是<strong>多媒体操作系统</strong>，还包括<strong>设备驱动程序</strong></li>
+<li><strong>多媒体计算机硬件系统</strong>：包括多媒体计算机<strong>主机系统</strong>（MPC）及各种外围设备的<strong>接口部件</strong>。</li>
+<li><strong>多媒体外围设备</strong>：包括音频、视频等多种媒体的<strong>输入/输出设备和装置</strong>，通信（网络）<strong>传输设备及装置</strong></li>
+</ul>
+<h2 id="2-图形图像技术"><a href="#2-图形图像技术" class="headerlink" title="2. 图形图像技术"></a>2. 图形图像技术</h2><h5 id="图形"><a href="#图形" class="headerlink" title="图形"></a>图形</h5><ul>
+<li>图形（矢量图）是用一系列计算机指令来表示一幅图，如画点、画线、画曲线、画圆、画矩形等。例如，一条直线可以用Line (1,1 5,5)表示（计算机中描述方式？）</li>
+<li>优点<ul>
+<li>存储和传输时数据量较小</li>
+<li>缩放、旋转、移动图形不会失真，能保证质量（可无级缩放）</li>
+<li>适合管理图形的每一部分</li>
+<li>编辑方便</li>
+<li>图块可重用</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>图形重生成花费时间较长 </li>
+<li>不适合描述彩色图像</li>
+</ul>
+</li>
+</ul>
+<h5 id="图像-位图"><a href="#图像-位图" class="headerlink" title="图像 / 位图"></a>图像 / 位图</h5><ul>
+<li>将一幅图像在<strong>空间</strong>上<strong>离散化</strong>为多个<strong>像素</strong>，每个像素用若干个二进制位来描述其<strong>颜色、亮度和属性</strong></li>
+<li>位图的获取通常使用扫描仪、数码相机、数码摄像机</li>
+<li>优点<ul>
+<li>显示速度快</li>
+<li>表现力强，可适于任何自然图像，细腻、层次多、细节丰富</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>存储和传输时数据量比较大</li>
+<li>缩放、旋转时算法复杂且容易失真</li>
+<li>矢量图和位图之间可以进行转换</li>
+<li>由矢量图转换成位图采用光栅化技术，转换也相对容易</li>
+<li>由位图转换成矢量图用跟踪技术</li>
+</ul>
+</li>
+</ul>
+<h5 id="采样与量化"><a href="#采样与量化" class="headerlink" title="采样与量化"></a>采样与量化</h5><ul>
+<li>在用计算机进行处理时，需要<strong>对连续信号离散化</strong>。包括空间、时间、幅值上的离散化</li>
+<li>其中<strong>空间/时间</strong>离散称为<strong>采样</strong>，<strong>幅值离散</strong>称为<strong>量化</strong></li>
+<li><p>离散化后的连续信号还需要进行<strong>编码</strong>，以便计算机存储、处理和传输</p>
+</li>
+<li><p>对量化后的数据编码、压缩，生成不同多媒体信息的表示媒体，可以采用多种方案。思考：什么是编码？编码是否等同于压缩？</p>
+<ul>
+<li>对于数据编码不一定压缩数据，但压缩数据的结果一定是一种编码，即编码可以分为非压缩编码和压缩编码</li>
+<li>压缩可以在编码前进行，也可以在编码后针对编码结果进行压缩得到另一种编码</li>
+</ul>
+</li>
+<li><p>输入矢量图时是否需要采样、量化和编码？为什么？</p>
+<ul>
+<li>矢量图在表示方式上采用数学描述，因此在输入时不需要采样和量化，但在计算机内部有其自身的编码方式</li>
+</ul>
+</li>
+</ul>
+<h5 id="颜色模型"><a href="#颜色模型" class="headerlink" title="颜色模型"></a>颜色模型</h5><ul>
+<li><strong><code>RGB</code></strong>：R，G，B分别代表红、绿、蓝三色，<strong>相加混色模型</strong>。用于显示设备。(从黑色开始加)</li>
+<li><strong><code>CMYK</code></strong>：印刷四分色模式，<strong>相减混色模型</strong>。用于打印设备。（从白色开始减）</li>
+<li><strong><code>HSL</code></strong>：H(色调)、S(饱和度)、I(光强度)这3个分量来表示一种颜色。用于人眼。</li>
+<li><strong><code>Lab</code></strong>：颜色-对立空间，带有维度L表示亮度，a和b表示颜色对立维度，<strong>所生成的颜色与所使用的设备无关</strong>。用途：Lab模式可以用作为在不同颜色模式之间转换时使用的中间颜色模式。</li>
+<li><strong><code>Index</code></strong>：索引色彩模式用<strong>8bit</strong>描述，最多可以使用<strong>256种颜色</strong>，采用调色板方式实现。用于减小图片文件的大小，同时基本上不影响视觉效果。(不是真的彩色)</li>
+<li><strong><code>Grayscale</code></strong>：灰度模式用<strong>8bit</strong>描述，最多使用<strong>256级灰度</strong>来表现图像，图像中的每个像素有一个0（黑色）到255（白色）之间的亮度值。主要用于医学、图像识别领域。</li>
+<li><strong><code>Binary</code></strong>：二值图像是每个像素只有两个可能值的数字图像(黑、白)。主要用于数字图像处理研究。</li>
+</ul>
+<blockquote>
+<p>索引色彩模式和灰度模式中，每个像素值都占用一个字节，为什么一种为彩色？一种不为彩色？<br>索引彩色有调色板，灰度模式没有，且灰度模式的索引8bit就是灰度值本身灰度模式和索引色彩模式归为同一类。</p>
+</blockquote>
+<h5 id="位图图像基本属性"><a href="#位图图像基本属性" class="headerlink" title="位图图像基本属性"></a>位图图像基本属性</h5><ul>
+<li><strong>分辨率</strong><ul>
+<li>图像分辨率：构成图像的像素总数，以水平和垂直的像素表示。</li>
+<li>显示分辨率：在某种显示方式下，在屏幕上最大的显示区域中，可显示的像素总数。</li>
+</ul>
+</li>
+<li><strong>颜色深度：</strong>图像每个像素所占用的存储位数。它决定了彩色图像中最多能使用的颜色数，或者灰度图像中最多能有的灰度级数</li>
+<li><strong>调色板：</strong><ul>
+<li>一个彩色图像假如只包含24位真彩色空间中的16个离散的点（16色图），则可以建立一个颜色查找表，表中的每一行记录一组RGB值。</li>
+<li>实际像素的值用来指定该点颜色在查找表中的索引值，这样就可以大大缩小存储量。这个颜色查找表就叫做调色板</li>
+</ul>
+</li>
+<li><strong>真彩色、伪彩色与直接色</strong> (不考)<ul>
+<li>真彩色：在组成一幅彩色图像的每个像素值中，有R，G，B三个基色分量，每个基色分量直接决定显示设备的基色强度。</li>
+<li>伪彩色：把像素值当作彩色查找表(调色板)的表项入口地址，去查找一个显示图像时使用的R，G，B强度值，用查找出的R，G，B强度值产生的彩色。</li>
+<li>直接色：每个像素值分成R，G，B分量，每个分量作为单独的索引值对它做变换。也就是通过相应的彩色变换表找出基色强度，用变换后得到的R，G，B强度值产生的彩色称为直接色</li>
+</ul>
+</li>
+<li><strong>位图图像数据量</strong><ul>
+<li>位图图像数据量计算公式B = (h <em> w </em> c ) / 8 (Byte)</li>
+<li>其中，h:垂直分辨率，w:水平分辨率，c:颜色深度</li>
+<li>例：一副大小为640X480，256色彩色图像，其数据量为：B =（ 640 × 480 × 8 ) / 8 = 307, 200字节</li>
+</ul>
+</li>
+</ul>
+<h5 id="BMP图像文件格式"><a href="#BMP图像文件格式" class="headerlink" title="BMP图像文件格式"></a>BMP图像文件格式</h5><ul>
+<li>BMP图像文件格式：<ul>
+<li>采用位映射存储格式</li>
+<li>图像颜色深度可选lbit、4bit、8bit及24bit</li>
+<li>不采用其他任何压缩（？）</li>
+<li>包含的图像信息较丰富</li>
+<li>占用磁盘空间过大，不利于网络传输</li>
+<li>存储数据时，图像的扫描方式是按<strong>从左到右、从下到上</strong>的顺序</li>
+</ul>
+</li>
+<li><p>BMP文件由4个部分组成：</p>
+<ol>
+<li>位图文件头</li>
+<li>位图信息头</li>
+<li>颜色表</li>
+<li>图像数据阵列字节</li>
+</ol>
+</li>
+<li><p>有哪些不同类型的图形/图像文件？为什么有这些不同的类型？各自有何特点？</p>
+</li>
+</ul>
+<h2 id="3-音频技术"><a href="#3-音频技术" class="headerlink" title="3. 音频技术"></a>3. 音频技术</h2><ul>
+<li>声音、语音、音乐的区别和联系？<ul>
+<li>声音是统称，或专指除语音、音乐之外的其它声音。</li>
+<li>语音是声音的一种特殊类型，因为人类语音的频率范围小于声音的频率范围，且具有独特的发音特点。</li>
+<li>音乐也是声音的一种特殊类型，主要是指MIDI音乐。</li>
+</ul>
+</li>
+</ul>
+<h5 id="声音的听觉心理特性"><a href="#声音的听觉心理特性" class="headerlink" title="声音的听觉心理特性"></a>声音的听觉心理特性</h5><ul>
+<li>音调：声音的高低。由声音的(基)频率决定</li>
+<li>音强（响度）：表示人们所感觉到的声音能量的强弱，主要取决于声波振幅的大小。可听声音的强度范围是0-120dB</li>
+<li>响度的特性：响度与人耳的可闻程度有关<ul>
+<li>人耳的可听频率范围外，声音的响度再大，人耳也无法察觉</li>
+<li>人耳的可听频域范围内，当声音弱或强到一定程度，人耳都无法听到</li>
+</ul>
+</li>
+<li>等响曲线：人类感受不同频率声音时，其所感知的相同响度对应的声音能量是不同的，由此构成了等响曲线。</li>
+<li>听阈：人能听到的最低声压级</li>
+<li>痛阈：当声压级增大到一定强度时，人耳会感到不适或疼痛。</li>
+</ul>
+<h5 id="掩蔽效应："><a href="#掩蔽效应：" class="headerlink" title="掩蔽效应："></a>掩蔽效应：</h5><ul>
+<li>一种频率的声音阻碍听觉系统感受另一种频率的声音的现象。人的耳朵只对最明显的声音反应敏感，而对于不明显的声音，反应则较不敏感</li>
+<li>前者称为掩蔽声音，后者称为被掩蔽声音</li>
+<li>应用此原理，人们发明了mp3等<strong>压缩的数字音乐格式</strong>，在这些格式的文件里，只突出记录了人耳朵较为敏感的中频段声音，而对于较高和较低的频率的声音则简略记录，从而大大压缩了所需的存储空间<ul>
+<li>频域掩蔽：指一个<strong>强纯音</strong>会掩蔽在其附近同时发声的弱纯音。</li>
+<li>时域掩蔽：指在<strong>时间上相邻的声音之间</strong>也有掩蔽现象。</li>
+</ul>
+</li>
+</ul>
+<h5 id="声音信号数字化"><a href="#声音信号数字化" class="headerlink" title="声音信号数字化"></a>声音信号数字化</h5><ul>
+<li>声音如何数字化？  <ul>
+<li>与模拟图像数字化相似，声音数字化包括<strong>采样、量化和编码</strong></li>
+</ul>
+</li>
+<li><strong>采样</strong>：将声音信号<strong>在时间上离散化</strong>，即每隔相等的一段时间抽取一个信号样本</li>
+<li><strong>量化</strong>：将连续的信号<strong>幅度离散化</strong>。<ul>
+<li>如果幅度的划分是等间隔的，称为线性量化/均匀量化。</li>
+<li>否则为非线性量化/非均匀量化。</li>
+</ul>
+</li>
+<li><strong>编码</strong>：按<strong>一定的格式</strong>将离散的数字信号记录下来，并在数据的前、后加上同步、纠错等控制信号</li>
+</ul>
+<h5 id="影响数字音频质量的技术参数"><a href="#影响数字音频质量的技术参数" class="headerlink" title="影响数字音频质量的技术参数"></a>影响数字音频质量的技术参数</h5><ul>
+<li>数字音频的质量取决于：<strong>采样频率、采样精度/量化位数和声道数</strong></li>
+</ul>
+<h5 id="采样数据量-考试不用计算，考算式"><a href="#采样数据量-考试不用计算，考算式" class="headerlink" title="采样数据量(考试不用计算，考算式)"></a>采样数据量(考试不用计算，考算式)</h5><ul>
+<li><strong>声音采样数据量 (字节) = 采样频率 × 采样精度 / 8 × 声道数 × 采样时间</strong></li>
+<li>为了减少数据量，采样且量化后的数据常要进行压缩编码（将在第5章介绍）</li>
+<li>eg. <strong>1分钟</strong>的<strong>双声道声音</strong>，采用不同采样频率和精度所需的存储容量例如，采用<strong>44.1kHz采样频率</strong>和<strong>16位采样精度</strong>时，数字化后需要的存贮容量为：<strong>44.1 × 16 / 8 × 2 × 60 = 10584(字节)</strong></li>
+</ul>
+<h5 id="语音"><a href="#语音" class="headerlink" title="语音"></a>语音</h5><ul>
+<li>以语音的基本特性为基础，主要针对语音的成分进行相应处理，包括语音<strong>采样、识别、模拟、合成</strong>等技术</li>
+<li><strong>语音识别和语音合成</strong>技术是实现人机语音通信的两项关键技术</li>
+</ul>
+<h5 id="MIDI音乐"><a href="#MIDI音乐" class="headerlink" title="MIDI音乐"></a>MIDI音乐</h5><ul>
+<li>数字音乐是一种音乐语言；数字音乐编码。</li>
+<li>MIDI：电子乐器数字接口</li>
+<li><strong>MIDI音乐是一种数字音乐</strong>，MIDI音乐通常被称为<strong>电子音乐或合成音</strong>乐，它也是声音的一种，但是这种声音与流行的乐器有关，例如，钢琴、提琴、长号、鼓等乐器。</li>
+<li>优点：<ul>
+<li>生成的文件比较小，一个六分多钟、有16个乐器的文件只有80多KB（为什么？）</li>
+<li>容易编辑</li>
+<li>可以作背景音乐</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>缺点：<ul>
+<li>播放效果因软、硬件而异。好的播放效果必须支持波表功能</li>
+<li>录制较复杂，需要学习一些使用MIDI创作并改编作品的专业知识，还须有专门工具，如键盘合成器</li>
+</ul>
+</li>
+</ul>
+<h5 id="音频文件的格式"><a href="#音频文件的格式" class="headerlink" title="音频文件的格式"></a>音频文件的格式</h5><ul>
+<li>WAV</li>
+<li>MIDI：MIDI文件储存着MIDI资料和命令。</li>
+<li>MP3：利用了<strong>知觉音频编码技术</strong>，削减了音乐中人耳所听不到的成分，尽可能保持原有的音质。</li>
+<li>MP3PRO：降低压缩比</li>
+<li>ra(RealAudio) &amp; rm(RealMedia)：网络流媒体文件格式</li>
+<li>Windows Media</li>
+</ul>
+<h2 id="4-动画视频技术"><a href="#4-动画视频技术" class="headerlink" title="4. 动画视频技术"></a>4. 动画视频技术</h2><ul>
+<li>动态图像：由多幅连续的图像构成的序列称为动态图像</li>
+<li>原理：它利用了人眼的视觉暂留性</li>
+</ul>
+<h5 id="动态图像的特点"><a href="#动态图像的特点" class="headerlink" title="动态图像的特点"></a>动态图像的特点</h5><ul>
+<li><strong>时间连续性</strong>：动态图像具有时间连续性</li>
+<li><strong>数据量大</strong>：数据量更大</li>
+<li><strong>相关性强</strong>：动态图像的帧与帧之间具有很强的相关性。据研究，相邻帧之间有10%以下的像素有亮度变化，1%以下的像素有色度变化(注：该性质在动态图像压缩中具有重要作用。为什么？)@<strong>“为什么”考试</strong></li>
+<li><strong>实时性高</strong>：动态图像对实时性要求高，必须在规定的时间内完成更换画面播放的过程</li>
+</ul>
+<h5 id="动画文件的格式"><a href="#动画文件的格式" class="headerlink" title="动画文件的格式"></a>动画文件的格式</h5><ul>
+<li>GIF</li>
+<li>SWF</li>
+<li>FLI/FLC</li>
+</ul>
+<h5 id="视频文件格式"><a href="#视频文件格式" class="headerlink" title="视频文件格式"></a>视频文件格式</h5><ul>
+<li>微软的AVI </li>
+<li>苹果公司的MOV</li>
+<li>MPEG</li>
+<li>RealNetwork公司的RM</li>
+<li>ASF、 WMV</li>
+</ul>
+<h2 id="5-多媒体数据压缩技术"><a href="#5-多媒体数据压缩技术" class="headerlink" title="5. 多媒体数据压缩技术"></a>5. 多媒体数据压缩技术</h2><h3 id="5-1-数据压缩的基本原理和方法"><a href="#5-1-数据压缩的基本原理和方法" class="headerlink" title="5.1 数据压缩的基本原理和方法"></a>5.1 数据压缩的基本原理和方法</h3><h5 id="多媒体数据压缩的必要性和可能性"><a href="#多媒体数据压缩的必要性和可能性" class="headerlink" title="多媒体数据压缩的必要性和可能性"></a>多媒体数据压缩的必要性和可能性</h5><ul>
+<li>必要性<ul>
+<li>数字化后的图像、视频和音频等媒体信息的海量性</li>
+<li>计算机存储资源和网络带宽难以满足需要</li>
+<li>导致多媒体数据存储和传输的困难</li>
+<li>结论：多媒体数据需要压缩</li>
+</ul>
+</li>
+<li>可能性<ul>
+<li>多媒体数据冗余：统计冗余（空间冗余、时间冗余）、结构冗余、知识冗余、感知冗余（视觉冗余、听觉冗余）</li>
+<li>信息表达冗余：信息熵冗余</li>
+</ul>
+</li>
+</ul>
+<h5 id="数据冗余"><a href="#数据冗余" class="headerlink" title="数据冗余"></a>数据冗余</h5><ul>
+<li><strong>统计冗余</strong> <ul>
+<li>时间冗余: 一段视频的前后相邻的2帧中会有大量的区域有相同或相近的数据，形成帧间的数据冗余。</li>
+<li>空间冗余: 在同一个静态图像或画面中，有部分区域数据值一样或相差不大，形成空间冗余。</li>
+</ul>
+</li>
+<li>结构冗余：有些图像存在着明显的分布模式</li>
+<li>知识冗余：许多图像的理解与某些基础知识有相当大的相关性。如人脸的图像有固定的结构。 </li>
+<li><strong>感知冗余</strong><ul>
+<li>视觉冗余</li>
+<li>听觉冗余</li>
+</ul>
+</li>
+<li><strong>信息熵冗余</strong>：信息的表达存在冗余。<ul>
+<li>信息熵：一组数据所携带的<strong>平均信息量</strong>（不确定性的度量）</li>
+<li>平均信息量乘以数据的个数，就是整个一组数据的信息量</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>存在数据冗余，才可能进行数据压缩</li>
+<li>某些数据冗余是多媒体数据所特有的</li>
+<li>针对不同数据冗余，设计不同数据压缩方法</li>
+</ul>
+</blockquote>
+<h5 id="信源符号，码元，码字"><a href="#信源符号，码元，码字" class="headerlink" title="信源符号，码元，码字"></a>信源符号，码元，码字</h5><ul>
+<li>对于<strong>消息集</strong>中的<strong>信源符号</strong>使用<strong>符号集</strong>中的<strong>码元</strong>进行编码，得到<strong>输出集（码书）</strong>中的与信源符号<strong>一一对应</strong>的<strong>码字</strong></li>
+<li>信源符号，码元，码字（要求信源符号和码字一一对应）<ul>
+<li>英文字母，0和1，ASCII码</li>
+<li>数字，0和1，ASCII码</li>
+<li>汉字，0和1，GB2312码</li>
+</ul>
+</li>
+<li><strong>压缩目标：</strong>用尽量短的码字表达信源符号，且一一对应</li>
+<li>按照单个英文字母或单个汉字，与按照单词或词组，<strong>信源符号的个数不同</strong></li>
+<li>不同环境下的信源符号、码元、码字，<strong>同一符号可能分别为信源符号或码元</strong></li>
+</ul>
+<h5 id="感知冗余"><a href="#感知冗余" class="headerlink" title="感知冗余"></a>感知冗余</h5><ul>
+<li>视觉冗余（是否知道有哪些？）<ul>
+<li><strong>亮度和色度的差别</strong>：人眼<strong>对亮度的敏感性比色度要强</strong>，所以在色度成分上，可以不要保留太多细节，这样可以使色度成分中出现更多的冗余。</li>
+<li><strong>高亮度区和非高亮度区差别</strong>：在高亮度区，人眼的敏感度会下降。灰度值的量化可以更粗糙些，<strong>人类视觉系统一般分辨能力约为2<sup>6</sup>灰度等级，而一般图像量化采用2<sup>8</sup>灰度等级</strong>。</li>
+<li><strong>边缘和非边缘区别</strong>:人眼对急剧色彩和亮度变化的<strong>物体边缘</strong>的敏感度比非边缘区域强<br>听觉冗余（在“音频数据压缩技术”中介绍）</li>
+</ul>
+</li>
+</ul>
+<h5 id="数据压缩方法分类"><a href="#数据压缩方法分类" class="headerlink" title="数据压缩方法分类"></a>数据压缩方法分类</h5><ul>
+<li>根据解码（解压缩）后数据与原始数据是否完全一致，数据压缩方法分为两类<ul>
+<li><strong>可逆编码</strong>(无失真编码，无损编码）：解码数据与原始数据（数字而非模拟）严格相同  </li>
+<li><strong>不可逆编码(</strong>有失真编码，有损编码）： 解码数据与原始数据存在一定的误差，但感知效果一般可以接受。常用的有<strong>变换编码和预测编码</strong>等。</li>
+</ul>
+</li>
+<li>根据数据压缩的原理可以分为<ul>
+<li><strong>统计编码</strong>（<strong>针对信息熵冗余</strong>，即信息表达冗余）</li>
+<li><strong>预测编码</strong>（<strong>针对统计冗余</strong>，即多媒体信号的相关性）</li>
+<li><strong>变换编码</strong>（<strong>针对感知冗余</strong>，即多媒体信号的人类感知冗余）</li>
+<li><strong>其他编码</strong></li>
+</ul>
+</li>
+<li><strong>通用无损数据压缩</strong><ul>
+<li>研究中发现，大多数信息表达都存在着一定的冗余度，通过采用一定的模型和编码方法，可以降低这种冗余度。</li>
+<li><strong>eg.</strong> Huffman编码，算术编码，词典式编码，LZ78，LZW，ZIP格式。</li>
+</ul>
+</li>
+<li><strong>(专用)多媒体数据压缩</strong><ul>
+<li>采用成熟的通用数据压缩技术进行压缩</li>
+<li>根据<strong>媒体信息的特性</strong>设计新的压缩方法</li>
+<li><strong>eg.</strong> RLE编码(游程编码，适合压缩具有面积重复的颜色块的图像)，预测编码，变换编码</li>
+</ul>
+</li>
+<li>数据压缩方法评价<ul>
+<li><strong>压缩比</strong>（压缩效果：要求压缩比高</li>
+<li><strong>算法复杂性和运算速度</strong>（压缩效率）：要求算法简单，压缩和解压缩速度快，最好能实时解压</li>
+<li><strong>失真度</strong>（压缩质量）：要求恢复效果好</li>
+<li>三个指标相互制约</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-2-统计编码"><a href="#5-2-统计编码" class="headerlink" title="5.2 统计编码"></a>5.2 统计编码</h3><h5 id="统计编码的基本原理"><a href="#统计编码的基本原理" class="headerlink" title="统计编码的基本原理"></a>统计编码的基本原理</h5><ul>
+<li>数据压缩技术的理论基础是<strong>信息论</strong>，根据信息论的原理，<strong>数据压缩的理论极限是信息熵</strong></li>
+</ul>
+<ul>
+<li>如果要求编码过程中不<strong>丢失信息量（无损编码）</strong>，即要求保存信息熵，这种信息保持编码叫<strong>熵编码（统计编码）</strong></li>
+<li>信息论认为信源中存在的冗余度来自于<strong>信源本身的相关性</strong>和<strong>信源概率分布的不均匀性</strong></li>
+<li>熵编码（统计编码）要解决的问题是，如何利用信息熵理论<strong>减少数据在存储和传输中的冗余度</strong>。也就是要找到<strong>去除信源的相关性和概率分布的不均匀性</strong>的方法</li>
+<li>无损压缩编码</li>
+<li>根据信源符号出现概率的分布特性进行编码<ul>
+<li><strong>概率大</strong>的信源符号用<strong>短码字</strong>表示</li>
+<li><strong>概率小</strong>的信源符号用<strong>长码字</strong>表示</li>
+<li>从而去除数据之间的冗余而达到压缩的目的</li>
+</ul>
+</li>
+<li>统计编码需要在信源符号和码字之间确定严格的一一对应关系，以便准确无误地再现原来信源，同时使平均码长尽量小</li>
+<li>如果所有的信源符号出现的概率相同，则说明平均信息量最大，也就不存在信源的冗余<ul>
+<li>游程（RLE）编码</li>
+<li>Huffman编码</li>
+<li>算术编码</li>
+</ul>
+</li>
+</ul>
+<h5 id="游程（RLE）编码"><a href="#游程（RLE）编码" class="headerlink" title="游程（RLE）编码"></a>游程（RLE）编码</h5><ul>
+<li>不需要存储每一个像素的颜色值，而仅仅存储一个像素的颜色值，以及具有相同颜色的连续像素数目</li>
+<li>即，将颜色值相同的相邻像素用一个计数值和那些像素的颜色值来代替<ul>
+<li>例如:aaabccccccddeee，则可用3a1b6c2d3e来代替</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>游程长度</strong>：具有相同颜色并且是连续的像素数目</li>
+<li>对于拥有大面积，相同颜色区域的图像，用RLE压缩方法非常有效</li>
+<li>无损压缩编码</li>
+</ul>
+<ul>
+<li><strong>RLE压缩编码特点</strong><ul>
+<li>直观，经济</li>
+<li><strong>压缩比的大小，主要取决于图像本身的特点。</strong>如果图像中具有相同颜色的图像块越大，图像块数目越少，获得的压缩比就越高。反之，压缩比就越小</li>
+<li><strong>适用于计算机生成的图像</strong>，但对颜色丰富的自然图像不仅不能压缩图像数据，反而可能使原来的图像数据变得更大。</li>
+</ul>
+</li>
+</ul>
+<h5 id="Huffman编码"><a href="#Huffman编码" class="headerlink" title="Huffman编码"></a>Huffman编码</h5><ul>
+<li>统计编码，针对信息熵冗余，无损压缩编码</li>
+<li>1952年为文本文件建立</li>
+<li>编码方法简单且有效，得到广泛应用，现在已经派生出很多变体。</li>
+<li><strong>基本原理</strong>：<ul>
+<li>使用<strong>变长编码</strong>，对出现概率大的<strong>信源符号</strong>赋于短码字，而对于出现概率小的<strong>信源符号</strong>赋于长码字</li>
+<li>如果码字长度严格按照所对应符号出现概率大小逆序排列，则编码结果平均码字长度一定小于任何其它排列方式。</li>
+</ul>
+</li>
+<li><strong>步骤</strong>：<ol>
+<li>将信源符号按概率递减顺序排列；</li>
+<li>把二个最小概率相加作为新符号的概率, 并按(1)重排；</li>
+<li>重复 (1)、(2)，直到概率为1；</li>
+<li>在每次合并信源时,将合并的信源分别赋“0”和“1”(例如概率大的赋“0”,概率小的赋“1”)；</li>
+<li>寻找从每一信源符号到概率为1处的路径，记录下路径上的“1”和“0”；</li>
+<li>写出每一符号的“1”、“0”序列(从树根到信源符号节点)。<br><img src="/media/huf.png" width="50%"></li>
+</ol>
+</li>
+<li>特点<ul>
+<li>Huffman编码是最佳变长码，其优点是<strong>编码效率高</strong></li>
+<li>Huffman编码<strong>依赖于信源的统计特性</strong></li>
+</ul>
+</li>
+<li>Huffman编码是否只能得到唯一编码结果？<ul>
+<li>由于“0”和“1”的指定可以是任意的，所以Huffman编码所得到的编码不是唯一的。</li>
+<li>各次累加时对于信源符号可以任意指定0或1，并非一定要所有大概率信源符号使用相同编码，所有小概率信源符号使用相同编码。因为最终是以查表的方式查找信源符号的码字。</li>
+</ul>
+</li>
+<li>Huffman编码结果是否需要考虑如何区分不同字符的编码？<ul>
+<li>Huffman编码不需要附加同步代码，任何一个字符的编码，都不是另一个字符编码的前缀</li>
+</ul>
+</li>
+<li>Huffman编码如何解码？特别是对于自适应概率模型解码？<ul>
+<li>查表。因此在<strong>解码时需要有编码时采用的Huffman表</strong>，才能正确解码、</li>
+<li>如果信源符号数（例如，汉字？）很大，需要存储的码表（码书）也需很大，从而会影响存储量、编码以及解码速度等各个方面的性能。</li>
+</ul>
+</li>
+<li>根据Huffman编码得到的消息编码序列，是否可以从中间开始解码？<ul>
+<li>Huffman编码是可变长度码，很难随意查找或调用压缩文件中间的内容</li>
+</ul>
+</li>
+<li>Huffman编码没有错误保护功能，会出现错误传播</li>
+<li>总结<ul>
+<li>信源符号的概率统计模型 → Huffman表</li>
+<li>编码：消息（由信源符号组成） → 根据Huffman表对于消息中的信源符号逐个编码  →  消息编码</li>
+<li>解码：消息编码 → 根据Huffman表对于消息编码逐个解码 → 信源符号 → 消息</li>
+</ul>
+</li>
+</ul>
+<h5 id="算术编码"><a href="#算术编码" class="headerlink" title="算术编码"></a>算术编码</h5><ul>
+<li>统计编码，针对信息熵冗余，无损压缩编码。</li>
+<li>常用于图像数据压缩标准(如JPEG，JBIG)中</li>
+<li><strong>基本原理</strong>：将出现概率较多的<strong>“消息”</strong>(可以是字符或字符串) (Huffman编码针对信源符号) ，用尽可能少的位或字节来表示。</li>
+<li>算术编码是一种变长码，主要针对出现概率高的消息序列标识的信息进行压缩。<ul>
+<li>信源符号是表达消息的符号</li>
+</ul>
+</li>
+<li>算术编码用到的两个基本的参数是<strong>符号的概率</strong>和它的<strong>编码间隔</strong>。<ul>
+<li>信源符号的概率决定压缩编码的效率，也决定编码过程中信源符号的间隔。</li>
+<li>间隔则决定了符号压缩后的输出</li>
+</ul>
+</li>
+<li>算术编码区别于Huffman编码的是，它是<strong>根据信源符号估计出各个元素的概率</strong>，然后进行<strong>迭代计算</strong>。而不像Huffman编码必须预先得知信源的出现概率。</li>
+<li>将编码的消息表示成实数0和1之间的一个间隔，<strong>消息越长，编码表示它的间隔就越小，表示这一间隔所需的二进制位就越多</strong>。</li>
+<li><strong>步骤</strong><ul>
+<li>两个基本的参数：符号的概率和编码间隔(在0到1之间)。令概率为p<sub>1</sub>,p<sub>2</sub>,…p<sub>n</sub>（其和为1），则编码间隔为［0,p<sub>1</sub>) 、[p<sub>1</sub>，p<sub>1</sub>+p<sub>2</sub>）…[p<sub>1</sub>+p<sub>2</sub>+…p<sub>n-1</sub>，1）</li>
+<li>令high为间隔的高端，low为低端，range为间隔的长度，rangelow为编码字符分配的间隔低端，rangehigh为编码字符分配的间隔高端。</li>
+<li>初始<strong>high=1，low=0，range = high-low</strong></li>
+<li>计算一个字符编码后新的low和high：<br><strong>low = low + range×rangelow</strong><br><strong>high = low + range×rangehigh</strong><br><img src="/media/算数编码.jpg" width="100%"></li>
+</ul>
+</li>
+<li><strong>特点：</strong><ul>
+<li>算术编码的精度在64位以内，对于运算中的溢出问题，可使用比例缩放方法解决</li>
+<li>在解码器中<strong>需要添加一个专门的终止符</strong>，当解码器看到终止符时就停止解码，否则可以无穷尽地解码。</li>
+<li>算术编码器对整个消息只产生一个码字，这个码字是在间隔[0，1）中的<strong>一个实数</strong>，解码器在接受到表示这个实数的所有位之前不能进行解码</li>
+<li>算术编码也是一种<strong>对错误很敏感的编码方法</strong></li>
+<li>算术编码可以<strong>是静态的或者自适应</strong>的。在静态算术编码中，信源符号的概率是固定的。但事先很难知道精确的信源概率。最有效的方法是在编码过程中估算概率，这就是自适应算术编码，信源符号的概率根据编码时符号出现的频繁程度动态地进行修改，也就是在编码期间估算信源符号概率建模。</li>
+<li><strong>信源符号概率接近时，建议使用算术编码</strong>，这种情况下其效率高于Huffman编码(约5%) 。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-3-词典编码"><a href="#5-3-词典编码" class="headerlink" title="5.3 词典编码"></a>5.3 词典编码</h3><ul>
+<li>词典编码：在不知数据统计特性的前提下的通用编码算法<ol>
+<li>用已经出现过的字符串替代重复的部分，输出仅仅是指向早期出现过的字符串的“指针”。eg. <strong>LZ77算法</strong></li>
+<li>创建一个“短语词典”。编码中遇到已在词典中出现的“短语”时，输出词典中的短语的“索引号” 。eg. <strong>LZ78算法</strong>，改进后为LZW压缩编码。</li>
+</ol>
+</li>
+</ul>
+<h5 id="LZW压缩编码算法"><a href="#LZW压缩编码算法" class="headerlink" title="LZW压缩编码算法"></a>LZW压缩编码算法</h5><ul>
+<li>查找冗余字符和用较短的符号标记替代冗余字符</li>
+<li>压缩效率较高（思考：为什么？）</li>
+<li>无损压缩编码<ul>
+<li>LZ77  →  LZ78  →  LZW</li>
+</ul>
+</li>
+<li><strong>特点：</strong><ul>
+<li>处理过程比其他压缩过程复杂，但过程完全可逆</li>
+<li>对于简单图像和平滑且噪音小的信号源具有较高的压缩比，并且有<strong>较高的压缩和解压缩速度</strong>。对机器硬件条件要求不高</li>
+<li>可压缩<strong>任何类型和格式的数据</strong>。</li>
+<li>有错误传播（虽然是定长编码，但在解码过程中需要生成词典。如果存在错误，可能导致生成词典出错，甚至无法生成词典）</li>
+</ul>
+</li>
+</ul>
+<h5 id="各种编码方式的比较"><a href="#各种编码方式的比较" class="headerlink" title="各种编码方式的比较"></a>各种编码方式的比较</h5><p><img src="/media/编码.png" width="80%"></p>
+<h3 id="预测编码-amp-变换编码"><a href="#预测编码-amp-变换编码" class="headerlink" title="预测编码 &amp; 变换编码"></a>预测编码 &amp; 变换编码</h3><ul>
+<li>预测编码：根据离散信号之间存在一定的<strong>相关性</strong>的特点，利用前面的一个或多个信号对下一个信号进行<strong>预测</strong>，然后对实际值和预测值的<strong>差值</strong>进行<strong>编码</strong>。<ul>
+<li>针对<strong>统计冗余</strong></li>
+<li>有损压缩编码</li>
+<li>适合于声音和图像数据的压缩</li>
+</ul>
+</li>
+<li>变换编码：对欲编码的原始数据所在的时间或空间域<strong>进行某种数学变</strong>换，从一种信号空间变换到另一种信号空间，产生一批<strong>变换系数</strong>，使得通过变换后<strong>能够突出原始数据中的重要部分</strong>，以便重点处理。然后再对这些系数进行编码处理。<ul>
+<li>数据变换的方式有：傅立叶变换、沃尔什变换、正弦变换、余弦变换、斜变换、哈尔变换、K-L变换等</li>
+<li>针对<strong>感知冗余</strong></li>
+<li>有损压缩编码</li>
+<li>常用于音频信号压缩编码和图像/视频信号压缩编码</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-4-音频信号压缩技术"><a href="#5-4-音频信号压缩技术" class="headerlink" title="5.4 音频信号压缩技术"></a>5.4 音频信号压缩技术</h3><ul>
+<li>音频编译码器的分类<ul>
+<li><strong>波形编译码器</strong>：不利用生成话音的信号的任何知识，将话音视为一种普通的声音，直接对波形信号进行采样和量化。 <strong>eg.PCM、DPCM、ADPCM等</strong></li>
+<li>音源编译码器 / 参数编译码器 / 声码器：它从话音波形信号中提取话音生成模型的参数，使用这些参数通过话音生成模型重构出话音。</li>
+<li><strong>混合编译码器</strong>：综合使用上述两种技术。使用的激励信号波形尽可能接近于原始话音信号的波形。<strong>eg. CELP， MPEGⅠ中的音频部分是一种混合编码</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="两类压缩"><a href="#两类压缩" class="headerlink" title="两类压缩"></a>两类压缩</h5><ul>
+<li><strong>模拟信号转换为数字信号</strong><ul>
+<li>降低采样频率，减少量化位数</li>
+<li>音频信号编码，PCM、DM、DPCM</li>
+</ul>
+</li>
+<li><strong>针对数字信号</strong><ul>
+<li>统计编码，词典编码。无损。通用压缩编码</li>
+<li>预测编码，变换编码。有损。多媒体数据专用压缩编码</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-多媒体数据压缩标准"><a href="#6-多媒体数据压缩标准" class="headerlink" title="6. 多媒体数据压缩标准"></a>6. 多媒体数据压缩标准</h2><h3 id="6-1-图像数据压缩标准"><a href="#6-1-图像数据压缩标准" class="headerlink" title="6.1 图像数据压缩标准"></a>6.1 图像数据压缩标准</h3><h5 id="JPEG算法特点"><a href="#JPEG算法特点" class="headerlink" title="JPEG算法特点"></a>JPEG算法特点</h5><ul>
+<li>JPEG是一个适用范围很广的静态图像数据压缩标准，既可用于<strong>灰度图像</strong>又可用于<strong>彩色图像</strong>（为什么？） <ul>
+<li><strong>JPEG算法与色彩空间无关</strong>，因此“RGB到YUV变换”和“YUV到RGB变换”不包含在JPEG算法中。JPEG算法处理的彩色图像是单独的彩色分量图像，因此<strong>它可以压缩来自不同彩色空间的数据</strong>，如RGB, YCbCr和CMYK</li>
+</ul>
+</li>
+<li>通常使用YUV模式（为什么？）<ul>
+<li>JPEG不仅适于<strong>静止图像</strong>的压缩，<strong>电视图像的帧内图像的压缩编码</strong>，也常采用此算法（作为动态图像压缩的一个组成部分）</li>
+</ul>
+</li>
+<li>JPEG标准还可以大范围地<strong>调节</strong>图像压缩比及其保真度（如何调节？）<ul>
+<li>JPEG中的有损压缩利用了人的视觉系统的特性，使用<strong>变换编码+量化</strong>和<strong>无损压缩编码</strong>相结合来去掉<strong>视觉的冗余信息和数据本身的冗余信息</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="JPEG压缩编码算法的主要步骤"><a href="#JPEG压缩编码算法的主要步骤" class="headerlink" title="JPEG压缩编码算法的主要步骤"></a>JPEG压缩编码算法的主要步骤</h5><ol>
+<li>图像分块<ul>
+<li>分为8x8图像块；相关性强，标准化，计算量的考虑。</li>
+</ul>
+</li>
+<li><strong>正向离散余弦变换(FDCT)</strong><ul>
+<li>区分重要信息和次要信息 </li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>量化<ul>
+<li>减小非“0”系数的幅度以及<strong>增加“0”值系数的数目</strong>。</li>
+<li>重要系数和次要系数采用不同的量化步长。分别处理，量化表可以不同，可调节压缩比和压缩质量。</li>
+<li>不能使用一个值作为所有系数的量化系数，需要体现相对于感知冗余的不同系数的不同重要性。</li>
+</ul>
+</li>
+<li>Z字形编排<ul>
+<li>增加0值系数的长度</li>
+</ul>
+</li>
+<li>使用差<strong>分脉冲编码调制(DPCM)</strong>对直流系数(DC)进行编码<ul>
+<li>直流DC系数特点：相关性预测编码</li>
+<li>进一步压缩：预测编码，DPCM</li>
+</ul>
+</li>
+<li>使用<strong>游程长度编码(RLE)</strong>对交流系数(AC)进行编码<ul>
+<li>交流AC系数特点：0值系数较多</li>
+<li>进一步压缩：RLE游程编码 </li>
+</ul>
+</li>
+<li><strong>熵编码</strong></li>
+<li>组成位数据流</li>
+<li><strong>各种压缩技术的组合</strong></li>
+</ul>
+<h5 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h5><ol start="2">
+<li>为什么不使用整个图像而使用分块图像？<ul>
+<li>局部图像的相关性比整体图像的相关性更强</li>
+<li>算法标准化</li>
+<li>计算量的考虑</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>采样精度为P位(二进制)，把[0，2<sup>P-1</sup>]范围的无符号数变换成[-2<sup>P-1</sup>，2<sup>P-1</sup>-1]范围的有符号数（为什么？），作为正向离散余弦变换的输入，通过DCT变换，把能量集中在少数几个系数上。<ul>
+<li>使得变换后的系数分布于[-2<sup>P-1</sup>，2<sup>P-1</sup>-1]</li>
+</ul>
+</li>
+<li>对经过FDCT变换后的系数进行量化（为什么？）<ul>
+<li>目的是减小非“0”系数的幅度以及增加“0”值系数的数目</li>
+<li>量化是图像质量下降的最主要原因 </li>
+</ul>
+</li>
+<li>对经过FDCT变换后的系数进行量化（为什么？）<ul>
+<li>目的是减小非“0”系数的幅度以及增加“0”值系数的数目</li>
+<li>量化是图像质量下降的最主要原因 </li>
+</ul>
+</li>
+<li>量化后的系数按Z字形编排（为什么？）<ul>
+<li>目的是为了增加连续的“0”系数的个数，就是“0”的游程长度</li>
+</ul>
+</li>
+<li>变换编码提到通过正交变换减少相关性，为什么这里还有相关性存在并可以加以利用？<ul>
+<li>DCT变换减少的是8×8块内部各像素之间的相关性，但各8×8块之间的相关性依然存在</li>
+</ul>
+</li>
+<li>DC、AC系数表达的特点？如何进一步压缩？<ul>
+<li>信息表达的冗余</li>
+<li>熵编码，先转化为中间符号</li>
+</ul>
+</li>
+</ul>
+<h5 id="JPEG图像文件格式-amp-JPEG2000"><a href="#JPEG图像文件格式-amp-JPEG2000" class="headerlink" title="JPEG图像文件格式 &amp;  JPEG2000"></a>JPEG图像文件格式 &amp;  JPEG2000</h5><ul>
+<li>JEPG文件大体上可以分成两个部分：<strong>标记码</strong>（tag）和<strong>压缩数据</strong><ul>
+<li><strong>标记码部分给出了JPEG图像的所有信息</strong>，如图像的宽、高、Huffman表、量化表等等</li>
+</ul>
+</li>
+<li>JPEG2000主要特点<ul>
+<li><strong>高压缩率</strong>。在具有和传统JPEG类似质量的前提下，JPEG2000的<strong>压缩率比JPEG高30%左右</strong>。</li>
+<li><strong>同时支持有损和无损压缩</strong></li>
+<li><strong>渐进传输。</strong>即先传输图像的轮廓，然后逐步传输数据，不断提高图像质量，让图像由朦胧到清晰显示，以满足用户的需要。从而节约、充分利用有限的带宽。</li>
+<li><strong>感兴趣区域压缩</strong>。即可以指定感兴趣区域，在这些区域，可以在压缩时指定特定的压缩质量，或在恢复时指定特定的解压缩要求。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-2-动态图像压缩标准MPEG"><a href="#6-2-动态图像压缩标准MPEG" class="headerlink" title="6.2 动态图像压缩标准MPEG"></a>6.2 动态图像压缩标准MPEG</h3><h5 id="MPEG-Video压缩技术基本方法"><a href="#MPEG-Video压缩技术基本方法" class="headerlink" title="MPEG-Video压缩技术基本方法"></a>MPEG-Video压缩技术基本方法</h5><ul>
+<li>如何分别实现图像空间方向压缩和运动图像时间方向压缩？<ul>
+<li>在<strong>空间方向</strong>上，图像数据压缩采用<strong>JPEG压缩算法</strong>来去掉冗余信息</li>
+<li>在<strong>时间方向</strong>上，图像数据压缩采用<strong>运动补偿算法</strong>来去掉冗余信息</li>
+</ul>
+</li>
+</ul>
+<h5 id="MPEG定义的三种图"><a href="#MPEG定义的三种图" class="headerlink" title="MPEG定义的三种图"></a>MPEG定义的三种图</h5><ul>
+<li><strong>I图像（帧内图）</strong><ul>
+<li>采用帧内编码方式，即只利用了单帧图像内的空间相关性，而没有利用时间相关性</li>
+<li>与JPEG压缩算法大致相同</li>
+<li>压缩后每个像素为1～2bit</li>
+<li><strong>一个内帧是一个随机访问点</strong></li>
+<li><strong>可作为其它图像的参考帧</strong></li>
+</ul>
+</li>
+<li><strong>P图像（预测图）</strong><ul>
+<li>用最近的前一个I图像(或P图像)预测编码得到</li>
+<li>只采用前向时间预测</li>
+</ul>
+<ul>
+<li>可以提高<strong>压缩比和图像质量</strong></li>
+<li><strong>可作为其它图像的参考帧</strong></li>
+</ul>
+</li>
+<li><strong>B图像（插补图，即双向预测图）</strong><ul>
+<li>B图像在预测时, 既可使用前一个图像作参照, 也可使用后一个图像做参照或同时使用前后两个图像作为参照图像(双向预测)</li>
+<li>采用双向时间预测可以大大提高压缩比</li>
+<li><strong>不可作为其它图像的参考帧</strong></li>
+</ul>
+</li>
+<li>P图像和B图像采用帧间编码方式，即同时利用了空间和时间上的相关性</li>
+</ul>
+<h2 id="7-多媒体应用系统创作技术"><a href="#7-多媒体应用系统创作技术" class="headerlink" title="7. 多媒体应用系统创作技术"></a>7. 多媒体应用系统创作技术</h2><h5 id="多媒体应用系统设计基本过程"><a href="#多媒体应用系统设计基本过程" class="headerlink" title="多媒体应用系统设计基本过程"></a>多媒体应用系统设计基本过程</h5><ul>
+<li>多媒体应用系统适用于各个领域，多媒体软件融图、文、声、像于一体，它的创作是一项系统工程，涉及到多种因素。</li>
+<li>主要涉及到制作人员、制作环境和制作步骤三个方面</li>
+<li>包含<strong>系统目标确定、编写系统脚本、进行脚本分析、脚本制作、脚本测试、系统评价</strong>等</li>
+</ul>
+<h5 id="多媒体系统创作工具"><a href="#多媒体系统创作工具" class="headerlink" title="多媒体系统创作工具"></a>多媒体系统创作工具</h5><ul>
+<li>基于<strong>多媒体著作工具的多媒体系统创作</strong></li>
+<li>包括：<ul>
+<li>Hypercard</li>
+<li>ToolBook</li>
+<li>Authorware Professional</li>
+<li>IconAuthor</li>
+<li>Action</li>
+<li>Director</li>
+<li>PowerPoint</li>
+<li>Animation Works Interactive</li>
+<li>Storyboard</li>
+<li>方正奥思多媒体创作工具</li>
+<li>洪图多媒体编著系统</li>
+</ul>
+</li>
+</ul>
+<h5 id="多媒体程序设计基础"><a href="#多媒体程序设计基础" class="headerlink" title="多媒体程序设计基础"></a>多媒体程序设计基础</h5><ul>
+<li>在Windows系统中，对多媒体设备进行控制主要有<strong>三种方法</strong>：<ul>
+<li><strong>使用Microsoft提供的多媒体控制接口MCI</strong>，MCI是多媒体设备和多媒体应用软件之间进行设备无关的沟通的桥梁</li>
+<li><strong>通过调用Windows的应用程序接口API多媒体相关函数</strong>实现媒体控制</li>
+<li><strong>使用对象链接与嵌入OLE</strong>为不同软件之间共享数据和资源提供了有效的手段</li>
+</ul>
+</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/ml/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>

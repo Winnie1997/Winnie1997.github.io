@@ -117,8 +117,8 @@
 <li>平均损失函数</li>
 </ul>
 </li>
-<li><strong><code>单变量回归模型</code></strong><br><img src="线性1.png" width="50%"><img src="线性3.png" width="50%"></li>
-<li><strong><code>多元线性回归</code></strong><br><img src="线性2.png" width="50%"><br><img src="线性4.png" width="50%"><img src="线性5.png" width="50%"></li>
+<li><strong><code>单变量回归模型</code></strong><br><img src="/ml/线性1.png" width="50%"><img src="/ml/线性3.png" width="50%"></li>
+<li><strong><code>多元线性回归</code></strong><br><img src="/ml/线性2.png" width="50%"><br><img src="/ml/线性4.png" width="50%"><img src="/ml/线性5.png" width="50%"></li>
 <li>概率解释<ul>
 <li>似然函数</li>
 <li><strong>极大似然法</strong>：令每个样本x<sub>i</sub>输出为y<sub>i</sub>的概率越大越好。</li>
@@ -142,7 +142,7 @@
 <li>数值方法II：<strong>梯度下降法</strong> y<sub>n</sub>是第n步下降时选取的步长，也称学习旅率。</li>
 </ul>
 </li>
-<li>掌握梯度下降法、牛顿法的基本原理与迭代公式：<br><img src="牛顿.png" width="50%">  </li>
+<li>掌握梯度下降法、牛顿法的基本原理与迭代公式：<br><img src="/ml/牛顿.png" width="50%">  </li>
 </ul>
 <h2 id="3-决策树"><a href="#3-决策树" class="headerlink" title="3. 决策树"></a>3. 决策树</h2><ul>
 <li>决策树：构建一个基于属性的<strong>树形分类器</strong>。<ul>
@@ -181,11 +181,11 @@
 <li>我们希望决策树的分支节点所包含的样本尽可能属于同一类别，即结点的“纯度”越来越高。</li>
 <li>纯度 ↑ = 确定性 ↑ = 信息量 ↓ </li>
 <li><strong><code>信息熵</code></strong>：<strong>度量样本集合纯度</strong>最常用的一种指标。<ul>
-<li>假定当前样本集合D中第k类样本所占的比例为p<sub>k</sub>(k = 1, 2, …, |y|)，则D的信息熵为：<br><img src="信息熵.png" width="30%"></li>
+<li>假定当前样本集合D中第k类样本所占的比例为p<sub>k</sub>(k = 1, 2, …, |y|)，则D的信息熵为：<br><img src="/ml/信息熵.png" width="30%"></li>
 <li>信息熵用来度量信息量，<strong>信息熵值越小，说明样本集的纯度越高。</strong></li>
 </ul>
 </li>
-<li><strong><code>信息增益</code></strong>：<br><img src="信息增益.png" width="50%"></li>
+<li><strong><code>信息增益</code></strong>：<br><img src="/ml/信息增益.png" width="50%"></li>
 <li>ID3决策树算法：<strong>利用</strong>划分后的<strong>信息增量来判断</strong>属性划分的优劣性。<ul>
 <li><strong>信息增益越大，说明当前划分效果越好。</strong></li>
 <li>信息增量准则对可取值数目较多的属性有所偏好。 eg. 每个学号因为只有一个样本，纯度都很高。</li>
@@ -193,11 +193,11 @@
 </li>
 </ul>
 <h5 id="C4-5决策树算法"><a href="#C4-5决策树算法" class="headerlink" title="C4.5决策树算法"></a>C4.5决策树算法</h5><ul>
-<li><strong><code>增益率</code></strong>：越大越好<br><img src="增益率.png" width="50%"></li>
+<li><strong><code>增益率</code></strong>：越大越好<br><img src="/ml/增益率.png" width="50%"></li>
 <li>采用此新准则的方法称为C4.5决策树算法。</li>
 </ul>
 <h5 id="CART决策树算法"><a href="#CART决策树算法" class="headerlink" title="CART决策树算法"></a>CART决策树算法</h5><ul>
-<li><strong><code>基尼指数</code></strong>：越小 -&gt; 纯度越高 -&gt; 越好<br><img src="gini.png" width="40%"></li>
+<li><strong><code>基尼指数</code></strong>：越小 -&gt; 纯度越高 -&gt; 越好<br><img src="/ml/gini.png" width="40%"></li>
 </ul>
 <h5 id="决策树的裁剪"><a href="#决策树的裁剪" class="headerlink" title="决策树的裁剪"></a>决策树的裁剪</h5><ul>
 <li>剪枝处理：避免训练<strong>过拟合</strong>。 </li>
@@ -263,7 +263,7 @@
 </li>
 </ul>
 <h2 id="5-神经网络"><a href="#5-神经网络" class="headerlink" title="5. 神经网络"></a>5. 神经网络</h2><ul>
-<li>神经网络: 神经网络是由具有适应性的简单单元组成的广泛并行互连的网络，它的组织能够模拟生物神经系统对真实世界物体所做的交互反应。<br><img src="神经元.png" width="60%"><ul>
+<li>神经网络: 神经网络是由具有适应性的简单单元组成的广泛并行互连的网络，它的组织能够模拟生物神经系统对真实世界物体所做的交互反应。<br><img src="/ml/神经元.png" width="60%"><ul>
 <li>Sigmoid函数 ≠ Logistic函数</li>
 <li>Logistic函数 ⊂ Sigmoid函数</li>
 </ul>
@@ -364,7 +364,7 @@
 <li>反之，任意一个标准化示性矩阵 H (或均一化邻接矩阵 W )都对应着<strong>一种划分</strong>。</li>
 <li>本质上说，标准化示性矩阵 H(或均一化邻接矩阵 W ) 的引入并没有简化聚类问题的难度，但是<strong>为求解方法提供了更多的参考和选择</strong>。</li>
 </ul>
-<h5 id="Lloyd算法"><a href="#Lloyd算法" class="headerlink" title="Lloyd算法"></a>Lloyd算法</h5><p> <img src="lloyd.png" width="50%"><img src="lloyd2.png" width="50%"></p>
+<h5 id="Lloyd算法"><a href="#Lloyd算法" class="headerlink" title="Lloyd算法"></a>Lloyd算法</h5><p> <img src="/ml/lloyd.png" width="50%"><img src="/ml/lloyd2.png" width="50%"></p>
 <ul>
 <li>优势：<ul>
 <li>Lloyd 算法属于EM算法(期望最大化)，可以保证收敛到K-means问题的局部最优解。</li>
@@ -427,7 +427,7 @@
 </blockquote>
 </blockquote>
 <ul>
-<li>PCA: 最大可分性<br><img src="pca.png" width="50%"><img src="pca2.png" width="36%"></li>
+<li>PCA: 最大可分性<br><img src="/ml/pca.png" width="50%"><img src="/ml/pca2.png" width="36%"></li>
 <li>PCA在考虑数据降维时候希望在新空间的信息越多 越好，即低维嵌入的方差(协方差矩阵的迹)越大。</li>
 <li>PCA是一个<strong>无监督降维方法</strong>，并没有运用任何有监督信息，这也是PCA算法一个弊端。</li>
 <li>对于一个分类问题，保留信息越多分类效果一定 会更好么?<ul>
@@ -447,7 +447,7 @@
 <li>如何便于分类? <strong>同类样本应具有较好的聚合度，而类别之间应该具有较好的扩散度。</strong></li>
 </ul>
 </li>
-<li>LDA算法流程：<br><img src="lda.png" width="36%"> </li>
+<li>LDA算法流程：<br><img src="/ml/lda.png" width="36%"> </li>
 </ul>
 <h5 id="LDA-vs-PCA"><a href="#LDA-vs-PCA" class="headerlink" title="LDA vs PCA"></a>LDA vs PCA</h5><ul>
 <li>相同点:<ul>
@@ -463,4 +463,4 @@
 </ul>
 </li>
 </ul>
-</div></article></div></main><footer><div class="paginator"><a href="/Cryptography/" class="prev">上一篇</a><a href="/CG/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>
+</div></article></div></main><footer><div class="paginator"><a href="/media/" class="prev">PREV</a><a href="/CG/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>

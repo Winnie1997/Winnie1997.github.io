@@ -155,7 +155,7 @@
 <li>三基色(红绿蓝)，三色荧光点，三只电子枪。</li>
 <li>电子枪、影孔板中的一个小孔和对应的荧光点呈一直线。</li>
 <li>每个小孔与一个像素（即三个荧光点）对应。</li>
-<li>调节各电子枪发生的电子束中所含电子的数目，即可控制各色光点亮度。<br><img src="影孔板.png" width="30%"></li>
+<li>调节各电子枪发生的电子束中所含电子的数目，即可控制各色光点亮度。<br><img src="/CG/影孔板.png" width="30%"></li>
 </ul>
 </li>
 <li>显示器能同时显示的颜色个数：如果每支电子枪发出的电子束的强度有256个等级，则显示 器能同时显示<code>256*256*256=16M</code>种颜色，称为真彩系统。</li>
@@ -202,7 +202,7 @@
 <li>视频控制器：建立帧缓存与屏幕像素之间一一对应，负责刷新。</li>
 <li>CRT显示器</li>
 </ul>
-<p><img src="光栅图形.png" width="50%"></p>
+<p><img src="/CG/光栅图形.png" width="50%"></p>
 <h5 id="帧缓存与显示器分辨率的关系"><a href="#帧缓存与显示器分辨率的关系" class="headerlink" title="帧缓存与显示器分辨率的关系"></a>帧缓存与显示器分辨率的关系</h5><ul>
 <li>帧缓存的大小 =  显示器分辨率的大小 * 帧缓存的位平面数 / 8</li>
 <li>eg. 分辨率为640x480、1280x1024、1024x1024的显示器各需要多少字节位平面数为24的帧缓存？ans: 分辨率*24/8</li>
@@ -261,7 +261,7 @@
 <li>用户接口</li>
 <li>计算机艺术</li>
 </ul>
-<h2 id="2-基本图形的生成算法"><a href="#2-基本图形的生成算法" class="headerlink" title="2.基本图形的生成算法"></a>2.基本图形的生成算法</h2><p><img src="基本图形.png" width="60%"></p>
+<h2 id="2-基本图形的生成算法"><a href="#2-基本图形的生成算法" class="headerlink" title="2.基本图形的生成算法"></a>2.基本图形的生成算法</h2><p><img src="/CG/基本图形.png" width="60%"></p>
 <h3 id="2-1-直线绘制算法"><a href="#2-1-直线绘制算法" class="headerlink" title="2.1 直线绘制算法"></a>2.1 直线绘制算法</h3><ul>
 <li>光栅平面的显示图形<ul>
 <li>在光栅显示平面上，我们只能用二维光栅网格上<strong>尽可能靠近</strong>这条直线的象素集合来表示它。</li>
@@ -305,7 +305,7 @@
 <li>考虑直线斜率k在0~1之间</li>
 <li>当前象素点为P（x<sub>p</sub>,y<sub>p</sub>），则下一个象素点有两种可选择点<br>P<sub>1</sub>（x<sub>p</sub>+1,y<sub>p</sub>）, P<sub>2</sub>（x<sub>p</sub>+1,y<sub>p+1</sub>）</li>
 <li>P1与P2的中点（x<sub>p</sub>+1,y<sub>p</sub>+0.5）称为M</li>
-<li>Q为理想直线与x = x<sub>p</sub>+1垂线的交点<br>当M在Q的下方时，则取P<sub>2</sub>应为下一个象素点<br>当M在Q的上方时，则取P<sub>1</sub>为下一个象素点<br><img src="中点算法.png" width="40%"> </li>
+<li>Q为理想直线与x = x<sub>p</sub>+1垂线的交点<br>当M在Q的下方时，则取P<sub>2</sub>应为下一个象素点<br>当M在Q的上方时，则取P<sub>1</sub>为下一个象素点<br><img src="/CG/中点算法.png" width="40%"> </li>
 </ul>
 </li>
 <li>算法实现<ul>
@@ -353,14 +353,14 @@
 <li>过各行各列象素中心构造一组虚拟网格线</li>
 <li>按直线从起点到终点的顺序计算直线与各垂直网格线的<strong>交点</strong></li>
 <li>然后根据<strong>误差项的符号</strong>确定该列象素中与此交点最近的象素</li>
-<li>采用<strong>增量计算</strong>，使得对于每一列，只要检查一个误差项的<strong>符号</strong>，就<br>可以确定该列的所求象素<br><img src="Bresenham.png" width="30%"></li>
+<li>采用<strong>增量计算</strong>，使得对于每一列，只要检查一个误差项的<strong>符号</strong>，就<br>可以确定该列的所求象素<br><img src="/CG/Bresenham.png" width="30%"></li>
 </ul>
 </li>
 <li>算法实现<ul>
 <li>先考虑斜率k=dy/dx≤1的直线，直线方程可以表示为</li>
 <li>假设当前像素的x坐标已经确定为x<sub>i</sub>，其y坐标为y<sub>i</sub></li>
 <li>由于坐标(x<sub>i</sub>, y<sub>i</sub>)只能取整数，下一个像素的x坐标为</li>
-<li>而y<sub>i</sub>＋1的坐标有两种可能：保持不变，即y<sub>i</sub>＋1＝y<sub>i</sub>；y坐标递增1，即y<sub>i</sub>＋1＝y<sub>i</sub>＋1<br><img src="Bresenham1.png" width="20%"></li>
+<li>而y<sub>i</sub>＋1的坐标有两种可能：保持不变，即y<sub>i</sub>＋1＝y<sub>i</sub>；y坐标递增1，即y<sub>i</sub>＋1＝y<sub>i</sub>＋1<br><img src="/CG/Bresenham1.png" width="20%"></li>
 <li>设A为CD边的中点，若B点在A点上方，选择D点； 否则，选C点。</li>
 </ul>
 </li>
@@ -395,7 +395,7 @@
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InterBresenhamline</span> <span class="params">(<span class="keyword">int</span> x0,<span class="keyword">int</span> y0,<span class="keyword">int</span> x1, <span class="keyword">int</span> y1,<span class="keyword">int</span> color)</span></span>&#123;	dx = x1-x0, dy = y1- y0；	e=-dx; x=x0; y=y0;	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;dx; i++)	&#123;		drawpixel (x, y, color）		x++； e=e+<span class="number">2</span>*dy;		<span class="keyword">if</span> (e&gt;=<span class="number">0</span>) </span><br><span class="line">		&#123;</span><br><span class="line">			 y++; </span><br><span class="line">			 e=e<span class="number">-2</span>*dx;</span><br><span class="line">		&#125;	&#125;&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="2-2-圆的生成"><a href="#2-2-圆的生成" class="headerlink" title="2.2 圆的生成"></a>2.2 圆的生成</h3><ul>
-<li>八等分圆：可以同时绘制八分对称的点。<br><img src="八等分.png" width="30%"> <ul>
+<li>八等分圆：可以同时绘制八分对称的点。<br><img src="/CG/八等分.png" width="30%"> <ul>
 <li>八分对称性同时解决了“绘制点稀疏”的问题。</li>
 <li>只需绘制右上八分之一的圆弧。</li>
 <li>①切线斜率|dy/dx| ≤ 1 ②y的变化慢于x ③x每递增1，y最多最多改变一个像素单位 ④不会产生像素空隙 ⑤会有更多的像素拟合圆弧 ⑥使圆弧拟合更精确。</li>
@@ -406,7 +406,7 @@
 <li>构造判别式(圆方程)：F(x, y) = x<sup>2</sup> + y<sup>2</sup> - R<sup>2</sup></li>
 <li>判断点在圆内(F &lt; 0)、圆上(F = 0)、圆外(F &gt; 0)</li>
 <li>M(x<sub>p</sub> + 1,y<sub>p</sub> - 0.5)是P1和P2的中点</li>
-<li>d = F(M) = F(x<sub>p</sub> + 1,y<sub>p</sub> - 0.5) = (x<sub>p</sub> + 1)<sup>2</sup> + (y<sub>p</sub> - 0.5)<sup>2</sup> - R<sup>2</sup><br><img src="中点画圆.png" width="30%"> <ul>
+<li>d = F(M) = F(x<sub>p</sub> + 1,y<sub>p</sub> - 0.5) = (x<sub>p</sub> + 1)<sup>2</sup> + (y<sub>p</sub> - 0.5)<sup>2</sup> - R<sup>2</sup><br><img src="/CG/中点画圆.png" width="30%"> <ul>
 <li>八分之一圆弧（如半径R=20），初始象素坐标(0, R)</li>
 <li>下一个像素的绘制位置(1, R) 或(1, R-1)</li>
 <li>得到中点坐标(1, R-0.5)</li>
@@ -414,7 +414,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="增量算法避免重复计算"><a href="#增量算法避免重复计算" class="headerlink" title="增量算法避免重复计算"></a>增量算法避免重复计算</h5><p><img src="中点画圆增量.png" width="60%"> </p>
+<h5 id="增量算法避免重复计算"><a href="#增量算法避免重复计算" class="headerlink" title="增量算法避免重复计算"></a>增量算法避免重复计算</h5><p><img src="/CG/中点画圆增量.png" width="60%"> </p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MidPointCircle(<span class="keyword">int</span> R <span class="keyword">int</span> color)&#123;	<span class="keyword">int</span> x,y;	<span class="keyword">float</span> d;	x=<span class="number">0</span>; y=R; d=<span class="number">1.25</span>-R;	CirclePoints (x,y,color); <span class="comment">//显示圆弧上的八个对称点</span>	<span class="keyword">while</span>(x&lt;=y)	&#123;		<span class="keyword">if</span>(d&lt;<span class="number">0</span>) </span><br><span class="line">			d+=<span class="number">2</span>*x+<span class="number">3</span>;		<span class="keyword">else</span> </span><br><span class="line">		&#123; </span><br><span class="line">			d+=<span class="number">2</span>*(x-y)+<span class="number">5</span>; </span><br><span class="line">			y--; </span><br><span class="line">		&#125;		x++;		CirclePoints(x,y,color); <span class="comment">//显示圆弧上的八个对称点</span>	&#125;&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>为了进一步提高算法的效率，可以将上面的算法中的浮点数改写成整数，将乘法运算改成加法运算，即仅用整数实现中点画<br>圆法。</li>
@@ -438,9 +438,9 @@
 </ul>
 <h5 id="生成圆弧的Bresenham法"><a href="#生成圆弧的Bresenham法" class="headerlink" title="生成圆弧的Bresenham法"></a>生成圆弧的Bresenham法</h5><ul>
 <li>以点(0, R) 为起点按顺时针方向生成圆，则在第一象限内（四分之一圆弧）y是x的单调递减函的单调递减函。</li>
-<li>假设圆心和起点均精确地落在像素中心上。如果已经知道圆弧上的一点 (x<sub>i</sub>,y<sub>i</sub> )，下一像素的选取有三种可能：<br>①正右方像素H ②右下角像素D ③正下方像素V<br><img src="圆弧.png" width="20%"></li>
+<li>假设圆心和起点均精确地落在像素中心上。如果已经知道圆弧上的一点 (x<sub>i</sub>,y<sub>i</sub> )，下一像素的选取有三种可能：<br>①正右方像素H ②右下角像素D ③正下方像素V<br><img src="/CG/圆弧.png" width="20%"></li>
 <li>构造函数：F(x<sub>p</sub> + 1,y<sub>p</sub> - 0.5) = (x<sub>p</sub> + 1)<sup>2</sup> + (y<sub>p</sub> - 0.5)<sup>2</sup> - R<sup>2</sup>  </li>
-<li>这三个像素的偏差的平方为：<br><img src="偏差.png" width="20%"><br><img src="偏差2.png" width="50%"><img src="偏差3.png" width="50%"><br><img src="偏差4.png" width="55%"></li>
+<li>这三个像素的偏差的平方为：<br><img src="/CG/偏差.png" width="20%"><br><img src="/CG/偏差2.png" width="50%"><img src="/CG/偏差3.png" width="50%"><br><img src="/CG/偏差4.png" width="55%"></li>
 </ul>
 <h3 id="2-3-椭圆的生成"><a href="#2-3-椭圆的生成" class="headerlink" title="2.3 椭圆的生成"></a>2.3 椭圆的生成</h3><ul>
 <li>F(x,y) = b<sup>2</sup>x<sup>2</sup>+a<sup>2</sup>y<sup>2</sup>-a<sup>2</sup>b<sup>2</sup>=0</li>
@@ -457,7 +457,7 @@
 <li>与圆弧中点算法类似：确定一个象素后，接着在两个候选象素的中点计算一个判别式的值，由判别式的符号确定更近的点。</li>
 <li>先讨论椭圆弧的上部分：<ul>
 <li>(x<sub>p</sub>, y<sub>p</sub>)的中点(x<sub>p</sub> + 1, y<sub>p</sub> - 0.5)</li>
-<li>d<sub>1</sub> = F(x<sub>p</sub> + 1, y<sub>p</sub> - 0.5)<br><img src="椭圆.png" width="75%"><br><img src="椭圆2.png" width="60%"><br><img src="椭圆3.png" width="50%"><br><img src="椭圆4.png" width="50%"> <img src="椭圆5.png" width="50%"> </li>
+<li>d<sub>1</sub> = F(x<sub>p</sub> + 1, y<sub>p</sub> - 0.5)<br><img src="/CG/椭圆.png" width="75%"><br><img src="/CG/椭圆2.png" width="60%"><br><img src="/CG/椭圆3.png" width="50%"><br><img src="/CG/椭圆4.png" width="50%"> <img src="/CG/椭圆5.png" width="50%"> </li>
 </ul>
 </li>
 <li>算法步骤：<ol>
@@ -536,7 +536,7 @@
 <li><strong>新边表 NET</strong><ul>
 <li>为解决新边插入的问题，对每条扫描线建立一个新边表。</li>
 <li>扫描线与边的交点应为扫描线与边的初始交点</li>
-<li>结点信息<br>①x<sub>0</sub>:扫描线与边的初始交点。（若采用中心扫描线，则需将活性边的较低端点的x坐标值加上0.5△x作为x0）<br>②△x:从当前扫描线到下一条扫描线之间的x增量<br>③ymax:边所交的最高扫描线号<br><img src="扫描线.png" width="70%"></li>
+<li>结点信息<br>①x<sub>0</sub>:扫描线与边的初始交点。（若采用中心扫描线，则需将活性边的较低端点的x坐标值加上0.5△x作为x0）<br>②△x:从当前扫描线到下一条扫描线之间的x增量<br>③ymax:边所交的最高扫描线号<br><img src="/CG/扫描线.png" width="70%"></li>
 </ul>
 </li>
 <li>优点: <ul>
@@ -639,7 +639,7 @@
 <li>按左、上、右、下顺序检查与出栈象素相邻的四象素，若其中某象素不在边界上且未被置成填充色，则将其入栈</li>
 </ul>
 </li>
-<li>特点: 每个像素都需要压栈，耗内存，费时间<br><img src="种子.png" width="40%"></li>
+<li>特点: 每个像素都需要压栈，耗内存，费时间<br><img src="/CG/种子.png" width="40%"></li>
 </ul>
 <h5 id="种子填充的扫描线算法"><a href="#种子填充的扫描线算法" class="headerlink" title="种子填充的扫描线算法"></a>种子填充的扫描线算法</h5><ul>
 <li>基本思想:<ul>
@@ -787,7 +787,7 @@
 <li>S，P均在可见一侧 → 输出P</li>
 <li>S，P均在不可见一侧 → 无输出</li>
 <li>S可见，P不可见 → 输出SP与裁剪线的交点I</li>
-<li>S不可见，P可见  → 输出SP与裁剪的交点I和P<br><img src="裁剪.jpeg" width="45%"></li>
+<li>S不可见，P可见  → 输出SP与裁剪的交点I和P<br><img src="/CG/裁剪.jpeg" width="45%"></li>
 </ul>
 </li>
 <li><strong>特点：</strong><ul>
@@ -814,7 +814,7 @@
 <li>Weiler-Atherton算法步骤<ol>
 <li>建顶点表 </li>
 <li>求交点</li>
-<li>裁剪<br><img src="wa.png" width="75%"></li>
+<li>裁剪<br><img src="/CG/wa.png" width="75%"></li>
 </ol>
 </li>
 <li><strong>详细步骤</strong><ol>
@@ -832,14 +832,14 @@
 </li>
 <li><strong>交点的奇异情况处理</strong><ul>
 <li>与裁剪多边形边重合的主多边形的边不参与求交点;</li>
-<li>对于顶点落在裁剪多边形的边上的主多边形的边，如果落在该裁<br>剪边的内侧，将该顶点算作交点;而如果这条边落在该裁剪边<br>的外侧，将该顶点不看作交点。<br><img src="奇异.png" width="60%"></li>
+<li>对于顶点落在裁剪多边形的边上的主多边形的边，如果落在该裁<br>剪边的内侧，将该顶点算作交点;而如果这条边落在该裁剪边<br>的外侧，将该顶点不看作交点。<br><img src="/CG/奇异.png" width="60%"></li>
 </ul>
 </li>
 </ul>
 <h3 id="3-3-字符裁剪"><a href="#3-3-字符裁剪" class="headerlink" title="3.3 字符裁剪"></a>3.3 字符裁剪</h3><ul>
 <li><strong>基于字符串</strong>：将包围字符串的外接矩形对窗口作裁剪。当字符串外接矩形整个在 窗口内时予以显示，否则不显示。</li>
 <li><strong>基于字符</strong>：将包围字符的外接矩形对窗口作<br>裁剪，如某个字符外接矩形整个落<br>在窗口内予以显示，否则不显示。</li>
-<li><strong>基于构成字符的最小元素 / 像素</strong>：点阵字符：点裁剪 ；矢量字符：线裁剪<br><img src="字符.png" width="80%"></li>
+<li><strong>基于构成字符的最小元素 / 像素</strong>：点阵字符：点裁剪 ；矢量字符：线裁剪<br><img src="/CG/字符.png" width="80%"></li>
 </ul>
 <h2 id="4-图形的变换"><a href="#4-图形的变换" class="headerlink" title="4. 图形的变换"></a>4. 图形的变换</h2><h3 id="4-1-图形变换的数学基础"><a href="#4-1-图形变换的数学基础" class="headerlink" title="4.1 图形变换的数学基础"></a>4.1 图形变换的数学基础</h3><ul>
 <li><strong>图形几何变换</strong>：几何图形按照某种法则或规律变换成另一种几何图形的过程。</li>
@@ -867,13 +867,13 @@
 </li>
 </ul>
 <h5 id="几何变换"><a href="#几何变换" class="headerlink" title="几何变换"></a>几何变换</h5><ul>
-<li><strong>平移、旋转、缩放变换</strong><br><img src="几何变换.jpg" width="100%"></li>
-<li><strong>对称变换</strong>：<br><img src="对称.jpg" width="100%"></li>
+<li><strong>平移、旋转、缩放变换</strong><br><img src="/CG/几何变换.jpg" width="100%"></li>
+<li><strong>对称变换</strong>：<br><img src="/CG/对称.jpg" width="100%"></li>
 <li><p><strong>错切变换</strong>： </p>
 <ul>
 <li>也称为剪切、错位变换，用于产生弹性物体的变形处理。</li>
-<li>错切的变换矩阵<br><img src="错切.jpg" width="100%"></li>
-<li>(a) 错切角 (b) 沿x方向错切 (c) 沿y方向错切<br><img src="错切3.png" width="50%"></li>
+<li>错切的变换矩阵<br><img src="/CG/错切.jpg" width="100%"></li>
+<li>(a) 错切角 (b) 沿x方向错切 (c) 沿y方向错切<br><img src="/CG/错切3.png" width="50%"></li>
 </ul>
 </li>
 <li><p><strong>仿射变换</strong></p>
@@ -903,7 +903,7 @@
 <li>改变视区的大小和比例可以改变显示对象的大小和比例。 </li>
 </ul>
 </li>
-<li><strong>裁剪在扫描转换之前</strong><br><img src="显示.png" width="60%"></li>
+<li><strong>裁剪在扫描转换之前</strong><br><img src="/CG/显示.png" width="60%"></li>
 </ul>
 <h5 id="窗口到视区变换"><a href="#窗口到视区变换" class="headerlink" title="窗口到视区变换"></a>窗口到视区变换</h5><ul>
 <li>变换步骤：<ul>
@@ -934,10 +934,10 @@
 </ul>
 </li>
 </ul>
-<p><img src="3d.jpg" width="100%"></p>
+<p><img src="/CG/3d.jpg" width="100%"></p>
 <ul>
 <li>三维错切变换：是指三维立体在空间沿x、 y、 z三个方向实现错切变形, 三维错切是二维错切变换的一个扩充。</li>
-<li>三维对称变换<br><img src="3d2.jpg" width="60%"></li>
+<li>三维对称变换<br><img src="/CG/3d2.jpg" width="60%"></li>
 </ul>
 <h2 id="5-投影"><a href="#5-投影" class="headerlink" title="5. 投影"></a>5. 投影</h2><h3 id="5-1-三维图形显示的基本问题"><a href="#5-1-三维图形显示的基本问题" class="headerlink" title="5.1 三维图形显示的基本问题"></a>5.1 三维图形显示的基本问题</h3><ol>
 <li><strong>在二维屏幕上如何显示三维物体?</strong><ul>
@@ -979,7 +979,7 @@
 <li>投影和显示 → 成像</li>
 </ul>
 </li>
-<li><strong>简单的三维图形显示流程图</strong><br><img src="3d流程.png" width="40%"> </li>
+<li><strong>简单的三维图形显示流程图</strong><br><img src="/CG/3d流程.png" width="40%"> </li>
 <li><strong>投影</strong>：将n维的点变换成小于n维的点。比如将3维的点变换成小于3维的点</li>
 <li><strong>投影中心</strong>(COP: Center of Projection)<ul>
 <li>eg. 视觉系统—观察点、视点; 电影放映机—光源</li>
@@ -995,7 +995,7 @@
 </li>
 <li><strong>平面几何投影</strong>：投影面是平面，投影线为直线</li>
 <li><strong>投影变换</strong>：投影过程，投影的数学表示</li>
-<li>平面几何投影的分类<br><img src="投影.png" width="40%"> </li>
+<li>平面几何投影的分类<br><img src="/CG/投影.png" width="40%"> </li>
 </ul>
 <h5 id="透视投影"><a href="#透视投影" class="headerlink" title="透视投影"></a>透视投影</h5><ul>
 <li>投影中心与投影平面之间的距离为有限</li>
@@ -1005,7 +1005,7 @@
 <li><strong>主灭点</strong>：坐标轴方向的平行线在投影面上 形成的灭点称作主灭点。<ul>
 <li>一点透视：表现范围广，纵深感强，适合表现庄重、严肃的室内空间或建筑物。比较呆板，与真实效果有一定的距离</li>
 <li>两点透视为：构图画面增加动感，使画面结构丰富。</li>
-<li>三点透视：一般用于超高层建筑俯瞰图或仰视图。<br><img src="透视.png" width="40%"> </li>
+<li>三点透视：一般用于超高层建筑俯瞰图或仰视图。<br><img src="/CG/透视.png" width="40%"> </li>
 </ul>
 </li>
 <li><strong>特点</strong>：产生近大远小的视觉效果，由它产生的图形深度强，看起来更加真实。</li>
@@ -1014,12 +1014,12 @@
 <li>投影中心与投影平面之间的距离为无限</li>
 <li>是透视投影的极限状态</li>
 <li>分类:<ul>
-<li>根据投影射线与投影平面的关系，平行投影可分为<strong>正投影和斜投影</strong>。<br><img src="平行投影.png" width="40%"> </li>
+<li>根据投影射线与投影平面的关系，平行投影可分为<strong>正投影和斜投影</strong>。<br><img src="/CG/平行投影.png" width="40%"> </li>
 </ul>
 </li>
 <li>正投影：<ul>
 <li>根据投影面和坐标轴的夹角可分为两类:三视图和正轴测图</li>
-<li>当<strong>投影面与某一坐标轴垂直</strong>时，得到的投影为三视图，这时投影方向和这个坐标轴的方向一致。否则，得到的投影为正轴测图。<br><img src="正投影.png" width="40%"> </li>
+<li>当<strong>投影面与某一坐标轴垂直</strong>时，得到的投影为三视图，这时投影方向和这个坐标轴的方向一致。否则，得到的投影为正轴测图。<br><img src="/CG/正投影.png" width="40%"> </li>
 </ul>
 </li>
 <li><strong>三视图</strong>: 包括<strong>主视图、侧视图和俯视图</strong>三种，投影面分别与X轴、Y轴和Z轴垂直</li>
@@ -1049,7 +1049,7 @@
 </ul>
 <h3 id="5-3-投影变换-amp-投影举例"><a href="#5-3-投影变换-amp-投影举例" class="headerlink" title="5.3 投影变换 &amp; 投影举例"></a>5.3 投影变换 &amp; 投影举例</h3><ul>
 <li><strong>三维观察变换</strong>所起的作用是完成从用户空间选取的一部分物体描述变换到 显示屏上指定的视窗中的图形描述。<ul>
-<li>简单的三维观察流水线：<br><img src="流水线.png" width="40%"> </li>
+<li>简单的三维观察流水线：<br><img src="/CG/流水线.png" width="40%"> </li>
 </ul>
 </li>
 <li><strong>取景变换</strong>:完成从用户坐标系中的描述 -&gt; 观察坐标系中的描述的坐标变换。</li>
@@ -1064,7 +1064,7 @@
 <h5 id="用户坐标到观察坐标的变换"><a href="#用户坐标到观察坐标的变换" class="headerlink" title="用户坐标到观察坐标的变换"></a>用户坐标到观察坐标的变换</h5><ul>
 <li>在物体描述投影到观察平面之前，必须将其转换成观察坐标。该变换顺序是:    <ul>
 <li>平移观察参考点VRP(x0,y0,z0)到用户坐标系原点; </li>
-<li>进行旋转分别让Xv,Yv和Zv轴对应到用户坐标系的x、y、和z轴。 一旦景物中物体的用户坐标描述转换到观察坐标后，我们就可以将三维<br>物体投影到二维观察平面上。<br><img src="观察坐标.png" width="50%"> </li>
+<li>进行旋转分别让Xv,Yv和Zv轴对应到用户坐标系的x、y、和z轴。 一旦景物中物体的用户坐标描述转换到观察坐标后，我们就可以将三维<br>物体投影到二维观察平面上。<br><img src="/CG/观察坐标.png" width="50%"> </li>
 </ul>
 </li>
 <li>为使剪取处理简单和规范化(即单位化)，需要利用坐标变换将<strong>视见体规范化</strong>。</li>
@@ -1076,7 +1076,7 @@
 </ul>
 </li>
 <li>需注意，对于透视投影，<strong>前截面必须在投影中心和后截面之间。</strong></li>
-<li>投影参考点(PRP: Projection Reference Point)<br><img src="视见体.png" width="50%"> <ul>
+<li>投影参考点(PRP: Projection Reference Point)<br><img src="/CG/视见体.png" width="50%"> <ul>
 <li>透视投影: COP==PRP;</li>
 <li>平行投影: 投影方向DOP= CW-PRP</li>
 <li>透视投影: 观察空间为四棱锥</li>
@@ -1085,13 +1085,13 @@
 </li>
 </ul>
 <h5 id="透视投影变换"><a href="#透视投影变换" class="headerlink" title="透视投影变换"></a>透视投影变换</h5><ul>
-<li>问题：在uvn中，投影平面为n=0，投影中心为(0，0，d)， 待投影点为P(u<sub>p</sub>，v<sub>p</sub>，n<sub>p</sub>)，求投影点Q (u<sub>Q</sub>，v<sub>Q</sub>，n<sub>Q</sub>)<br><img src="透视投影变换.png" width="25%"><br><img src="透视投影变换2.png" width="25%"></li>
+<li>问题：在uvn中，投影平面为n=0，投影中心为(0，0，d)， 待投影点为P(u<sub>p</sub>，v<sub>p</sub>，n<sub>p</sub>)，求投影点Q (u<sub>Q</sub>，v<sub>Q</sub>，n<sub>Q</sub>)<br><img src="/CG/透视投影变换.png" width="25%"><br><img src="/CG/透视投影变换2.png" width="25%"></li>
 <li>透视投影变换矩阵:作用就是将三维物体变换成二维透视投影。</li>
 </ul>
 <h5 id="斜平行投影"><a href="#斜平行投影" class="headerlink" title="斜平行投影"></a>斜平行投影</h5><ul>
 <li>投影方向不垂直于投影平面的平行投影被称为斜平行投影。</li>
 </ul>
-<h5 id="从世界坐标系到观察坐标系的变换"><a href="#从世界坐标系到观察坐标系的变换" class="headerlink" title="从世界坐标系到观察坐标系的变换"></a>从世界坐标系到观察坐标系的变换</h5><p><img src="变换.png" width="25%"></p>
+<h5 id="从世界坐标系到观察坐标系的变换"><a href="#从世界坐标系到观察坐标系的变换" class="headerlink" title="从世界坐标系到观察坐标系的变换"></a>从世界坐标系到观察坐标系的变换</h5><p><img src="/CG/变换.png" width="25%"></p>
 <h3 id="5-4-规范视见体变换-规范裁剪空间"><a href="#5-4-规范视见体变换-规范裁剪空间" class="headerlink" title="5.4 规范视见体变换 / 规范裁剪空间"></a>5.4 规范视见体变换 / 规范裁剪空间</h3><ul>
 <li>为什么引入规范视见体?<ul>
 <li>使裁剪算法非常容易、直观</li>
@@ -1099,8 +1099,8 @@
 </ul>
 </li>
 <li>规范化变换：将任意视见体变换成规范视见体的变换</li>
-<li>三维图形的显示流程图<br><img src="2.png" width="45%"></li>
-<li>采用视见体变换的三维图形显示流程图<br><img src="1.png" width="45%"><ul>
+<li>三维图形的显示流程图<br><img src="/CG/2.png" width="45%"></li>
+<li>采用视见体变换的三维图形显示流程图<br><img src="/CG/1.png" width="45%"><ul>
 <li>观察变换：从世界坐标系到观察坐标系的变换</li>
 </ul>
 </li>
@@ -1116,7 +1116,7 @@
 <li>缺点：需要对所有的物体进行投影变换</li>
 </ul>
 </li>
-<li>采用投影后裁剪的三维图形显示流程图<br><img src="3.png" width="45%"></li>
+<li>采用投影后裁剪的三维图形显示流程图<br><img src="/CG/3.png" width="45%"></li>
 <li>在投影之前裁剪的理由<ul>
 <li>三维物体的表面通常被离散表示成多边形或折线，而对这类简单图元，三维裁剪同样比较简单。</li>
 <li>三维图形<strong>在显示过程中需要被消隐</strong>，做这个工作要有图形的深度信息，所以必须在投影之前完成。 消隐很费时，如果在此之前裁剪 (或部分裁剪)掉不可见的图形，可使需要消隐的图形减至最小。</li>
@@ -1156,7 +1156,7 @@
 <li>空间分割技术</li>
 <li>物体分层表示  </li>
 </ul>
-<h5 id="包含消隐的三维图形显示流程图："><a href="#包含消隐的三维图形显示流程图：" class="headerlink" title="包含消隐的三维图形显示流程图："></a>包含消隐的三维图形显示流程图：</h5><p><img src="4.png" width="45%"></p>
+<h5 id="包含消隐的三维图形显示流程图："><a href="#包含消隐的三维图形显示流程图：" class="headerlink" title="包含消隐的三维图形显示流程图："></a>包含消隐的三维图形显示流程图：</h5><p><img src="/CG/4.png" width="45%"></p>
 <h5 id="消隐的基本-核心-问题-排序"><a href="#消隐的基本-核心-问题-排序" class="headerlink" title="消隐的基本(核心)问题:排序"></a>消隐的基本(核心)问题:排序</h5><ul>
 <li>整体排序: 画家算法</li>
 <li>点排序: Z-Buffer算法、光线投射算法 </li>
@@ -1366,7 +1366,7 @@
 <li><p>光线跟踪过程：<strong>光线传播的逆过程(视线跟踪)</strong></p>
 <ul>
 <li>光源发出光线，经反射与折射，只有很少部分可以进入人的眼睛。因此直接从光源出发，沿光的传播方向进行光 线跟踪是不现实的，也是不必要的。</li>
-<li>实际上，<strong>光线跟踪算法的跟踪方向与光传播的方向是相反的，是视线跟踪</strong>。<br><img src="光线.png" width="45%"></li>
+<li>实际上，<strong>光线跟踪算法的跟踪方向与光传播的方向是相反的，是视线跟踪</strong>。<br><img src="/CG/光线.png" width="45%"></li>
 </ul>
 </li>
 <li><p><strong>优点</strong>: 能够方便的产生阴影，模拟镜面反射与折射现象。 </p>
@@ -1395,19 +1395,19 @@
 <li>计算机图形系统的硬件设备有哪些？</li>
 <li>光栅扫描显示器中，屏幕图形是依靠帧缓存进行刷新的，帧缓存里存放的是什么？</li>
 <li>简述随机扫描显示器和光栅扫描显示器的简单工作原理和各自的特点。</li>
-<li>用中点画线方法扫描转换连接两点P0（0,0）和P1（5,2）的直线段。<br>a = y0 - y1 = -2<br>b = x1 - x0 = 5<br>d0 = 2 <em> a + b = 1<br>d1 = 2 </em> a = -4<br>d2 = 2 * (a+b) = 6<br><img src="中点.png" width="45%"></li>
+<li>用中点画线方法扫描转换连接两点P0（0,0）和P1（5,2）的直线段。<br>a = y0 - y1 = -2<br>b = x1 - x0 = 5<br>d0 = 2 <em> a + b = 1<br>d1 = 2 </em> a = -4<br>d2 = 2 * (a+b) = 6<br><img src="/CG/中点.png" width="45%"></li>
 </ol>
 <h2 id="图形学题目"><a href="#图形学题目" class="headerlink" title="图形学题目"></a>图形学题目</h2><ol>
-<li>Breenham算法：<br><img src="bre.png" width="20%">  <img src="bre1.png" width="20%"></li>
-<li>中点画圆算法<br><img src="中点画圆1.png" width="70%"></li>
-<li><p>用边相关扫描线填充算法将顶点为P1 (2，2)，P2 (5，1)， P3(10，3)， P4(8，8)，P5(5，5)，P6(2，7)的多边形填充。请说明如何建立新边表NET和活动边表AET并写出该多边形填充的新边表NET和活动边表AET。<br><img src="扫描.png" width="60%"> </p>
+<li>Breenham算法：<br><img src="/CG/bre.png" width="20%">  <img src="/CG/bre1.png" width="20%"></li>
+<li>中点画圆算法<br><img src="/CG/中点画圆1.png" width="70%"></li>
+<li><p>用边相关扫描线填充算法将顶点为P1 (2，2)，P2 (5，1)， P3(10，3)， P4(8，8)，P5(5，5)，P6(2，7)的多边形填充。请说明如何建立新边表NET和活动边表AET并写出该多边形填充的新边表NET和活动边表AET。<br><img src="/CG/扫描.png" width="60%"> </p>
 </li>
 <li><p>用数值微分DDA算法、中点算法和Bresenham算法扫描转换直线段(1,1)–(5,3)，<br>写出扫描转换的结果:写出每一步递推过程的x，y坐标及判别式d的值，图示计<br>算结果。</p>
 </li>
 <li>图中有两条圆弧A和B，假定当前取点为(xi，yi)，那么下一点只能是正<br>右方的 E(xi+1，yi)或右下方的SE(xi+1，yi-1)两者之一。 假设M是E和SE的中点，即，利用中点画圆算法，回答下列问题:<ul>
 <li>当F(M) &lt; 0时，下一点应取哪个点? <strong>E点</strong> </li>
 <li>当F(M) &gt; 0时，下一点应取哪个点? <strong>SE点</strong></li>
-<li>当F(M) = 0时，下一点应取哪个点?  <strong>在E与SE之中随便取一个 即可，我们约定取SE点。</strong><br><img src="选点.png" width="30%"> </li>
+<li>当F(M) = 0时，下一点应取哪个点?  <strong>在E与SE之中随便取一个 即可，我们约定取SE点。</strong><br><img src="/CG/选点.png" width="30%"> </li>
 </ul>
 </li>
 <li>裁剪的实质是什么?<ul>
@@ -1422,11 +1422,11 @@
 <li>10次。</li>
 </ul>
 </li>
-<li>用Weiler-Atherton算法完成内裁剪和外裁剪。DCBA为裁剪窗口，dcba为要裁剪的多边形。<br><img src="wa题.png" width="50%"> </li>
-<li>一个由顶点(10，20)，(20，20)和(15，30)所定义的三角形，让它相对于点Q(5，25)正向旋转30°，求其变换后的三角形。<br><img src="几何1.png" width="60%"> </li>
-<li>推导以直线ax+by+c=0为对称轴的二维对称变换矩阵。<br><img src="几何2.png" width="70%"> </li>
-<li>在坐标系oxyz中，求一个变换将P(1,1,1)Q(2,2,2)变换到z 轴上:P在坐标原点，Q在z轴正半轴。<br><img src="3dt.png" width="70%"> </li>
-<li>如图所示三角形ABC，将其关于A点逆时针旋转90度，写 出其变换矩阵和变换后图形各点的规范化齐次坐标。<br><img src="3dti.png" width="40%"> </li>
+<li>用Weiler-Atherton算法完成内裁剪和外裁剪。DCBA为裁剪窗口，dcba为要裁剪的多边形。<br><img src="/CG/wa题.png" width="50%"> </li>
+<li>一个由顶点(10，20)，(20，20)和(15，30)所定义的三角形，让它相对于点Q(5，25)正向旋转30°，求其变换后的三角形。<br><img src="/CG/几何1.png" width="60%"> </li>
+<li>推导以直线ax+by+c=0为对称轴的二维对称变换矩阵。<br><img src="/CG/几何2.png" width="70%"> </li>
+<li>在坐标系oxyz中，求一个变换将P(1,1,1)Q(2,2,2)变换到z 轴上:P在坐标原点，Q在z轴正半轴。<br><img src="/CG/3dt.png" width="70%"> </li>
+<li>如图所示三角形ABC，将其关于A点逆时针旋转90度，写 出其变换矩阵和变换后图形各点的规范化齐次坐标。<br><img src="/CG/3dti.png" width="40%"> </li>
 <li>下列有关平面几何投影的叙述，错误的是( )<br>A)透视投影又可分为一点透视、二点透视、三点透视;<br>B)斜投影又可分为斜等测、斜二测;<br>C)正轴测又可分为正一测、正二测、正三测;<br>D)三视图又可分为正视图、侧视图、俯视图。</li>
 <li>下列有关平面几何投影的叙述语句中，正确的论述为( )<br>A)在平面几何投影中，若投影中心移到距离投影面无穷远 处，则成为平行投影;<br>B)透视投影与平行投影相比，视觉效果更有真实感，而且 能真实地反映物体的精确的尺寸和形状;<br>C)透视投影变换中，一组平行线投影在与之平行的投影面 上，可以产生灭点;<br>D)在三维空间中的物体进行透视投影变换，可能产生三个 或者更多的主灭点。  </li>
 <li>用下列二维图形变换矩阵:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;0&nbsp;1&nbsp;<br>T&nbsp;=&nbsp;0&nbsp;1&nbsp;1&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    0&nbsp;0&nbsp;1  &nbsp;<br>将产生变换的结果为( )<br>A) 图形放大2倍;<br>B) 图形放大2倍，同时沿X、Y坐标轴方向各移动1个绘图单位;<br>C) 沿X坐标轴方向各移动2个绘图单位;<br>D) 沿X坐标轴方向放大2倍，同时沿X、Y坐标轴方向各平移1个 绘图单位。</li>
@@ -1457,4 +1457,4 @@
 <li>光线跟踪算法的递归终止条件 简答题</li>
 <li>为什么引入齐次坐标 ？把加法变成乘法；统一的表达方式；无穷？？</li>
 </ul>
-</div></article></div></main><footer><div class="paginator"><a href="/ml/" class="prev">上一篇</a><a href="/macvpn/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>
+</div></article></div></main><footer><div class="paginator"><a href="/ml/" class="prev">PREV</a><a href="/macvpn/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>
