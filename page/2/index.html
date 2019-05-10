@@ -1,9 +1,4 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Hi, Dai</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://daisine.me/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><ul class="home post-list"><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os4/" class="post-title-link">操作系统笔记04 进程管理</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="进程概念"><a href="#进程概念" class="headerlink" title="进程概念"></a>进程概念</h4><ul>
-<li>流程批处理系统出现之前：工作</li>
-<li>多程序或分时：程序或任务</li>
-<li><p>进程：正在运行的作业/程序/任务的抽象</p>
-</li>
-<li><p><strong><code>进程</code></strong>是执行中的程序，形成所有计算机的基础。</p></div><a href="/os4/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os3/" class="post-title-link">操作系统笔记03 操作系统结构</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><ul>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Hi, Dai</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://daisine.me/atom.xml" title="Hi, Dai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.ico" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/list/" target="_self" class="nav-list-link">LIST</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/winnie1997" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><ul class="home post-list"><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os3/" class="post-title-link">操作系统笔记03 操作系统结构</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><ul>
 <li>一个像现代操作系统一样庞大而复杂的系统必须仔细设计，才能正常运行并易于修改。</li>
 <li>一种常用的方法是将任务分成小部件，而不是一个单一的系统。</li>
 <li>这些组件中的每一个都应该是系统的一个明确定义的部分，具有详细定义的<strong>输入，输出和功能</strong>。</li>
@@ -13,7 +8,7 @@
 <li>分层结构</li>
 <li>微内核</li>
 <li>虚拟机</li>
-</ul></div><a href="/os3/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os2/" class="post-title-link">操作系统笔记02 计算机系统结构</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="Bootstrap-引导"><a href="#Bootstrap-引导" class="headerlink" title="Bootstrap 引导"></a>Bootstrap 引导</h4><ul>
+</ul></div><a href="/os3/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os2/" class="post-title-link">操作系统笔记02 计算机系统结构</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="Bootstrap-引导"><a href="#Bootstrap-引导" class="headerlink" title="Bootstrap 引导"></a>Bootstrap 引导</h4><ul>
 <li>我们必须将操作系统内核从某些永久性存储（如磁盘和网络服务器）加载到内存中。装入内核以启动计算机的过程称为<strong>引导</strong>系统。</li>
 <li>绝大多数计算机系统都有一小块代码，称为<strong>引导程序/引导装载程序</strong>。这段代码能定位内核，将它装入内存，开始执行。</li>
 <li><strong>引导加载程序不是操作系统的一部分。</strong>引导程序被存储在固件中，而操作系统保存在磁盘上。</li>
@@ -21,7 +16,7 @@
 <ul>
 <li>NTLDR: 用于Windows NT / XP的boot-loader（驻留在C:\）。</li>
 <li>GRUB: Unix / Linux的启动加载器之一。</li>
-</ul></div><a href="/os2/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os1/" class="post-title-link">操作系统笔记01 导论</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h4><ul>
+</ul></div><a href="/os2/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os1/" class="post-title-link">操作系统笔记01 导论</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h4><ul>
 <li>多个作业同时保存在主存储器中，CPU通过在作业之间切换来执行多个作业。<br><img src="https://i.loli.net/2018/06/17/5b25c15f99ea2.png" width="40%" height="40%"> </li>
 </ul>
 <h4 id="台式机的操作系统"><a href="#台式机的操作系统" class="headerlink" title="台式机的操作系统"></a>台式机的操作系统</h4><ul>
@@ -31,10 +26,10 @@
 <li>Apple Macintosh, Mac OS X</li>
 <li>IBM OS/2</li>
 <li>Unix: Solaris by Sun microsystem, HP-UX by Hewlett-Packard, AIX by IBM, Free (as in freedom) software such as BSD (Berkeley Software Distribution) Unix, GNU/Linux</li>
-</ul></div><a href="/os1/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/sei/" class="post-title-link">软件工程导论笔记</a></h2><div class="post-info">Jun 20, 2018</div><div class="post-content"><h3 id="1-软件工程概述"><a href="#1-软件工程概述" class="headerlink" title="1. 软件工程概述"></a>1. 软件工程概述</h3><h4 id="软件的概念和特点"><a href="#软件的概念和特点" class="headerlink" title="软件的概念和特点"></a>软件的概念和特点</h4><p><code>软件</code>(广义)：计算机系统中与硬件相互依存的一部分  </p>
+</ul></div><a href="/os1/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/sei/" class="post-title-link">软件工程导论笔记</a></h2><div class="post-info">Jun 20, 2018</div><div class="post-content"><h3 id="1-软件工程概述"><a href="#1-软件工程概述" class="headerlink" title="1. 软件工程概述"></a>1. 软件工程概述</h3><h4 id="软件的概念和特点"><a href="#软件的概念和特点" class="headerlink" title="软件的概念和特点"></a>软件的概念和特点</h4><p><code>软件</code>(广义)：计算机系统中与硬件相互依存的一部分  </p>
 <blockquote>
 <p><strong>程序</strong>：计算机可以接受的一系列指令，运行时可以提供所要求的功能和性能。<br><strong>数据</strong>：使得程序能够适当地操作信息的数据结构。<br><strong>文档</strong>：描述程序的研制过程、方法和使用的图文资料。 </p>
-</blockquote></div><a href="/sei/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn5/" class="post-title-link">计算机网络笔记05 链路层</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h3 id="5-1-链路层概述"><a href="#5-1-链路层概述" class="headerlink" title="5.1 链路层概述"></a>5.1 链路层概述</h3><ul>
+</blockquote></div><a href="/sei/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn5/" class="post-title-link">计算机网络笔记05 链路层</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h3 id="5-1-链路层概述"><a href="#5-1-链路层概述" class="headerlink" title="5.1 链路层概述"></a>5.1 链路层概述</h3><ul>
 <li>基本概念:<ul>
 <li>主机和路由器：结点</li>
 <li>相邻结点的通信信道：链路 eg.wired links, wireless links, LANs</li>
@@ -47,7 +42,7 @@
 <li>不同的链路提供的服务也不同</li>
 </ul>
 </li>
-</ul></div><a href="/cn5/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn4/" class="post-title-link">计算机网络笔记04 网络层</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h3 id="4-1-网络层概述"><a href="#4-1-网络层概述" class="headerlink" title="4.1 网络层概述"></a>4.1 网络层概述</h3><ul>
+</ul></div><a href="/cn5/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn4/" class="post-title-link">计算机网络笔记04 网络层</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h3 id="4-1-网络层概述"><a href="#4-1-网络层概述" class="headerlink" title="4.1 网络层概述"></a>4.1 网络层概述</h3><ul>
 <li>网络层服务和协议: 提供主机之间的<strong>逻辑通信</strong>。</li>
 <li>在<strong>端系统</strong>中<ul>
 <li>发送方：将报文段封装成<strong>数据报</strong>，提交给数据链路层。</li>
@@ -55,22 +50,28 @@
 </ul>
 </li>
 <li>在<strong>网络核心</strong>节点中<ul>
-<li>路由器：转发数据报，交付到目的主机</div><a href="/cn4/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn3/" class="post-title-link">计算机网络笔记03 运输层</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h3 id="3-1-概述和运输层服务"><a href="#3-1-概述和运输层服务" class="headerlink" title="3.1 概述和运输层服务"></a>3.1 概述和运输层服务</h3><ul>
+<li>路由器：转发数据报，交付到目的主机</div><a href="/cn4/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn3/" class="post-title-link">计算机网络笔记03 运输层</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h3 id="3-1-概述和运输层服务"><a href="#3-1-概述和运输层服务" class="headerlink" title="3.1 概述和运输层服务"></a>3.1 概述和运输层服务</h3><ul>
 <li>提供了不同主机中应用进程之间的<code>逻辑通信</code>而非物理通信</li>
 <li>运输层协议工作在<strong>端系统</strong>中<ul>
 <li>发送方：将报文封装成报文段，提交给网络层</li>
 <li>接收方：解析成报文，提交给应用层</li>
 </ul>
 </li>
-<li>提供了两种协议 TCP &amp; UDP</div><a href="/cn3/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn2/" class="post-title-link">计算机网络笔记02 应用层</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h2 id="2-1-应用层协议原理"><a href="#2-1-应用层协议原理" class="headerlink" title="2.1 应用层协议原理"></a>2.1 应用层协议原理</h2><h4 id="网络应用程序体系结构"><a href="#网络应用程序体系结构" class="headerlink" title="网络应用程序体系结构"></a>网络应用程序体系结构</h4><p>应用程序研发很可能利用两种主流的体系结构之一:<br><strong><code>客户-服务端体系结构</code>:</strong></p>
+<li>提供了两种协议 TCP &amp; UDP</div><a href="/cn3/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn2/" class="post-title-link">计算机网络笔记02 应用层</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h2 id="2-1-应用层协议原理"><a href="#2-1-应用层协议原理" class="headerlink" title="2.1 应用层协议原理"></a>2.1 应用层协议原理</h2><h4 id="网络应用程序体系结构"><a href="#网络应用程序体系结构" class="headerlink" title="网络应用程序体系结构"></a>网络应用程序体系结构</h4><p>应用程序研发很可能利用两种主流的体系结构之一:<br><strong><code>客户-服务端体系结构</code>:</strong></p>
 <ul>
 <li>服务器: <ul>
 <li>持续地工作(365*24)  </li>
 <li>固定的、周知的地址(<code>IP地址</code>)  </li>
-<li>备有数据中心</div><a href="/cn2/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn1/" class="post-title-link">计算机网络笔记01 计算机网络和因特网</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h2 id="1-1-什么是因特网"><a href="#1-1-什么是因特网" class="headerlink" title="1.1 什么是因特网"></a>1.1 什么是因特网</h2><h3 id="具体构成描述-硬件和软件组成"><a href="#具体构成描述-硬件和软件组成" class="headerlink" title="具体构成描述(硬件和软件组成)"></a>具体构成描述(硬件和软件组成)</h3><p><strong>因特网</strong>是网络的网络，是一个世界范围的计算机网络。 </p>
+<li>备有数据中心</div><a href="/cn2/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/cn1/" class="post-title-link">计算机网络笔记01 计算机网络和因特网</a></h2><div class="post-info">Jun 8, 2018</div><div class="post-content"><h2 id="1-1-什么是因特网"><a href="#1-1-什么是因特网" class="headerlink" title="1.1 什么是因特网"></a>1.1 什么是因特网</h2><h3 id="具体构成描述-硬件和软件组成"><a href="#具体构成描述-硬件和软件组成" class="headerlink" title="具体构成描述(硬件和软件组成)"></a>具体构成描述(硬件和软件组成)</h3><p><strong>因特网</strong>是网络的网络，是一个世界范围的计算机网络。 </p>
 <blockquote>
 <ol>
 <li>连接数以亿计的设备: <code>主机/端系统</code>通过服务提供商(ISP)接入因特网进行互联。 <code>运行各种网络应用</code>  </li>
 <li><code>主机/端系统</code>通过通信链路和分组交换机连接到一起</li>
 <li>通信链路:<br>&ensp;&ensp; <code>传输媒介</code>: 同轴电缆、铜线、光线、无线电<br>&ensp;&ensp; <code>传输速率</code>: 带宽  </li>
-<li>交换设备: <code>路由器</code> <code>链路层交换机</code></div><a href="/cn1/" class="read-more">...阅读全文</a></article></li></ul></main><footer><div class="paginator"><a href="/" class="prev">上一页</a><a href="/page/3/" class="next">下一页</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
+<li>交换设备: <code>路由器</code> <code>链路层交换机</code></div><a href="/cn1/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/sql08/" class="post-title-link">数据库原理笔记C08 数据库系统的设计</a></h2><div class="post-info">Jun 4, 2018</div><div class="post-content"><h2 id="8-1-数据库系统设计概述"><a href="#8-1-数据库系统设计概述" class="headerlink" title="8.1 数据库系统设计概述"></a>8.1 数据库系统设计概述</h2><ol>
+<li>需求分析阶段：需求收集和分析，得到<code>数据字典</code>和<code>数据流图</code>。</li>
+<li>概念结构设计阶段：对用户需求综合、归纳与抽象，形成概念模型，用<code>E-R图</code>表示。</li>
+<li>逻辑结构设计阶段：将概念结构转换为某个DBMS所支持的<code>关系模型</code>/<code>数据模型</code>，对关系模型进行优化。</li>
+<li>物理设计阶段：根据具体计算机系统(DBMS和硬件)的特点，为<strong>给定的数据库模型</strong>确定合理的<code>存储结构</code>和<code>存取方法</code>，并对物理结构进行评价。</li>
+<li>数据库实施阶段：建立数据库，编制与调试应用程序，组织数据入库，程序试运行。</li>
+<li>数据库运行和维护阶段：数据库应用系统投入运行后，需要进行备份和维护，对于出现的问题需要不断调整和修改，直到满足用户需求。</div><a href="/sql08/" class="read-more">...more</a></article></li></ul></main><footer><div class="paginator"><a href="/" class="prev">PREV</a><a href="/page/3/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
