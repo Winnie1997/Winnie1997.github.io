@@ -2,58 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://daisine.me/web/</loc>
+    <loc>http://daisine.me/CG/</loc>
     
-    <lastmod>2019-05-10T04:42:35.233Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/uml/</loc>
-    
-    <lastmod>2019-05-10T04:41:10.230Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/sftest/</loc>
-    
-    <lastmod>2019-05-10T03:59:12.977Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/Cryptography/</loc>
-    
-    <lastmod>2019-05-10T03:51:13.250Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/require/</loc>
-    
-    <lastmod>2019-05-10T03:48:19.778Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/media/</loc>
-    
-    <lastmod>2019-05-10T03:46:38.880Z</lastmod>
+    <lastmod>2019-05-10T04:54:43.305Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://daisine.me/ml/</loc>
     
-    <lastmod>2019-05-10T03:43:48.194Z</lastmod>
+    <lastmod>2019-05-10T04:54:19.405Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://daisine.me/CG/</loc>
+    <loc>http://daisine.me/media/</loc>
     
-    <lastmod>2019-05-10T03:41:25.110Z</lastmod>
+    <lastmod>2019-05-10T04:53:57.484Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/require/</loc>
+    
+    <lastmod>2019-05-10T04:53:38.707Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/Cryptography/</loc>
+    
+    <lastmod>2019-05-10T04:53:17.219Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/uml/</loc>
+    
+    <lastmod>2019-05-10T04:52:57.986Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/web/</loc>
+    
+    <lastmod>2019-05-10T04:52:33.850Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/sftest/</loc>
+    
+    <lastmod>2019-05-10T04:52:14.521Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/manage/</loc>
+    
+    <lastmod>2019-05-10T04:51:59.457Z</lastmod>
     
   </url>
   
