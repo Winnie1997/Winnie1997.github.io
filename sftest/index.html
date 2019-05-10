@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="软件测试笔记"><meta name="keywords" content=""><meta name="author" content="Dai Sine"><meta name="copyright" content="Dai Sine"><title>软件测试笔记 | Hi, Dai</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="软件测试笔记"><meta name="keywords" content="note"><meta name="author" content="Dai Sine"><meta name="copyright" content="Dai Sine"><title>软件测试笔记 | Hi, Dai</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
@@ -13,7 +13,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
     error: 'Copy error',
     noSupport: 'The browser does not support'
   }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-软件测试概述"><span class="toc-text">1 软件测试概述</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#故障、错误-amp-失败"><span class="toc-text">故障、错误&amp;失败</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PIE模型"><span class="toc-text">PIE模型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C2-单元测试"><span class="toc-text">C2 单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#单元测试"><span class="toc-text">单元测试</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C3-白盒测试"><span class="toc-text">C3 白盒测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-测试中的图"><span class="toc-text">1. 测试中的图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-图覆盖准则"><span class="toc-text">2. 图覆盖准则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-结构化的覆盖准则"><span class="toc-text">3. 结构化的覆盖准则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-控制流图-CFG-及其覆盖"><span class="toc-text">4. 控制流图(CFG)及其覆盖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-主路径覆盖-Prime-Path-Coverage-PPC"><span class="toc-text">5. 主路径覆盖(Prime Path Coverage, PPC)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-基本路径覆盖"><span class="toc-text">6. 基本路径覆盖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-数据流覆盖"><span class="toc-text">7. 数据流覆盖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-事件流覆盖"><span class="toc-text">8. 事件流覆盖</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C4-自动化软件测试"><span class="toc-text">C4 自动化软件测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C5-黑盒测试"><span class="toc-text">C5 黑盒测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-随机测试"><span class="toc-text">5.1 随机测试</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2-等价划分"><span class="toc-text">5.2 等价划分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-3-边界值分析"><span class="toc-text">5.3 边界值分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4-组合测试"><span class="toc-text">5.4 组合测试</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-测试中的约束"><span class="toc-text">5.5 测试中的约束</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-6-决策表"><span class="toc-text">5.6 决策表</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C7-功能、性能、移动应用测试"><span class="toc-text">C7 功能、性能、移动应用测试</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Dai Sine</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">47</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">8</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">6</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://i.loli.net/2019/05/10/5cd525fea97ac.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hi, Dai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/list">List</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">软件测试笔记</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-30</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h4 id="1-软件测试概述"><a href="#1-软件测试概述" class="headerlink" title="1 软件测试概述"></a>1 软件测试概述</h4><h5 id="故障、错误-amp-失败"><a href="#故障、错误-amp-失败" class="headerlink" title="故障、错误&amp;失败"></a>故障、错误&amp;失败</h5><ul>
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-软件测试概述"><span class="toc-text">1 软件测试概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#故障、错误-amp-失败"><span class="toc-text">故障、错误&amp;失败</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PIE模型"><span class="toc-text">PIE模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C2-单元测试"><span class="toc-text">C2 单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#单元测试"><span class="toc-text">单元测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C3-白盒测试"><span class="toc-text">C3 白盒测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-测试中的图"><span class="toc-text">1. 测试中的图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-图覆盖准则"><span class="toc-text">2. 图覆盖准则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-结构化的覆盖准则"><span class="toc-text">3. 结构化的覆盖准则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-控制流图-CFG-及其覆盖"><span class="toc-text">4. 控制流图(CFG)及其覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-主路径覆盖-Prime-Path-Coverage-PPC"><span class="toc-text">5. 主路径覆盖(Prime Path Coverage, PPC)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-基本路径覆盖"><span class="toc-text">6. 基本路径覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-数据流覆盖"><span class="toc-text">7. 数据流覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-事件流覆盖"><span class="toc-text">8. 事件流覆盖</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C4-自动化软件测试"><span class="toc-text">C4 自动化软件测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C5-黑盒测试"><span class="toc-text">C5 黑盒测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-随机测试"><span class="toc-text">5.1 随机测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-等价划分"><span class="toc-text">5.2 等价划分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-边界值分析"><span class="toc-text">5.3 边界值分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-组合测试"><span class="toc-text">5.4 组合测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-测试中的约束"><span class="toc-text">5.5 测试中的约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-决策表"><span class="toc-text">5.6 决策表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C7-功能、性能、移动应用测试"><span class="toc-text">C7 功能、性能、移动应用测试</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Dai Sine</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">47</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">12</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">10</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://i.loli.net/2019/05/10/5cd525fea97ac.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hi, Dai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/list">List</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">软件测试笔记</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-30</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/软件工程/">软件工程</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h3 id="1-软件测试概述"><a href="#1-软件测试概述" class="headerlink" title="1 软件测试概述"></a>1 软件测试概述</h3><h4 id="故障、错误-amp-失败"><a href="#故障、错误-amp-失败" class="headerlink" title="故障、错误&amp;失败"></a>故障、错误&amp;失败</h4><ul>
 <li>软件故障(fault)：软件中的一个静态的缺陷。</li>
 <li>软件错误(error)：软件运行中一个不正确的内部状态，这是某个故障的表现。</li>
 <li><p>软件失败(failure)：一个与软件需求或者是预期行为描述不相符的、外在的行为。</p>
@@ -24,7 +24,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>软件失败：Input: [3,4,5]  sum=4+5 mean=3  ( × )</li>
 </ul>
-<h5 id="PIE模型"><a href="#PIE模型" class="headerlink" title="PIE模型"></a>PIE模型</h5><ul>
+<h4 id="PIE模型"><a href="#PIE模型" class="headerlink" title="PIE模型"></a>PIE模型</h4><ul>
 <li>Execution/Reachability 执行/可达性：执行必须通过错误的代码。</li>
 <li>Infection 感染：在执行错误代码的时候必须触发出一个错误的中间状态。</li>
 <li>Propagation 传播：错误的中间状态必须传播到最后输出，使得观测到输出结果与预期结果不一致，即失效。</li>
@@ -38,7 +38,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </blockquote>
 <p>Q: 是否存在一个fault，任何测试都不会将其测试出来？这样还能称之为fault吗？</p>
 <p>A: 存在这样的fault。</p>
-<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><ul>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
 <li>测试用例(test case)：所有测试用例的基类，它是软件测试中最基本的组成单元。<ul>
 <li>测试输入：测试数据</li>
 <li>测试预期输出(test oracle)：软件中给定输入的预期输出</li>
@@ -73,13 +73,13 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>V模型：<br><img src="/sftest/vmodel.png" width="50%"></li>
 </ul>
-<h4 id="C2-单元测试"><a href="#C2-单元测试" class="headerlink" title="C2 单元测试"></a>C2 单元测试</h4><ul>
+<h3 id="C2-单元测试"><a href="#C2-单元测试" class="headerlink" title="C2 单元测试"></a>C2 单元测试</h3><ul>
 <li>单元测试：每个模块的测试。</li>
 <li>集成测试：测试模块之间的交互。</li>
 <li>系统测试：开发人员对整个系统进行测试。</li>
 <li>验收测试：根据需求和用户需要来评估软件。没有正式测试用例的客户根据用户要求验证系统。</li>
 </ul>
-<h5 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h5><ul>
+<h4 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h4><ul>
 <li>测试软件的基本模块：功能，类，组件</li>
 <li>揭示典型问题<ul>
 <li>本地数据结构</li>
@@ -104,7 +104,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<h4 id="C3-白盒测试"><a href="#C3-白盒测试" class="headerlink" title="C3 白盒测试"></a>C3 白盒测试</h4><h5 id="1-测试中的图"><a href="#1-测试中的图" class="headerlink" title="1. 测试中的图"></a>1. 测试中的图</h5><ul>
+<h3 id="C3-白盒测试"><a href="#C3-白盒测试" class="headerlink" title="C3 白盒测试"></a>C3 白盒测试</h3><h4 id="1-测试中的图"><a href="#1-测试中的图" class="headerlink" title="1. 测试中的图"></a>1. 测试中的图</h4><ul>
 <li><strong>图G</strong>定义如下：G =（V，E）<ul>
 <li>V：有限的非空顶点集V = {v<sub>1</sub>，v<sub>2</sub>，v<sub>3</sub>，v<sub>4</sub>}</li>
 <li>E：一组边（顶点对）E = {（v<sub>1</sub>，v<sub>2</sub>），（v<sub>1</sub>，v<sub>3</sub>），（v<sub>2</sub>，v<sub>4</sub>），（v<sub>3</sub>，v<sub>4</sub>）}</li>
@@ -137,7 +137,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<h5 id="2-图覆盖准则"><a href="#2-图覆盖准则" class="headerlink" title="2. 图覆盖准则"></a>2. 图覆盖准则</h5><ul>
+<h4 id="2-图覆盖准则"><a href="#2-图覆盖准则" class="headerlink" title="2. 图覆盖准则"></a>2. 图覆盖准则</h4><ul>
 <li><p>可达：从一个初始节点开始所有节点和边都语法可达的图。</p>
 <ul>
 <li>v<sub>1</sub>可达v<sub>2</sub>：存在一条路径开始于v<sub>1</sub>，终止于v<sub>2</sub>。</li>
@@ -166,7 +166,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li><p>图覆盖：给定一个<strong>图覆盖准则C</strong>所包含的<strong>测试需求集TR</strong>，当且仅当对于TR中的<strong>每个测试需求tr</strong>，<strong>测试路径集path( T )</strong>中都至少存在一个测试路径p满足tr的时候，测试用例集T满足图G的覆盖准则C。</p>
 </li>
 </ul>
-<h5 id="3-结构化的覆盖准则"><a href="#3-结构化的覆盖准则" class="headerlink" title="3. 结构化的覆盖准则"></a>3. 结构化的覆盖准则</h5><ul>
+<h4 id="3-结构化的覆盖准则"><a href="#3-结构化的覆盖准则" class="headerlink" title="3. 结构化的覆盖准则"></a>3. 结构化的覆盖准则</h4><ul>
 <li><p><strong>节点覆盖(VC)</strong></p>
 <ul>
 <li>当且仅当对于 V 中每个语法可达的节点 v，测试用例集T满足path( T )存在路径p使得p覆盖v。即测试用例集T在图G上满足节点覆盖。</li>
@@ -195,7 +195,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<h5 id="4-控制流图-CFG-及其覆盖"><a href="#4-控制流图-CFG-及其覆盖" class="headerlink" title="4. 控制流图(CFG)及其覆盖"></a>4. 控制流图(CFG)及其覆盖</h5><ul>
+<h4 id="4-控制流图-CFG-及其覆盖"><a href="#4-控制流图-CFG-及其覆盖" class="headerlink" title="4. 控制流图(CFG)及其覆盖"></a>4. 控制流图(CFG)及其覆盖</h4><ul>
 <li><p>控制流图(CFG)</p>
 <ul>
 <li>使用图表符号表示<strong>在执行期间可能遍历程序的所有路径</strong>的表示。</li>
@@ -237,7 +237,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<h5 id="5-主路径覆盖-Prime-Path-Coverage-PPC"><a href="#5-主路径覆盖-Prime-Path-Coverage-PPC" class="headerlink" title="5. 主路径覆盖(Prime Path Coverage, PPC)"></a>5. 主路径覆盖(Prime Path Coverage, PPC)</h5><ul>
+<h4 id="5-主路径覆盖-Prime-Path-Coverage-PPC"><a href="#5-主路径覆盖-Prime-Path-Coverage-PPC" class="headerlink" title="5. 主路径覆盖(Prime Path Coverage, PPC)"></a>5. 主路径覆盖(Prime Path Coverage, PPC)</h4><ul>
 <li>简单路径<ul>
 <li>从n<sub>i</sub>到n<sub>j</sub>的路径，当且仅当在这条路径中没有任何节点出现超过一次(除了初始节点和终止节点相同的情况)</li>
 <li>简单路径可以是一个自环，但它没有内在的循环。<br><img src="/sftest/简单路径.png" width="55%"><img src="/sftest/主路径.png" width="40%"></li>
@@ -265,7 +265,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li><p>主路径覆盖练习：<br><img src="/sftest/主路径覆盖.png" width="54%"></p>
 </li>
 </ul>
-<h5 id="6-基本路径覆盖"><a href="#6-基本路径覆盖" class="headerlink" title="6. 基本路径覆盖"></a>6. 基本路径覆盖</h5><ul>
+<h4 id="6-基本路径覆盖"><a href="#6-基本路径覆盖" class="headerlink" title="6. 基本路径覆盖"></a>6. 基本路径覆盖</h4><ul>
 <li>独立路径：一条独立路径是指和其他的独立路径相比，至少引入一个新处理语句或一个新判断的程序通路。</li>
 <li><strong>圈复杂度(Cyclomatic Complexity, CC)</strong>：<ul>
 <li>一种为程序逻辑复杂性提供定量测度的软件度量，将该度量用于计算程序的基本的独立路径数目，为确保所有语句至少执行一次的测试数量的上界。</li>
@@ -282,7 +282,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>全路径测试 ≥ 基本路径测试 ≥ 分支测试</li>
 </ul>
-<h5 id="7-数据流覆盖"><a href="#7-数据流覆盖" class="headerlink" title="7. 数据流覆盖"></a>7. 数据流覆盖</h5><ul>
+<h4 id="7-数据流覆盖"><a href="#7-数据流覆盖" class="headerlink" title="7. 数据流覆盖"></a>7. 数据流覆盖</h4><ul>
 <li><strong>定义(def)</strong>：当一个变量的值被存储于内存时变量所处的位置。(写)</li>
 <li><strong>使用(use)</strong>：当获取一个变量的值时变量所处的位置。(读)</li>
 <li><p>数据流测试准则依据：数据值由定义转向使用。这种转移成为<strong>定义使用对/定义-使用/定义使用关联</strong>。<br><img src="/sftest/defuse.png" width="54%"></p>
@@ -323,7 +323,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li><p>图覆盖准则之间的包含关系<br><img src="/sftest/包含关系.png" width="34%"></p>
 </li>
 </ul>
-<h5 id="8-事件流覆盖"><a href="#8-事件流覆盖" class="headerlink" title="8. 事件流覆盖"></a>8. 事件流覆盖</h5><ul>
+<h4 id="8-事件流覆盖"><a href="#8-事件流覆盖" class="headerlink" title="8. 事件流覆盖"></a>8. 事件流覆盖</h4><ul>
 <li><strong>事件流图(EFG)</strong>是一个三元组M = &lt;V, I, E&gt;：<ul>
 <li>V是一组表示对象所有事件的顶点。</li>
 <li>I ⊆ V是一组初始顶点。</li>
@@ -414,7 +414,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<h4 id="C4-自动化软件测试"><a href="#C4-自动化软件测试" class="headerlink" title="C4 自动化软件测试"></a>C4 自动化软件测试</h4><ul>
+<h3 id="C4-自动化软件测试"><a href="#C4-自动化软件测试" class="headerlink" title="C4 自动化软件测试"></a>C4 自动化软件测试</h3><ul>
 <li>自动化测试<strong>生成</strong><ul>
 <li>测试用例生成</li>
 <li>测试数据生成</li>
@@ -434,7 +434,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>自动化测试<strong>扩增</strong></li>
 </ul>
-<h4 id="C5-黑盒测试"><a href="#C5-黑盒测试" class="headerlink" title="C5 黑盒测试"></a>C5 黑盒测试</h4><h5 id="5-1-随机测试"><a href="#5-1-随机测试" class="headerlink" title="5.1 随机测试"></a>5.1 随机测试</h5><ul>
+<h3 id="C5-黑盒测试"><a href="#C5-黑盒测试" class="headerlink" title="C5 黑盒测试"></a>C5 黑盒测试</h3><h4 id="5-1-随机测试"><a href="#5-1-随机测试" class="headerlink" title="5.1 随机测试"></a>5.1 随机测试</h4><ul>
 <li>随机测试<ul>
 <li>测试用例完全随机生成</li>
 <li>必须知道输入域</li>
@@ -445,7 +445,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>ART算法</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* T = &#123;&#125;  是以前执行的一组测试用例*/</span></span><br><span class="line">随机生成输入t </span><br><span class="line">用t作为测试用例测试程序          </span><br><span class="line">将t添加到T     </span><br><span class="line"><span class="keyword">while</span>（未达到停止条件）           </span><br><span class="line">   随机生成下一个k候选c1，c2，…，ck    </span><br><span class="line">   <span class="keyword">for</span> 每个候选Ci </span><br><span class="line">      计算与T的最小距离di  </span><br><span class="line">   end <span class="keyword">for</span></span><br><span class="line">  选择一个具有最小距离的候选t</span><br><span class="line">  将t添加到T           </span><br><span class="line">  用T作为测试用例测试程序    </span><br><span class="line">end <span class="keyword">while</span></span><br></pre></td></tr></table></figure>
-<h5 id="5-2-等价划分"><a href="#5-2-等价划分" class="headerlink" title="5.2 等价划分"></a>5.2 等价划分</h5><ul>
+<h4 id="5-2-等价划分"><a href="#5-2-等价划分" class="headerlink" title="5.2 等价划分"></a>5.2 等价划分</h4><ul>
 <li>等价划分<ul>
 <li>可以同等地应用于多个级别的测试(• 单元  • 整合  • 系统)</li>
 <li>相对容易应用，无需自动化</li>
@@ -486,7 +486,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<h5 id="5-3-边界值分析"><a href="#5-3-边界值分析" class="headerlink" title="5.3 边界值分析"></a>5.3 边界值分析</h5><ul>
+<h4 id="5-3-边界值分析"><a href="#5-3-边界值分析" class="headerlink" title="5.3 边界值分析"></a>5.3 边界值分析</h4><ul>
 <li>示例：<ul>
 <li>两个输入变量x1（a≤x1≤b）和x2（c≤x2≤d）。 测试用例包括：</li>
 <li>&lt;x1nom，x2min&gt;，&lt;x1nom，x2min +&gt;，&lt;x1nom，x2nom&gt;，&lt;x1nom，x2max&gt;，&lt;x1nom，x2max-&gt;，&lt;x1min，x2nom&gt;，<x1min +，x2nom="">，&lt;x1max，x2nom&gt;，&lt;x1max-，x2nom&gt;</x1min></li>
@@ -507,16 +507,16 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 </ul>
 <p><img src="/sftest/强边界3.png" width="35%"><img src="/sftest/强边界4.png" width="35%"></p>
-<h5 id="5-4-组合测试"><a href="#5-4-组合测试" class="headerlink" title="5.4 组合测试"></a>5.4 组合测试</h5><ul>
+<h4 id="5-4-组合测试"><a href="#5-4-组合测试" class="headerlink" title="5.4 组合测试"></a>5.4 组合测试</h4><ul>
 <li>弱等价类测试</li>
 <li>强等价类测试</li>
 </ul>
-<h5 id="5-5-测试中的约束"><a href="#5-5-测试中的约束" class="headerlink" title="5.5 测试中的约束"></a>5.5 测试中的约束</h5><ul>
+<h4 id="5-5-测试中的约束"><a href="#5-5-测试中的约束" class="headerlink" title="5.5 测试中的约束"></a>5.5 测试中的约束</h4><ul>
 <li>合并输入变量</li>
 <li>优化输入域</li>
 <li>修改测试用例</li>
 </ul>
-<h5 id="5-6-决策表"><a href="#5-6-决策表" class="headerlink" title="5.6 决策表"></a>5.6 决策表</h5><ul>
+<h4 id="5-6-决策表"><a href="#5-6-决策表" class="headerlink" title="5.6 决策表"></a>5.6 决策表</h4><ul>
 <li>决策表的优点<ul>
 <li>能够将复杂的问题按照各种可能的情况全部列举出来，简明并避免遗漏。</li>
 <li>利用决策表能够设计出完整的测试用例集合。 </li>
@@ -546,7 +546,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<h4 id="C7-功能、性能、移动应用测试"><a href="#C7-功能、性能、移动应用测试" class="headerlink" title="C7 功能、性能、移动应用测试"></a>C7 功能、性能、移动应用测试</h4><ul>
+<h3 id="C7-功能、性能、移动应用测试"><a href="#C7-功能、性能、移动应用测试" class="headerlink" title="C7 功能、性能、移动应用测试"></a>C7 功能、性能、移动应用测试</h3><ul>
 <li>功能测试<ul>
 <li>根据产品特性和设计需求，验证一个产品的特性和行为是否满足设计需求。</li>
 <li>正确性、可靠性、易用性。</li>
@@ -604,7 +604,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Dai Sine</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://daisine.me/sftest/">http://daisine.me/sftest/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"></div><nav id="pagination"><div class="next-post pull-right"><a href="/manage/"><span>软件项目管理</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Dai Sine</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://daisine.me/sftest/">http://daisine.me/sftest/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/note/">note</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/manage/"><span>软件项目管理</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
 var disqus_config = function () {
   this.page.url = 'http://daisine.me/sftest/';
   this.page.identifier = 'sftest/';
