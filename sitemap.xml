@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://daisine.me/Cryptography/</loc>
+    
+    <lastmod>2019-05-10T03:51:13.250Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/ml/</loc>
+    
+    <lastmod>2019-05-10T03:43:48.194Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://daisine.me/CG/</loc>
     
     <lastmod>2019-05-10T03:41:25.110Z</lastmod>
