@@ -3,26 +3,26 @@
 <li>进程管理提供了一个虚拟的机器接口，让每一个进程都以为是自己在独占CPU，如下图所示:<br><img src="https://i.loli.net/2018/06/18/5b27ad8cd9ef4.png" width="50%" height="80%"></li>
 </ul>
 </li>
-<li><p>内存管理的任务：提供一个虚拟的机器接口，让每一个进程都以为是自己在独占RAM。</p></li></ul></div><a href="/os9/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os8/" class="post-title-link">操作系统笔记08 死锁</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h4><ul>
+<li><p>内存管理的任务：提供一个虚拟的机器接口，让每一个进程都以为是自己在独占RAM。</p></li></ul></div><a href="/os9/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os8/" class="post-title-link">操作系统笔记08 死锁</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h4><ul>
 <li><p>如果集合中的每个进程正在等待只有集合中的另一个进程可能导致的事件，则会导致一组进程死锁。    </p>
 <ul>
 <li>Kansas立法机构通过的一个法律：当两列列车在十字路口逼近时，它们要完全停下来，且在一列列车开走之前，另一列列车不能启动。</li>
 <li>只有一个方向的交通：桥的每个部分都可以被视为一个资源。如果发生死锁，则可以解决一辆车是否备份（抢占资源并回滚），可能需要“备份几辆汽车。 饥饿是可能的。</li>
-</ul></li></ul></div><a href="/os8/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os7/" class="post-title-link">操作系统笔记07 进程同步</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ul>
+</ul></li></ul></div><a href="/os8/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os7/" class="post-title-link">操作系统笔记07 进程同步</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ul>
 <li>协作进程可以通过内核提供的IPC工具共享一块内存。一个进程中的多个线程可以通过使用全局变量来共享一段内存。</li>
 <li>共享数据的并发访问可能会导致数据不一致。 保持数据一致性需要机制来确保协作进程的有序执行。</li>
-<li><p>对生产者和消费者问题的解决方案：允许同时在缓冲区内最多只有（BSIZE - 1）项。</p></li></ul></div><a href="/os7/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os6/" class="post-title-link">操作系统笔记06 CPU调度</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li><p>对生产者和消费者问题的解决方案：允许同时在缓冲区内最多只有（BSIZE - 1）项。</p></li></ul></div><a href="/os7/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os6/" class="post-title-link">操作系统笔记06 CPU调度</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
 <li>CPU调度是多道程序操作系统的基础。通过在进程之间切换CPU，操作系统可以提高计算机的<strong>吞吐率</strong>。</li>
 <li>在内核级支持线程的操作系统中，是线程被操作系统调度，而不是进程。</li>
-<li><p>调度是操作系统的基本功能。 几乎所有的计算机资源在使用前都要调度。 CPU调度对操作系统设计来说很重要。</p></li></ul></div><a href="/os6/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os5/" class="post-title-link">操作系统笔记05 线程管理</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h4><ul>
+<li><p>调度是操作系统的基本功能。 几乎所有的计算机资源在使用前都要调度。 CPU调度对操作系统设计来说很重要。</p></li></ul></div><a href="/os6/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os5/" class="post-title-link">操作系统笔记05 线程管理</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h4><ul>
 <li>传统意义上，一个进程只有一个控制线程。<strong>在这种情况下</strong>进程是<strong>①资源分配单位和②调度单位</strong>。</li>
 <li>将上述两个概念分开并允许单个进程包括多个控制线程，得到线程。也就是说，进程用于将资源组合在一起，线程是派发（调度）在CPU上执行的实体。</li>
-<li><p>线程是现代操作系统中CPU使用的基本单位。也称为轻量级过程（LWP）。</p></li></ul></div><a href="/os5/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os4/" class="post-title-link">操作系统笔记04 进程管理</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="进程概念"><a href="#进程概念" class="headerlink" title="进程概念"></a>进程概念</h4><ul>
+<li><p>线程是现代操作系统中CPU使用的基本单位。也称为轻量级过程（LWP）。</p></li></ul></div><a href="/os5/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os4/" class="post-title-link">操作系统笔记04 进程管理</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="进程概念"><a href="#进程概念" class="headerlink" title="进程概念"></a>进程概念</h4><ul>
 <li>流程批处理系统出现之前：工作</li>
 <li>多程序或分时：程序或任务</li>
 <li><p>进程：正在运行的作业/程序/任务的抽象</p>
 </li>
-<li><p><strong><code>进程</code></strong>是执行中的程序，形成所有计算机的基础。</p></li></ul></div><a href="/os4/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os3/" class="post-title-link">操作系统笔记03 操作系统结构</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><ul>
+<li><p><strong><code>进程</code></strong>是执行中的程序，形成所有计算机的基础。</p></li></ul></div><a href="/os4/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os3/" class="post-title-link">操作系统笔记03 操作系统结构</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><ul>
 <li>一个像现代操作系统一样庞大而复杂的系统必须仔细设计，才能正常运行并易于修改。</li>
 <li>一种常用的方法是将任务分成小部件，而不是一个单一的系统。</li>
 <li>这些组件中的每一个都应该是系统的一个明确定义的部分，具有详细定义的<strong>输入，输出和功能</strong>。</li>
@@ -32,7 +32,7 @@
 <li>分层结构</li>
 <li>微内核</li>
 <li>虚拟机</li>
-</ul></li></ul></div><a href="/os3/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os2/" class="post-title-link">操作系统笔记02 计算机系统结构</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="Bootstrap-引导"><a href="#Bootstrap-引导" class="headerlink" title="Bootstrap 引导"></a>Bootstrap 引导</h4><ul>
+</ul></li></ul></div><a href="/os3/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os2/" class="post-title-link">操作系统笔记02 计算机系统结构</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="Bootstrap-引导"><a href="#Bootstrap-引导" class="headerlink" title="Bootstrap 引导"></a>Bootstrap 引导</h4><ul>
 <li>我们必须将操作系统内核从某些永久性存储（如磁盘和网络服务器）加载到内存中。装入内核以启动计算机的过程称为<strong>引导</strong>系统。</li>
 <li>绝大多数计算机系统都有一小块代码，称为<strong>引导程序/引导装载程序</strong>。这段代码能定位内核，将它装入内存，开始执行。</li>
 <li><strong>引导加载程序不是操作系统的一部分。</strong>引导程序被存储在固件中，而操作系统保存在磁盘上。</li>
@@ -40,7 +40,7 @@
 <ul>
 <li>NTLDR: 用于Windows NT / XP的boot-loader（驻留在C:\）。</li>
 <li>GRUB: Unix / Linux的启动加载器之一。</li>
-</ul></li></ul></div><a href="/os2/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os1/" class="post-title-link">操作系统笔记01 导论</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h4><ul>
+</ul></li></ul></div><a href="/os2/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/os1/" class="post-title-link">操作系统笔记01 导论</a></h2><div class="post-info">Jul 3, 2018</div><div class="post-content"><h4 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h4><ul>
 <li>多个作业同时保存在主存储器中，CPU通过在作业之间切换来执行多个作业。<br><img src="https://i.loli.net/2018/06/17/5b25c15f99ea2.png" width="40%" height="40%"> </li>
 </ul>
 <h4 id="台式机的操作系统"><a href="#台式机的操作系统" class="headerlink" title="台式机的操作系统"></a>台式机的操作系统</h4><ul>
@@ -50,7 +50,7 @@
 <li>Apple Macintosh, Mac OS X</li>
 <li>IBM OS/2</li>
 <li>Unix: Solaris by Sun microsystem, HP-UX by Hewlett-Packard, AIX by IBM, Free (as in freedom) software such as BSD (Berkeley Software Distribution) Unix, GNU/Linux</li>
-</ul></li></ul></div><a href="/os1/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/sei/" class="post-title-link">软件工程导论笔记</a></h2><div class="post-info">Jun 20, 2018</div><div class="post-content"><h3 id="1-软件工程概述"><a href="#1-软件工程概述" class="headerlink" title="1. 软件工程概述"></a>1. 软件工程概述</h3><h4 id="软件的概念和特点"><a href="#软件的概念和特点" class="headerlink" title="软件的概念和特点"></a>软件的概念和特点</h4><p><code>软件</code>(广义)：计算机系统中与硬件相互依存的一部分  </p>
+</ul></li></ul></div><a href="/os1/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/sei/" class="post-title-link">软件工程导论笔记</a></h2><div class="post-info">Jun 20, 2018</div><div class="post-content"><h3 id="1-软件工程概述"><a href="#1-软件工程概述" class="headerlink" title="1. 软件工程概述"></a>1. 软件工程概述</h3><h4 id="软件的概念和特点"><a href="#软件的概念和特点" class="headerlink" title="软件的概念和特点"></a>软件的概念和特点</h4><p><code>软件</code>(广义)：计算机系统中与硬件相互依存的一部分  </p>
 <blockquote>
 <p><strong>程序</strong>：计算机可以接受的一系列指令，运行时可以提供所要求的功能和性能。<br><strong>数据</strong>：使得程序能够适当地操作信息的数据结构。<br><strong>文档</strong>：描述程序的研制过程、方法和使用的图文资料。 </p>
-</blockquote></div><a href="/sei/" class="read-more">...more</a></article></li></ul></main><footer><div class="paginator"><a href="/" class="prev">PREV</a><a href="/page/3/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>
+</blockquote></div><a href="/sei/" class="read-more">...阅读全文</a></article></li></ul></main><footer><div class="paginator"><a href="/" class="prev">上一页</a><a href="/page/3/" class="next">下一页</a></div><div class="copyright"><p>© 2017 - 2019 <a href="http://daisine.me">Dai Sine</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-117497526-4",'auto');ga('send','pageview');</script></body></html>
