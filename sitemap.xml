@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://daisine.me/manage/</loc>
+    
+    <lastmod>2019-05-10T06:53:57.489Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://daisine.me/categories/index.html</loc>
     
-    <lastmod>2019-05-10T06:48:02.083Z</lastmod>
+    <lastmod>2019-05-10T06:53:48.914Z</lastmod>
     
   </url>
   
@@ -68,13 +75,6 @@
     <loc>http://daisine.me/sftest/</loc>
     
     <lastmod>2019-05-10T04:52:14.521Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/manage/</loc>
-    
-    <lastmod>2019-05-10T04:51:59.457Z</lastmod>
     
   </url>
   
