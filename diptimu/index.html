@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="数字图像处理习题"><meta name="keywords" content="note"><meta name="author" content="Dai Sine"><meta name="copyright" content="Dai Sine"><title>数字图像处理习题 | Hi, Dai</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css?version=1.6.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-117497526-4', 'auto');
+ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#备注"><span class="toc-text">备注</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C2-6-22"><span class="toc-text">C2[6, 22]</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C3-5-6-7-14"><span class="toc-text">C3[5, 6, 7, 14]</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C11-1-2-8"><span class="toc-text">C11[1, 2, 8]</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Dai Sine</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">50</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">8</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">8</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://i.loli.net/2019/05/10/5cd525fea97ac.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hi, Dai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">About</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">数字图像处理习题</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-06-11</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/软件工程/">软件工程</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul>
+<li>数字图像处理  - 冈萨雷斯 - 第三版中文版</li>
+<li><p>习题答案为英文版翻译删减版 + 小部分个人理解</p>
+<a id="more"></a>
+</li>
+</ul>
+<h4 id="C2-6-22"><a href="#C2-6-22" class="headerlink" title="C2[6, 22]"></a>C2[6, 22]</h4><ul>
+<li>2.6 某汽车制造商想在一条限量版跑车生产线上将一些零件自动安放在跑车保险杠上，这一部件就是彩色坐标，为选择合适的保险杠零件，机器人需要知道每辆车的颜色。模型有4种颜色：蓝色、绿色、红色、白色。请提出一种基于成像的解决方案。你怎样解决自动确定每辆跑车颜色的问题？记住，在选择零件时价格是最主要的考虑因素。<ul>
+<li>一种可能的解决方案是为单色相机配备机械装置，该装置在镜头前依次放置红色，绿色和蓝色通过滤光器。相机最强的响应决定了颜色。 如果所有三个响应大致相等，则为白色。</li>
+<li>更快的系统将使用三个不同的相机，每个相机配备一个单独的滤光器。 然后，轮询每个摄像机的响应进行分析。 这个系统会贵一点，但会更快，更可靠。 </li>
+<li>请注意，两种解决方案都<strong>假设摄像机的视野是完全由均匀的颜色填充</strong>[即，摄像机聚焦在车辆的一部分上 它的颜色可见。 否则，需要进一步分析以隔离均匀颜色的区域，这是解决该问题所关注的所有问题。</li>
+</ul>
+</li>
+<li>2.22 图像相减通常用于在生产线上检测缺失的元件。方法是存储一幅对应于正确组装的“金”图像；然后，从相同产品的传入图像中减去该图像。理想情况下，如果新产品组装正确，则差值为零。对于缺失元件的产品，在不同于金图像的位置，差值图像将不为零。在实际中，你认为在什么条件下使用这种方式工作才是合适的？<ul>
+<li>有三个基本因素需要严格控制基于差异的检查才能发挥作用：</li>
+<li>（1）<strong>正确组装：</strong>产品会打上特殊标记，用于图像的对齐。如果它相对于金图像移位，则比较它们之间的差值是没有意义的。</li>
+<li>（2）<strong>照明控制：</strong>照明的变化会显着影响差值图像中的值。所以必须保证照明控制，才不会对差值图像的结果产生影响。</li>
+<li>（3）<strong>足够低的噪声水平：</strong>这样才不会对黄金和输入图像之间的比较产生实质性影响。良好的信号强度对降低噪声影响有很大帮助。</li>
+<li>（4）<strong>设定阈值</strong>，使传入的图像与金图像的差值对比足够接近也能接受。</li>
+</ul>
+</li>
+<li>灰度分辨率，结合课后习题。</li>
+</ul>
+<h4 id="C3-5-6-7-14"><a href="#C3-5-6-7-14" class="headerlink" title="C3[5, 6, 7, 14]"></a>C3[5, 6, 7, 14]</h4><ul>
+<li><p>3.5 (a) 通常，如果将低阶比特平面的一半设为零值，对一幅图像的直方图有何影响？</p>
+<ul>
+<li>具有不同灰度值的像素的数量将减少，从而导致直方图中的分量的数量减少。由于像素的数量不会改变，所以这将导致剩下的直方图分量的(幅值)高度增加。通常，灰度值的丰富性降低会导致<strong>对比度下降</strong>。</li>
+</ul>
+</li>
+<li><p>3.5 (b) 如果将高阶比特平面的一半设为零值，对一幅图像的直方图有何影响？</p>
+<ul>
+<li>最明显的效果是<strong>图像显著变暗</strong>。例如，丢弃最高位将会使8位图像中最亮的亮度限制在127.由于像素数保持不变，直方图的某些峰值的高度会增加，总体呈现出更高更窄的直方图。</li>
+</ul>
+</li>
+<li><p>3.6 试解释为什么离散直方图均衡技术一般不能得到平坦的直方图？</p>
+<ul>
+<li>直方图均衡所做的事是在亮度范围上<strong>重新映射</strong>直方图的分量。为了获得平坦的直方图，需要<strong>重新分配像素灰度值</strong>，直方图均衡没有灰度值重新分配的过程。</li>
+</ul>
+</li>
+<li><p>3.7 假设对一幅数字图像进行直方图均衡处理。试证明(对直方图均衡化的图像)进行第二次直方图均衡处理的结果，与第一次直方图均衡处理的结果相同。</p>
+<ul>
+<li><p>令n = MN，像素的总数，n<sub>r<sub>j</sub></sub>是具有灰度值r<sub>j</sub>的输入图像的像素个数。那么直方图均衡处理为：</p>
+<p><img src="/diptimu/371.png" width="35%"></p>
+</li>
+<li><p>因为每个具有灰度值 r<sub>k</sub> 的像素被映射到灰度值 s<sub>k</sub> ，所以n<sub>s<sub>k</sub></sub> = n<sub>r<sub>k </sub></sub> 。第二次直方图均衡处理将产生值v<sub>k</sub></p>
+</li>
+</ul>
+<p><img src="/diptimu/372.png" width="30%"></p>
+<ul>
+<li>由于n<sub>s<sub>k</sub></sub> = n<sub>r<sub>k </sub></sub>  ：</li>
+</ul>
+<p><img src="/diptimu/373.png" width="30%"></p>
+<ul>
+<li>这表明直方图均衡的第二次处理结果与第一次处理相同。(舍入误差忽略不计)</li>
+</ul>
+</li>
+<li><p>3.14 如图所示图像很不相同，但它们的直方图却相同，假设每幅图像都用一个3x3的均值模版来进行模糊处理。</p>
+<p><img src="/diptimu/314.png" width="20%"></p>
+<ul>
+<li><p>模糊后图像的直方图还相同吗？试解释原因。</p>
+<p>右侧图像中<strong>黑色和白色区域之间的边界点数量要多得多</strong>。当进行模糊处理时，边界点将在右侧产生更多数量的不同值，因此模糊处理后的直方图不同。</p>
+</li>
+<li><p>如果你的答案是不相同，画出两个直方图。</p>
+<p>3x3的均值模版，其系数为1/9。假设图片的大小为NxN，用0的边框环绕图像。模糊处理后两张图像的值如下表所示：</p>
+<p><img src="/diptimu/3142.png" width="50%"></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>第三章的概念，需要掌握：平滑滤波，中值滤波，直方图等。公式不会考，需要掌握定性的内容如：高频，低频，滤波器，etc</p>
+<h4 id="C11-1-2-8"><a href="#C11-1-2-8" class="headerlink" title="C11[1, 2, 8]"></a>C11[1, 2, 8]</h4></li>
+<li><p>11.1(a) 重新定义链码的一个起始点，以便所得的数字序列形成一个最小整数。请证明该编码与边界的初始起点无关。</p>
+<ul>
+<li>链码中每个元素的值都与其前元素的值相关。 以一致方式（例如，顺时针方向）跟踪的边界的代码是唯一的圆形数字集。 <strong>从该集合中的不同位置开始不会改变循环序列的结构</strong>。 </li>
+<li>选择最小整数作为起始点只是标识序列中的相同点。 即使起点不是唯一的，这种方法仍然会给出一个独特的序列。 例如，序列101010具有三个可能的起始点，但它们都产生相同的最小整数010101。</li>
+</ul>
+</li>
+<li><p>11.1(b) 求编码10176722335422的归一化起始点。</p>
+<ul>
+<li>代码：11076765543322.起点为0，产生序列07676554332211。</li>
+</ul>
+</li>
+<li><p>11.2(a) 证明链码的一次差分会将该链码关于旋转归一化</p>
+<ul>
+<li>一次差分仅计算分隔代码的相邻元素的<strong>方向数</strong>。 因为计数过程与方向无关，所以第一个差异与边界旋转无关。 （这里的假设是旋转不会改变代码本身）。</li>
+</ul>
+</li>
+<li><p>11.2(b)计算编码0110233210332322111的一次差分</p>
+<ul>
+<li>编码：0101030303323232212111</li>
+<li>差分：3131331313031313031300。</li>
+<li>编码被视为循环序列，因此差分的第一个元素是代码的最后一个元素和第一个元素之间的方向变化数，如文中所述。</li>
+</ul>
+</li>
+<li><p>11.8 画出下列图形的中轴：一个圆，一个等边五角形，一个矩形，一个等边三角形</p>
+<p><img src="/diptimu/118.png" width="50%"></p>
+</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Dai Sine</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://daisine.me/diptimu/">http://daisine.me/diptimu/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/note/">note</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/dip/"><span>数字图像处理笔记</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'http://daisine.me/diptimu/';
+  this.page.identifier = 'diptimu/';
+  this.page.title = '数字图像处理习题';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'dasine' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script></div></div><footer class="footer-bg" style="background-image: url(https://i.loli.net/2019/05/10/5cd525fea97ac.png)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2019 By Dai Sine</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
