@@ -135,6 +135,15 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li><p>关闭HDFS</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin/stop-dfs.sh</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>启动与关闭yarn</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-yarn.sh</span><br><span class="line">sbin/stop-yarn.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>全部启动与关闭</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">start-all.sh</span><br><span class="line">stop-all.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传文件到集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>创建上传的文件所在目录</span><br><span class="line">bin/hdfs dfs -mkdir -p /user/root/tmp/conf</span><br><span class="line"><span class="meta">#</span>上传文件到HDFS</span><br><span class="line">bin/hdfs dfs -put etc/hadoop/*-site.xml /user/root/tmp/conf</span><br><span class="line"><span class="meta">#</span>下载HDFS中的文件</span><br><span class="line">bin/hadoop fs -get /user/root/input/workcount.txt</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Dai Sine</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://daisine.me/hadoops/">http://daisine.me/hadoops/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hadoop/">hadoop</a><a class="post-meta__tags" href="/tags/大数据/">大数据</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/diptimu/"><span>数字图像处理习题</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
 var disqus_config = function () {
