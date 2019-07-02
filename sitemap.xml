@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://daisine.me/dockerhadoop/</loc>
+    <loc>http://daisine.me/hive/</loc>
     
-    <lastmod>2019-07-02T05:40:01.034Z</lastmod>
+    <lastmod>2019-07-02T06:58:05.487Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://daisine.me/tags/index.html</loc>
     
-    <lastmod>2019-07-02T02:17:02.860Z</lastmod>
+    <lastmod>2019-07-02T06:57:25.450Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/dockerhadoop/</loc>
+    
+    <lastmod>2019-07-02T05:40:01.034Z</lastmod>
     
   </url>
   
