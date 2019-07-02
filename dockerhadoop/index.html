@@ -32,12 +32,11 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <ul>
 <li><p>在最后一步安装Docker指令遇到问题：</p>
 <blockquote>
-<p>Some packages could not be installed. This may mean that you have<br>requested an impossible situation or if you are using the unstable<br>distribution that some required packages have not yet been created<br>or been moved out of Incoming.<br>The following information may help to resolve the situation:</p>
-<p>The following packages have unmet dependencies:<br>docker-engine : Depends: init-system-helpers (&gt;= 1.18~) but 1.14 is to be installed</p>
-<pre><code> Depends: lsb-base (&gt;= 4.1+Debian11ubuntu7) but 4.1+Debian11ubuntu6 is to be installed
- Depends: libdevmapper1.02.1 (&gt;= 2:1.02.99) but 2:1.02.77-6ubuntu2 is to be installed
- Recommends: aufs-tools but it is not going to be installed
- Recommends: cgroupfs-mount but it is not installable or cgroup-lite but it is not going to be installed
+<p>Some packages could not be installed. This may mean that you have requested an impossible situation or if you are using the unstable distribution that some required packages have not yet been created or been moved out of Incoming.<br>The following information may help to resolve the situation:<br>The following packages have unmet dependencies:<br>docker-engine : Depends: init-system-helpers (&gt;= 1.18~) but 1.14 is to be installed</p>
+<pre><code>Depends: lsb-base (&gt;= 4.1+Debian11ubuntu7) but 4.1+Debian11ubuntu6 is to be installed
+Depends: libdevmapper1.02.1 (&gt;= 2:1.02.99) but 2:1.02.77-6ubuntu2 is to be installed
+Recommends: aufs-tools but it is not going to be installed
+Recommends: cgroupfs-mount but it is not installable or cgroup-lite but it is not going to be installed
 Recommends: git
 </code></pre><p>E: Unable to correct problems, you have held broken packages.</p>
 </blockquote>
@@ -113,7 +112,7 @@ Recommends: git
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>打开三个终端分别为hadoop1，hadoop2与hadoop3</span><br><span class="line">docker exec -it hadoop1 /bin/bash</span><br><span class="line">docker exec -it hadoop2 /bin/bash</span><br><span class="line">docker exec -it hadoop3 /bin/bash</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>配置主机映射</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>在该文件内加入新的主机映射 内网ip 主机名</span><br><span class="line">vi /etc/hosts 												</span><br><span class="line">172.18.0.2 hadoop1 </span><br><span class="line">172.18.0.3 hadoop2</span><br><span class="line">172.18.0.4 hadoop3</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>在该文件内加入新的主机映射 内网ip 主机名</span><br><span class="line">vi /etc/hosts</span><br><span class="line">172.18.0.2 hadoop1</span><br><span class="line">172.18.0.3 hadoop2</span><br><span class="line">172.18.0.4 hadoop3</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>SSH免密码登录设置</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen 					 </span><br><span class="line"><span class="meta">#</span>拷贝公钥到需要免密码登录的目标服务器上</span><br><span class="line">ssh-copy-id hadoop01 </span><br><span class="line">ssh-copy-id hadoop02</span><br><span class="line">ssh-copy-id hadoop03</span><br><span class="line"><span class="meta">#</span>使用`ssh 主机名`免密码登录目标服务器</span><br><span class="line">ssh hadoop0x</span><br></pre></td></tr></table></figure>
