@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://daisine.me/tags/index.html</loc>
+    
+    <lastmod>2019-07-02T02:17:02.860Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daisine.me/dockerhadoop/</loc>
+    
+    <lastmod>2019-07-02T02:16:53.222Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://daisine.me/hadoops/</loc>
     
-    <lastmod>2019-06-27T15:41:12.762Z</lastmod>
+    <lastmod>2019-07-02T02:16:16.300Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>http://daisine.me/categories/index.html</loc>
     
     <lastmod>2019-06-26T01:50:29.210Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daisine.me/tags/index.html</loc>
-    
-    <lastmod>2019-06-26T01:49:26.895Z</lastmod>
     
   </url>
   
