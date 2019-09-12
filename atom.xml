@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://daisine.me/"/>
-  <updated>2019-07-02T06:58:05.487Z</updated>
-  <id>http://daisine.me/</id>
+  <link href="https://daisine.github.io/"/>
+  <updated>2019-07-02T07:00:56.999Z</updated>
+  <id>https://daisine.github.io/</id>
   
   <author>
     <name>Dai Sine</name>
@@ -18,12 +18,12 @@
   
   <entry>
     <title>Hadoop安装hive&amp;配置mysql元数据库</title>
-    <link href="http://daisine.me/hive/"/>
-    <id>http://daisine.me/hive/</id>
+    <link href="https://daisine.github.io/hive/"/>
+    <id>https://daisine.github.io/hive/</id>
     <published>2019-07-02T06:56:22.000Z</published>
-    <updated>2019-07-02T06:58:05.487Z</updated>
+    <updated>2019-07-02T07:00:56.999Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="1-安装Hive"><a href="#1-安装Hive" class="headerlink" title="1. 安装Hive"></a>1. 安装Hive</h2><ul><li>环境：<strong>Dokcer</strong>搭建的Hadoop完全分布式集群 - namenode节点</li><li>安装包：<a href="https://archive.apache.org/dist/hive/hive-1.2.1/" target="_blank" rel="noopener">apache-hive1.2.1-bin.tar.gz</a></li></ul><a id="more"></a><ul><li><p>从本地上传安装包到namenode主机并解压</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp /home/daisine/software/apache-hive-1.2.1-bin.tar.gz root@172.18.0.2:/usr/local/</span><br><span class="line"><span class="meta">#</span> 解压到/usr/local中</span><br><span class="line">sudo tar -zxvf ./apache-hive-1.2.1-bin.tar.gz -C /usr/local   </span><br><span class="line">cd /usr/local/</span><br><span class="line"><span class="meta">#</span> 将文件夹名改为hive</span><br><span class="line">sudo mv apache-hive-1.2.1-bin hive</span><br></pre></td></tr></table></figure></li><li><p>配置hive-env.sh文件</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export HADOOP_HOME=/usr/local/hadoop</span><br><span class="line">export HIVE_CONF_DIR=/usr/local/hive/conf</span><br></pre></td></tr></table></figure></li></ul><h2 id="2-安装MySQL"><a href="#2-安装MySQL" class="headerlink" title="2. 安装MySQL"></a>2. 安装MySQL</h2><ul><li><p>MySQL安装过程</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>添加mysql yum源</span><br><span class="line">rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm</span><br><span class="line"><span class="meta">#</span>查看当前可用的MySQL安装资源</span><br><span class="line">yum repolist enabled | grep "mysql.*-community.*"</span><br><span class="line"><span class="meta">#</span>使用yum的方式安装MySQL</span><br><span class="line">yum -y install mysql-community-server</span><br></pre></td></tr></table></figure></li><li><p>安装MySQL5.6.44：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>查看mysql安装结果</span><br><span class="line">rpm -qa|grep mysql</span><br><span class="line">mysql-community-release-el7-5.noarch</span><br><span class="line">mysql-community-client-5.6.44-2.el7.x86_64</span><br><span class="line">mysql-community-common-5.6.44-2.el7.x86_64</span><br><span class="line">mysql-community-libs-5.6.44-2.el7.x86_64</span><br><span class="line">mysql-community-server-5.6.44-2.el7.x86_64</span><br></pre></td></tr></table></figure></li><li><p>配置MySQL</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>开机启动</span><br><span class="line">systemctl enable mysqld</span><br><span class="line"><span class="meta">#</span>启动mysql</span><br><span class="line">systemctl start mysqld</span><br><span class="line"><span class="meta">#</span>查看mysql当前状态</span><br><span class="line">systemctl status mysqld</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>重置密码</span><br><span class="line">mysql_secure_installation</span><br><span class="line">Set root password? [Y/n] y        [设置root用户密码]</span><br><span class="line">Remove anonymous users? [Y/n] y            [删除匿名用户]</span><br><span class="line">Disallow root login remotely? [Y/n] n            [禁止root远程登录]</span><br><span class="line">Remove test database and access to it? [Y/n] y       [删除test数据库]</span><br><span class="line">Reload privilege tables now? [Y/n] y        [刷新权限]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>修改访问权限 让其他计算机也能访问</span><br><span class="line">mysql -u root -p</span><br><span class="line">mysql &gt; GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'yourpassword' WITH GRANT OPTION;</span><br><span class="line">mysql &gt; flush privileges;</span><br><span class="line"></span><br><span class="line">mysql &gt; show databases;</span><br><span class="line">mysql &gt; use mysql;</span><br><span class="line">mysql &gt; show tables;</span><br><span class="line">mysql &gt; desc user;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>停止mysql</span><br><span class="line">systemctl stop mysqld</span><br></pre></td></tr></table></figure></li><li><p><strong>注意</strong>：不建议安装<code>MySQL 5.7版本</code>或更高，后期配置需要解决很多新问题。</p></li><li><p>使用yum安装的MySQL 5.7版本完全卸载方式方案  <code>不卸载干净再安装MySQL5.6 启动会出问题</code> </p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>停止mysql</span><br><span class="line">systemctl stop mysqld</span><br><span class="line"><span class="meta">#</span>卸载MySQL5.7</span><br><span class="line">yum remove  mysql mysql-server mysql-libs mysql-server</span><br><span class="line">cd /var/lib/</span><br><span class="line">rm -rf mysql </span><br><span class="line"></span><br><span class="line">cd /usr/share/</span><br><span class="line">rm -rf mysql/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>查询MySQL安装包</span><br><span class="line">rpm -qa |grep mysql</span><br><span class="line"><span class="meta">#</span>将查询到的结果删去</span><br><span class="line">yum remove $(查询到的结果)</span><br></pre></td></tr></table></figure></li></ul><h2 id="3-Hive配置MySQL为元数据库"><a href="#3-Hive配置MySQL为元数据库" class="headerlink" title="3. Hive配置MySQL为元数据库"></a>3. Hive配置MySQL为元数据库</h2><ul><li><p>mysql jdbc 包：<a href="https://dev.mysql.com/downloads/connector/j/" target="_blank" rel="noopener">mysql-connector-java-5.1.47.tar.gz</a>(进入网页后选择<code>Platform Independent</code>)</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp /home/daisine/software/mysql-connector-java-5.1.47.tar.gz root@172.18.0.2:/usr/local/</span><br><span class="line">tar -zxvf mysql-connector-java-5.1.47.tar.gz</span><br><span class="line">cd mysql-connector-java-5.1.47</span><br><span class="line">cp mysql-connector-java-5.1.47-bin.jar /usr/local/hive/lib/</span><br></pre></td></tr></table></figure></li><li><p>配置Metastore到MySQL</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /usr/local/hive/conf</span><br><span class="line">touch hive-site.xml</span><br><span class="line">vi hive-site.xml</span><br></pre></td></tr></table></figure></li><li><p>hive-site.xml 需要根据自己的情况<strong>修改</strong>两处</p><ul><li><strong>ConnectionURL</strong>：<code>jdbc:mysql://$(hostname):3306/metastore</code> </li><li><strong>ConnectionPassword</strong>：<code>&lt;value&gt;$(password)&lt;/value&gt;</code> </li></ul><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&lt;?xml version="1.0"?&gt;</span><br><span class="line">&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionURL<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:mysql://hadoop1:3306/metastore?createDatabaseIfNotExist=true&amp;amp;useSSL=false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>JDBC connect string for a JDBC metastore<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionDriverName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>Driver class name for a JDBC metastore<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionUserName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>username to use against metastore database<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionPassword<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>111111<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>password to use against metastore database<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul><h2 id="启动hive"><a href="#启动hive" class="headerlink" title="启动hive"></a>启动hive</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 启动hdfs yarn</span><br><span class="line"><span class="meta">#</span> namenode</span><br><span class="line">sbin/start-dfs.sh</span><br><span class="line"><span class="meta">#</span> resourcemanager</span><br><span class="line">sbin/start-yarn.sh</span><br><span class="line"><span class="meta">#</span> 启动hive</span><br><span class="line">cd /usr/local/hive</span><br><span class="line">bin/hive</span><br><span class="line">Logging initialized using configuration in jar:file:/usr/local/hive/lib/hive-common-1.2.1.jar!/hive-log4j.properties</span><br><span class="line">hive &gt;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="1-安装Hive"><a href="#1-安装Hive" class="headerlink" title="1. 安装Hive"></a>1. 安装Hive</h2><ul><li>环境：<strong>Dokcer</strong>搭建的Hadoop完全分布式集群 - namenode节点</li><li>安装包：<a href="https://archive.apache.org/dist/hive/hive-1.2.1/" target="_blank" rel="noopener">apache-hive1.2.1-bin.tar.gz</a></li></ul><a id="more"></a><ul><li><p>从本地上传安装包到namenode主机并解压</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp /home/daisine/software/apache-hive-1.2.1-bin.tar.gz root@172.18.0.2:/usr/local/</span><br><span class="line"><span class="meta">#</span> 解压到/usr/local中</span><br><span class="line">sudo tar -zxvf ./apache-hive-1.2.1-bin.tar.gz -C /usr/local   </span><br><span class="line">cd /usr/local/</span><br><span class="line"><span class="meta">#</span> 将文件夹名改为hive</span><br><span class="line">sudo mv apache-hive-1.2.1-bin hive</span><br></pre></td></tr></table></figure></li><li><p>配置hive-env.sh文件</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export HADOOP_HOME=/usr/local/hadoop</span><br><span class="line">export HIVE_CONF_DIR=/usr/local/hive/conf</span><br></pre></td></tr></table></figure></li></ul><h2 id="2-安装MySQL"><a href="#2-安装MySQL" class="headerlink" title="2. 安装MySQL"></a>2. 安装MySQL</h2><ul><li><p>MySQL安装过程</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>添加mysql yum源</span><br><span class="line">rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm</span><br><span class="line"><span class="meta">#</span>查看当前可用的MySQL安装资源</span><br><span class="line">yum repolist enabled | grep "mysql.*-community.*"</span><br><span class="line"><span class="meta">#</span>使用yum的方式安装MySQL</span><br><span class="line">yum -y install mysql-community-server</span><br></pre></td></tr></table></figure></li><li><p>安装MySQL5.6.44：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>查看mysql安装结果</span><br><span class="line">rpm -qa|grep mysql</span><br><span class="line">mysql-community-release-el7-5.noarch</span><br><span class="line">mysql-community-client-5.6.44-2.el7.x86_64</span><br><span class="line">mysql-community-common-5.6.44-2.el7.x86_64</span><br><span class="line">mysql-community-libs-5.6.44-2.el7.x86_64</span><br><span class="line">mysql-community-server-5.6.44-2.el7.x86_64</span><br></pre></td></tr></table></figure></li><li><p>配置MySQL</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>开机启动</span><br><span class="line">systemctl enable mysqld</span><br><span class="line"><span class="meta">#</span>启动mysql</span><br><span class="line">systemctl start mysqld</span><br><span class="line"><span class="meta">#</span>查看mysql当前状态</span><br><span class="line">systemctl status mysqld</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>重置密码</span><br><span class="line">mysql_secure_installation</span><br><span class="line">Set root password? [Y/n] y        [设置root用户密码]</span><br><span class="line">Remove anonymous users? [Y/n] y            [删除匿名用户]</span><br><span class="line">Disallow root login remotely? [Y/n] n            [禁止root远程登录]</span><br><span class="line">Remove test database and access to it? [Y/n] y       [删除test数据库]</span><br><span class="line">Reload privilege tables now? [Y/n] y        [刷新权限]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>修改访问权限 让其他计算机也能访问</span><br><span class="line">mysql -u root -p</span><br><span class="line">mysql &gt; GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'yourpassword' WITH GRANT OPTION;</span><br><span class="line">mysql &gt; flush privileges;</span><br><span class="line"></span><br><span class="line">mysql &gt; show databases;</span><br><span class="line">mysql &gt; use mysql;</span><br><span class="line">mysql &gt; show tables;</span><br><span class="line">mysql &gt; desc user;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>停止mysql</span><br><span class="line">systemctl stop mysqld</span><br></pre></td></tr></table></figure></li><li><p><strong>注意</strong>：不建议安装<code>MySQL 5.7版本</code>或更高，后期配置需要解决很多新问题。</p></li><li><p>使用yum安装的MySQL 5.7版本完全卸载方式方案  <code>不卸载干净再安装MySQL5.6 启动会出问题</code> </p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>停止mysql</span><br><span class="line">systemctl stop mysqld</span><br><span class="line"><span class="meta">#</span>卸载MySQL5.7</span><br><span class="line">yum remove  mysql mysql-server mysql-libs mysql-server</span><br><span class="line">cd /var/lib/</span><br><span class="line">rm -rf mysql </span><br><span class="line"></span><br><span class="line">cd /usr/share/</span><br><span class="line">rm -rf mysql/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>查询MySQL安装包</span><br><span class="line">rpm -qa |grep mysql</span><br><span class="line"><span class="meta">#</span>将查询到的结果删去</span><br><span class="line">yum remove $(查询到的结果)</span><br></pre></td></tr></table></figure></li></ul><h2 id="3-Hive配置MySQL为元数据库"><a href="#3-Hive配置MySQL为元数据库" class="headerlink" title="3. Hive配置MySQL为元数据库"></a>3. Hive配置MySQL为元数据库</h2><ul><li><p>mysql jdbc 包：<a href="https://dev.mysql.com/downloads/connector/j/" target="_blank" rel="noopener">mysql-connector-java-5.1.47.tar.gz</a>(进入网页后选择<code>Platform Independent</code>)</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp /home/daisine/software/mysql-connector-java-5.1.47.tar.gz root@172.18.0.2:/usr/local/</span><br><span class="line">tar -zxvf mysql-connector-java-5.1.47.tar.gz</span><br><span class="line">cd mysql-connector-java-5.1.47</span><br><span class="line">cp mysql-connector-java-5.1.47-bin.jar /usr/local/hive/lib/</span><br></pre></td></tr></table></figure></li><li><p>配置Metastore到MySQL</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /usr/local/hive/conf</span><br><span class="line">touch hive-site.xml</span><br><span class="line">vi hive-site.xml</span><br></pre></td></tr></table></figure></li><li><p>hive-site.xml 需要根据自己的情况<strong>修改</strong>两处</p><ul><li><strong>ConnectionURL</strong>：<code>jdbc:mysql://$(hostname):3306/metastore</code> </li><li><strong>ConnectionPassword</strong>：<code>&lt;value&gt;$(password)&lt;/value&gt;</code> </li></ul><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&lt;?xml version="1.0"?&gt;</span><br><span class="line">&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionURL<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:mysql://hadoop1:3306/metastore?createDatabaseIfNotExist=true&amp;amp;useSSL=false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>JDBC connect string for a JDBC metastore<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionDriverName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>Driver class name for a JDBC metastore<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionUserName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>username to use against metastore database<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionPassword<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>111111<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>password to use against metastore database<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul><h2 id="4-启动hive"><a href="#4-启动hive" class="headerlink" title="4. 启动hive"></a>4. 启动hive</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 启动hdfs yarn</span><br><span class="line"><span class="meta">#</span> namenode</span><br><span class="line">sbin/start-dfs.sh</span><br><span class="line"><span class="meta">#</span> resourcemanager</span><br><span class="line">sbin/start-yarn.sh</span><br><span class="line"><span class="meta">#</span> 启动hive</span><br><span class="line">cd /usr/local/hive</span><br><span class="line">bin/hive</span><br><span class="line">Logging initialized using configuration in jar:file:/usr/local/hive/lib/hive-common-1.2.1.jar!/hive-log4j.properties</span><br><span class="line">hive &gt;</span><br></pre></td></tr></table></figure><h2 id="5-参考资料"><a href="#5-参考资料" class="headerlink" title="5. 参考资料"></a>5. 参考资料</h2><p><a href="https://www.jianshu.com/p/481763139ef2" target="_blank" rel="noopener">Centos7使用yum安装MySQL5.6</a></p><p><a href="https://blog.csdn.net/weixin_42280360/article/details/80599326" target="_blank" rel="noopener">在centos7.4彻底删除mysql5.7</a></p><p><a href="http://dblab.xmu.edu.cn/blog/install-hive/" target="_blank" rel="noopener">Ubuntu安装hive，并配置mysql作为元数据库</a></p>]]></content>
     
     <summary type="html">
     
@@ -34,21 +34,21 @@
     
     </summary>
     
-      <category term="大数据分析" scheme="http://daisine.me/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+      <category term="大数据分析" scheme="https://daisine.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
     
-      <category term="hadoop" scheme="http://daisine.me/tags/hadoop/"/>
+      <category term="hadoop" scheme="https://daisine.github.io/tags/hadoop/"/>
     
-      <category term="Docker" scheme="http://daisine.me/tags/Docker/"/>
+      <category term="Docker" scheme="https://daisine.github.io/tags/Docker/"/>
     
-      <category term="hive" scheme="http://daisine.me/tags/hive/"/>
+      <category term="hive" scheme="https://daisine.github.io/tags/hive/"/>
     
   </entry>
   
   <entry>
     <title>Ubuntu下Docker搭建Hadoop完全分布式集群</title>
-    <link href="http://daisine.me/dockerhadoop/"/>
-    <id>http://daisine.me/dockerhadoop/</id>
+    <link href="https://daisine.github.io/dockerhadoop/"/>
+    <id>https://daisine.github.io/dockerhadoop/</id>
     <published>2019-07-02T02:15:11.000Z</published>
     <updated>2019-07-02T05:40:01.034Z</updated>
     
@@ -70,25 +70,25 @@
     
     </summary>
     
-      <category term="大数据分析" scheme="http://daisine.me/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+      <category term="大数据分析" scheme="https://daisine.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
     
-      <category term="hadoop" scheme="http://daisine.me/tags/hadoop/"/>
+      <category term="hadoop" scheme="https://daisine.github.io/tags/hadoop/"/>
     
-      <category term="大数据" scheme="http://daisine.me/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+      <category term="大数据" scheme="https://daisine.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="Docker" scheme="http://daisine.me/tags/Docker/"/>
+      <category term="Docker" scheme="https://daisine.github.io/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>3个阿里云ECS搭建Hadoop完全分布式集群</title>
-    <link href="http://daisine.me/hadoops/"/>
-    <id>http://daisine.me/hadoops/</id>
+    <link href="https://daisine.github.io/hadoops/"/>
+    <id>https://daisine.github.io/hadoops/</id>
     <published>2019-06-26T01:47:56.000Z</published>
-    <updated>2019-07-02T02:16:16.300Z</updated>
+    <updated>2019-07-04T07:15:30.941Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="1-准备阿里云ECS"><a href="#1-准备阿里云ECS" class="headerlink" title="1. 准备阿里云ECS"></a>1. 准备阿里云ECS</h2><ul><li>我使用的是Mac OS X 10.13，在终端中可以进行：<ul><li><code>ssh</code>连接远程服务器，</li><li><code>scp</code>上传/下载远程服务器文件</li></ul></li><li>云服务器ECS * 3  <code>共享基本型</code>  - <code>1vCPU</code>  - <code>1Gib</code></li><li>PS：3个ECS需要在同一个地域，如<code>华东1</code>。因为<strong>不同地域</strong>的实例之间<strong>内网互不相通</strong>。</li></ul><a id="more"></a><ul><li><p>操作系统：CentOS 7.3 <code>64位</code></p></li><li><p>分配公网IPv4地址：理论上只需要1个ECS分配公网IP即可，3个ECS使用内网互通。<code>之后需要进行设置内网互通，免费</code></p><blockquote><p>如果是3个不同账号/跨地域的ECS，也可以搭建</p></blockquote></li><li><p>ESC设置内网互通，参考：<a href="https://help.aliyun.com/document_detail/65861.html?spm=a2c4g.11186623.6.558.491f303e3Lb1M5" target="_blank" rel="noopener">阿里云帮助-同账号同地域VPC和VBR互通</a></p></li></ul><p><img src="/hadoops/ecs.png" width="80%"></p><h2 id="2-SSH免密码登录"><a href="#2-SSH免密码登录" class="headerlink" title="2. SSH免密码登录"></a>2. SSH免密码登录</h2><ul><li><p>关闭防火墙        <code>3个ECS</code></p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>关闭防火墙</span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"><span class="meta">#</span>开机禁止启动</span><br><span class="line">systemctl disable firewalld.service</span><br><span class="line">firewall-cmd --state</span><br></pre></td></tr></table></figure></li><li><p>修改主机名称：此处我将3个ECS的主机名分别修改为<code>hadoop01</code>，<code>hadoop02</code>，<code>hadoop03</code></p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>将该文件中的内容修改为新的主机名</span><br><span class="line">sudo vim /etc/hostname</span><br><span class="line"><span class="meta">#</span>重启服务器生效</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure></li><li><p>配置主机映射：由于内网互通，所以均填写的为ecs的内网IP。</p><blockquote><p>如果内网不互通，则自己主机的IP填写为内网IP，其他主机的IP填写为公网IP。</p></blockquote><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>在该文件内加入新的主机映射 内网ip 主机名</span><br><span class="line">vi /etc/hosts </span><br><span class="line">172.16.119.x hadoop01</span><br><span class="line">172.16.119.y hadoop02</span><br><span class="line">172.16.238.z hadoop03</span><br></pre></td></tr></table></figure></li><li><p>此时，<code>ECS</code> 之间ping对方的内网IP可以ping通。</p><blockquote><p>事实上我设置了阿里云的ECS内网互通之后就可以ping通内网IP了。</p></blockquote></li><li><p>SSH免密码登录设置</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen  #回车完成操作</span><br><span class="line">ssh-copy-id hadoop01 #拷贝公钥到需要免密码登录的目标服务器上</span><br><span class="line">ssh-copy-id hadoop02</span><br><span class="line">ssh-copy-id hadoop03</span><br><span class="line">ssh hadoop0x #使用`ssh 主机名`免密码登录目标服务器</span><br></pre></td></tr></table></figure></li><li><p>~/.ssh/下的文件功能</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ~/.ssh</span><br><span class="line">ls</span><br><span class="line">authorized_keys  id_rsa  id_rsa.pub  known_hosts</span><br><span class="line"><span class="meta">#</span>~/.ssh的4个文件</span><br><span class="line"><span class="meta">#</span> known_hosts：记录ssh访问过计算机的公钥(public key)</span><br><span class="line"><span class="meta">#</span> id_rsa：生成的私钥</span><br><span class="line"><span class="meta">#</span> id_rsa.pub：生成的公钥</span><br><span class="line"><span class="meta">#</span> authorized_keys：存放授权过得无秘登录服务器公钥</span><br></pre></td></tr></table></figure></li></ul><h2 id="3-安装JDK与Hadoop"><a href="#3-安装JDK与Hadoop" class="headerlink" title="3. 安装JDK与Hadoop"></a>3. 安装JDK与Hadoop</h2><ul><li><p>在root用户下的<code>opt</code>文件夹中创建<code>module</code>、<code>software</code>文件夹</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /opt</span><br><span class="line">mkdir module #安装的JDK与Hadoop的位置</span><br><span class="line">mkdir software #安装包的存储位置</span><br></pre></td></tr></table></figure></li><li><p><strong>way1</strong>：将本地的JDK和Hadoop安装包上传到服务器</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>在mac os的本地用户的终端下使用scp上传安装包</span><br><span class="line"><span class="meta">#</span>scp 本地安装包路径 root@公网ip:存放文件夹路径</span><br><span class="line">scp /users/yi/Downloads/jdk-8u131-linux-x64.tar.gz root@123.56.135.146:/opt/software</span><br><span class="line">scp /users/yi/Downloads/hadoop-2.7.2.tar.gz root@123.56.135.146:/opt/software</span><br></pre></td></tr></table></figure></li><li><p><strong>way2</strong>:在ECS用户下使用wget下载安装包</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>wget 下载链接</span><br><span class="line"><span class="meta">#</span>我使用的是Hadoop2.7.2 与 Java 1.8.0_131</span><br><span class="line"><span class="meta">#</span>Hadoop2.x 与 Hadoop3.x 有区别</span><br><span class="line">cd /opt/software #下载的安装包的存放位置</span><br><span class="line">wget JDK‘s URL</span><br><span class="line">wget Hadoop‘s URL</span><br></pre></td></tr></table></figure></li><li><p>在<code>/opt/module</code>安装Hadoop与JDK</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /opt/software #安装包的位置</span><br><span class="line"><span class="meta">#</span> tar -zxvf 压缩包名称 -C 解压文件存放位置</span><br><span class="line">tar -zxvf jdk-8u131-linux-x64.tar.gz -C /opt/module/</span><br><span class="line">tar -zxvf hadoop-2.7.2.tar.gz -C /opt/module/</span><br></pre></td></tr></table></figure></li><li><p>配置hadoop中的hadoop-env.sh</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /opt/module/hadoop-2.7.2/etc/hadoop</span><br><span class="line">vi hadoop-env.sh</span><br><span class="line"><span class="meta">#</span>修改JAVA_HOME的值为/opt/module/jdk1.8.0_131</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.8.0_131</span><br></pre></td></tr></table></figure></li><li><p>配置Hadoop与JDK的环境变量</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/profile #在profile中加入以下环境变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>#JAVA_HOME</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.8.0_131</span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line"><span class="meta">#</span>#HADOOP_HOME</span><br><span class="line">export HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line"></span><br><span class="line">source  /etc/profile #让修改后的profile生效</span><br><span class="line">java -version#查询Java版本可以正确显示结果</span><br><span class="line">hadoop #显示Hadoop的使用方式</span><br></pre></td></tr></table></figure><blockquote><p>如果不能查询Java版本和Hadoop指令，可以使用<code>reboot</code>重启服务器再进行尝试。</p></blockquote></li></ul><h2 id="4-Hadoop完全分布式集群搭建"><a href="#4-Hadoop完全分布式集群搭建" class="headerlink" title="4. Hadoop完全分布式集群搭建"></a>4. Hadoop完全分布式集群搭建</h2><ul><li><p>修改<code>/opt/module/hadoop-2.7.2/etc/hadoop</code>文件夹中的配置文件</p></li><li><p>core-site.xml</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop01:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 指定hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>hdfs-site.xml</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.secondary.http-address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop03:50090<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>slaves</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>删掉了localhost，加入以下内容</span><br><span class="line">hadoop01</span><br><span class="line">hadoop02</span><br><span class="line">hadoop03</span><br></pre></td></tr></table></figure></li><li><p>yarn-env.sh</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 修改JAVA_HOME的值并取消注释#</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.8.0_131</span><br></pre></td></tr></table></figure></li><li><p>yarn-site.xml</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- reducer获取数据的方式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定YARN的ResourceManager的地址 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop02<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>mapred-env.sh</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 修改JAVA_HOME的值并取消注释#</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.8.0_131</span><br></pre></td></tr></table></figure></li><li><p>mapred-site.xml(原本不存在这个文件)</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 指定mr运行在yarn上 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>分发以上修改的文件到另外2个ECS</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp -r /opt/module/hadoop-2.7.2/etc/hadoop hadoop02:/opt/module/hadoop-2.7.2/etc/</span><br><span class="line">scp -r /opt/module/hadoop-2.7.2/etc/hadoop hadoop03:/opt/module/hadoop-2.7.2/etc/</span><br></pre></td></tr></table></figure></li></ul><h2 id="5-Hadoop集群启动"><a href="#5-Hadoop集群启动" class="headerlink" title="5. Hadoop集群启动"></a>5. Hadoop集群启动</h2><ul><li><p>首次启动集群，需要格式化namenode</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bin/hdfs namenode -format</span><br></pre></td></tr></table></figure></li><li><p>在Hadoop01中启动HDFS</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sbin/start-dfs.sh</span><br></pre></td></tr></table></figure></li><li><p>使用<code>jps</code>查看Hadoop进程</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@hadoop01 hadoop-2.7.2]# jps</span><br><span class="line">6649 Jps</span><br><span class="line">6316 NameNode</span><br><span class="line">6446 DataNode</span><br><span class="line">[root@hadoop01 hadoop-2.7.2]# ssh hadoop02</span><br><span class="line">[root@hadoop02 ~]# jps</span><br><span class="line">14206 Jps</span><br><span class="line">14111 DataNode</span><br><span class="line">[root@hadoop02 ~]# ssh hadoop 03</span><br><span class="line">[root@hadoop03 ~]# jps</span><br><span class="line">5091 DataNode</span><br><span class="line">5192 SecondaryNameNode</span><br><span class="line">5260 Jps</span><br></pre></td></tr></table></figure></li><li><p>在阿里云ECS控制台中将Hadoop01服务器的安全组规则中开放50070端口</p><blockquote><p>50070为hadoop2.x中namenode的默认web访问端口</p></blockquote></li><li><p>在HDFS启动的时候，访问<code>http://hadoop01&#39;s公网IP:50070</code></p></li></ul><p><img src="/hadoops/h1.png" width="100%"></p><p><img src="/hadoops/h2.png" width="100%"></p><ul><li><p>关闭HDFS</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sbin/stop-dfs.sh</span><br></pre></td></tr></table></figure></li><li><p>启动与关闭yarn</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sbin/start-yarn.sh</span><br><span class="line">sbin/stop-yarn.sh</span><br></pre></td></tr></table></figure></li><li><p>全部启动与关闭</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">start-all.sh</span><br><span class="line">stop-all.sh</span><br></pre></td></tr></table></figure></li><li><p>上传文件到集群</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>创建上传的文件所在目录</span><br><span class="line">bin/hdfs dfs -mkdir -p /user/root/tmp/conf</span><br><span class="line"><span class="meta">#</span>上传文件到HDFS</span><br><span class="line">bin/hdfs dfs -put etc/hadoop/*-site.xml /user/root/tmp/conf</span><br><span class="line"><span class="meta">#</span>下载HDFS中的文件</span><br><span class="line">bin/hadoop fs -get /user/root/input/workcount.txt</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="1-准备阿里云ECS"><a href="#1-准备阿里云ECS" class="headerlink" title="1. 准备阿里云ECS"></a>1. 准备阿里云ECS</h2><ul><li>我使用的是Mac OS X 10.13，在终端中可以进行：<ul><li><code>ssh</code>连接远程服务器，</li><li><code>scp</code>上传/下载远程服务器文件</li></ul></li><li>云服务器ECS * 3  <code>共享基本型</code>  - <code>1vCPU</code>  - <code>1Gib</code></li><li>PS：3个ECS需要在同一个地域，如<code>华东1</code>。因为<strong>不同地域</strong>的实例之间<strong>内网互不相通</strong>。</li></ul><a id="more"></a><ul><li><p>操作系统：CentOS 7.3 <code>64位</code></p></li><li><p>分配公网IPv4地址：理论上只需要1个ECS分配公网IP即可，3个ECS使用内网互通。<code>之后需要进行设置内网互通，免费</code></p><blockquote><p>如果是3个不同账号/跨地域的ECS，也可以搭建</p></blockquote></li><li><p>ESC设置内网互通，参考：<a href="https://help.aliyun.com/document_detail/65861.html?spm=a2c4g.11186623.6.558.491f303e3Lb1M5" target="_blank" rel="noopener">阿里云帮助-同账号同地域VPC和VBR互通</a></p></li></ul><p><img src="/hadoops/ecs.png" width="80%"></p><h2 id="2-SSH免密码登录"><a href="#2-SSH免密码登录" class="headerlink" title="2. SSH免密码登录"></a>2. SSH免密码登录</h2><ul><li><p>关闭防火墙        <code>3个ECS</code></p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>关闭防火墙</span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"><span class="meta">#</span>开机禁止启动</span><br><span class="line">systemctl disable firewalld.service</span><br><span class="line">firewall-cmd --state</span><br></pre></td></tr></table></figure></li><li><p>修改主机名称：此处我将3个ECS的主机名分别修改为<code>hadoop01</code>，<code>hadoop02</code>，<code>hadoop03</code></p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>将该文件中的内容修改为新的主机名</span><br><span class="line">sudo vim /etc/hostname</span><br><span class="line"><span class="meta">#</span>重启服务器生效</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure></li><li><p>配置主机映射：由于内网互通，所以均填写的为ecs的内网IP。</p><blockquote><p>如果内网不互通，则自己主机的IP填写为内网IP，其他主机的IP填写为公网IP。</p></blockquote><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>在该文件内加入新的主机映射 内网ip 主机名</span><br><span class="line">vi /etc/hosts </span><br><span class="line">172.16.119.x hadoop01</span><br><span class="line">172.16.119.y hadoop02</span><br><span class="line">172.16.238.z hadoop03</span><br></pre></td></tr></table></figure></li><li><p>此时，<code>ECS</code> 之间ping对方的内网IP可以ping通。</p><blockquote><p>事实上我设置了阿里云的ECS内网互通之后就可以ping通内网IP了。</p></blockquote></li><li><p>SSH免密码登录设置</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen  #回车完成操作</span><br><span class="line">ssh-copy-id hadoop01 #拷贝公钥到需要免密码登录的目标服务器上</span><br><span class="line">ssh-copy-id hadoop02</span><br><span class="line">ssh-copy-id hadoop03</span><br><span class="line">ssh hadoop0x #使用`ssh 主机名`免密码登录目标服务器</span><br></pre></td></tr></table></figure></li><li><p>~/.ssh/下的文件功能</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ~/.ssh</span><br><span class="line">ls</span><br><span class="line">authorized_keys  id_rsa  id_rsa.pub  known_hosts</span><br><span class="line"><span class="meta">#</span>~/.ssh的4个文件</span><br><span class="line"><span class="meta">#</span> known_hosts：记录ssh访问过计算机的公钥(public key)</span><br><span class="line"><span class="meta">#</span> id_rsa：生成的私钥</span><br><span class="line"><span class="meta">#</span> id_rsa.pub：生成的公钥</span><br><span class="line"><span class="meta">#</span> authorized_keys：存放授权过得无秘登录服务器公钥</span><br></pre></td></tr></table></figure></li></ul><h2 id="3-安装JDK与Hadoop"><a href="#3-安装JDK与Hadoop" class="headerlink" title="3. 安装JDK与Hadoop"></a>3. 安装JDK与Hadoop</h2><ul><li><p>在root用户下的<code>opt</code>文件夹中创建<code>module</code>、<code>software</code>文件夹</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /opt</span><br><span class="line">mkdir module #安装的JDK与Hadoop的位置</span><br><span class="line">mkdir software #安装包的存储位置</span><br></pre></td></tr></table></figure></li><li><p><strong>way1</strong>：将本地的JDK和Hadoop安装包上传到服务器</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>在mac os的本地用户的终端下使用scp上传安装包</span><br><span class="line"><span class="meta">#</span>scp 本地安装包路径 root@公网ip:存放文件夹路径</span><br><span class="line">scp /users/yi/Downloads/jdk-8u131-linux-x64.tar.gz root@123.56.135.146:/opt/software</span><br><span class="line">scp /users/yi/Downloads/hadoop-2.7.2.tar.gz root@123.56.135.146:/opt/software</span><br></pre></td></tr></table></figure></li><li><p><strong>way2</strong>:在ECS用户下使用wget下载安装包</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>wget 下载链接</span><br><span class="line"><span class="meta">#</span>我使用的是Hadoop2.7.2 与 Java 1.8.0_131</span><br><span class="line"><span class="meta">#</span>Hadoop2.x 与 Hadoop3.x 有区别</span><br><span class="line">cd /opt/software #下载的安装包的存放位置</span><br><span class="line">wget JDK‘s URL</span><br><span class="line">wget Hadoop‘s URL</span><br></pre></td></tr></table></figure></li><li><p>在<code>/opt/module</code>安装Hadoop与JDK</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /opt/software #安装包的位置</span><br><span class="line"><span class="meta">#</span> tar -zxvf 压缩包名称 -C 解压文件存放位置</span><br><span class="line">tar -zxvf jdk-8u131-linux-x64.tar.gz -C /opt/module/</span><br><span class="line">tar -zxvf hadoop-2.7.2.tar.gz -C /opt/module/</span><br></pre></td></tr></table></figure></li><li><p>配置hadoop中的hadoop-env.sh</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /opt/module/hadoop-2.7.2/etc/hadoop</span><br><span class="line">vi hadoop-env.sh</span><br><span class="line"><span class="meta">#</span>修改JAVA_HOME的值为/opt/module/jdk1.8.0_131</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.8.0_131</span><br></pre></td></tr></table></figure></li><li><p>配置Hadoop与JDK的环境变量</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/profile #在profile中加入以下环境变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>#JAVA_HOME</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.8.0_131</span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line"><span class="meta">#</span>#HADOOP_HOME</span><br><span class="line">export HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line"></span><br><span class="line">source  /etc/profile #让修改后的profile生效</span><br><span class="line">java -version#查询Java版本可以正确显示结果</span><br><span class="line">hadoop #显示Hadoop的使用方式</span><br></pre></td></tr></table></figure><blockquote><p>如果不能查询Java版本和Hadoop指令，可以使用<code>reboot</code>重启服务器再进行尝试。</p></blockquote></li></ul><h2 id="4-Hadoop完全分布式集群搭建"><a href="#4-Hadoop完全分布式集群搭建" class="headerlink" title="4. Hadoop完全分布式集群搭建"></a>4. Hadoop完全分布式集群搭建</h2><ul><li><p>修改<code>/opt/module/hadoop-2.7.2/etc/hadoop</code>文件夹中的配置文件</p></li><li><p>core-site.xml</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop01:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 指定hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>hdfs-site.xml</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.secondary.http-address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop03:50090<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>slaves</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>删掉了localhost，加入以下内容</span><br><span class="line">hadoop01</span><br><span class="line">hadoop02</span><br><span class="line">hadoop03</span><br></pre></td></tr></table></figure></li><li><p>yarn-env.sh</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 修改JAVA_HOME的值并取消注释#</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.8.0_131</span><br></pre></td></tr></table></figure></li><li><p>yarn-site.xml</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- reducer获取数据的方式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定YARN的ResourceManager的地址 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop02<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>mapred-env.sh</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 修改JAVA_HOME的值并取消注释#</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.8.0_131</span><br></pre></td></tr></table></figure></li><li><p>mapred-site.xml(原本不存在这个文件)</p><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 指定mr运行在yarn上 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>分发以上修改的文件到另外2个ECS</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp -r /opt/module/hadoop-2.7.2/etc/hadoop hadoop02:/opt/module/hadoop-2.7.2/etc/</span><br><span class="line">scp -r /opt/module/hadoop-2.7.2/etc/hadoop hadoop03:/opt/module/hadoop-2.7.2/etc/</span><br></pre></td></tr></table></figure></li></ul><h2 id="5-Hadoop集群启动"><a href="#5-Hadoop集群启动" class="headerlink" title="5. Hadoop集群启动"></a>5. Hadoop集群启动</h2><ul><li><p>首次启动集群，需要格式化namenode</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bin/hdfs namenode -format</span><br></pre></td></tr></table></figure></li><li><p>在Hadoop01中启动HDFS</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sbin/start-dfs.sh</span><br></pre></td></tr></table></figure></li><li><p>使用<code>jps</code>查看Hadoop进程</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@hadoop01 hadoop-2.7.2]# jps</span><br><span class="line">6649 Jps</span><br><span class="line">6316 NameNode</span><br><span class="line">6446 DataNode</span><br><span class="line">[root@hadoop01 hadoop-2.7.2]# ssh hadoop02</span><br><span class="line">[root@hadoop02 ~]# jps</span><br><span class="line">14206 Jps</span><br><span class="line">14111 DataNode</span><br><span class="line">[root@hadoop02 ~]# ssh hadoop 03</span><br><span class="line">[root@hadoop03 ~]# jps</span><br><span class="line">5091 DataNode</span><br><span class="line">5192 SecondaryNameNode</span><br><span class="line">5260 Jps</span><br></pre></td></tr></table></figure></li><li><p>在阿里云ECS控制台中将Hadoop01服务器的<code>安全组规则</code>中开放50070端口</p><blockquote><p>50070为hadoop2.x中namenode的默认web访问端口</p></blockquote></li><li><p>在HDFS启动的时候，访问<code>http://hadoop01&#39;s公网IP:50070</code></p></li></ul><p><img src="/hadoops/h1.png" width="100%"></p><p><img src="/hadoops/h2.png" width="100%"></p><ul><li><p>启动与关闭HDFS</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sbin/start-dfs.sh</span><br><span class="line">sbin/stop-dfs.sh</span><br></pre></td></tr></table></figure></li><li><p>启动与关闭yarn</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sbin/start-yarn.sh</span><br><span class="line">sbin/stop-yarn.sh</span><br></pre></td></tr></table></figure></li><li><p>全部启动与关闭</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">start-all.sh</span><br><span class="line">stop-all.sh</span><br></pre></td></tr></table></figure></li><li><p>上传文件到集群</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>创建上传的文件所在目录</span><br><span class="line">bin/hdfs dfs -mkdir -p /user/root/tmp/conf</span><br><span class="line"><span class="meta">#</span>上传文件到HDFS</span><br><span class="line">bin/hdfs dfs -put etc/hadoop/*-site.xml /user/root/tmp/conf</span><br><span class="line"><span class="meta">#</span>下载HDFS中的文件</span><br><span class="line">bin/hadoop fs -get /user/root/input/workcount.txt</span><br></pre></td></tr></table></figure></li></ul><h2 id="6-使用eclipse远程连接hadoop集群"><a href="#6-使用eclipse远程连接hadoop集群" class="headerlink" title="6. 使用eclipse远程连接hadoop集群"></a>6. 使用eclipse远程连接hadoop集群</h2><ul><li><p>本地安装eclipse与Java环境(JDK版本不需要与服务器一致)</p></li><li><p>下载<code>hadoop-eclipse-plugin-2.7.3.jar</code>(没找到2.7.2版本的，2.7.3能用)</p></li><li>将<code>hadoop-eclipse-plugin-2.7.3.jar</code>放在eclipse - contents - eclipse - plugins文件夹中</li><li>打开<code>eclipse</code> 添加插件 - Map</li></ul>]]></content>
     
     <summary type="html">
     
@@ -104,19 +104,19 @@
     
     </summary>
     
-      <category term="大数据分析" scheme="http://daisine.me/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+      <category term="大数据分析" scheme="https://daisine.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
     
-      <category term="hadoop" scheme="http://daisine.me/tags/hadoop/"/>
+      <category term="hadoop" scheme="https://daisine.github.io/tags/hadoop/"/>
     
-      <category term="大数据" scheme="http://daisine.me/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+      <category term="大数据" scheme="https://daisine.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
   <entry>
     <title>数字图像处理习题</title>
-    <link href="http://daisine.me/diptimu/"/>
-    <id>http://daisine.me/diptimu/</id>
+    <link href="https://daisine.github.io/diptimu/"/>
+    <id>https://daisine.github.io/diptimu/</id>
     <published>2019-06-11T08:00:53.000Z</published>
     <updated>2019-06-11T08:17:45.512Z</updated>
     
@@ -130,17 +130,17 @@
     
     </summary>
     
-      <category term="软件工程" scheme="http://daisine.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+      <category term="软件工程" scheme="https://daisine.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>数字图像处理笔记</title>
-    <link href="http://daisine.me/dip/"/>
-    <id>http://daisine.me/dip/</id>
+    <link href="https://daisine.github.io/dip/"/>
+    <id>https://daisine.github.io/dip/</id>
     <published>2019-06-11T08:00:44.000Z</published>
     <updated>2019-06-11T08:06:00.454Z</updated>
     
@@ -158,17 +158,17 @@
     
     </summary>
     
-      <category term="软件工程" scheme="http://daisine.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+      <category term="软件工程" scheme="https://daisine.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>VS Code调教笔记 on Mac OS</title>
-    <link href="http://daisine.me/vscode-macos/"/>
-    <id>http://daisine.me/vscode-macos/</id>
+    <link href="https://daisine.github.io/vscode-macos/"/>
+    <id>https://daisine.github.io/vscode-macos/</id>
     <published>2019-05-24T02:30:20.000Z</published>
     <updated>2019-05-27T07:08:58.346Z</updated>
     
@@ -182,17 +182,17 @@
     
     </summary>
     
-      <category term="Mac OS X" scheme="http://daisine.me/categories/Mac-OS-X/"/>
+      <category term="Mac OS X" scheme="https://daisine.github.io/categories/Mac-OS-X/"/>
     
     
-      <category term="配置环境" scheme="http://daisine.me/tags/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/"/>
+      <category term="配置环境" scheme="https://daisine.github.io/tags/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/"/>
     
   </entry>
   
   <entry>
     <title>软件测试笔记</title>
-    <link href="http://daisine.me/sftest/"/>
-    <id>http://daisine.me/sftest/</id>
+    <link href="https://daisine.github.io/sftest/"/>
+    <id>https://daisine.github.io/sftest/</id>
     <published>2019-04-30T03:57:44.000Z</published>
     <updated>2019-05-10T10:50:34.331Z</updated>
     
@@ -207,17 +207,17 @@
     
     </summary>
     
-      <category term="软件工程" scheme="http://daisine.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+      <category term="软件工程" scheme="https://daisine.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>软件项目管理</title>
-    <link href="http://daisine.me/manage/"/>
-    <id>http://daisine.me/manage/</id>
+    <link href="https://daisine.github.io/manage/"/>
+    <id>https://daisine.github.io/manage/</id>
     <published>2019-04-21T04:50:56.000Z</published>
     <updated>2019-05-10T11:01:57.293Z</updated>
     
@@ -230,17 +230,17 @@
     
     </summary>
     
-      <category term="软件工程" scheme="http://daisine.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+      <category term="软件工程" scheme="https://daisine.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>软件需求笔记</title>
-    <link href="http://daisine.me/require/"/>
-    <id>http://daisine.me/require/</id>
+    <link href="https://daisine.github.io/require/"/>
+    <id>https://daisine.github.io/require/</id>
     <published>2019-01-10T03:47:27.000Z</published>
     <updated>2019-05-10T10:53:09.724Z</updated>
     
@@ -256,17 +256,17 @@
     
     </summary>
     
-      <category term="软件工程" scheme="http://daisine.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+      <category term="软件工程" scheme="https://daisine.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>多媒体技术笔记</title>
-    <link href="http://daisine.me/media/"/>
-    <id>http://daisine.me/media/</id>
+    <link href="https://daisine.github.io/media/"/>
+    <id>https://daisine.github.io/media/</id>
     <published>2019-01-07T03:45:47.000Z</published>
     <updated>2019-05-10T10:53:18.688Z</updated>
     
@@ -280,17 +280,17 @@
     
     </summary>
     
-      <category term="软件工程" scheme="http://daisine.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+      <category term="软件工程" scheme="https://daisine.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>机器学习笔记</title>
-    <link href="http://daisine.me/ml/"/>
-    <id>http://daisine.me/ml/</id>
+    <link href="https://daisine.github.io/ml/"/>
+    <id>https://daisine.github.io/ml/</id>
     <published>2019-01-03T03:41:54.000Z</published>
     <updated>2019-05-10T11:33:11.803Z</updated>
     
@@ -305,19 +305,19 @@
     
     </summary>
     
-      <category term="软件工程" scheme="http://daisine.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+      <category term="软件工程" scheme="https://daisine.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
-      <category term="机器学习" scheme="http://daisine.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://daisine.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>计算机图形学笔记及练习</title>
-    <link href="http://daisine.me/CG/"/>
-    <id>http://daisine.me/CG/</id>
+    <link href="https://daisine.github.io/CG/"/>
+    <id>https://daisine.github.io/CG/</id>
     <published>2018-12-21T03:01:18.000Z</published>
     <updated>2019-05-10T10:55:48.414Z</updated>
     
@@ -332,19 +332,19 @@
     
     </summary>
     
-      <category term="计算机基础" scheme="http://daisine.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+      <category term="计算机基础" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
-      <category term="图形学" scheme="http://daisine.me/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="图形学" scheme="https://daisine.github.io/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
   </entry>
   
   <entry>
     <title>UML</title>
-    <link href="http://daisine.me/uml/"/>
-    <id>http://daisine.me/uml/</id>
+    <link href="https://daisine.github.io/uml/"/>
+    <id>https://daisine.github.io/uml/</id>
     <published>2018-12-13T03:51:47.000Z</published>
     <updated>2019-05-10T10:52:18.788Z</updated>
     
@@ -358,17 +358,17 @@
     
     </summary>
     
-      <category term="软件工程" scheme="http://daisine.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+      <category term="软件工程" scheme="https://daisine.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>密码学笔记</title>
-    <link href="http://daisine.me/Cryptography/"/>
-    <id>http://daisine.me/Cryptography/</id>
+    <link href="https://daisine.github.io/Cryptography/"/>
+    <id>https://daisine.github.io/Cryptography/</id>
     <published>2018-12-01T03:49:14.000Z</published>
     <updated>2019-05-10T10:53:04.839Z</updated>
     
@@ -380,17 +380,17 @@
     
     </summary>
     
-      <category term="软件工程" scheme="http://daisine.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+      <category term="软件工程" scheme="https://daisine.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>Web开发笔记</title>
-    <link href="http://daisine.me/web/"/>
-    <id>http://daisine.me/web/</id>
+    <link href="https://daisine.github.io/web/"/>
+    <id>https://daisine.github.io/web/</id>
     <published>2018-11-05T03:53:00.000Z</published>
     <updated>2019-05-10T10:52:41.817Z</updated>
     
@@ -404,19 +404,19 @@
     
     </summary>
     
-      <category term="前端" scheme="http://daisine.me/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://daisine.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
-      <category term="Web" scheme="http://daisine.me/tags/Web/"/>
+      <category term="Web" scheme="https://daisine.github.io/tags/Web/"/>
     
   </entry>
   
   <entry>
     <title>Mac OS X下连接校园网VPN [L2TP方式]</title>
-    <link href="http://daisine.me/macvpn/"/>
-    <id>http://daisine.me/macvpn/</id>
+    <link href="https://daisine.github.io/macvpn/"/>
+    <id>https://daisine.github.io/macvpn/</id>
     <published>2018-09-20T00:32:10.000Z</published>
     <updated>2019-05-10T10:56:18.451Z</updated>
     
@@ -434,15 +434,15 @@
     
     </summary>
     
-      <category term="Mac OS X" scheme="http://daisine.me/categories/Mac-OS-X/"/>
+      <category term="Mac OS X" scheme="https://daisine.github.io/categories/Mac-OS-X/"/>
     
     
   </entry>
   
   <entry>
     <title>操作系统笔记11 文件系统</title>
-    <link href="http://daisine.me/os11/"/>
-    <id>http://daisine.me/os11/</id>
+    <link href="https://daisine.github.io/os11/"/>
+    <id>https://daisine.github.io/os11/</id>
     <published>2018-07-03T06:19:18.000Z</published>
     <updated>2019-05-10T10:59:35.294Z</updated>
     
@@ -466,19 +466,19 @@
     
     </summary>
     
-      <category term="计算机基础" scheme="http://daisine.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+      <category term="计算机基础" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
     
-      <category term="操作系统" scheme="http://daisine.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="操作系统" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>操作系统笔记10 虚拟内存</title>
-    <link href="http://daisine.me/os10/"/>
-    <id>http://daisine.me/os10/</id>
+    <link href="https://daisine.github.io/os10/"/>
+    <id>https://daisine.github.io/os10/</id>
     <published>2018-07-03T06:19:15.000Z</published>
     <updated>2019-05-10T10:59:39.818Z</updated>
     
@@ -501,19 +501,19 @@
     
     </summary>
     
-      <category term="计算机基础" scheme="http://daisine.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+      <category term="计算机基础" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
     
-      <category term="操作系统" scheme="http://daisine.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="操作系统" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>操作系统笔记09 内存管理</title>
-    <link href="http://daisine.me/os9/"/>
-    <id>http://daisine.me/os9/</id>
+    <link href="https://daisine.github.io/os9/"/>
+    <id>https://daisine.github.io/os9/</id>
     <published>2018-07-03T06:17:35.000Z</published>
     <updated>2019-05-10T10:59:44.304Z</updated>
     
@@ -530,19 +530,19 @@
     
     </summary>
     
-      <category term="计算机基础" scheme="http://daisine.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+      <category term="计算机基础" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
     
-      <category term="操作系统" scheme="http://daisine.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="操作系统" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
   <entry>
     <title>操作系统笔记08 死锁</title>
-    <link href="http://daisine.me/os8/"/>
-    <id>http://daisine.me/os8/</id>
+    <link href="https://daisine.github.io/os8/"/>
+    <id>https://daisine.github.io/os8/</id>
     <published>2018-07-03T06:17:31.000Z</published>
     <updated>2019-05-10T10:59:48.237Z</updated>
     
@@ -559,12 +559,12 @@
     
     </summary>
     
-      <category term="计算机基础" scheme="http://daisine.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+      <category term="计算机基础" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
     
-      <category term="操作系统" scheme="http://daisine.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="操作系统" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
-      <category term="note" scheme="http://daisine.me/tags/note/"/>
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   
