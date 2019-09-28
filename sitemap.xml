@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://daisine.github.io/sql08/</loc>
+    
+    <lastmod>2019-09-28T16:18:45.168Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://daisine.github.io/hadoops/</loc>
     
     <lastmod>2019-07-04T07:15:30.941Z</lastmod>
@@ -194,13 +201,6 @@
     <loc>https://daisine.github.io/sql06/</loc>
     
     <lastmod>2019-05-10T11:02:23.316Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://daisine.github.io/sql08/</loc>
-    
-    <lastmod>2019-05-10T11:02:09.593Z</lastmod>
     
   </url>
   
