@@ -270,7 +270,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<p><strong>请求报文</strong><br><img src="https://i.loli.net/2018/06/05/5b16313172444.png" width="60%" height="60%"></p>
+<p><strong>请求报文</strong><br><img src="/cn2/0.png" width="60%" height="60%"></p>
 <ul>
 <li>请求方法<ul>
 <li>GET: 获取Web对象，扩展URL(可提交数据)，实体体为空</li>
@@ -287,7 +287,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<p><strong>响应报文</strong><br><img src="https://i.loli.net/2018/06/05/5b163340844fb.png" width="60%" height="60%"></p>
+<p><strong>响应报文</strong><br><img src="/cn2/1.png" width="60%" height="60%"></p>
 <table>
 <thead>
 <tr>
@@ -373,7 +373,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li><strong>接入网流量强度 = 15%</strong></li>
 <li>total delay = Internet delay 2秒+ <strong>access delay 若干毫秒</strong>+ LAN delay 若干微秒</li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/05/5b164472d62ae.png" width="40%" height="40%"><img src="https://i.loli.net/2018/06/05/5b1645e4f3442.png" width="35%" height="435%"></p>
+<p><img src="/cn2/2.png" width="40%" height="40%"><img src="/cn2/3.png" width="35%" height="435%"></p>
 <p>另一种改进方法：在机构网络中安装一个Web缓存器<br>如何计算设置缓存后的时延:</p>
 <ul>
 <li>设缓存中对象的命中率为 0.4<ul>
@@ -484,7 +484,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>报文编码格式：7-bit ASCII</li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/05/5b164b692f1ea.png" width="80%" height="80%"></p>
+<p><img src="/cn2/4.png" width="80%" height="80%"></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> S: 220 hamburger.edu  C: HELO crepes.fr  S: 250  Hello crepes.fr, pleased to meet you  C: MAIL FROM: &lt;alice@crepes.fr&gt;  S: 250 alice@crepes.fr... Sender ok  C: RCPT TO: &lt;bob@hamburger.edu&gt;  S: 250 bob@hamburger.edu ... Recipient ok  C: DATA  S: 354 Enter mail, end with &quot;.&quot; on a line by itself  C: Do you like ketchup?  C: How about pickles?  C: .  S: 250 Message accepted for delivery  C: QUIT  S: 221 hamburger.edu closing connection</span><br><span class="line">```- SMTP：持久性连接 - 在一个连接中可以进行多次操作 - 可以发送多个邮件、群发邮件 - 通过退出(Quit)来关闭连接- SMTP：报文都是7bit ASCII编码- SMTP：使用 crlf.crlf 作为报文结束符|SMTP|HTTP|</span><br><span class="line">|---|----|</span><br><span class="line">|推协议(push):向服务器端发送|拉协议(pull)：向服务器端请求||使用ASCII对报文进行编码|使用ASCII对报文进行编码|</span><br><span class="line">|报文可以封装**多个对象**(email附件)|每个响应报文只能封装1个web对象|- RFC 822: 用于定义邮件的格式: - 首部行</span><br></pre></td></tr></table></figure>
 <p> From: alice&amp;crepes.fr<br> To: <a href="mailto:bob@hamburger.edh" target="_blank" rel="noopener">bob@hamburger.edh</a><br> Subject: Searching for the meaning of life</p>
 <pre><code> - Body: 邮件正文(ASCII characters only，BASE 64编码)
@@ -576,7 +576,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/05/5b1684e9b46fa.png" width="40%" height="40%"><img src="https://i.loli.net/2018/06/05/5b1684ea021d6.png" width="40%" height="40%"></p>
+<p><img src="/cn2/5.png" width="40%" height="40%"><img src="/cn2/6.png" width="40%" height="40%"></p>
 <ul>
 <li>DNS的缓存机制<ul>
 <li>作用：改善时延、减少DNS报文数量</li>
@@ -638,7 +638,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>ttl：记录的生存周期(time to live)</li>
 </ul>
-<h4 id="DNS报文"><a href="#DNS报文" class="headerlink" title="DNS报文"></a>DNS报文</h4><p><img src="https://i.loli.net/2018/06/06/5b17294ee77f3.png" width="65%" height="65%"><br>查询报文、回答报文：两者格式相同</p>
+<h4 id="DNS报文"><a href="#DNS报文" class="headerlink" title="DNS报文"></a>DNS报文</h4><p><img src="/cn2/7.png" width="65%" height="65%"><br>查询报文、回答报文：两者格式相同</p>
 <ul>
 <li>报文首部(12 bytes)</li>
 <li>标识符(16bit)：匹配查询和回答</li>
@@ -716,12 +716,12 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>文件分发时间：Dp2p≥max{F/u<sub>s</sub>, F/d<sub>min</sub>, NF/(u<sub>s</sub>+ ∑u<sub>i</sub>)}</li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/05/5b168eccad419.png" width="50%" height="50%"><img src="https://i.loli.net/2018/06/05/5b168ec27b402.png" width="40%" height="40%"></p>
+<p><img src="/cn2/8.png" width="50%" height="50%"><img src="/cn2/9.png" width="40%" height="40%"></p>
 <h4 id="BitTorrent文件分发协议"><a href="#BitTorrent文件分发协议" class="headerlink" title="BitTorrent文件分发协议"></a>BitTorrent文件分发协议</h4><ul>
 <li>文件被分为大小为256Kb的块</li>
 <li>洪流中的端点发送和接收这些文件块</li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/05/5b1690647bcfa.png" width="40%" height="40%"></p>
+<p><img src="/cn2/10.png" width="40%" height="40%"></p>
 <ul>
 <li>请求文件块：最稀缺优先<ul>
 <li>在某一时刻：不同的端点，文件块集也不同</li>

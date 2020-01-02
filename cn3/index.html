@@ -28,7 +28,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>网络层：<strong>主机</strong>之间的逻辑通信</li>
 <li>运输层：<strong>进程</strong>之间的逻辑通信</li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/05/5b169835a9038.png" width="40%" height="40%"></p>
+<p><img src="/cn3/0.png" width="40%" height="40%"></p>
 <h4 id="运输层的服务"><a href="#运输层的服务" class="headerlink" title="运输层的服务"></a>运输层的服务</h4><ul>
 <li>可靠的、有序的交付：<code>TCP</code><ul>
 <li>面向连接的逻辑通信：握手机制</li>
@@ -49,7 +49,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 <h4 id="多路复用和多路分解"><a href="#多路复用和多路分解" class="headerlink" title="多路复用和多路分解"></a>多路复用和多路分解</h4><ul>
 <li>多路分解：将运输层报文段中的数据交付到正确的套接字</li>
-<li><p>多路复用：在源主机从不同的套接字中收集数据快，并为每个数据快封装上首部信息从而生成报文段，并将报文段传递到网络层<br><img src="https://i.loli.net/2018/06/05/5b1698361410c.png" width="60%" height="60%"></p>
+<li><p>多路复用：在源主机从不同的套接字中收集数据快，并为每个数据快封装上首部信息从而生成报文段，并将报文段传递到网络层<br><img src="/cn3/1.png" width="60%" height="60%"></p>
 </li>
 <li><p>端口：</p>
 <ul>
@@ -109,15 +109,15 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>将可靠传输的机制放在<code>应用层</code></li>
 <li>在<code>应用程序</code>中定义<code>差错控制</code>的机制</li>
 </ul>
-<h5 id="UDP报文段结构"><a href="#UDP报文段结构" class="headerlink" title="UDP报文段结构"></a>UDP报文段结构</h5><p><img src="https://i.loli.net/2018/06/06/5b17294ed150c.png" width="40%" height="40%">  </p>
+<h5 id="UDP报文段结构"><a href="#UDP报文段结构" class="headerlink" title="UDP报文段结构"></a>UDP报文段结构</h5><p><img src="/cn3/2.png" width="40%" height="40%">  </p>
 <ul>
 <li>提供差错检验: 检验和</li>
 <li>没有差错控制</li>
 <li>长度: 报文段的总长度</li>
-<li>UDP检验和的计算：<br><img src="https://i.loli.net/2018/06/06/5b17336a6347d.png" width="40%" height="40%">  </li>
+<li>UDP检验和的计算：<br><img src="/cn3/3.png" width="40%" height="40%">  </li>
 </ul>
 <h3 id="3-4-可靠传输原理"><a href="#3-4-可靠传输原理" class="headerlink" title="3.4 可靠传输原理"></a>3.4 可靠传输原理</h3><p><code>不可靠信道</code>的特点决定了可靠服务传输的复杂性<br><code>可靠数据传输</code>：为上层实体提供的服务抽象是，数据可以通过一条<code>可靠的信道</code>进行传输。借助于可靠信道，传输比特就不会受到损坏或丢失。</p>
-<p><img src="https://i.loli.net/2018/06/05/5b16a2795eb54.png" width="50%" height="50%"><img src="https://i.loli.net/2018/06/05/5b16a27ec0049.png" width="50%" height="50%"></p>
+<p><img src="/cn3/4.png" width="50%" height="50%"><img src="/cn3/5.png" width="50%" height="50%"></p>
 <ul>
 <li>过程：<ul>
 <li>逐渐引入问题，bit差错-&gt;分组丢失……</li>
@@ -222,7 +222,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<p><strong>滑动窗口</strong>(slide window)：窗口长度是固定的：N<br> <img src="https://i.loli.net/2018/06/06/5b174116e50a3.png" width="60%" height="60%"></p>
+<p><strong>滑动窗口</strong>(slide window)：窗口长度是固定的：N<br> <img src="/cn3/6.png" width="60%" height="60%"></p>
 <h5 id="选择重传SR"><a href="#选择重传SR" class="headerlink" title="选择重传SR"></a>选择重传SR</h5><p>发送方：</p>
 <ul>
 <li>发送方有缓存(滑动窗口)</li>
@@ -236,7 +236,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>接收方确认分组：<ul>
 <li><code>分组丢失—数据失序</code> 接收方：缓存失序分组，逐个确认正确收到的分组</li>
 <li><code>确认丢失—超时事件</code> 发送方重传</li>
-<li><code>分组出错—重复确认</code> 接收方重复确认，发送方可在超时之前就重传(果断处之)<br><img src="https://i.loli.net/2018/06/06/5b174858862aa.png" width="80%" height="80%"></li>
+<li><code>分组出错—重复确认</code> 接收方重复确认，发送方可在超时之前就重传(果断处之)<br><img src="/cn3/7.png" width="80%" height="80%"></li>
 </ul>
 </li>
 </ul>
@@ -281,7 +281,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/06/5b175013a695c.png" width="70%" height="70%"></p>
+<p><img src="/cn3/8.png" width="70%" height="70%"></p>
 <h5 id="TCP的确认和重传机制"><a href="#TCP的确认和重传机制" class="headerlink" title="TCP的确认和重传机制"></a>TCP的确认和重传机制</h5><ul>
 <li>流水线协议</li>
 <li>GBN和SR的混合体</li>
@@ -343,7 +343,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <p><code>指数加权移动平均(EWMA)</code> <strong>EstimatedRTT</strong> = ( 1 - &alpha; ) <em> EstimatedRTT + &alpha; </em> SampleRTT<br><code>RFC 6298</code>: &alpha; = 0.125</p>
 <p><code>估计RTT偏差</code> <strong>DevRTT</strong> = ( 1 -     &beta; ) <em> DevRTT + &beta; </em> | SampleRTT - EstimatedRTT |<br><code>RFC 6298</code>: &beta; = 0.25</p>
 <p><code>设置超时时间间隔</code> <strong>TimeoutInterval</strong> = EstimatedRTT + 4 * DevRTT</p>
-<h4 id="TCP报文段结构"><a href="#TCP报文段结构" class="headerlink" title="TCP报文段结构"></a>TCP报文段结构</h4><p><img src="https://i.loli.net/2018/06/06/5b175bfd35763.png" width="50%" height="50%">  </p>
+<h4 id="TCP报文段结构"><a href="#TCP报文段结构" class="headerlink" title="TCP报文段结构"></a>TCP报文段结构</h4><p><img src="/cn3/9.png" width="50%" height="50%">  </p>
 <ul>
 <li>源端口和目的端口(各占 2 字节)：是运输层与应用层的服务接口，实现对运输层的复用和分解。</li>
 <li>序号(4 字节)：TCP 连接中传送的数据流中的每一个字节都编上一个序号。序号字段的值则指的是<strong>本报文段所发送的数据的第一个字节的序号。</strong></li>
@@ -374,15 +374,15 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/06/5b176f56448b8.png" width="50%" height="50%">  </p>
+<p><img src="/cn3/10.png" width="50%" height="50%">  </p>
 <h4 id="TCP连接管理"><a href="#TCP连接管理" class="headerlink" title="TCP连接管理"></a>TCP连接管理</h4><p>TCP是“面向连接”的运输协议</p>
 <ul>
 <li>运输之前，要先建立“逻辑连接”</li>
 <li>初始化TCP的参数：序号、缓存</li>
 <li>客户端发起连接：Socket clientSocket = new Socket(“hostname”, “port#”);</li>
 <li>服务器端等待连接：Socket connectionSocket = welcomeSocket.accept();</li>
-<li>通过三次握手建立连接<br><img src="https://i.loli.net/2018/06/06/5b17723a41cfa.png" width="70%" height="70%">  </li>
-<li>关闭连接<br><img src="https://i.loli.net/2018/06/06/5b17712a0c33b.png" width="70%" height="70%">  </li>
+<li>通过三次握手建立连接<br><img src="/cn3/11.png" width="70%" height="70%">  </li>
+<li>关闭连接<br><img src="/cn3/12.png" width="70%" height="70%">  </li>
 </ul>
 <h3 id="3-6-拥塞控制原理"><a href="#3-6-拥塞控制原理" class="headerlink" title="3.6 拥塞控制原理"></a>3.6 拥塞控制原理</h3><h4 id="网络拥塞"><a href="#网络拥塞" class="headerlink" title="网络拥塞"></a>网络拥塞</h4><ul>
 <li>通俗地讲：由于过多的端点高速发送大量的数据，导致网络(路由器)难以胜任数据的转发</li>
@@ -458,7 +458,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>发送端的一个<strong>动态参数</strong>，用于控制发送速度，初始值为1MSS(最大报文段长度)</li>
 <li>拥塞窗口的工作机制<ul>
 <li>限制向网络中传输的数据: LastByteSent-LastByteAcked &le; cwnd</li>
-<li>TCP传输速率也是动态的<br>粗略地估计，在一个RTT内可以传输cwnd个字节: rate ≈ cwnd / RTT bytes/sec<br><img src="https://i.loli.net/2018/06/06/5b177b0688cc6.png" width="40%" height="40%"> </li>
+<li>TCP传输速率也是动态的<br>粗略地估计，在一个RTT内可以传输cwnd个字节: rate ≈ cwnd / RTT bytes/sec<br><img src="/cn3/13.png" width="40%" height="40%"> </li>
 </ul>
 </li>
 </ul>
@@ -500,7 +500,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <blockquote>
 <p>TCP拥塞控制算法(慢启动、拥塞避免和快速恢复)的完整FSM描述</p>
 </blockquote>
-<p><img src="https://i.loli.net/2018/06/06/5b178146265e4.png" width="45%" height="45%"></p>
+<p><img src="/cn3/14.png" width="45%" height="45%"></p>
 <p><strong>TCP吞吐量的宏观描述</strong><br>平均吞吐量是拥塞窗口和RTT的函数：<br>设W为丢包事件产生后的拥塞窗口大小，平均窗口大小约 3/4 W，平均吞吐量为3/4W per RTT<br>一条连接的平均吞吐量 = 0.75 * W / RTT<br><strong>经高带宽路径的TCP吞吐量</strong><br>网格和云计算需要高速的链路和吞吐量  </p>
 <p>eg. 1500Bytes报文段, 100ms RTT, 为了获得10 Gbps的吞吐率<br>设平均拥塞窗口W = 83,333Bytes<br>考虑到丢包情况的吞吐率, 设丢包率为L [Mathis 1997]:<br>一条连接的平均吞吐量 = </p>
 <blockquote>

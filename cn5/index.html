@@ -64,7 +64,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <h3 id="5-2-差错检验和纠正"><a href="#5-2-差错检验和纠正" class="headerlink" title="5.2 差错检验和纠正"></a>5.2 差错检验和纠正</h3><ul>
 <li>EDC = 差错检验和纠正比特(redundancy)</li>
 <li>D = 数据, 保护首部信息</li>
-<li>差错检验并不是100% 可靠，也有可能出现<strong>未检出比特差错</strong><br><img src="https://i.loli.net/2018/06/06/5b17b5ba7d457.png" width="60%" height="60%"> </li>
+<li>差错检验并不是100% 可靠，也有可能出现<strong>未检出比特差错</strong><br><img src="/cn5/0.png" width="60%" height="60%"> </li>
 </ul>
 <h4 id="奇偶校验"><a href="#奇偶校验" class="headerlink" title="奇偶校验"></a>奇偶校验</h4><ul>
 <li>单个奇偶校验位: 检测单个bit差错(当差错“突发”式聚集，偶数个/奇数个bit差错)</li>
@@ -104,7 +104,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 <li>广泛应用于多种链路协议(Ethernet, 802.11 WiFi, ATM)  </li>
-<li>其他用途：CRC32: 压缩文件检验 / CRC 可作为hash函数<br><img src="https://i.loli.net/2018/06/06/5b17b92459d0c.png" width="30%" height="30%"> </li>
+<li>其他用途：CRC32: 压缩文件检验 / CRC 可作为hash函数<br><img src="/cn5/1.png" width="30%" height="30%"> </li>
 </ul>
 <h2 id="5-3-多址访问协议"><a href="#5-3-多址访问协议" class="headerlink" title="5.3 多址访问协议"></a>5.3 多址访问协议</h2><h4 id="两种类型的“链路”"><a href="#两种类型的“链路”" class="headerlink" title="两种类型的“链路”:"></a>两种类型的“链路”:</h4><ul>
 <li>点对点链路：链路一端的单个发送方和另一端的单个接收方<br>eg. <code>PPP</code>：拨号接入 <code>HDLC</code>：高级数据链路控制</li>
@@ -148,7 +148,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>每个结点使用固定的频段</li>
 <li>不发送数据的结点所在的频段空闲 </li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/06/5b17bd9ab1583.png" width="60%" height="60%"> </p>
+<p><img src="/cn5/2.png" width="60%" height="60%"> </p>
 <h5 id="CDMA-码分多址访问"><a href="#CDMA-码分多址访问" class="headerlink" title="CDMA: 码分多址访问"></a>CDMA: 码分多址访问</h5><p>为每个接入的结点分配一种不同的编码。如果精心挑选这些编码，CDMA具有不同的结点能够同时传输的性质。</p>
 <blockquote>
 <p>类似：很多人之间使用不同的语言交流。</p>
@@ -171,7 +171,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li><strong>如果产生碰撞</strong>: 结点就以<strong>概率p</strong>重传帧直到成功传输完该帧</li>
 </ul>
 </li>
-<li>时隙ALOHA是<strong>高度分散</strong>的，因为每个节点检测碰撞并独立决定何时重传。<br><img src="https://i.loli.net/2018/06/06/5b17c1739ac0f.png" width="50%" height="50%"> </li>
+<li>时隙ALOHA是<strong>高度分散</strong>的，因为每个节点检测碰撞并独立决定何时重传。<br><img src="/cn5/3.png" width="50%" height="50%"> </li>
 </ul>
 <table>
 <thead>
@@ -198,7 +198,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <h5 id="纯ALOHA"><a href="#纯ALOHA" class="headerlink" title="纯ALOHA"></a>纯ALOHA</h5><ul>
 <li>非时隙Aloha: 更简单, 不需要时钟同步</li>
 <li>当帧封装好，待发送时：马上发送该帧(不需要等待到时隙的开始) </li>
-<li>增加了碰撞的概率:<br>如下图：t0时刻发送的帧与其他时刻发送的帧产生了碰撞<br><img src="https://i.loli.net/2018/06/06/5b17c173ae5a6.png" width="60%" height="60%"> </li>
+<li>增加了碰撞的概率:<br>如下图：t0时刻发送的帧与其他时刻发送的帧产生了碰撞<br><img src="/cn5/4.png" width="60%" height="60%"> </li>
 </ul>
 <h5 id="CSMA-载波监听多址访问"><a href="#CSMA-载波监听多址访问" class="headerlink" title="CSMA (载波监听多址访问)"></a>CSMA (载波监听多址访问)</h5><ul>
 <li>传输之前先监听信道:<ul>
@@ -313,7 +313,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>A收到B的响应之后，将它存入ARP表中</li>
 <li>APR是<strong>“即插即用”</strong>的协议: 结点<strong>自主创建/更新</strong>ARP表，不需网络管理员干预</li>
 </ul>
-<h4 id="跨子网的地址解析"><a href="#跨子网的地址解析" class="headerlink" title="跨子网的地址解析"></a>跨子网的地址解析</h4><p><img src="https://i.loli.net/2018/06/06/5b17c62386e2a.png" width="70%" height="70%"> </p>
+<h4 id="跨子网的地址解析"><a href="#跨子网的地址解析" class="headerlink" title="跨子网的地址解析"></a>跨子网的地址解析</h4><p><img src="/cn5/5.png" width="70%" height="70%"> </p>
 <p>如何穿过路由器<br>设：A知道B的IP地址，A知道路由器的IP地址/MAC地址(如何知道？)</p>
 <ul>
 <li>A创建IP数据报(源IP<sub>A</sub>, 目的IP<sub>B</sub>)</li>
@@ -331,7 +331,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>无线局域网<ul>
 <li>wifi: 802.11  CSMA/CA</li>
-<li>…   802.15<br><img src="https://i.loli.net/2018/06/06/5b17c7e1f289b.png" width="40%" height="70%"> </li>
+<li>…   802.15<br><img src="/cn5/6.png" width="40%" height="70%"> </li>
 </ul>
 </li>
 <li>以太网是<strong>最典型的局域网</strong></li>
@@ -342,7 +342,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<h4 id="以太网帧结构"><a href="#以太网帧结构" class="headerlink" title="以太网帧结构"></a>以太网帧结构</h4><p><img src="https://i.loli.net/2018/06/06/5b17c910ac45a.png" width="60%" height="70%"> </p>
+<h4 id="以太网帧结构"><a href="#以太网帧结构" class="headerlink" title="以太网帧结构"></a>以太网帧结构</h4><p><img src="/cn5/7.png" width="60%" height="70%"> </p>
 <ul>
 <li>前同步码: 共8个字节<ul>
 <li>前七个字节都为：10101010, 最后一个字节为：10101011</li>

@@ -29,7 +29,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <h4 id="分组转发和路由选择"><a href="#分组转发和路由选择" class="headerlink" title="分组转发和路由选择"></a>分组转发和路由选择</h4><ul>
 <li>网络的两个主要功能<ul>
 <li><strong>分组转发</strong>：分组到达路由器的输入链路，路由器将分组移动到正确的输出链路</li>
-<li><strong>路由选择</strong>：确定分组的路径<br><img src="https://i.loli.net/2018/06/06/5b17832ee7016.png" width="40%" height="40%"></li>
+<li><strong>路由选择</strong>：确定分组的路径<br><img src="/cn4/0.png" width="40%" height="40%"></li>
 <li>(第三个功能 可选)<strong>建立连接</strong>  </li>
 <li>在某些网络体系中存在连接:ATM (异步传输模式), 帧中继, MPLS</li>
 <li>在交付数据报之前，要建立虚拟的连接：主机和路由器都参与连接</li>
@@ -138,9 +138,9 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </table>
 <h4 id="数据报网络"><a href="#数据报网络" class="headerlink" title="数据报网络"></a>数据报网络</h4><h3 id="4-3-路由器的工作原理"><a href="#4-3-路由器的工作原理" class="headerlink" title="4.3 路由器的工作原理"></a>4.3 路由器的工作原理</h3><h4 id="路由器的体系结构"><a href="#路由器的体系结构" class="headerlink" title="路由器的体系结构"></a>路由器的体系结构</h4><ul>
 <li>两个主要功能：分组转发、路由选择  </li>
-<li>四个主要构件：输入、输出端口；路由选择处理器、交换结构<br><img src="https://i.loli.net/2018/06/06/5b178cfd397cf.png" width="50%" height="50%"> </li>
+<li>四个主要构件：输入、输出端口；路由选择处理器、交换结构<br><img src="/cn4/1.png" width="50%" height="50%"> </li>
 </ul>
-<h4 id="输入端口"><a href="#输入端口" class="headerlink" title="输入端口"></a>输入端口</h4><p><img src="https://i.loli.net/2018/06/06/5b178cfd3210b.png" width="50%" height="50%"> </p>
+<h4 id="输入端口"><a href="#输入端口" class="headerlink" title="输入端口"></a>输入端口</h4><p><img src="/cn4/2.png" width="50%" height="50%"> </p>
 <ul>
 <li>链路终端：物理层，Bit信号接收</li>
 <li>链路层协议接收端：数据链路层，e.g.以太网 参见第5章</li>
@@ -156,15 +156,15 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>交换速度: rate at which packets can be transfer from inputs to outputs</li>
 <li>三种类型的交换结构：经内存交换、经总线交换、经互联网络交换</li>
 </ul>
-<h4 id="输出端口"><a href="#输出端口" class="headerlink" title="输出端口"></a>输出端口</h4><p><img src="https://i.loli.net/2018/06/06/5b178cfd2f6ec.png" width="50%" height="50%"> </p>
+<h4 id="输出端口"><a href="#输出端口" class="headerlink" title="输出端口"></a>输出端口</h4><p><img src="/cn4/3.png" width="50%" height="50%"> </p>
 <blockquote>
 <p>缓存：输入速度大于输出时，将分组缓存/排队</p>
 </blockquote>
-<h3 id="4-4-IP-网际协议"><a href="#4-4-IP-网际协议" class="headerlink" title="4.4 IP:网际协议"></a>4.4 IP:网际协议</h3><p><img src="https://i.loli.net/2018/06/06/5b178f1377a25.png" width="50%" height="50%"> </p>
+<h3 id="4-4-IP-网际协议"><a href="#4-4-IP-网际协议" class="headerlink" title="4.4 IP:网际协议"></a>4.4 IP:网际协议</h3><p><img src="/cn4/4.png" width="50%" height="50%"> </p>
 <h4 id="IP数据报格式"><a href="#IP数据报格式" class="headerlink" title="IP数据报格式"></a>IP数据报格式</h4><ul>
 <li>网络层IP数据报：<ul>
 <li>可封装为运输层的报文段(帧)：为上层提供服务 TCP/UDP</li>
-<li>可封装<strong>ICMP</strong>控制报文—工作在<strong>网络层</strong><br><img src="https://i.loli.net/2018/06/06/5b1790cb0ea40.png" width="60%" height="60%"> </li>
+<li>可封装<strong>ICMP</strong>控制报文—工作在<strong>网络层</strong><br><img src="/cn4/5.png" width="60%" height="60%"> </li>
 </ul>
 </li>
 <li>版本(4 bits)：IP协议的版本号(4 或 6)，不同版本的IP数据报首部字段不同，路由器能确定如何解释剩余字段</li>
@@ -220,7 +220,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>子网划分方法:使用<strong>路由器的端口</strong>将网络划分成独立的”孤岛”，每个”孤岛”为一个子网</li>
 <li>子网掩码：/24记法 前24bit是子网标识，置为1。<br>子网掩码: 255.255.255.<strong>0</strong><br>aka: 11111111 11111111 11111111 <strong>00000000</strong></li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/06/5b17979878a32.png" width="30%" height="30%"> </p>
+<p><img src="/cn4/6.png" width="30%" height="30%"> </p>
 <h5 id="子网划分方法-CIDR"><a href="#子网划分方法-CIDR" class="headerlink" title="子网划分方法 CIDR"></a>子网划分方法 CIDR</h5><ul>
 <li>(旧)分类编址：IP地址分为四类，根据规模划分子网<ul>
 <li>A：0.0.0.0-127.0.0.0，126个网络× 16777214个地址</li>
@@ -266,7 +266,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>内网的结构被屏蔽(出于安全的考虑)</li>
 </ul>
 </li>
-<li>NAT的实现: 端口/地址映射，NAT路由器上的一张<strong>NAT转换表</strong><br><img src="https://i.loli.net/2018/06/06/5b179ecc1c356.png" width="70%" height="70%"> </li>
+<li>NAT的实现: 端口/地址映射，NAT路由器上的一张<strong>NAT转换表</strong><br><img src="/cn4/7.png" width="70%" height="70%"> </li>
 <li>NAT的争议<ul>
 <li>优势：有效解决IPv4地址空间的问题</li>
 <li>问题：IETF对NAT提出了质疑<ul>
@@ -308,7 +308,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<h5 id="IPv6-数据报格式"><a href="#IPv6-数据报格式" class="headerlink" title="IPv6 数据报格式"></a>IPv6 数据报格式</h5><p><img src="https://i.loli.net/2018/06/06/5b17a3609039c.png" width="50%" height="50%"> </p>
+<h5 id="IPv6-数据报格式"><a href="#IPv6-数据报格式" class="headerlink" title="IPv6 数据报格式"></a>IPv6 数据报格式</h5><p><img src="/cn4/8.png" width="50%" height="50%"> </p>
 <ul>
 <li>版本：6</li>
 <li>流量类型：同IPv4的服务类型</li>
