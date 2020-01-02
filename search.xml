@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>C语言-考研专业课笔记</title>
+      <link href="/cky/"/>
+      <url>/cky/</url>
+      
+        <content type="html"><![CDATA[<h4 id="19年"><a href="#19年" class="headerlink" title="19年"></a>19年</h4><p><strong>选择</strong></p><ol><li>已知float a; int b=1; 执行语句”a=b++/3”后，变量a的值是 _D_<br>A) 2/3        B) 1            C) 1/3            D) 0</li></ol><ul><li><p>考点：不同数据类型间的混合运算[<strong>自动转换</strong>/强制转换]</p><ul><li>两个int型相除，不管是否有余数，结果都为整型。</li><li>+. -. * . /运算的两个数中有一个数为float或double型，结果是double型，因为系统将所有float型数据都先转换为double型，然后进行运算。</li><li>char型与int型数据进行运算，是把字符的ASCII码与整型数据进行运算。</li></ul><a id="more"></a></li></ul><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">float</span> a; <span class="keyword">int</span> b=<span class="number">1</span>;</span><br><span class="line"> a=b++/<span class="number">3</span>;        输出为<span class="number">0.000000</span> -&gt; 等价于a=(<span class="keyword">float</span>)(b++/<span class="number">3</span>);</span><br><span class="line"> a=b++/<span class="number">3.0</span>;      输出为<span class="number">0.333333</span></span><br><span class="line"> a=(<span class="keyword">float</span>)b++/<span class="number">3</span>; 输出为<span class="number">0.333333</span></span><br></pre></td></tr></table></figure><ol start="2"><li>表达式8 / 4 <em> (int)2.5 / (int)(1.25 </em> (3.7+2.3)) 值的数据类型为 _A_<br>A) int        B) float        C) double        D) 不确定</li></ol><ul><li>考点：不同数据类型间的混合运算[自动转换/<strong>强制转换</strong>]<ul><li>(int)(表达式) 表示将括号内的表达式的数据类型<strong>强制转换</strong>为int型。</li><li>两个int型相除，不管是否有余数，结果都为整型。</li></ul></li></ul><ol start="3"><li>以下描述中正确的是 _C_  (但其实4个选项都不对系列)<br>A) 由于do-while循环中循环语句只能是一条可执行语句，所以循环体内不能使用复合语句。<br>B) do-while循环由do开始，用while结束，在while(表达式)后面不能写分号<br>C) 在do-while循环体中，一定要有能使while后面表达式的值变为零(“假”)的操作<br>D) do-while循环中，根据情况可以省略while</li></ol><ul><li>考点：do-while循环的使用<ul><li>A 循环体内可以使用复合语句</li><li>B do-while在while(表达式)后面必须写分号</li><li>C 只要循环体内有break即可，不在乎表达式的内容。[只能勉强选了]</li><li>D do-while循环是一个整体，不能省略while</li></ul></li></ul><ol start="4"><li>为了判断两个字符串s1和s2是否相等，应当使用 _D_<br>A) if(s1==s2)                B) if(s1=s2)<br>C) if(strcpy(s1, s2))        D) if(strcmp(s1, s2)==0)</li></ol><ul><li>考点：字符串处理函数</li></ul><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">puts</span>(str);输出字符串</span><br><span class="line">gets(str);输入字符串</span><br><span class="line"><span class="built_in">strcat</span>(str1, str2);将str2放到str1后面，str1的<span class="string">'\0'</span>取消[str1足够大]</span><br><span class="line"><span class="built_in">strcpy</span>(str1, str2);字符数组无赋值语句，用字符串复制函数</span><br><span class="line"><span class="built_in">strncpy</span>(str1, str2, n);将str2的前n个字符复制到str1中去</span><br><span class="line"><span class="built_in">strcmp</span>(str1,str2);自左向右比较两字符串直到出现不同或遇到<span class="string">'\0'</span></span><br><span class="line">        比较的是同位置的字符ascii值大小，返回正，<span class="number">0</span>，负。</span><br><span class="line"><span class="built_in">strlen</span>(str);返回str数组长度(不包括<span class="string">'\0'</span>在内)</span><br><span class="line">strlwr(str);将str中大写字母换成小写字母</span><br><span class="line">strupr(str);将str中小写字母换成大写字母</span><br></pre></td></tr></table></figure><ol start="5"><li>下面程序片段（字符串内没有空格字符）的输出结果是 _C_<br>printf(“%d\n”, strlen(“ATS\n012\’\“));<br>A) 11        B) 10        C) 9            D) 8</li></ol><ul><li>转义字符：</li></ul><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="string">'\0'</span>表示空字符<span class="string">'\\'</span>表示字符 \</span><br><span class="line"><span class="string">'\a'</span>警告<span class="string">'\''</span>表示字符 '</span><br><span class="line"><span class="string">'\r'</span>回车<span class="string">'\n'</span>换行</span><br></pre></td></tr></table></figure><ol start="6"><li>下列程序是求1到100的累加和，其中有1个不能够完成规定的功能，是 _B_</li></ol><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">A) <span class="keyword">int</span> s=<span class="number">0</span>,i=<span class="number">1</span>;B) <span class="keyword">int</span> s=<span class="number">0</span>,i=<span class="number">1</span>;</span><br><span class="line"> <span class="keyword">while</span>(i&lt;=<span class="number">100</span>)s+=i++;   <span class="keyword">while</span>(i++&lt;<span class="number">100</span>)s+=i;</span><br><span class="line">C) <span class="keyword">int</span> s=<span class="number">0</span>,i=<span class="number">0</span>;D) <span class="keyword">int</span> s=<span class="number">0</span>,i=<span class="number">0</span>;</span><br><span class="line"> <span class="keyword">while</span>(i&lt;<span class="number">100</span>) s+=++i;   <span class="keyword">while</span>(++i&lt;=<span class="number">100</span>)s+=i;</span><br></pre></td></tr></table></figure><ul><li>考点：while循环的流程+前缀/后缀自加<br>判断第一次循环s累加的值是否为1以及最后一次循环s累加的值是否为100即可。<br>对选项B：第一次循环 s累加为2 错误</li></ul><ol start="7"><li>根据C语言规定，可知以下不正确的说法是 _B_<br>A) 实参可以是常量、变量或表达式         B) 形参可以是常量、变量或表达式<br>C) 实参可以为任意类型                D) 形参应与其对应的实参类型一致</li></ol><ul><li>考点：实参与形参的区别与联系<br>实参可以是常量、变量、表达式或函数等，但是形参只能是变量。</li></ul><ol start="8"><li>若有以下说明语句，其中只有(    )能获取到c数组的元素的值<br>int c[ 4 ] [ 5 ], (<em> p)[5];<br>p=c;<br>A) p+1        B) </em> (p+3)     C) <em> (p+1)+3        D) </em> ( * p+2) </li></ol><ul><li>考点：数组指针(行指针)与二维数组<ul><li>p是一个指针，指向一个整型的一维数组，这个一维数组的长度是5，也可以说是p的步长。也就是说执行p+1时，p要跨过5个整型数据的长度。</li><li>间接访问：指针变量存放变量i的地址，通过指针找到变量i的地址从而访问变量i。</li><li><strong>指针不等于指针变量。</strong>一个变量的地址称为该变量的指针，指针变量是存放地址的<strong>变量</strong>。</li><li>在二维数组c[ 4 ] [ 5 ]中，<strong>c[0]，c[1]，c[2]，c[3]被看作一维数组名</strong>，即指向对应行首元素的指针。</li><li>‘ &amp; ‘是取地址符号，取得某一个变量的地址；如：&amp;a</li><li>‘ * ‘ 是指针运算符，可以表示一个变量是指针类型；也可以表示一个指针变量的所指向的存储单元，获取某个地址存储的值。<br><img src="/cky/Users/yi/Desktop/0.jpg" width="40%" height="80%"> </li></ul></li></ul><p>A：p+1是指向c[1]的指针。c[1]本身又是指向c[ 1 ] [ 0 ]的指针，存放的是c[ 1 ] [ 0 ]的地址。<em> (p+1)可以获得c[1]的值即&amp;c[ 1 ] [ 0 ]，</em> (  <em> (p+1))即为c[ 1 ] [ 0 ]的值。<br>B：</em> (p+3) 是指向c[3]指针，c[1]本身又是指向c[ 1 ] [ 0 ]的指针，等价于&amp;c[ 3 ] [ 0 ]。<br>C：<em> (p+1) + 3是指向第二行的第4个元素的指针，值为c[ 1 ] [ 3 ] 的地址，等价于&amp;c [ 1 ] [ 3 ]。<br>D：</em> ( * p+2)是对c[ 0 ] [ 2]的引用，等价于c[ 0 ] [ 2 ]。</p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> c[<span class="number">4</span>][<span class="number">5</span>]=&#123;&#123;<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>&#125;,&#123;<span class="number">21</span>,<span class="number">22</span>,<span class="number">23</span>,<span class="number">24</span>,<span class="number">25</span>&#125;,  &#123;<span class="number">31</span>,<span class="number">32</span>,<span class="number">33</span>,<span class="number">34</span>,<span class="number">35</span>&#125;,&#123;<span class="number">41</span>,<span class="number">42</span>,<span class="number">43</span>,<span class="number">44</span>,<span class="number">45</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">int</span> (*p)[<span class="number">5</span>];</span><br><span class="line">p=c;    将c的首元素地址c[<span class="number">0</span>][<span class="number">0</span>]赋值给p</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *(*(p+<span class="number">1</span>)));  输出<span class="number">21</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *(*(p+<span class="number">3</span>)));输出<span class="number">41</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *(*(p+<span class="number">1</span>)+<span class="number">3</span>)); 输出<span class="number">24</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *(*p+<span class="number">2</span>));输出<span class="number">13</span></span><br></pre></td></tr></table></figure><ol start="9"><li>下列程序的输出结果是 _A_</li></ol><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">char</span> *s1=<span class="string">"ABCdEf"</span>, *s2=<span class="string">"aB"</span>;</span><br><span class="line">s1++;s2++;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,<span class="built_in">strcmp</span>(s1,s2));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>A) 正数        B) 负数         C) 零        D) 不确定的值 </p><ul><li>考点：字符串处理函数与大小写字母Ascii值关系<br>strcmp(s1,s2)，由于s1++;s2++，从s1和s2的第二个字符开始:<br>‘B’ - ‘B’=0 -&gt; ‘C’-‘\0’ = 67 - 0 = 67<br>输出结果为67</li></ul><ol start="10"><li>以下scanf函数调用语句中对结构体变量成员的不正确引用是 _D_ </li></ol><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pupll</span>&#123;</span></span><br><span class="line"><span class="keyword">char</span> name[<span class="number">20</span>];<span class="keyword">int</span> age; <span class="keyword">int</span> sex;</span><br><span class="line">&#125;pup[<span class="number">5</span>],*p;</span><br><span class="line">p=pup;</span><br></pre></td></tr></table></figure><p>A) sancf(“%s”, pup[0].name)     B) scanf(“%d”, &amp;pup[0].age)<br>C)scanf(“%d”, &amp;(p-&gt;sex));        D)scanf(“%d”, p-&gt;age) </p><ul><li>考点：结构体变量 / 结构体数组 的初始化与引用 P297<pre><code>指向结构体的指针 P303</code></pre><ul><li>“ . “运算符是成员运算符，它在所有运算符中优先级最高。<br>A. pup[0].name表示：结构体数组pup的第一个元素的name成员。name为表示姓名的一维字符数组名，也就是指向该数组的首元素的指针，所以不用+’&amp;’ √<br>B. pup[0].age，由于age是整数型，因此使用scanf输入需要在前面+’&amp;’ √<br>C. p为指向pup[0]的结构体指针，即p等于&amp;pup[0]等于pup，p-&gt;sex表示结构体数组pup中第一个元素sex成员，pup[0].sex的地址需要在前面+’&amp;’ √<br>D. 与C选项类似，需要在p-&gt;age的前面+’&amp;’ ，本身就是pup[0].age。 ×</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件工程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> note </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SQL-考研专业课笔记</title>
       <link href="/sqlky/"/>
       <url>/sqlky/</url>
@@ -1414,6 +1439,17 @@
     
     
     <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[<ul><li>前端</li><li>计算机基础<ul><li>计算机网络</li><li>操作系统</li></ul></li><li>软件工程</li><li>编程语言</li><li>大数据分析</li><li>Mac OS X</li><li>DAIの日常</li><li>DAIの折腾</li><li>DAIの实验室</li></ul>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>List</title>
       <link href="/list/index.html"/>
       <url>/list/index.html</url>
@@ -1430,17 +1466,6 @@
       <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[<ul><li>note</li><li>hexo</li><li>Typecho</li><li>Web</li><li>机器学习</li><li>图形学</li><li>杂念</li><li>配置环境</li><li>leetcode</li><li>hadoop</li><li>大数据</li><li>Docker</li><li>hive</li></ul>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[<ul><li>前端</li><li>计算机基础<ul><li>计算机网络</li><li>操作系统</li></ul></li><li>软件工程</li><li>编程语言</li><li>大数据分析</li><li>Mac OS X</li><li>DAIの日常</li><li>DAIの折腾</li><li>DAIの实验室</li></ul>]]></content>
       
     </entry>
     
