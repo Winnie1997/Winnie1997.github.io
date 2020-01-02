@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://daisine.github.io/sqlky/</loc>
+    
+    <lastmod>2020-01-02T11:58:58.004Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://daisine.github.io/cky/</loc>
     
-    <lastmod>2020-01-02T11:46:23.206Z</lastmod>
+    <lastmod>2020-01-02T11:53:55.954Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>https://daisine.github.io/to-be-continued/</loc>
     
     <lastmod>2020-01-02T11:31:44.538Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://daisine.github.io/sqlky/</loc>
-    
-    <lastmod>2020-01-02T11:11:24.079Z</lastmod>
     
   </url>
   
