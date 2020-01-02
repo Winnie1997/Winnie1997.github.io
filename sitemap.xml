@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://daisine.github.io/cn1/</loc>
+    
+    <lastmod>2020-01-02T07:26:14.487Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://daisine.github.io/to-be-continued/</loc>
     
     <lastmod>2020-01-02T06:30:55.765Z</lastmod>
@@ -229,13 +236,6 @@
     <loc>https://daisine.github.io/sql03/</loc>
     
     <lastmod>2019-05-10T11:01:33.411Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://daisine.github.io/cn1/</loc>
-    
-    <lastmod>2019-05-10T11:00:56.258Z</lastmod>
     
   </url>
   
