@@ -27,7 +27,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>由CPU区间开始- I/O 区间 -..-最后的CPU区间通过系统请求终止执行。</li>
 </ul>
 </li>
-<li>CPU区间时间曲线图：通常为指数/超指数形式，具有大量短CPU区间和少量长CPU区间。<br><img src="https://i.loli.net/2018/06/18/5b274fd5857b6.png" width="35%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b2750265b65e.png" width="55%" height="80%"> </li>
+<li>CPU区间时间曲线图：通常为指数/超指数形式，具有大量短CPU区间和少量长CPU区间。<br><img src="/os6/0.png" width="35%" height="80%"><br><img src="/os6/1.png" width="55%" height="80%"> </li>
 </ul>
 <h5 id="CPU调度程序"><a href="#CPU调度程序" class="headerlink" title="CPU调度程序"></a>CPU调度程序</h5><ul>
 <li>每当CPU空闲时，操作系统就必须从就绪队列中选择一个进程来执行。晋城选择由<strong>短期调度程序</strong>或CPU调度程序来执行。</li>
@@ -52,7 +52,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>先请求CPU的进程先分配CPU</li>
 <li>非抢占：一旦CPU被分配给了一个进程，该进程就会保持CPU直到释放CPU位置。  </li>
 <li>1 - 2 - 3进程等待时间: P1 = 0; P2 = 24; P3 = 27; 平均等待时间: (0 + 24 + 27) / 3 = 17 </li>
-<li>2 - 3 - 1进程等待时间: P1 = 6; P2 = 0; P3 = 3; 平均等待时间: (6 + 0 + 3) / 3 = 3<br><img src="https://i.loli.net/2018/06/18/5b27443f91882.png" width="35%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b274417bceb8.png" width="49%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b274425dba0b.png" width="49%" height="80%"></li>
+<li>2 - 3 - 1进程等待时间: P1 = 6; P2 = 0; P3 = 3; 平均等待时间: (6 + 0 + 3) / 3 = 3<br><img src="/os6/2.png" width="35%" height="80%"><br><img src="/os6/3.png" width="49%" height="80%"><br><img src="/os6/4.png" width="49%" height="80%"></li>
 </ul>
 <h5 id="最短作业优先调度-SJF"><a href="#最短作业优先调度-SJF" class="headerlink" title="最短作业优先调度(SJF)"></a>最短作业优先调度(SJF)</h5><ul>
 <li>将每个进程与其下一个CPU区间段相关联。当CPU为空闲时，它会赋给具有最短CPU区间的进程。</li>
@@ -64,12 +64,12 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/18/5b2750dbb6036.png" width="25%" height="80%">   <img src="https://i.loli.net/2018/06/18/5b2750cd7f5a5.png" width="35%" height="80%"><img src="https://i.loli.net/2018/06/18/5b2750d34e6ca.png" width="35%" height="80%"></p>
+<p><img src="/os6/5.png" width="25%" height="80%">   <img src="/os6/6.png" width="35%" height="80%"><img src="/os6/7.png" width="35%" height="80%"></p>
 <h5 id="优先级调度"><a href="#优先级调度" class="headerlink" title="优先级调度"></a>优先级调度</h5><ul>
 <li>每一个进程都有一个优先级与其关联。具有最高优先级的进程会分配到CPU。</li>
 <li>优先级通常为固定区间的数字。此处用小数字表示高优先级。</li>
 <li>SJF算法是优先级调度的一个特例，其优先级为下一个CPU区间的倒数。CPU区间越大，优先级越小。</li>
-<li>优先级调度可以是抢占或非抢占的<br><img src="https://i.loli.net/2018/06/18/5b2754621eca0.png" width="35%" height="80%"><img src="https://i.loli.net/2018/06/18/5b27545d3e4a1.png" width="50%" height="80%"></li>
+<li>优先级调度可以是抢占或非抢占的<br><img src="/os6/8.png" width="35%" height="80%"><img src="/os6/9.png" width="50%" height="80%"></li>
 <li>存在的问题<ol>
 <li>饥饿/无穷阻塞：低优先级进程可能永远不会执行。</li>
 <li>优先级反转：高优先级进程需要访问资源，被另一个优先级较低的进程持有，该低优先级进程不运行则不释放资源。</li>
@@ -99,13 +99,13 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>就绪队列被分成多个独立队列。</li>
 <li>根据进程的属性，如内存大小、进程优先级、进程类型etc，一个进程被永久地分配到一个队列。</li>
 <li>每个队列有自己的调度算法<ul>
-<li>eg. 前台队列（用于交互式进程）使用RR算法调度，后台队列（用于批处理）使用FCFS算法调度。<br><img src="https://i.loli.net/2018/06/18/5b275848a05ce.png" width="40%" height="80%"></li>
+<li>eg. 前台队列（用于交互式进程）使用RR算法调度，后台队列（用于批处理）使用FCFS算法调度。<br><img src="/os6/10.png" width="40%" height="80%"></li>
 </ul>
 </li>
 </ul>
 <h5 id="多级反馈队列调度"><a href="#多级反馈队列调度" class="headerlink" title="多级反馈队列调度"></a>多级反馈队列调度</h5><ul>
 <li>一个进程可以在各个队列之间移动。<ul>
-<li>eg. 如果进程使用过多CPU时间，那么它就被转移到更低优先级队列。<br><img src="https://i.loli.net/2018/06/18/5b2758db6dfa5.png" width="40%" height="80%"></li>
+<li>eg. 如果进程使用过多CPU时间，那么它就被转移到更低优先级队列。<br><img src="/os6/11.png" width="40%" height="80%"></li>
 </ul>
 </li>
 </ul>

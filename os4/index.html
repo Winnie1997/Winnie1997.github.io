@@ -28,7 +28,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>当前活动：通过程序计数器的值和处理器寄存器的内容表示</li>
 <li><strong>堆栈段</strong>：包含临时数据，如函数参数，返回地址和局部变量 </li>
 <li>(如果需要的话)<strong>堆</strong>：进程运行期间动态地分配内存</li>
-<li>许多其他资源，如打开的文件等<br><img src="https://i.loli.net/2018/06/17/5b260aa24cf1d.png" width="50%" height="80%"></li>
+<li>许多其他资源，如打开的文件等<br><img src="/os4/0.png" width="50%" height="80%"></li>
 </ul>
 </li>
 <li>程序只是被动实体，如存储在磁盘上包含一系列指令的文件内容(可执行文件)</li>
@@ -45,13 +45,13 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>终止：进程完成执行。</li>
 </ul>
 </li>
-<li>随着进程的运行，它将从当前状态转换到另一个状态。这五个状态中有六个过渡。<br><img src="https://i.loli.net/2018/06/17/5b26104f11cf7.png" width="80%" height="80%"></li>
+<li>随着进程的运行，它将从当前状态转换到另一个状态。这五个状态中有六个过渡。<br><img src="/os4/1.png" width="80%" height="80%"></li>
 </ul>
 <h4 id="进程块"><a href="#进程块" class="headerlink" title="进程块"></a>进程块</h4><ul>
 <li>每个进程在操作系统中由过程控制块（PCB）表示，也称为任务控制块。<ol>
 <li>进程号是进程的唯一标识符，也称为PID。</li>
 <li>程序计数器（PC）：是寄存器之一。</li>
-<li>CPU调度信息：包括<strong>进程的优先级</strong>、调度队列的指针和其它调度参数。<br><img src="https://i.loli.net/2018/06/17/5b2610656be5b.png" width="30%" height="80%"></li>
+<li>CPU调度信息：包括<strong>进程的优先级</strong>、调度队列的指针和其它调度参数。<br><img src="/os4/2.png" width="30%" height="80%"></li>
 </ol>
 </li>
 </ul>
@@ -65,7 +65,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <h5 id="调度队列"><a href="#调度队列" class="headerlink" title="调度队列"></a>调度队列</h5><ul>
 <li>作业队列：由系统中的所有进程组成;</li>
 <li>就绪队列：由等待CPU执行的进程组成;<br>-操作系统也有其他队列。<ul>
-<li>I/O 设备队列：由等待特定 I/O设备的进程组成。<br><img src="https://i.loli.net/2018/06/17/5b2613f4c3e27.png" width="75%" height="80%"><br><img src="https://i.loli.net/2018/06/17/5b2614aca2536.png" width="75%" height="80%"></li>
+<li>I/O 设备队列：由等待特定 I/O设备的进程组成。<br><img src="/os4/3.png" width="75%" height="80%"><br><img src="/os4/4.png" width="75%" height="80%"></li>
 </ul>
 </li>
 </ul>

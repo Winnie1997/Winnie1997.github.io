@@ -44,7 +44,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>中断向量（Interrupt vector）是中断服务程序的入口地址，或中断向量表的下标，中断服务程序的入口地址存放在该数组中。<ul>
 <li>计算机系统为每个设备分配一个唯一的<strong><code>中断请求号</code></strong>（例如，一个8-bit整数），简称<strong><code>IRQ</code></strong>。</li>
 <li>中断向量表中存有所有ISR的地址。它是一个地址的数组。</li>
-<li>在服务中断时，CPU使用<strong>IRQ</strong>(中断请求号)来<strong>索引中断向量</strong>，以获取ISR的地址并跳转到它。<br><img src="https://i.loli.net/2018/06/17/5b25d57c9fb57.png" width="80%" height="40%"> </li>
+<li>在服务中断时，CPU使用<strong>IRQ</strong>(中断请求号)来<strong>索引中断向量</strong>，以获取ISR的地址并跳转到它。<br><img src="/os2/0.png" width="80%" height="40%"> </li>
 </ul>
 </li>
 </ul>
@@ -56,7 +56,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <h4 id="I-O结构"><a href="#I-O结构" class="headerlink" title="I/O结构"></a>I/O结构</h4><ul>
 <li>当CPU使用外围设备进行 I/O 时，有两种方法可用：<ul>
 <li>同步 I/O ：I/O 操作开始，等待 I/O 操作完成时将控制返回给用户进程。</li>
-<li>异步 I/O ：并不等待输入输出结束，而是直接将控制返回给用户程序。<br><img src="https://i.loli.net/2018/06/17/5b25dac98ff90.png" width="80%" height="40%"> </li>
+<li>异步 I/O ：并不等待输入输出结束，而是直接将控制返回给用户程序。<br><img src="/os2/1.png" width="80%" height="40%"> </li>
 </ul>
 </li>
 <li>(外围)设备控制器中的寄存器被称为 <strong>I/O 端口</strong><ul>
@@ -122,7 +122,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 <li>INTEL IA-32支持4种工作模式，命名为保护环。<ul>
-<li>但是，运行在IA-32上的大多数操作系统只使用4个中的2个。环0为监视模式，环3为用户模式。<br><img src="https://i.loli.net/2018/06/17/5b25e64b601a8.png" width="70%" height="40%"> </li>
+<li>但是，运行在IA-32上的大多数操作系统只使用4个中的2个。环0为监视模式，环3为用户模式。<br><img src="/os2/2.png" width="70%" height="40%"> </li>
 </ul>
 </li>
 </ul>
@@ -142,7 +142,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li><strong>界限地址寄存器</strong>：保存地址范围的大小。</li>
 </ul>
 </li>
-<li>见内存管理章节<br><img src="https://i.loli.net/2018/06/17/5b25e8e5bc99d.png" width="80%" height="80%"> </li>
+<li>见内存管理章节<br><img src="/os2/3.png" width="80%" height="80%"> </li>
 </ul>
 <h5 id="4-CPU保护"><a href="#4-CPU保护" class="headerlink" title="4. CPU保护"></a>4. CPU保护</h5><ul>
 <li>操作系统只有在有机会运行时才能执行一种策略。<ul>
@@ -159,7 +159,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>当计数器寄存器达到0时，定时器将中断CPU。</li>
 <li>然后，计数器寄存器将重新加载<code>保持寄存器</code>的值并重复递减的步骤。</li>
 <li>示例：IBM-PC中的计时器<ul>
-<li>具有16位计数器和保持寄存器和脉冲的INTEL i8253可编程间隔定时器达到1193182Hz。<br><img src="https://i.loli.net/2018/06/17/5b25f4b3a9c3e.png" width="90%" height="80%"> </li>
+<li>具有16位计数器和保持寄存器和脉冲的INTEL i8253可编程间隔定时器达到1193182Hz。<br><img src="/os2/4.png" width="90%" height="80%"> </li>
 </ul>
 </li>
 </ul>
@@ -174,16 +174,16 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <h5 id="系统调用v-s-库函数"><a href="#系统调用v-s-库函数" class="headerlink" title="系统调用v.s.库函数"></a>系统调用v.s.库函数</h5><ul>
 <li>系统调用会<strong>陷入OS内核</strong>;而库函数没有。所以，<strong>系统调用比库函数慢得多</strong>。</li>
 <li>库函数与用户定义的函数相同。用户可以用自己的版本替换现有的库函数，而系统调用则不能替换。</li>
-<li>一个操作系统中的系统调用可能会成为另一个操作系统中的库函数，反之亦然。<br><img src="https://i.loli.net/2018/06/17/5b25fe9f393cb.png" width="60%" height="60%"> </li>
+<li>一个操作系统中的系统调用可能会成为另一个操作系统中的库函数，反之亦然。<br><img src="/os2/5.png" width="60%" height="60%"> </li>
 </ul>
-<h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h4><p><img src="https://i.loli.net/2018/06/17/5b25f6b86d9dd.png" width="60%" height="80%"> </p>
+<h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h4><p><img src="/os2/6.png" width="60%" height="80%"> </p>
 <ul>
 <li>1 - 3 准备参数；</li>
 <li>4 调用系统调用的包装器（用汇编语言编写）；</li>
 <li>5 将读取的<strong>系统调用号</strong>存储到寄存器中；</li>
 <li>6 陷入操作系统；</li>
 <li>7 通过使用<strong>系统调用号</strong>索引<strong>系统调用表</strong>获取<strong>系统调用服务程序</strong>以进行读取；</li>
-<li>8 - 11 系统调用服务程序运行，并在完成时返回到用户程序。<br><img src="https://i.loli.net/2018/06/17/5b25fc997f84d.png" width="50%" height="80%"> </li>
+<li>8 - 11 系统调用服务程序运行，并在完成时返回到用户程序。<br><img src="/os2/7.png" width="50%" height="80%"> </li>
 <li>这里的驻留监视器（或简单的监视器）意味着操作系统</li>
 <li>n是系统调用号。</li>
 </ul>

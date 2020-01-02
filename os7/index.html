@@ -19,7 +19,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li><p>对生产者和消费者问题的解决方案：允许同时在缓冲区内最多只有（BSIZE - 1）项。</p>
 <a id="more"></a>
 </li>
-<li><p>假设我们通过添加一个变量计数器来修改代码。<br><img src="https://i.loli.net/2018/06/18/5b275da7bfa0f.png" width="40%" height="80%"><img src="https://i.loli.net/2018/06/18/5b275daa58ac3.png" width="45%" height="80%"></p>
+<li><p>假设我们通过添加一个变量计数器来修改代码。<br><img src="/os7/0.png" width="40%" height="80%"><img src="/os7/1.png" width="45%" height="80%"></p>
 </li>
 <li>需要注意的是，可能由于这两个进程并发操作变量counter，而得到不正确的运行结果。</li>
 <li><strong><code>竞争条件</code></strong>：多个进程并发地访问和操作同一数据且执行结果与访问发生的特定顺序有关。<ul>
@@ -43,7 +43,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 </ul>
-<h4 id="Peterson算法"><a href="#Peterson算法" class="headerlink" title="Peterson算法"></a>Peterson算法</h4><p><img src="https://i.loli.net/2018/06/18/5b2765a247934.png" width="45%" height="80%"></p>
+<h4 id="Peterson算法"><a href="#Peterson算法" class="headerlink" title="Peterson算法"></a>Peterson算法</h4><p><img src="/os7/2.png" width="45%" height="80%"></p>
 <blockquote>
 <p>First &amp; Second try都不满足“前进”这个要求。Third try即为Peterson算法，满足四个要求。</p>
 </blockquote>
@@ -64,7 +64,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 </ul>
 <h5 id="TSL-and-SWAP"><a href="#TSL-and-SWAP" class="headerlink" title="TSL and SWAP"></a>TSL and SWAP</h5><ul>
-<li>TSL和SWAP指令分别具有以下功能：<br><img src="https://i.loli.net/2018/06/18/5b276be04718e.png" width="75%" height="80%"></li>
+<li>TSL和SWAP指令分别具有以下功能：<br><img src="/os7/3.png" width="75%" height="80%"></li>
 <li>TSL和SWAP是以<strong>原子方式</strong>执行的，即作为一个<strong>不间断单元</strong>执行。</li>
 </ul>
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
@@ -81,7 +81,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 <h4 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h4><ul>
 <li>上一节描述的基于硬件的临界区问题的解决方案并不容易推广到更复杂的问题。为了克服这个困难，我们可以使用一个名为semaphore的同步工具。它由Edsger Dijkstra发明并首次在THE操作系统中使用。</li>
-<li><strong><code>信号量S</code></strong>是个整数变量，<strong>除初始化之外</strong>，只能通过两个标准的<strong>原子操作</strong>来访问：P(down) 和V(up）。<br><img src="https://i.loli.net/2018/06/18/5b276ff356715.png" width="65%" height="80%"></li>
+<li><strong><code>信号量S</code></strong>是个整数变量，<strong>除初始化之外</strong>，只能通过两个标准的<strong>原子操作</strong>来访问：P(down) 和V(up）。<br><img src="/os7/4.png" width="65%" height="80%"></li>
 <li>“value”的大小是<strong>可用资源(&gt;0)的数量</strong>或<strong>等待信号量(&lt;0)的进程的数量</strong>。</li>
 <li>P 和 V 必须以原子方式执行。<ul>
 <li>有两种方法：①禁用单处理器系统或中断 ②多处理器系统中的自旋锁。</li>
@@ -91,7 +91,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <h5 id="二进制信号量"><a href="#二进制信号量" class="headerlink" title="二进制信号量"></a>二进制信号量</h5><ul>
 <li>上述的信号量构造通常被称为计数信号量。因为它的值可以覆盖不受限制的域。</li>
 <li>二进制信号量是一个整数值范围只在0和1之间的信号量。<ul>
-<li>在某些硬件体系结构上实现比计数信号量更简单。计数信号可以使用二进制信号量来实现。<br><img src="https://i.loli.net/2018/06/18/5b277a3576f4b.png" width="80%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b277a3524a9e.png" width="80%" height="80%"></li>
+<li>在某些硬件体系结构上实现比计数信号量更简单。计数信号可以使用二进制信号量来实现。<br><img src="/os7/5.png" width="80%" height="80%"><br><img src="/os7/6.png" width="80%" height="80%"></li>
 </ul>
 </li>
 </ul>
@@ -119,16 +119,16 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 <h5 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h5><ul>
 <li>访问缓冲区时使用信号量互斥锁来保护临界区，初始化为值1。</li>
-<li>empty被初始化为值BSIZE(缓冲项个数)，full被初始化为0。生产者为消费者生产满缓冲项，消费者为生产者生产空缓冲项。<br><img src="https://i.loli.net/2018/06/18/5b2774f9a0ad0.png" width="65%" height="80%"></li>
+<li>empty被初始化为值BSIZE(缓冲项个数)，full被初始化为0。生产者为消费者生产满缓冲项，消费者为生产者生产空缓冲项。<br><img src="/os7/7.png" width="65%" height="80%"></li>
 </ul>
 <h5 id="读者-作者的问题"><a href="#读者-作者的问题" class="headerlink" title="读者-作者的问题"></a>读者-作者的问题</h5><ul>
 <li>信号量<code>wrt</code>用于保护共享数据对象，初始化为值1。</li>
 <li>变量readcount用来跟踪多少进程正在读对象，初始化为0。</li>
-<li>另一个信号量mutex用于确保在更新变量readcount时的互斥，初始化为1。<br><img src="https://i.loli.net/2018/06/18/5b2774a70cbcf.png" width="65%" height="80%"></li>
+<li>另一个信号量mutex用于确保在更新变量readcount时的互斥，初始化为1。<br><img src="/os7/8.png" width="65%" height="80%"></li>
 </ul>
 <h5 id="哲学家进餐问题"><a href="#哲学家进餐问题" class="headerlink" title="哲学家进餐问题"></a>哲学家进餐问题</h5><h4 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h4><ul>
 <li>管程：是一组方法、变量、函数..的集合。</li>
-<li>管程结构确保了<strong>只有一个进程可以在管程中处于活动状态</strong>。在实现互斥方面很有用。<br><img src="https://i.loli.net/2018/06/18/5b278148f0f3e.png" width="40%" height="80%"><img src="https://i.loli.net/2018/06/18/5b278156992a9.png" width="48%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b2784cd6bc52.png" width="35%" height="80%"></li>
+<li>管程结构确保了<strong>只有一个进程可以在管程中处于活动状态</strong>。在实现互斥方面很有用。<br><img src="/os7/9.png" width="40%" height="80%"><img src="/os7/10.png" width="48%" height="80%"><br><img src="/os7/11.png" width="35%" height="80%"></li>
 </ul>
 <h5 id="带条件变量的管程"><a href="#带条件变量的管程" class="headerlink" title="带条件变量的管程"></a>带条件变量的管程</h5><ul>
 <li>管程内部可定义condition类型的变量以提供同步机制，称其为<strong><code>条件变量</code></strong>。条件型变量c实际上是一个指针，它指向一个等待该条件的PCB队列。</li>
@@ -164,7 +164,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 <h4 id="信号量与管程的关系"><a href="#信号量与管程的关系" class="headerlink" title="信号量与管程的关系"></a>信号量与管程的关系</h4><ul>
 <li>信号量和管程在功能上是等效的。</li>
-<li>但是它们的使用和实现是非常不同的。<br><img src="https://i.loli.net/2018/06/18/5b2785f39478e.png" width="35%" height="80%"></li>
+<li>但是它们的使用和实现是非常不同的。<br><img src="/os7/12.png" width="35%" height="80%"></li>
 </ul>
 </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Dai Sine</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://daisine.github.io/os7/">https://daisine.github.io/os7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/note/">note</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/os8/"><i class="fa fa-chevron-left">  </i><span>操作系统笔记08 死锁</span></a></div><div class="next-post pull-right"><a href="/os6/"><span>操作系统笔记06 CPU调度</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
 var disqus_config = function () {

@@ -15,7 +15,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
   }
 } </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存管理介绍"><span class="toc-text">内存管理介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本方法-以MS-DOS为例"><span class="toc-text">基本方法 - 以MS-DOS为例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多任务系统的内存管理"><span class="toc-text">多任务系统的内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#源程序变成进程的过程："><span class="toc-text">源程序变成进程的过程：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#重定位-amp-地址绑定概念"><span class="toc-text">重定位 &amp; 地址绑定概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内存保护"><span class="toc-text">内存保护</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#动态内存分配"><span class="toc-text">动态内存分配</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分页内存管理"><span class="toc-text">分页内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#结论"><span class="toc-text">结论</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内存保护-1"><span class="toc-text">内存保护</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#页表问题"><span class="toc-text">页表问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#页表结构"><span class="toc-text">页表结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#层次型页表"><span class="toc-text">层次型页表</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#帧管理"><span class="toc-text">帧管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#页面共享"><span class="toc-text">页面共享</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分段内存管理"><span class="toc-text">分段内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#实现-1"><span class="toc-text">实现</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#段页式内存管理"><span class="toc-text">段页式内存管理</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Dai Sine</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">53</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">12</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">9</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://i.loli.net/2019/05/10/5cd525fea97ac.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hi, Dai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">About</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">操作系统笔记09 内存管理</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-07-03</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/计算机基础/">计算机基础</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/计算机基础/操作系统/">操作系统</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h4 id="内存管理介绍"><a href="#内存管理介绍" class="headerlink" title="内存管理介绍"></a>内存管理介绍</h4><ul>
 <li>进程管理回顾 <ul>
-<li>进程管理提供了一个虚拟的机器接口，让每一个进程都以为是自己在独占CPU，如下图所示:<br><img src="https://i.loli.net/2018/06/18/5b27ad8cd9ef4.png" width="50%" height="80%"></li>
+<li>进程管理提供了一个虚拟的机器接口，让每一个进程都以为是自己在独占CPU，如下图所示:<br><img src="/os9/0.png" width="50%" height="80%"></li>
 </ul>
 </li>
 <li><p>内存管理的任务：提供一个虚拟的机器接口，让每一个进程都以为是自己在独占RAM。</p>
@@ -48,7 +48,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li><strong><code>交换</code></strong>：一个进程可以<strong>暂时</strong>从内存交换到backing-store，然后再加载到内存中<strong>继续执行</strong>。<ul>
 <li>OS可以将(不在运行的)P<sub>2</sub>交换到backing-store中，同时释放P<sub>2</sub>所占用的内存，并分配给P<sub>1</sub>让其继续运行。</li>
 <li>当调度器重新调度P<sub>2</sub>运行时，OS从backing-store中加载P2到内存继续运行。</li>
-<li>此时可能要把P<sub>1</sub>交换到backing-store中以释放足够的内存空间供P<sub>2</sub>运行。<br><img src="https://i.loli.net/2018/06/18/5b27b3384a591.png" width="50%" height="80%"></li>
+<li>此时可能要把P<sub>1</sub>交换到backing-store中以释放足够的内存空间供P<sub>2</sub>运行。<br><img src="/os9/1.png" width="50%" height="80%"></li>
 </ul>
 </li>
 <li><strong>Swap方法存在的限制</strong>：<ul>
@@ -84,7 +84,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>几个概念：<ul>
 <li>逻辑地址：指<strong>程序中引用的地址</strong>，亦即CPU产生的地址。</li>
 <li>物理地址：指系统中内存单元所看到的地址。</li>
-<li>内存管理单元：指专门完成逻辑地址到物理地址<strong>转换</strong>的硬件单元，一般是CPU的一部分。<br><img src="https://i.loli.net/2018/06/18/5b27b73f52d0f.png" width="50%" height="80%"></li>
+<li>内存管理单元：指专门完成逻辑地址到物理地址<strong>转换</strong>的硬件单元，一般是CPU的一部分。<br><img src="/os9/2.png" width="50%" height="80%"></li>
 </ul>
 </li>
 <li>这里介绍的是最简单的重定位技术，只是冰山一角。</li>
@@ -97,7 +97,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>对应用程序访问的每一个内存地址进行检查，看是否超出了内存范围。为了获得最好的性能，一般用<strong><code>内存管理单元</code></strong>(MMU)通过硬件来实现这种检查的功能。</li>
 <li>内存保护是现代操作系统必备的功能之一，它需要硬件的支持才能实施保护。</li>
-<li>后面讲解的各种内存管理方法都包含有内存保护的方法。<br><img src="https://i.loli.net/2018/06/18/5b27b98f2c33e.png" width="60%" height="80%"></li>
+<li>后面讲解的各种内存管理方法都包含有内存保护的方法。<br><img src="/os9/3.png" width="60%" height="80%"></li>
 </ul>
 <h5 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h5><ul>
 <li>在多任务的环境中，操作系统需要为每个新创建的进程分配一定数量的内存才能运行。当进程退出时，操作系统要回收它所占用的内存。</li>
@@ -105,7 +105,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>操作系统有一张表格，用于指出哪些内存可用和哪些内存已被占用。可用内存块称为<strong>孔</strong>。<ul>
 <li>最初，所有内存都可用于用户进程。</li>
 <li>当有新进程需要内存时，为该内存查找足够大的孔。</li>
-<li>当一个进程终止时，它将释放内存，如果新的孔与其他孔相邻，这些相邻的孔合并形成一个更大的孔。<br><img src="https://i.loli.net/2018/06/18/5b27beab9738f.png" width="50%" height="80%"></li>
+<li>当一个进程终止时，它将释放内存，如果新的孔与其他孔相邻，这些相邻的孔合并形成一个更大的孔。<br><img src="/os9/4.png" width="50%" height="80%"></li>
 </ul>
 </li>
 <li>分配算法<ul>
@@ -149,15 +149,15 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 <li>地址转换：在页表的帮助下，MMU把CPU产生的逻辑地址转换成物理地址。</li>
-<li>过程如图：<br><img src="https://i.loli.net/2018/06/18/5b27c49f4dbb7.png" width="50%" height="80%"></li>
-<li>两个例子：<br><img src="https://i.loli.net/2018/06/18/5b27c48c6758f.png" width="37%" height="80%"><br><img src="https://i.loli.net/2018/06/18/5b27c486e7c06.png" width="37%" height="80%"></li>
+<li>过程如图：<br><img src="/os9/5.png" width="50%" height="80%"></li>
+<li>两个例子：<br><img src="/os9/6.png" width="37%" height="80%"><br><img src="/os9/7.png" width="37%" height="80%"></li>
 <li>页 &amp; 帧:<ul>
 <li>它们的大小必须相同，都是2的幂次方。</li>
 <li>具体由CPU体系结构决定，常见的有1K、4K、8K、4M等。</li>
 </ul>
 </li>
 <li>地址划分<ul>
-<li>如果逻辑地址空间的大小为2<sup>m</sup>，而page或frame的大小为2<sup>n</sup>(n &lt; m)，那么逻辑地址的划分如图所示：<br><img src="https://i.loli.net/2018/06/18/5b27c4e64d7b4.png" width="37%" height="80%"></li>
+<li>如果逻辑地址空间的大小为2<sup>m</sup>，而page或frame的大小为2<sup>n</sup>(n &lt; m)，那么逻辑地址的划分如图所示：<br><img src="/os9/8.png" width="37%" height="80%"></li>
 </ul>
 </li>
 </ul>
@@ -179,7 +179,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>为了提高地址转换效率，MMU中包含了一个高速缓存称为<strong><code>转换表缓冲区(TLBs)</code></strong>。</li>
 <li>TLB条目由<strong>键和值</strong>组成，当关联内存根据定值查找时，会同时与所有键进行比较，如果找到条目，那么就得到相应的值域。<ul>
 <li>TLB这种查找方式比较快。但由于硬件昂贵，通常TLB的条目数并不多，在64-1024之间。</li>
-<li>A的地址转换：如果A在TLB（<strong>TLB命中</strong>）中，则将帧取出。否则，从<strong>内存中的页表获取帧。</strong><br><img src="https://i.loli.net/2018/06/18/5b27c9366d11f.png" width="47%" height="80%"></li>
+<li>A的地址转换：如果A在TLB（<strong>TLB命中</strong>）中，则将帧取出。否则，从<strong>内存中的页表获取帧。</strong><br><img src="/os9/9.png" width="47%" height="80%"></li>
 </ul>
 </li>
 <li><strong>性能</strong>：假设<ul>
@@ -196,7 +196,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </ul>
 </li>
 <li>此外，不是所有的PTE都可以使用。因此，PTE中的一位表示该PTE是否可以使用(valid/invalid)。<ul>
-<li>仅当该位有效时，MMU才能用它进行地址转换。 否则，MMU将通过异常向OS报告错误。<br><img src="https://i.loli.net/2018/06/20/5b29bf28312c1.png" width="50%" height="80%"></li>
+<li>仅当该位有效时，MMU才能用它进行地址转换。 否则，MMU将通过异常向OS报告错误。<br><img src="/os9/10.png" width="50%" height="80%"></li>
 </ul>
 </li>
 </ul>
@@ -236,8 +236,8 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>二级页表设计：<ul>
 <li>把一个巨大的线性页表分割成很多小的页表。</li>
-<li>然后通过一个称为<strong><code>外页表</code></strong>(outer page table)的表把这些小页表组织起来。<br><img src="https://i.loli.net/2018/06/19/5b2895ea7742b.png" width="40%" height="80%"></li>
-<li>采用二级页表的逻辑地址与地址转换<br><img src="https://i.loli.net/2018/06/19/5b2896f44e766.png" width="46%" height="80%"><br><img src="https://i.loli.net/2018/06/19/5b28982d23bff.png" width="35%" height="80%"></li>
+<li>然后通过一个称为<strong><code>外页表</code></strong>(outer page table)的表把这些小页表组织起来。<br><img src="/os9/11.png" width="40%" height="80%"></li>
+<li>采用二级页表的逻辑地址与地址转换<br><img src="/os9/12.png" width="46%" height="80%"><br><img src="/os9/13.png" width="35%" height="80%"></li>
 </ul>
 </li>
 </ul>
@@ -248,11 +248,11 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 <li>当进程退出时，操作系统回收它所占用的帧。</li>
 </ul>
 </li>
-<li>最简单的方法是维护一个空闲帧链表。如图所示:<br><img src="https://i.loli.net/2018/06/19/5b2897f562b1d.png " width="47%" height="80%"></li>
+<li>最简单的方法是维护一个空闲帧链表。如图所示:<br><img src="/os9/14.png " width="47%" height="80%"></li>
 </ul>
 <h4 id="页面共享"><a href="#页面共享" class="headerlink" title="页面共享"></a>页面共享</h4><ul>
 <li>在<strong>分页系统</strong>中,显然应该<strong>以页面为单位进行内存共享</strong>。<ul>
-<li>eg. 假设系统中有三个用户同时运行某个编辑器在编辑各自的文件，显然编辑器的代码可以被共享，而各自的文件数据则是私有的。<br><img src="https://i.loli.net/2018/06/19/5b28990756fee.png" width="47%" height="80%"></li>
+<li>eg. 假设系统中有三个用户同时运行某个编辑器在编辑各自的文件，显然编辑器的代码可以被共享，而各自的文件数据则是私有的。<br><img src="/os9/15.png" width="47%" height="80%"></li>
 </ul>
 </li>
 </ul>
@@ -268,7 +268,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 </ul>
 <h5 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h5><ul>
-<li><p>逻辑地址由有序对组成：&lt;segment-number, offset&gt; (&lt;段号，段内偏移&gt;)。(为了简单，段是编号的段号而不是通过段名来引用)<br><img src="https://i.loli.net/2018/06/19/5b28ab03eefee.png" width="20%" height="80%">&lt;img src=”<a href="https://i.loli.net/2018/06/19/5b28ab0404f03.png&quot;" target="_blank" rel="noopener">https://i.loli.net/2018/06/19/5b28ab0404f03.png&quot;</a> width=40%” height=”80%” /&gt;</p>
+<li><p>逻辑地址由有序对组成：&lt;segment-number, offset&gt; (&lt;段号，段内偏移&gt;)。(为了简单，段是编号的段号而不是通过段名来引用)<br><img src="/os9/16.png" width="20%" height="80%">&lt;img src=”17.png” width=40%” height=”80%” /&gt;</p>
 </li>
 <li><p><strong><code>段表</code></strong>用于将逻辑地址映射到物理地址。 每个表项都有</p>
 <ul>
@@ -279,7 +279,7 @@ ga('send', 'pageview');</script><meta http-equiv="Cache-Control" content="no-tra
 </li>
 <li>段基地址寄存器(STBR)：指向段表在存储器中的位置。</li>
 <li>段界限寄存器(STLR)：表示进程使用的段的个数。  </li>
-<li>地址转换：<br><img src="https://i.loli.net/2018/06/19/5b28ab040db5c.png" width="45%" height="80%"></li>
+<li>地址转换：<br><img src="/os9/18.png" width="45%" height="80%"></li>
 <li>在<strong>分段系统</strong>中，<strong>内存的保护与共享以段为单位</strong></li>
 <li>由于段的长度是根据需要变化的,因此分段会产生<strong>外部碎片</strong>。<ul>
 <li>这个问题的严重程度与<strong>操作系统的内存分配算法</strong>和<strong>进程各个段的平均大小</strong>有关。</li>
