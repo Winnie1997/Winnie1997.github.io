@@ -110,9 +110,9 @@
             
             <tag> hadoop </tag>
             
-            <tag> Docker </tag>
-            
             <tag> hive </tag>
+            
+            <tag> Docker </tag>
             
         </tags>
       
@@ -1466,22 +1466,11 @@
     
     
     <entry>
-      <title>About me</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[<ul><li>软件工程在读</li><li>超会写bug的程序miao</li><li>邮箱: <a href="mailto:daisine@outlook.com" target="_blank" rel="noopener">daisine@outlook.com</a>   </li></ul>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[<ul><li>前端</li><li>计算机基础<ul><li>计算机网络</li><li>操作系统</li></ul></li><li>软件工程</li><li>编程语言</li><li>大数据分析</li><li>Mac OS X</li><li>DAIの日常</li><li>DAIの折腾</li><li>DAIの实验室</li></ul>]]></content>
+        <content type="html"><![CDATA[<ul><li>note</li><li>hexo</li><li>Typecho</li><li>Web</li><li>机器学习</li><li>图形学</li><li>杂念</li><li>配置环境</li><li>leetcode</li><li>hadoop</li><li>大数据</li><li>Docker</li><li>hive</li></ul>]]></content>
       
     </entry>
     
@@ -1499,11 +1488,22 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>About me</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[<ul><li>note</li><li>hexo</li><li>Typecho</li><li>Web</li><li>机器学习</li><li>图形学</li><li>杂念</li><li>配置环境</li><li>leetcode</li><li>hadoop</li><li>大数据</li><li>Docker</li><li>hive</li></ul>]]></content>
+        <content type="html"><![CDATA[<ul><li>软件工程在读</li><li>超会写bug的程序miao</li><li>邮箱: <a href="mailto:daisine@outlook.com" target="_blank" rel="noopener">daisine@outlook.com</a>   </li></ul>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[<ul><li>前端</li><li>计算机基础<ul><li>计算机网络</li><li>操作系统</li></ul></li><li>软件工程</li><li>编程语言</li><li>大数据分析</li><li>Mac OS X</li><li>DAIの日常</li><li>DAIの折腾</li><li>DAIの实验室</li></ul>]]></content>
       
     </entry>
     
