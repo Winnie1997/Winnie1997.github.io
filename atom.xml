@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://daisine.github.io/"/>
-  <updated>2020-01-02T11:40:18.995Z</updated>
+  <updated>2020-01-02T11:45:35.938Z</updated>
   <id>https://daisine.github.io/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>2020重庆大学软件工程考研小记</title>
-    <link href="https://daisine.github.io/2020ky/"/>
-    <id>https://daisine.github.io/2020ky/</id>
-    <published>2020-01-02T11:31:01.000Z</published>
-    <updated>2020-01-02T11:40:18.995Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>作为一只<del>没有梦想</del>的咸鱼，其实从大一开始就一直在不读研和读研之间反复横跳…后来终于决定不读研了，结果大三末又被父母劝说着去考研 Orz 虽然现在考完了，但我仍旧处在一种纠结的状态。</p> <a id="more"></a>  <p>从9.13号开始准备考研初试的复习，共约三个月时间。<strong>科目为：政治，英二，数二，(CQU)877</strong>。个人<strong>个人情况</strong>：数学一直都不太好，高中成绩全靠语文英语拉分<del>所以我为什么要选理科</del>，大一高数低分飘过；英语<del>心安理得</del>吃着高中的老本过了英语四六级；政治就是理科生的那种政治基础，初高中大学考试都是开卷；专业课考的是C语言和数据库，从目前的真题包括今年来看考得比较基础。</p><h3 id="资料及利用情况"><a href="#资料及利用情况" class="headerlink" title="资料及利用情况"></a>资料及利用情况</h3><p>用的复习资料不多，具体如下:</p><ul><li>李王考研数学复习全书+数学历年真题全精解析+李永乐线代辅导讲义：三本书完整做了一遍，并整理了一些具体的知识点，其中倍速听了汤高数基础班+<strong>李永乐线代强化班</strong>，因为个人高数不太好，如果高数基础好的话可以不用听汤的基础班，因为真的讲的挺基础的。<strong>李永乐线代强化班配合讲义听一听对线代的理解会很有帮助。</strong></li><li>考研数学李林6+4套卷：题出得不错，考察的点、方式也和历年真题相似，只是今年的题个人觉得问法比较奇怪，后期用来保持数学做题的手感可以，但不要对押中题抱太大希望。</li><li>考研英语二张剑黄皮书：因为数学不太好的原因所以…其实题阅读题做得蛮少的，最重要的是从自己错题的类型总结出题的思路。翻译没练习，考前就看了两眼近两年的真题，比较简单，最后考得也比较基础。考研作文的模板是从这个黄皮书的优秀范文中自己编了一个，考试的时候还挺好用。2020考研英语真题的<strong>完形填空没有以前出得那么难，完全可以做。</strong></li><li>肖秀荣精讲精练+肖1000+肖八肖四：精讲精练十月份的时候看不下去，所以看的是微博上一个研友总结的徐涛政治的听课笔记。十二月做肖八肖四的时候发现小部分知识点听课笔记上没有，翻了一下精讲精练，发现精讲精练这本书还是不错的，缺点是太细、重要考点不够突出。肖1000做了马原部分，其他Part没碰。大题背的肖四，考试够用。<strong>多选的错误选项有一定技巧</strong>，因为我政治选择复习得比较水，个人感觉单选比多选做得差…各种帽子题太为难我这记忆力了。</li><li>专业课：先是没复习把12-19年的真题做了一遍，其中早年真题考的科目不太一样，因此只挑了C语言+数据库原理Part写。总的来说考得比较基础，翻书复习并总结了一下真题的知识点，<a href="https://daisine.github.io/cky/">C语言</a>   <a href="https://daisine.github.io/sqlky/">数据库</a>。除此之外，我去打印店买了隔壁某学院C语言的期末考试试卷(<del>因为买不到软件学院的</del>)，和真题的题型考察的点几乎差不多，共约4、5套，刷完了总结一些易错点和坑。数据库原理考得比本科的期末考试简单，因此我稍微看了一下大二准备的<a href="https://daisine.github.io/sql01/">数据库原理期末考试的复习笔记</a> + 数据仓库/数据挖掘的概念和简单应用，写了一些<a href="https://www.nowcoder.com/ta/sql" target="_blank" rel="noopener">牛客网SQL语句的题目</a>(考得比这上面的题简单)。</li><li>网上研友总结的资料：包括但不限于政治知识点笔记，政治各模拟题知识点提炼，英语完形+阅读+作文技巧，数学公式/某些高频考点题型的解题思路。来源：微信公众号，微博，B站。<strong>PS: 网上各式各样的资源很多很杂，找自己真正需要的看，而不是随波逐流。</strong></li></ul><h3 id="APP-PC端工具"><a href="#APP-PC端工具" class="headerlink" title="APP/ PC端工具"></a>APP/ PC端工具</h3><p>APP/PC端软件如下：</p><ul><li><strong>Notability</strong> ：记听课笔记+刷题，开始写着不习惯，笔略重。写久了觉得还挺顺手的。</li><li>知米背单词：背了3000个考研高频词汇(但感觉用处不大，考英语的时候该不认识的还是不认识QAQ，唯一的区别就是：这单词我好像见过唉！)</li><li><strong>WolframAlpha</strong>：<strong>高数求积分/求极限/解各种方程/看复杂函数图像</strong>的利器，做题看不懂解析省略的步骤的时候会用这个。</li><li>nPlayer：看课程视频，可1.0-4.0选择倍速播放。</li><li>Baiduyun：各种模拟试卷/研友总结知识点/微博微信的资源链接一般都是百度云，但是由于baiduyun各种限制，我还开了三个月的baidunyu会员，省点心。</li><li>欧陆词典：习惯用这个词典查词</li><li>Scanner Pro：扫描手写笔记，公式等</li><li>蜜题考研政治：11月末发现的。花了1块钱，可以刷政治真题、模拟题的选择题，有解析、可收藏题目和回顾错题。个人感觉挺好用。</li><li>(PC端) <strong>Adobe Acrobat + Pitstop插件</strong>：去水印，编辑合并PDF文件必备。…网上考研资料的水印真是一重又一重，作为一个强迫症不去水印极度不适。</li><li><a href="https://www.ilovepdf.com/zh-cn" target="_blank" rel="noopener">I love PDF</a> 简易的pdf在线编辑page，最重要的一点是可以将限制编辑的pdf解密，不然无法去水印。</li></ul><h3 id="注意的点"><a href="#注意的点" class="headerlink" title="注意的点"></a>注意的点</h3><ul><li><p><strong>具体情况具体分析，所有人的经验贴都不能照搬。</strong></p></li><li><p>效率比时长重要：一天专注学习8个小时个人觉得足够了。前期：上午+下午做题/复习新的点，晚上总结。也不一定非要是晚上总结，把总结放到你一天之中觉得效率最低、脑子最转不过来的时间即可。<strong>总结完后期复习要看，不看不如别浪费时间。</strong></p></li><li>给自己定近期的具体的DDL：众所周知，<del>DDL是第一生产力</del>。例如，两天写+总结完一套真题，到哪天之前刷完；2天看完线代某章题目，哪天之前看完所有线代。</li><li>不要过长时间久坐，不时站起来走走，考研是一件耗费体力和脑力的事情，身体的疲惫感也需要重视。</li></ul><h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>写这篇文的时候，离考完研两周不到。成绩未出，也不打算对答案。甚至想国家线公布以后再查成绩。目前准备复习专业课，准备复试是一方面，更重要的是准备20年的春招。人的一生真正能自己选择的路很少，我想给自己多几个选项。</p><p>以及，</p><p>新年快乐呀！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;作为一只&lt;del&gt;没有梦想&lt;/del&gt;的咸鱼，其实从大一开始就一直在不读研和读研之间反复横跳…后来终于决定不读研了，结果大三末又被父母劝说着去考研 Orz 虽然现在考完了，但我仍旧处在一种纠结的状态。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="DAIの日常" scheme="https://daisine.github.io/categories/DAI%E3%81%AE%E6%97%A5%E5%B8%B8/"/>
-    
-    
-      <category term="杂念" scheme="https://daisine.github.io/tags/%E6%9D%82%E5%BF%B5/"/>
-    
-  </entry>
   
   <entry>
     <title>C语言试卷笔记</title>
@@ -145,9 +123,9 @@
     
       <category term="hadoop" scheme="https://daisine.github.io/tags/hadoop/"/>
     
-      <category term="hive" scheme="https://daisine.github.io/tags/hive/"/>
-    
       <category term="Docker" scheme="https://daisine.github.io/tags/Docker/"/>
+    
+      <category term="hive" scheme="https://daisine.github.io/tags/hive/"/>
     
   </entry>
   
@@ -542,6 +520,42 @@
     
       <category term="Mac OS X" scheme="https://daisine.github.io/categories/Mac-OS-X/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>操作系统笔记11 文件系统</title>
+    <link href="https://daisine.github.io/os11/"/>
+    <id>https://daisine.github.io/os11/</id>
+    <published>2018-07-03T06:19:18.000Z</published>
+    <updated>2020-01-02T07:45:00.294Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="文件系统接口-用户角度"><a href="#文件系统接口-用户角度" class="headerlink" title="文件系统接口(用户角度)"></a>文件系统接口(用户角度)</h4><h5 id="文件概念"><a href="#文件概念" class="headerlink" title="文件概念"></a>文件概念</h5><ul><li><strong><code>文件</code></strong>是逻辑外存单元的最小分配单元。</li><li><strong>类型</strong><ul><li>数据：数字字符，二进制…</li><li>程序</li></ul></li><li><p><strong>文件结构</strong></p><ul><li>无： 一个字节序列</li><li>简单的记录结构：①行 ②固定长度 ③可变长度</li><li>复杂结构：①格式化文档 ②对象文件 ③可执行文件</li></ul><a id="more"></a></li><li><strong>谁决定文件结构？</strong><ul><li>操作系统：可执行文件和共享库文件的结构</li><li>程序</li></ul></li><li><strong>文件属性</strong>：所有文件的信息都保存在目录结构中。<ul><li>名称：文件符号名称是唯一的、按照人们易读取的形式保存。</li><li>标识符：标示文件系统内文件的唯一标签，通常为人不可读。</li><li>类型：被支持不同类型的文件系统所使用。</li><li>位置：该信息指向设备和设备上文件位置的指针。</li><li>大小：文件当前大小，也可包括文件允许的最大容量值。</li><li>保护：决定谁能读、写、执行等的访问控制信息。</li><li>时间，日期和用户标识：文件创建、上次修改和赏赐访问的相关信息。这些数据用于保护、安全和使用跟踪。</li></ul></li><li><strong>文件操作</strong><ul><li>创建，打开，关闭，读，写，在文件内重定位(搜索目录相应条目)，删除，截短(删除内容保留属性，长度设置为0并释放)。</li><li>打开文件：当一个文件被打开时，除了存储在设备上的信息之外，还会执行几条数据来管理打开的文件<br>①<strong>文件指针</strong>：指向上次读取/写入位置的指针，这种指针对于打开文件的每个进程唯一。<br>②<strong>文件打开计数器</strong>：文件关闭时，操作系统必须重用其打开文件表条目，否则表内空间会不够用。因为多个进程可能打开同一个文件，所以系统在删除打开文件条目之前，必须等待最后一个进程关闭文件。该计数器跟踪打开和关闭的数量，当该计数为0 时，系统关闭文件，删除该条目。<br>③<strong>文件磁盘位置</strong>：绝大多数文件操作都要求系统修改文件数据。该信息保存在内存中以免为每个操作都从磁盘中读取。<br>④<strong>访问权限</strong>：每个进程打开文件都需要有一个访问模式（创建、只读、读写、添加等)。该信息保存在进程的打开文件表中以便操作系统能允许或拒绝之后的 I/O 请求。</li></ul></li><li><strong>文件类型</strong><br><img src="/os11/0.png" width="65%" height="80%"></li><li><strong>文件访问</strong>：文件访问<ul><li>顺序访问：从头开始读取所有字节/记录。不能跳转，但当存储设备是磁带时可以倒带或备份。</li><li>随机访问/直接访问：读/写顺序无限制。字节/记录以任何顺序读取，这种访问对数据库很重要。</li></ul></li></ul><h5 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h5><ul><li><strong>目录操作</strong>：<ul><li>搜索文件</li><li>创建文件</li><li>删除文件</li><li>遍历目录</li><li>重命名文件</li><li>跟踪文件系统</li></ul></li><li><strong><code>单层目录结构</code></strong><ul><li>限制：①文件必须具有唯一名称(命名问题) ②(文件过多)分组问题<br><img src="/os11/1.png" width="55%" height="80%"></li></ul></li><li><strong><code>双层目录结构</code></strong><ul><li>为每个用户创建<strong>独立目录</strong></li><li>特点：①文件或目录可以按其路径定位 ②不同的用户可以使用相同文件名<br><img src="/os11/2.png" width="55%" height="80%"></li></ul></li><li><strong><code>树状目录结构</code></strong><ul><li>分组能力</li><li>禁止共享文件或目录</li><li>路径名有两种形式：①绝对路径名 ②相对路径名</li><li>每个进程都有一个当前目录，在启动时分配给它。<br><img src="/os11/3.png" width="55%" height="80%"></li></ul></li><li><strong><code>无环图目录</code></strong>：树状结构目录的扩展<ul><li>允许目录含有共享子目录和文件。同一文件或子目录可出现在两个不同目录中。</li><li>某些操作系统不支持无环图目录，例如MS-DOS</li><li>UNIX/LINUX和Windows（7+）通过<strong>符号链接</strong>支持它<br><img src="/os11/4.png" width="55%" height="80%"></li></ul></li></ul><h5 id="文件系统挂载"><a href="#文件系统挂载" class="headerlink" title="文件系统挂载"></a>文件系统挂载</h5><ul><li>文件系统在被系统上的进程使用之前必须安装/挂载。</li><li>目录结构可以建立在多个卷上。这些卷必须安装以使它们在文件系统命名空间可用。(U盘)</li><li>文件系统的安装位置称为<strong>安装点</strong>，为一个空目录。<ul><li>Windows操作系统在引导过程中安装包含FAT（-12，-16，-32）或NTFS文件系统的所有分区，分别是“C：”，“D：”等。</li><li>在UNIX / Linux中，系统管理员必须发出命令来在设备中安装文件系统。<code>mount -t iso9660 / mnt / cdrom / dev / cdrom</code></li></ul></li></ul><h5 id="文件共享"><a href="#文件共享" class="headerlink" title="文件共享"></a>文件共享</h5><ul><li>在多用户系统上共享文件是可取的。</li><li>大多数系统通过其唯一的用户标识或UID来识别用户。除了UID，一些系统还实现了组功能</li><li>每个组都分配一个唯一的组标识或GID。每个用户可以在一个或多个组中</li><li>当文件或目录最初创建时，它与用户的UID和GID相关联。拥有文件的用户是该文件的所有者。</li></ul><h5 id="文件保护"><a href="#文件保护" class="headerlink" title="文件保护"></a>文件保护</h5><ul><li>文件所有者应该能够控制可以完成什么以及由谁来完成</li><li>访问类型：读取（R），写入（W），执行（X），添加，删除，列表</li><li>访问控制列表（ACL）指定用户名和每个用户允许的访问类型。<ul><li>它用于执行细粒度的文件和目录保护。 ACL的主要问题是它们的长度。</li><li>因此，最常见的方法是将UNIX样式保护与ACL结合使用。</li><li>例如，Windows NT或更高版本以及Solaris 2.6或更高版本使用此组合方法。</li></ul></li></ul><h4 id="文件系统实现"><a href="#文件系统实现" class="headerlink" title="文件系统实现"></a>文件系统实现</h4><h5 id="文件系统结构"><a href="#文件系统结构" class="headerlink" title="文件系统结构"></a>文件系统结构</h5><ul><li>文件<ul><li>逻辑存储单元</li><li>相关信息的集合</li><li><strong>文件控制块(FCB)</strong>：包含文件的所有信息。在UNIX中，FCB通常称为inode</li></ul></li><li>文件系统：提供对磁盘的高效且便捷的访问，用以轻松地存储、定位和提取数据。<ul><li>在二级存储器中，采用分层结构实现文件系统能够最大限度地减少重复的代码。<br><img src="/os11/5.png" width="20%" height="80%"></li></ul></li><li>一个典型的文件控制块FCB：<br><img src="/os11/6.png" width="35%" height="80%"></li></ul><h5 id="虚拟文件系统-VFS"><a href="#虚拟文件系统-VFS" class="headerlink" title="虚拟文件系统(VFS)"></a>虚拟文件系统(VFS)</h5><ul><li>问题：<ul><li>操作系统如何把多个文件系统整合成一个目录？</li><li>用户如何在访问文件系统空间时，可以无缝地在文件系统之间移动？</li></ul></li><li>虚拟文件系统(VFS)：</li><li>大多数操作系统包括UNIX使用面向对象的技术来简化，组织和模块化实现过程。  <ul><li>一个通用的文件系统接口与文件系统实现分离，文件系统接口包含“打开”，“关闭”，“读取”，“写入”和“查找”等系统调用。<br><img src="/os11/7.png" width="50%" height="80%"></li></ul></li><li><strong><code>VFS接口</code></strong>有两个重要功能：<ul><li>VFS层通过定义一个清晰的VFS接口，以将文件系统的通用操作和具体实现分开。</li><li>VFS提供了在网络上唯一标识一个文件的机制。VFS基于名为<strong>vnode</strong>的文件表示结构，该结构包含一个数值标识符以表示位于整个网络范围的唯一文件。</li></ul></li></ul><h5 id="目录实现"><a href="#目录实现" class="headerlink" title="目录实现"></a>目录实现</h5><ul><li>一些操作系统（包括UNIX）将目录完全视为文件<ul><li>它为每个文件或其子目录保存两条信息：文件/子目录名称和指向文件/子目录的FCB的指针（它们通常被组织成一个C“struct dirent”）</li></ul></li><li>一个目录可能包含很多文件或子目录，如何组织这些“dirent”？(Unix的一个结构体)</li><li><strong>线性列表</strong>：使用存储文件名和数据快指针的线性列表。<ul><li>√ 实现简单</li><li>× 搜索耗时</li></ul></li><li><strong>哈希表</strong>：线性列表存储结构 + 哈希数据结构<ul><li>√ 减少目录搜索时间，插入和删除也很简单。</li><li>× 其通常固定的大小和哈希函数对大小的依赖性。<strong>增长困难。</strong></li></ul></li><li>大多数操作系统使用“线性列表”来组织目录。</li></ul><h5 id="分配方法"><a href="#分配方法" class="headerlink" title="分配方法"></a>分配方法</h5><ul><li>如何为文件分配空间以便利用磁盘空间并快速访问文件？</li><li>三种主要分配方法<ol><li>连续分配</li><li>链接分配</li><li>索引分配</li></ol></li></ul><h5 id="连续分配"><a href="#连续分配" class="headerlink" title="连续分配"></a>连续分配</h5><ul><li>要求每个文件在磁盘上占用一组连续块。</li><li>优缺点：<ul><li>√ 简单：只有起始位置（块号）和长度（块数）保存在FCB中</li><li>√ 支持随机访问</li><li>√ 对缓存友好</li><li>× 产生外部碎片：动态存储分配问题</li><li>× 难以扩展文件<br><img src="/os11/8.png" width="50%" height="80%"></li></ul></li></ul><h5 id="链接分配"><a href="#链接分配" class="headerlink" title="链接分配"></a>链接分配</h5><ul><li>每个文件都是磁盘块的链接列表。<ul><li>FCB包含文件<strong>第一块的指针</strong>和<strong>最后一块的指针</strong>。</li><li>每个块包含一个指向下一个块的指针。</li><li>这些指针对用户不可见，因此，如果每个块是512字节,磁盘地址（指针）为4个字节，则用户看到508个字节的块。</li></ul></li><li>优缺点：<ul><li>√ 简单：只需要起始地址</li><li>√ 不浪费空间</li><li>√ 指针需要额外的空间</li><li>√ 没有随机存取，(用单项链表)只能顺序访问</li><li>× 可靠性：分散在整个磁盘上的指针</li></ul></li><li>指针的开销可以通过将几个块收集到一个称为群集的较大块中来降低</li><li>为了解决简单链接分配的问题，每个分区开始处的一段磁盘被放置在一旁，以包含一个包含文件系统所有指针的表。</li><li>文件分配表(FAT)：一个简单但有效的磁盘空间分配方法，<strong>用于MS-DOS和OS/2</strong>。<ul><li>每一个卷的开始部分用于存储该FAT。</li><li>每块都在该表中有一项。</li><li>该表可以通过块号码来索引。<br><img src="/os11/9.png" width="60%" height="80%"></li></ul></li></ul><h5 id="索引分配"><a href="#索引分配" class="headerlink" title="索引分配"></a>索引分配</h5><ul><li>将所有指向文件磁盘块的指针合并到一个位置：索引块。索引块包含一系列磁盘块地址。</li><li>解决了连续分配的外部碎片和大小声明问题。<br><img src="/os11/10.png" width="45%" height="80%"></li><li>优缺点<ul><li>√ 支持直接/随机访问</li><li>√ 没有外部碎片(但有索引块的开销)。</li><li>× 需要索引表。  </li></ul></li><li>索引块的大小：<ol><li>链接方案</li><li>多级索引</li><li>(以上两种)组合方案 (这是大多数UNIX文件系统使用的方案)<br><img src="/os11/11.png" width="55%" height="80%"></li></ol></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;文件系统接口-用户角度&quot;&gt;&lt;a href=&quot;#文件系统接口-用户角度&quot; class=&quot;headerlink&quot; title=&quot;文件系统接口(用户角度)&quot;&gt;&lt;/a&gt;文件系统接口(用户角度)&lt;/h4&gt;&lt;h5 id=&quot;文件概念&quot;&gt;&lt;a href=&quot;#文件概念&quot; class=&quot;headerlink&quot; title=&quot;文件概念&quot;&gt;&lt;/a&gt;文件概念&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;文件&lt;/code&gt;&lt;/strong&gt;是逻辑外存单元的最小分配单元。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;类型&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;数据：数字字符，二进制…&lt;/li&gt;
+&lt;li&gt;程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;文件结构&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无： 一个字节序列&lt;/li&gt;
+&lt;li&gt;简单的记录结构：①行 ②固定长度 ③可变长度&lt;/li&gt;
+&lt;li&gt;复杂结构：①格式化文档 ②对象文件 ③可执行文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="计算机基础" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="操作系统" scheme="https://daisine.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="note" scheme="https://daisine.github.io/tags/note/"/>
     
   </entry>
   

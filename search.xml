@@ -4,31 +4,6 @@
   
     
     <entry>
-      <title>2020重庆大学软件工程考研小记</title>
-      <link href="/2020ky/"/>
-      <url>/2020ky/</url>
-      
-        <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>作为一只<del>没有梦想</del>的咸鱼，其实从大一开始就一直在不读研和读研之间反复横跳…后来终于决定不读研了，结果大三末又被父母劝说着去考研 Orz 虽然现在考完了，但我仍旧处在一种纠结的状态。</p> <a id="more"></a>  <p>从9.13号开始准备考研初试的复习，共约三个月时间。<strong>科目为：政治，英二，数二，(CQU)877</strong>。个人<strong>个人情况</strong>：数学一直都不太好，高中成绩全靠语文英语拉分<del>所以我为什么要选理科</del>，大一高数低分飘过；英语<del>心安理得</del>吃着高中的老本过了英语四六级；政治就是理科生的那种政治基础，初高中大学考试都是开卷；专业课考的是C语言和数据库，从目前的真题包括今年来看考得比较基础。</p><h3 id="资料及利用情况"><a href="#资料及利用情况" class="headerlink" title="资料及利用情况"></a>资料及利用情况</h3><p>用的复习资料不多，具体如下:</p><ul><li>李王考研数学复习全书+数学历年真题全精解析+李永乐线代辅导讲义：三本书完整做了一遍，并整理了一些具体的知识点，其中倍速听了汤高数基础班+<strong>李永乐线代强化班</strong>，因为个人高数不太好，如果高数基础好的话可以不用听汤的基础班，因为真的讲的挺基础的。<strong>李永乐线代强化班配合讲义听一听对线代的理解会很有帮助。</strong></li><li>考研数学李林6+4套卷：题出得不错，考察的点、方式也和历年真题相似，只是今年的题个人觉得问法比较奇怪，后期用来保持数学做题的手感可以，但不要对押中题抱太大希望。</li><li>考研英语二张剑黄皮书：因为数学不太好的原因所以…其实题阅读题做得蛮少的，最重要的是从自己错题的类型总结出题的思路。翻译没练习，考前就看了两眼近两年的真题，比较简单，最后考得也比较基础。考研作文的模板是从这个黄皮书的优秀范文中自己编了一个，考试的时候还挺好用。2020考研英语真题的<strong>完形填空没有以前出得那么难，完全可以做。</strong></li><li>肖秀荣精讲精练+肖1000+肖八肖四：精讲精练十月份的时候看不下去，所以看的是微博上一个研友总结的徐涛政治的听课笔记。十二月做肖八肖四的时候发现小部分知识点听课笔记上没有，翻了一下精讲精练，发现精讲精练这本书还是不错的，缺点是太细、重要考点不够突出。肖1000做了马原部分，其他Part没碰。大题背的肖四，考试够用。<strong>多选的错误选项有一定技巧</strong>，因为我政治选择复习得比较水，个人感觉单选比多选做得差…各种帽子题太为难我这记忆力了。</li><li>专业课：先是没复习把12-19年的真题做了一遍，其中早年真题考的科目不太一样，因此只挑了C语言+数据库原理Part写。总的来说考得比较基础，翻书复习并总结了一下真题的知识点，<a href="https://daisine.github.io/cky/">C语言</a>   <a href="https://daisine.github.io/sqlky/">数据库</a>。除此之外，我去打印店买了隔壁某学院C语言的期末考试试卷(<del>因为买不到软件学院的</del>)，和真题的题型考察的点几乎差不多，共约4、5套，刷完了总结一些易错点和坑。数据库原理考得比本科的期末考试简单，因此我稍微看了一下大二准备的<a href="https://daisine.github.io/sql01/">数据库原理期末考试的复习笔记</a> + 数据仓库/数据挖掘的概念和简单应用，写了一些<a href="https://www.nowcoder.com/ta/sql" target="_blank" rel="noopener">牛客网SQL语句的题目</a>(考得比这上面的题简单)。</li><li>网上研友总结的资料：包括但不限于政治知识点笔记，政治各模拟题知识点提炼，英语完形+阅读+作文技巧，数学公式/某些高频考点题型的解题思路。来源：微信公众号，微博，B站。<strong>PS: 网上各式各样的资源很多很杂，找自己真正需要的看，而不是随波逐流。</strong></li></ul><h3 id="APP-PC端工具"><a href="#APP-PC端工具" class="headerlink" title="APP/ PC端工具"></a>APP/ PC端工具</h3><p>APP/PC端软件如下：</p><ul><li><strong>Notability</strong> ：记听课笔记+刷题，开始写着不习惯，笔略重。写久了觉得还挺顺手的。</li><li>知米背单词：背了3000个考研高频词汇(但感觉用处不大，考英语的时候该不认识的还是不认识QAQ，唯一的区别就是：这单词我好像见过唉！)</li><li><strong>WolframAlpha</strong>：<strong>高数求积分/求极限/解各种方程/看复杂函数图像</strong>的利器，做题看不懂解析省略的步骤的时候会用这个。</li><li>nPlayer：看课程视频，可1.0-4.0选择倍速播放。</li><li>Baiduyun：各种模拟试卷/研友总结知识点/微博微信的资源链接一般都是百度云，但是由于baiduyun各种限制，我还开了三个月的baidunyu会员，省点心。</li><li>欧陆词典：习惯用这个词典查词</li><li>Scanner Pro：扫描手写笔记，公式等</li><li>蜜题考研政治：11月末发现的。花了1块钱，可以刷政治真题、模拟题的选择题，有解析、可收藏题目和回顾错题。个人感觉挺好用。</li><li>(PC端) <strong>Adobe Acrobat + Pitstop插件</strong>：去水印，编辑合并PDF文件必备。…网上考研资料的水印真是一重又一重，作为一个强迫症不去水印极度不适。</li><li><a href="https://www.ilovepdf.com/zh-cn" target="_blank" rel="noopener">I love PDF</a> 简易的pdf在线编辑page，最重要的一点是可以将限制编辑的pdf解密，不然无法去水印。</li></ul><h3 id="注意的点"><a href="#注意的点" class="headerlink" title="注意的点"></a>注意的点</h3><ul><li><p><strong>具体情况具体分析，所有人的经验贴都不能照搬。</strong></p></li><li><p>效率比时长重要：一天专注学习8个小时个人觉得足够了。前期：上午+下午做题/复习新的点，晚上总结。也不一定非要是晚上总结，把总结放到你一天之中觉得效率最低、脑子最转不过来的时间即可。<strong>总结完后期复习要看，不看不如别浪费时间。</strong></p></li><li>给自己定近期的具体的DDL：众所周知，<del>DDL是第一生产力</del>。例如，两天写+总结完一套真题，到哪天之前刷完；2天看完线代某章题目，哪天之前看完所有线代。</li><li>不要过长时间久坐，不时站起来走走，考研是一件耗费体力和脑力的事情，身体的疲惫感也需要重视。</li></ul><h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>写这篇文的时候，离考完研两周不到。成绩未出，也不打算对答案。甚至想国家线公布以后再查成绩。目前准备复习专业课，准备复试是一方面，更重要的是准备20年的春招。人的一生真正能自己选择的路很少，我想给自己多几个选项。</p><p>以及，</p><p>新年快乐呀！</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> DAIの日常 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 杂念 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>C语言试卷笔记</title>
       <link href="/cxky/"/>
       <url>/cxky/</url>
@@ -110,9 +85,9 @@
             
             <tag> hadoop </tag>
             
-            <tag> hive </tag>
-            
             <tag> Docker </tag>
+            
+            <tag> hive </tag>
             
         </tags>
       
@@ -1466,28 +1441,6 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[<ul><li>note</li><li>hexo</li><li>Typecho</li><li>Web</li><li>机器学习</li><li>图形学</li><li>杂念</li><li>配置环境</li><li>leetcode</li><li>hadoop</li><li>大数据</li><li>Docker</li><li>hive</li></ul>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>List</title>
-      <link href="/list/index.html"/>
-      <url>/list/index.html</url>
-      
-        <content type="html"><![CDATA[<h4 id="大三-上-课程日历"><a href="#大三-上-课程日历" class="headerlink" title="大三 上 课程日历"></a>大三 上 课程日历</h4><table><thead><tr><th>课程</th><th>开课日期</th></tr></thead><tbody><tr><td>信息安全导论</td><td><del><code>第1周周一</code> 9/3</del></td></tr><tr><td>计算机图形学</td><td><del><code>第1周周一</code> 9/3</del></td></tr><tr><td>面向对象与UML</td><td><del><code>第1周周二</code> 9/4</del></td></tr><tr><td>机器学习与模式识别</td><td><del><code>第1周周三</code> 9/5</del></td></tr><tr><td>web开发技术</td><td><del><code>第1周周三</code> 9/5</del></td></tr><tr><td>软件需求分析</td><td><code>第11周周二</code> 11/13</td></tr><tr><td>多媒体技术</td><td><code>第12周周一</code> 11/19</td></tr><tr><td>大数据与软件工程导论</td><td><code>第12周周二</code> 11/20</td></tr><tr><td>DirectX图形程序设计</td><td><code>第13周周一</code> 11/26</td></tr></tbody></table><h4 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h4><div class="tip"> 挣扎月：“Make something better today!” </div><ul><li><del>逛宜家 建新窝</del></li><li><del>UML原型Demo</del></li><li><del>计算机图形学实验</del></li><li><strong>机器学习项目(latex)</strong></li><li><strong>web实验+笔记</strong></li><li>练硬笔字 </li><li>python 基础</li><li>html &amp; CSS基础</li><li>程序设计算法</li><li>英语语法.md</li><li>背单词</li><li>买烤箱，厨房置物架</li></ul><h4 id="大二-下-课程日历"><a href="#大二-下-课程日历" class="headerlink" title="大二 下 课程日历"></a>大二 下 课程日历</h4><table><thead><tr><th>课程</th><th>考试日期</th></tr></thead><tbody><tr><td><del>数据库原理</del></td><td><del><code>第13周周四</code> 5/31 10:30-12:30</del></td></tr><tr><td><del>计算机网络与通信</del></td><td><del><code>第14周周四</code> 6/7 15:50-17:50</del></td></tr><tr><td><del>软件工程导论</del></td><td><del><code>第15周周四</code> 6/14 10:30-12:30</del></td></tr><tr><td><del>操作系统原理</del></td><td><del><code>第16周周四</code> 6/21 15:50-17:50</del></td></tr><tr><td><del>马克思主义基本原理</del></td><td><del><code>第17周周日</code> 7/1 9:00-10:30</del></td></tr><tr><td><del>Java</del></td><td><del><code>第18周周四</code> 7/5 10:30-12:30</del></td></tr></tbody></table><h4 id="暑假月清单"><a href="#暑假月清单" class="headerlink" title="暑假月清单"></a>暑假月清单</h4><div class="tip"> 暑假月：“ 每天认真吃饭，早睡早起！”</div><ul><li><del>C++ &amp; C基本语法</del></li><li>程序设计算法</li><li>买个小烤箱嘻嘻嘻 <code>不买啦，没钱也没位置放(~~借口~~)</code></li></ul><h4 id="清单-1"><a href="#清单-1" class="headerlink" title="清单"></a>清单</h4><div class="tip"> 咸鱼月：“ 期末月要注意作息和情绪调节喵！”</div><ul><li><del>计网.md</del></li><li><del>软工复习.md</del></li><li><del>操作系统.md</del></li><li><del>Java基础</del></li><li><del>数据库课程设计 <code>DDL: 7/2</code></del></li><li><del>周末在家做一顿好吃的饭</del></li><li><del>英语诗歌论文</del></li><li>把以前的代码整理到<code>github</code>上</li><li>读一本闲书</li></ul><div class="tip">卡莲 · 第六夜想曲: “ 你的心，就由我收下了~”</div><ul><li><del>软工需求+设计</del></li><li><del>数据库原理.md</del></li><li><del>数据库实验</del></li><li><del>计网实验</del></li><li><del>操作系统实验</del></li><li>整理C语言.md</li><li>swift启动~</li><li><del>趁天气好的时候溜出去晒太阳！</del></li></ul>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>About me</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
@@ -1499,11 +1452,33 @@
     
     
     <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[<ul><li>note</li><li>hexo</li><li>Typecho</li><li>Web</li><li>机器学习</li><li>图形学</li><li>杂念</li><li>配置环境</li><li>leetcode</li><li>hadoop</li><li>大数据</li><li>Docker</li><li>hive</li></ul>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>categories</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[<ul><li>前端</li><li>计算机基础<ul><li>计算机网络</li><li>操作系统</li></ul></li><li>软件工程</li><li>编程语言</li><li>大数据分析</li><li>Mac OS X</li><li>DAIの日常</li><li>DAIの折腾</li><li>DAIの实验室</li></ul>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>List</title>
+      <link href="/list/index.html"/>
+      <url>/list/index.html</url>
+      
+        <content type="html"><![CDATA[<h4 id="大三-上-课程日历"><a href="#大三-上-课程日历" class="headerlink" title="大三 上 课程日历"></a>大三 上 课程日历</h4><table><thead><tr><th>课程</th><th>开课日期</th></tr></thead><tbody><tr><td>信息安全导论</td><td><del><code>第1周周一</code> 9/3</del></td></tr><tr><td>计算机图形学</td><td><del><code>第1周周一</code> 9/3</del></td></tr><tr><td>面向对象与UML</td><td><del><code>第1周周二</code> 9/4</del></td></tr><tr><td>机器学习与模式识别</td><td><del><code>第1周周三</code> 9/5</del></td></tr><tr><td>web开发技术</td><td><del><code>第1周周三</code> 9/5</del></td></tr><tr><td>软件需求分析</td><td><code>第11周周二</code> 11/13</td></tr><tr><td>多媒体技术</td><td><code>第12周周一</code> 11/19</td></tr><tr><td>大数据与软件工程导论</td><td><code>第12周周二</code> 11/20</td></tr><tr><td>DirectX图形程序设计</td><td><code>第13周周一</code> 11/26</td></tr></tbody></table><h4 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h4><div class="tip"> 挣扎月：“Make something better today!” </div><ul><li><del>逛宜家 建新窝</del></li><li><del>UML原型Demo</del></li><li><del>计算机图形学实验</del></li><li><strong>机器学习项目(latex)</strong></li><li><strong>web实验+笔记</strong></li><li>练硬笔字 </li><li>python 基础</li><li>html &amp; CSS基础</li><li>程序设计算法</li><li>英语语法.md</li><li>背单词</li><li>买烤箱，厨房置物架</li></ul><h4 id="大二-下-课程日历"><a href="#大二-下-课程日历" class="headerlink" title="大二 下 课程日历"></a>大二 下 课程日历</h4><table><thead><tr><th>课程</th><th>考试日期</th></tr></thead><tbody><tr><td><del>数据库原理</del></td><td><del><code>第13周周四</code> 5/31 10:30-12:30</del></td></tr><tr><td><del>计算机网络与通信</del></td><td><del><code>第14周周四</code> 6/7 15:50-17:50</del></td></tr><tr><td><del>软件工程导论</del></td><td><del><code>第15周周四</code> 6/14 10:30-12:30</del></td></tr><tr><td><del>操作系统原理</del></td><td><del><code>第16周周四</code> 6/21 15:50-17:50</del></td></tr><tr><td><del>马克思主义基本原理</del></td><td><del><code>第17周周日</code> 7/1 9:00-10:30</del></td></tr><tr><td><del>Java</del></td><td><del><code>第18周周四</code> 7/5 10:30-12:30</del></td></tr></tbody></table><h4 id="暑假月清单"><a href="#暑假月清单" class="headerlink" title="暑假月清单"></a>暑假月清单</h4><div class="tip"> 暑假月：“ 每天认真吃饭，早睡早起！”</div><ul><li><del>C++ &amp; C基本语法</del></li><li>程序设计算法</li><li>买个小烤箱嘻嘻嘻 <code>不买啦，没钱也没位置放(~~借口~~)</code></li></ul><h4 id="清单-1"><a href="#清单-1" class="headerlink" title="清单"></a>清单</h4><div class="tip"> 咸鱼月：“ 期末月要注意作息和情绪调节喵！”</div><ul><li><del>计网.md</del></li><li><del>软工复习.md</del></li><li><del>操作系统.md</del></li><li><del>Java基础</del></li><li><del>数据库课程设计 <code>DDL: 7/2</code></del></li><li><del>周末在家做一顿好吃的饭</del></li><li><del>英语诗歌论文</del></li><li>把以前的代码整理到<code>github</code>上</li><li>读一本闲书</li></ul><div class="tip">卡莲 · 第六夜想曲: “ 你的心，就由我收下了~”</div><ul><li><del>软工需求+设计</del></li><li><del>数据库原理.md</del></li><li><del>数据库实验</del></li><li><del>计网实验</del></li><li><del>操作系统实验</del></li><li>整理C语言.md</li><li>swift启动~</li><li><del>趁天气好的时候溜出去晒太阳！</del></li></ul>]]></content>
       
     </entry>
     
