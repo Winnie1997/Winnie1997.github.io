@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://daisine.github.io/vscode-macos/</loc>
+    
+    <lastmod>2020-03-11T06:58:13.792Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://daisine.github.io/cky/</loc>
     
     <lastmod>2020-01-02T12:01:36.223Z</lastmod>
@@ -194,13 +201,6 @@
     <loc>https://daisine.github.io/dip/</loc>
     
     <lastmod>2019-06-11T08:06:00.454Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://daisine.github.io/vscode-macos/</loc>
-    
-    <lastmod>2019-05-27T07:08:58.346Z</lastmod>
     
   </url>
   
